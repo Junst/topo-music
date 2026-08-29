@@ -52,8 +52,7 @@ def main(arm):
     for pool_name, sl in [("mean", slice(0, D)), ("mean+std", slice(0, 2 * D))]:
         ZP = Z[:, sl]
         clf = make_pipeline(StandardScaler(),
-                            LogisticRegression(max_iter=2000, C=1.0,
-                                               multi_class="multinomial"))
+                            LogisticRegression(max_iter=2000, C=1.0))
         t0 = time.time()
         clf.fit(ZP, Y)
         W = clf[-1].coef_

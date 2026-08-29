@@ -6,7 +6,7 @@
 set -u
 cd /scratch2/solbon1212/topo-music
 DEADLINE=$(( $(date +%s) + 21600 ))
-declare -A WANT=( [topo-fold]=scripts/sbatch_fold.sh [topo-tr]=scripts/sbatch_transpose.sh )
+declare -A WANT=( [topo-fold]=scripts/sbatch_fold.sh [topo-tr]=scripts/sbatch_transpose.sh [topo-pw]=scripts/sbatch_pw.sh )
 while [ $(date +%s) -lt $DEADLINE ]; do
   if Q=$(squeue -u "$USER" -h -o "%j" 2>/dev/null); then
     for name in "${!WANT[@]}"; do
@@ -18,7 +18,7 @@ while [ $(date +%s) -lt $DEADLINE ]; do
         sbatch "${WANT[$name]}" && WANT[$name]=""
       fi
     done
-    [ -z "${WANT[topo-fold]}${WANT[topo-tr]}" ] && { echo "all handled"; exit 0; }
+    [ -z "${WANT[topo-fold]}${WANT[topo-tr]}${WANT[topo-pw]}" ] && { echo "all handled"; exit 0; }
   fi
   sleep 60
 done
