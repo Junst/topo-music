@@ -40,16 +40,54 @@ def reference_distances(present):
 N_PERM = 2000
 
 
+def synth(kind, Y, present, rng, D=256):
+    """Two controls for the probe-weight result.
+
+    Every arm's classifier weights show circle-of-fifths geometry, including
+    CQT, whose centroids show none. Before reading that as a property of the
+    representations, it has to be shown that it is not automatic. Keys a fifth
+    apart share six of seven scale degrees, so they are confusable, and a
+    sceptic can argue any competent 24-way key classifier ends up with
+    fifths-structured weights whatever it was fitted on.
+
+      random_feat : no information at all. Accuracy must fall to chance, and
+                    the weights must lose the geometry. Establishes that label
+                    structure alone does not produce it.
+      orthocode   : perfect information, no tonal content. Each key gets its
+                    own random orthogonal code, so classes are equidistant by
+                    construction and carry no pitch-class relation. Accuracy
+                    stays high, matching the real arms, while the fifths
+                    structure is absent from the data. If the weights still
+                    show fifths geometry here, the effect is an artefact of the
+                    classifier and the label set, not of the representation.
+    """
+    if kind == "random_feat":
+        return rng.normal(size=(len(Y), D))
+    codes = np.linalg.qr(rng.normal(size=(D, len(present))))[0].T
+    pos = {k: i for i, k in enumerate(present)}
+    return codes[[pos[y] for y in Y]] + rng.normal(0, 0.35, (len(Y), D))
+
+
 def main(arm):
     p = Path(f"runs/clipkey_{arm}.json")
-    d = np.load(f"runs/clipkey_{arm}.npz")
+    base = arm.split("@")[-1] if "@" in arm else "cqt"
+    d = np.load(f"runs/clipkey_{base}.npz")
     Z, Y, present = d["Z"].astype(np.float64), d["Y"], d["keys"]
+    if arm.startswith(("random_feat", "orthocode")):
+        Z = synth(arm.split("@")[0], Y, present, np.random.default_rng(0))
+        p = Path(f"runs/clipkey_{arm.split('@')[0]}.json")
+        p.write_text(json.dumps({"arm": arm, "n_clips": int(len(Y)),
+                                 "dim": Z.shape[1] // 2, "poolings":
+                                 {"mean": {}, "mean+std": {}}}, indent=2))
     out = json.loads(p.read_text())
     kk, dfif, dchr, dmode, iu = reference_distances(present)
     rng = np.random.default_rng(0)
     D = Z.shape[1] // 2
 
-    for pool_name, sl in [("mean", slice(0, D)), ("mean+std", slice(0, 2 * D))]:
+    pools = [("mean", slice(0, D)), ("mean+std", slice(0, 2 * D))]
+    if arm.startswith(("random_feat", "orthocode")):
+        pools = [("mean", slice(0, Z.shape[1]))]
+    for pool_name, sl in pools:
         ZP = Z[:, sl]
         clf = make_pipeline(StandardScaler(),
                             LogisticRegression(max_iter=2000, C=1.0))
@@ -73,7 +111,13 @@ def main(arm):
                            p=float((np.abs(null) >= abs(obs)).mean()))
             print(f"[{arm}/{pool_name}] {nm:<18} rho={obs:+.3f} "
                   f"z={res[nm]['z']:+5.1f} p={res[nm]['p']:.3f}", flush=True)
+        from sklearn.model_selection import cross_val_score
+        acc = cross_val_score(clf, ZP, Y, cv=5, scoring="accuracy")
+        out["poolings"].setdefault(pool_name, {})
+        out["poolings"][pool_name].setdefault(
+            "probe", {})["key24_acc_refit"] = float(acc.mean())
         out["poolings"][pool_name]["probe_weight_geometry"] = res
+        print(f"[{arm}/{pool_name}] key24 acc {acc.mean():.3f}", flush=True)
         print(f"  ({time.time()-t0:.0f}s)", flush=True)
 
     p.write_text(json.dumps(out, indent=2))
