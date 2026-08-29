@@ -70,7 +70,7 @@ def synth(kind, Y, present, rng, D=256):
 
 def main(arm):
     p = Path(f"runs/clipkey_{arm}.json")
-    base = arm.split("@")[-1] if "@" in arm else "cqt"
+    base = arm.split("@")[-1] if "@" in arm else arm
     d = np.load(f"runs/clipkey_{base}.npz")
     Z, Y, present = d["Z"].astype(np.float64), d["Y"], d["keys"]
     if arm.startswith(("random_feat", "orthocode")):

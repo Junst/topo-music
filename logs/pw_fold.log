@@ -1,0 +1,23 @@
+[cqt_fold/mean] kk_key_distance    rho=+0.576 z= +9.3 p=0.000
+[cqt_fold/mean] fifths             rho=+0.305 z= +4.9 p=0.000
+[cqt_fold/mean] chromatic          rho=-0.209 z= -3.4 p=0.002
+[cqt_fold/mean] mode_mismatch      rho=-0.067 z= -1.1 p=0.258
+[cqt_fold/mean] key24 acc 0.407
+  (8s)
+[cqt_fold/mean+std] kk_key_distance    rho=+0.883 z=+14.5 p=0.000
+[cqt_fold/mean+std] fifths             rho=+0.586 z= +9.3 p=0.000
+[cqt_fold/mean+std] chromatic          rho=-0.134 z= -2.1 p=0.037
+[cqt_fold/mean+std] mode_mismatch      rho=-0.079 z= -1.3 p=0.150
+[cqt_fold/mean+std] key24 acc 0.439
+  (9s)
+updated runs/clipkey_cqt_fold.json
+[cqt_norm/mean] kk_key_distance    rho=+0.897 z=+14.2 p=0.000
+[cqt_norm/mean] fifths             rho=+0.671 z=+10.8 p=0.000
+[cqt_norm/mean] chromatic          rho=-0.083 z= -1.3 p=0.149
+[cqt_norm/mean] mode_mismatch      rho=-0.078 z= -1.3 p=0.134
+[cqt_norm/mean] key24 acc 0.486
+  (53s)
+[cqt_norm/mean+std] kk_key_distance    rho=+0.868 z=+14.0 p=0.000
+[cqt_norm/mean+std] fifths             rho=+0.626 z= +9.8 p=0.000
+[cqt_norm/mean+std] chromatic          rho=-0.113 z= -1.8 p=0.058
+[cqt_norm/mean+std] mode_mismatch      rho=-0.109 z= -1.8 p=0.058
