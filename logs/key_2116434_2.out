@@ -1,0 +1,16 @@
+arm=mert_L4 host=node23 start=2026-08-29T12:17:50+09:00
+[mert_L4] 2406 clips
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+8/2406  4s
+488/2406  52s
+968/2406  102s
+1448/2406  154s
+1928/2406  206s
+2406/2406  257s
+[mert_L4] 23 key centroids, clips/key min=20 max=292
+  rho_fifths   rho=+0.141  z= +4.01  p=0.000
+  rho_chroma   rho=-0.044  z= -1.29  p=0.172
+  rho_mode     rho=+0.282  z= +8.16  p=0.000
+  rho_fifths|chroma = +0.140
+wrote runs/key_geometry_mert_L4.json
+done=2026-08-29T12:22:28+09:00

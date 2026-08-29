@@ -1,0 +1,15 @@
+arm=chroma host=node15 start=2026-08-29T12:17:50+09:00
+[chroma] 2406 clips
+8/2406  5s
+488/2406  69s
+968/2406  133s
+1448/2406  197s
+1928/2406  261s
+2406/2406  322s
+[chroma] 23 key centroids, clips/key min=20 max=292
+  rho_fifths   rho=+0.451  z= +8.90  p=0.000
+  rho_chroma   rho=+0.001  z= +0.01  p=0.973
+  rho_mode     rho=+0.070  z= +1.47  p=0.123
+  rho_fifths|chroma = +0.452
+wrote runs/key_geometry_chroma.json
+done=2026-08-29T12:23:23+09:00

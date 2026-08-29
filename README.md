@@ -93,11 +93,49 @@ representation objectives* — with CQT -> codec -> music SSL as the axis. The
 spectral control already orders that axis: rho_pitch|spec is -0.054 for DAC,
 0.185 for EnCodec, 0.618 for MERT L16.
 
+### One correction, from the key-level test
+
+The statement above ("no evidence of emergent chromatic, octave-equivalent or
+circle-of-fifths topology") is too flat, and the clip-level GiantSteps test says
+so. Full numbers in [`runs/KEY_geometry_results.md`](runs/KEY_geometry_results.md).
+
+| arm | rho_fifths | z | p |
+|---|---|---|---|
+| chroma (music-theoretic baseline) | **+0.451** | 8.90 | <0.001 |
+| log-CQT (input floor) | -0.010 | -0.24 | 0.814 |
+| MERT L4 | **+0.141** | 4.01 | <0.001 |
+| MERT L24 | +0.074 | 2.03 | 0.038 |
+
+Mean chroma recovers the circle of fifths cleanly and recovers *only* that
+(rho_chroma = 0.001), so the test has power and a null elsewhere means
+something. log-CQT has no fifths structure — octave folding is required, and an
+unfolded spectral input does not have it. **MERT builds a weak circle-of-fifths
+geometry that its input lacks** (0.141 at L4). That is a real positive, and it
+corrects the flat claim.
+
+It is still about a third of the explicit-chroma effect and it *decays with
+depth* (0.141 -> 0.074), the same direction as everything else here. And whether
+it is tonal or sociological is unsettled: in EDM key correlates with subgenre.
+That rho_chroma stays ~0 while rho_fifths is positive argues for the tonal
+reading, but separating them needs a key-balanced corpus or transposed tracks.
+
+So the accurate version of the headline: the *strong* form of emergent harmonic
+topology — a dominant chromatic axis a topographic objective could amplify — is
+not supported. A faint one exists in mid-depth MERT and is discarded by deeper
+layers.
+
+**Also worth recording as a trap:** rho_mode is ~0.3 and highly significant in
+log-CQT and every MERT layer, but only 0.070 and non-significant in chroma.
+Major/minor is separating those centroids through timbre and production, not
+pitch-class content. Reported without the chroma control it would look like a
+music-theoretic finding.
+
 ### Still open
 
-Octave equivalence is properly tested with single notes and is absent. Chord-
-and key-level topology is tested separately on GiantSteps (`scripts/06_probe_gs.py`,
-`runs/gs_*.npz`) because NSynth's isolated notes cannot carry a key.
+The frame-level GS probe (`scripts/06_probe_gs.py`, `runs/gs_*.npz`) is kept for
+the record but should not be cited: nMI(code; tonic) was 0.035-0.107, so its
+fifths null had no power. The clip-level test (`scripts/08_key_geometry.py`)
+supersedes it.
 
 ## Layout
 

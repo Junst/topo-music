@@ -3,3 +3,13 @@ arm=cqt host=node15 start=2026-08-29T12:09:08+09:00
 [cqt] kmeans on (80128, 84) (47s)
 8/2406  47s
 328/2406  74s
+648/2406  107s
+968/2406  146s
+1288/2406  184s
+1608/2406  224s
+1928/2406  263s
+2248/2406  299s
+wrote runs/gs_cqt.npz in 320s
+[gs_cqt] L0  used=1013/1024  nMI(pitch)=0.107  nMI(fam)=0.066  MoranI(pitch|codespace)=0.135 z=12.1
+wrote runs/topo_gs_cqt.json
+done=2026-08-29T12:15:17+09:00

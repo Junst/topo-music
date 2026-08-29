@@ -1,3 +1,16 @@
 arm=mert_L24 host=node23 start=2026-08-29T12:09:10+09:00
 [mert_L24] 2406 clips
 WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+[mert_L24] kmeans on (191744, 1024) (109s)
+8/2406  110s
+328/2406  139s
+648/2406  168s
+968/2406  197s
+1288/2406  229s
+1608/2406  258s
+1928/2406  287s
+2248/2406  317s
+wrote runs/gs_mert_L24.npz in 332s
+[gs_mert_L24] L0  used=510/1024  nMI(pitch)=0.035  nMI(fam)=0.031  MoranI(pitch|codespace)=0.062 z=4.0
+wrote runs/topo_gs_mert_L24.json
+done=2026-08-29T12:15:40+09:00

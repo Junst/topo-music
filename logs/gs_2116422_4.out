@@ -2,3 +2,16 @@ arm=encodec_32k host=node22 start=2026-08-29T12:09:10+09:00
 [encodec_32k] 2406 clips
 8/2406  8s
 328/2406  54s
+648/2406  95s
+968/2406  132s
+1288/2406  171s
+1608/2406  210s
+1928/2406  249s
+2248/2406  287s
+wrote runs/gs_encodec_32k.npz in 306s
+[gs_encodec_32k] L0  used=1837/2048  nMI(pitch)=0.041  nMI(fam)=0.019  MoranI(pitch|codespace)=0.235 z=29.2
+[gs_encodec_32k] L1  used=1603/2048  nMI(pitch)=0.040  nMI(fam)=0.011  MoranI(pitch|codespace)=0.264 z=36.7
+[gs_encodec_32k] L2  used=1529/2048  nMI(pitch)=0.029  nMI(fam)=0.009  MoranI(pitch|codespace)=0.134 z=18.0
+[gs_encodec_32k] L3  used=1642/2048  nMI(pitch)=0.022  nMI(fam)=0.007  MoranI(pitch|codespace)=0.105 z=15.6
+wrote runs/topo_gs_encodec_32k.json
+done=2026-08-29T12:15:41+09:00

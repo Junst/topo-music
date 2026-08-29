@@ -1,0 +1,15 @@
+arm=cqt host=node24 start=2026-08-29T12:17:50+09:00
+[cqt] 2406 clips
+8/2406  3s
+488/2406  28s
+968/2406  52s
+1448/2406  76s
+1928/2406  101s
+2406/2406  125s
+[cqt] 23 key centroids, clips/key min=20 max=292
+  rho_fifths   rho=-0.010  z= -0.24  p=0.814
+  rho_chroma   rho=-0.013  z= -0.31  p=0.731
+  rho_mode     rho=+0.354  z= +8.42  p=0.000
+  rho_fifths|chroma = -0.011
+wrote runs/key_geometry_cqt.json
+done=2026-08-29T12:20:04+09:00
