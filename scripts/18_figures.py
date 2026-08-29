@@ -93,8 +93,10 @@ ARMS2 = ["cqt", "mert_L4", "mert_L12", "mert_L16", "mert_L24"]
 NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
         "mert_L16": "L16", "mert_L24": "L24"}
 cm = json.load(open("runs/nsynth_class_means.json"))
-fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.6, 2.5), sharey=True,
-                               gridspec_kw={"width_ratios": [1, 1.15]})
+# single-column width: three full-width floats do not fit in four ICASSP pages,
+# and this one reads fine narrow
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 4.1), sharey=True,
+                               gridspec_kw={"height_ratios": [1, 1]})
 for arm in ARMS2:
     c = cm[arm]["curve"]
     npp = [r["n_per_pitch"] if r["n_per_pitch"] else 128 for r in c]
@@ -103,10 +105,10 @@ for arm in ARMS2:
     axa.plot(npp, ys, color=col, lw=1.3, marker="o", ms=2.6,
              alpha=0.55 if arm != "mert_L12" else 1.0,
              ls="-" if arm.startswith("mert") else ":", zorder=3)
-axa.annotate("MERT L4-L24, log-CQT\n(all arms flat at zero;\nmax $+0.008$)",
-             (2.5, 0.06), color=INK2, fontsize=7)
-axa.annotate("chroma control: $+0.57 \\rightarrow +0.62$, off scale",
-             (1.05, 0.44), color=ORANGE, fontsize=7)
+axa.annotate("MERT L4-L24, log-CQT:\nflat at zero (max $+0.008$)",
+             (1.6, 0.08), color=INK2, fontsize=6.5)
+axa.annotate("chroma: $+0.57\\rightarrow+0.62$, off scale",
+             (1.05, 0.43), color=ORANGE, fontsize=6.5)
 style(axa); axa.set_xscale("log"); axa.axhline(0, color=INK2, lw=0.6, zorder=2)
 axa.set_xticks([1, 4, 16, 64, 128]); axa.set_xticklabels(["1", "4", "16", "64", "all"])
 axa.set_xlabel("notes per pitch centroid (log)")
@@ -128,6 +130,6 @@ style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
 axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2])
 axb.set_xlabel("representation")
 axb.set_title("(b) a projection does", loc="left", color=INK)
-axb.legend(frameon=False, loc="upper right", handlelength=1.4)
+axb.legend(frameon=False, loc="upper right", handlelength=1.2, fontsize=6.5)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")

@@ -1,28 +1,29 @@
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-\small
-\caption{Key information, ambient geometry and readout geometry come apart. All columns are measured on the same 7035 GiantSteps clips and the same 24 keys. \textit{acc}: 24-way key accuracy from the pooled clip embedding (chance $.042$). $\rho^{\text{cent}}_{5}$: circle-of-fifths correlation among the 24 key centroids, i.e.\ the ambient metric; $\rho_{5}\!\mid\!\text{spec}$ partials out mel-spectral centroid distance. $\rho^{W}_{5}$: the same correlation among the fitted probe's 24 class weight vectors, i.e.\ what a linear readout can reach. $\rho_{\text{chr}}$ (semitone adjacency) and $\rho_{\text{mode}}$ (major/minor) are reported as discriminants. The control block fixes the scale: an analytic circle of fifths scores $\approx\!1$ everywhere; random features carry no information and show nothing; orthogonal per-key codes decode key better than any real representation ($.651$) with equidistant classes by construction, and show nothing either -- so $\rho^{W}_{5}$ is not an artefact of an accurate classifier on this label set.}
+\footnotesize
+\caption{Key information, ambient geometry and readout geometry come apart. Same 7035 GiantSteps clips, same 24 keys. \textit{acc} is 24-way key accuracy (chance $.042$); $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids, i.e.\ the ambient metric; $\rho^{W}_{5}$ is the same correlation among the probe's 24 class weight vectors, i.e.\ what a linear readout reaches. The controls fix the scale for reading the two geometry columns.}
 \label{tab:decodable-vs-geometric}
-\begin{tabular}{l r r r r r r r}
+\vspace{3pt}
+\begin{tabular}{@{}l r r r@{}}
 \toprule
-representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho_{5}\!\mid\!\text{spec}$ & $\rho^{W}_{5}$ & $z_W$ & $\rho_{\text{chr}}$ & $\rho_{\text{mode}}$ \\
+representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ \\
 \midrule
-\multicolumn{8}{l}{\textit{Controls}} \\
-\quad analytic fifths (metric ctrl) & $0.274$ & $+0.977$ & $+0.977$ & $+0.986$ & $+15.8$ & $-0.085$ & $+0.053$ \\
-\quad random features (no info) & $0.055$ & $+0.009$ & -- & $+0.033$ & $+0.6$ & $-0.001$ & -- \\
-\quad orthogonal key codes (no tonal rel.) & $0.651$ & $-0.008$ & -- & $-0.005$ & $-0.1$ & $-0.001$ & -- \\
-\multicolumn{8}{l}{\textit{Spectral front end (fold $\times$ norm)}} \\
-\quad log-CQT, 84 bin, dB & $0.492$ & $-0.035$ & $-0.103$ & $+0.560$ & $+9.1$ & $+0.174$ & $+0.165$ \\
-\quad log-CQT, 84 bin, per-frame norm & $0.486$ & $-0.117$ & $-0.136$ & $+0.671$ & $+10.6$ & $+0.491$ & $+0.013$ \\
-\quad octave-summed, 12 bin, dB & $0.407$ & $-0.106$ & $-0.157$ & $+0.305$ & $+4.9$ & $+0.391$ & $-0.088$ \\
-\quad chromagram (fold + norm) & $0.451$ & $+0.475$ & $+0.445$ & $+0.692$ & $+11.0$ & $+0.140$ & $-0.054$ \\
-\multicolumn{8}{l}{\textit{Neural codec}} \\
-\quad EnCodec 32 kHz & $0.404$ & $+0.177$ & $+0.218$ & $+0.648$ & $+10.4$ & $+0.041$ & $+0.098$ \\
-\multicolumn{8}{l}{\textit{MERT-v1-330M}} \\
-\quad layer 4 & $0.451$ & $+0.445$ & $+0.432$ & $+0.412$ & $+6.8$ & $-0.025$ & $+0.216$ \\
-\quad layer 12 & $0.456$ & $+0.468$ & $+0.455$ & $+0.428$ & $+7.1$ & $+0.024$ & $+0.203$ \\
-\quad layer 16 & $0.440$ & $+0.395$ & $+0.377$ & $+0.409$ & $+6.8$ & $+0.047$ & $+0.262$ \\
-\quad layer 24 & $0.418$ & $+0.294$ & $+0.266$ & $+0.484$ & $+7.6$ & $+0.049$ & $+0.328$ \\
+\multicolumn{4}{@{}l}{\textit{Controls}} \\
+\quad analytic fifths (metric ctrl) & $0.274$ & $+0.977$ & $+0.986$ \\
+\quad random features (no info) & $0.055$ & $+0.009$ & $+0.033$ \\
+\quad orthogonal key codes (no tonal rel.) & $0.651$ & $-0.008$ & $-0.005$ \\
+\multicolumn{4}{@{}l}{\textit{Spectral front ends}} \\
+\quad log-CQT, 84 bin, dB & $0.492$ & $-0.035$ & $+0.560$ \\
+\quad log-CQT, 84 bin, per-frame norm & $0.486$ & $-0.117$ & $+0.671$ \\
+\quad octave-summed, 12 bin, dB & $0.407$ & $-0.106$ & $+0.305$ \\
+\quad chromagram (fold + norm) & $0.451$ & $+0.475$ & $+0.692$ \\
+\multicolumn{4}{@{}l}{\textit{Neural codec}} \\
+\quad EnCodec 32 kHz & $0.404$ & $+0.177$ & $+0.648$ \\
+\multicolumn{4}{@{}l}{\textit{MERT-v1-330M}} \\
+\quad layer 4 & $0.451$ & $+0.445$ & $+0.412$ \\
+\quad layer 12 & $0.456$ & $+0.468$ & $+0.428$ \\
+\quad layer 16 & $0.440$ & $+0.395$ & $+0.409$ \\
+\quad layer 24 & $0.418$ & $+0.294$ & $+0.484$ \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
