@@ -49,24 +49,55 @@ that discrete-vs-continuous is not a confound.
 | music SSL (MERT, 7 layers) | strong, **grows with depth** | absent, **shrinks with depth** | absent | absent |
 | codec (EnCodec / DAC) | present | absent | absent | absent |
 
-**Music SSL does not produce musical topology either.** rho_chroma <= 0.107
-everywhere, rho_fifths <= 0.054. Through MERT's depth the ratio
-rho_abs / rho_chroma climbs 3.7x -> 22.7x: training *sharpens* the acoustic
-topology and *erodes* the chroma structure the input had. And log-CQT is the
-most pitch-organised arm of the eleven, so the topography is largely inherited
-from the input rather than built by any objective.
+**Music SSL does not produce musical topology either.** Chroma and fifths
+correlations remained small everywhere (rho_chroma <= 0.107, rho_fifths <=
+0.054). Through MERT's depth the ratio rho_abs / rho_chroma climbs
+3.7x -> 22.7x: training *sharpens* the acoustic topology and *erodes* the chroma
+structure the input had. And log-CQT is the most pitch-organised arm of the
+eleven — with Moran's I 0.760 already in the input, a network reaching 0.805 did
+not invent the phenomenon.
 
-**But it is not "just spectral similarity" — an earlier draft of this README said
+But MERT is not merely inheriting it either: rho_abs 0.668 at L16 against
+log-CQT's 0.465. The accurate statement is that **MERT transforms an inherited
+acoustic topology by selectively amplifying pitch-height organisation** — the
+opposite of converting acoustic geometry into musical geometry.
+
+**And it is not "just spectral similarity" — an earlier draft of this README said
 so and was wrong.** Controlling per-code log-mel distance barely touches MERT
-(rho 0.668 -> 0.618 at L16); it removes ~40% of EnCodec's effect and all of
-DAC's. The claim now stands only where the control supports it.
+(0.668 -> 0.618 at L16); it removes ~40% of EnCodec's effect and all of DAC's.
+Stated at the strength the control supports: *MERT's pitch-height organisation
+cannot be explained by coarse log-mel spectral similarity alone.* Harmonic
+spacing, resolved harmonics, spectral envelope and F0 periodicity are not
+controlled, so this is not evidence that MERT learns abstract pitch.
 
-### What is still open
+## Where it lands
 
-Octave equivalence is properly tested with single notes and is absent. The
-Tonnetz / circle-of-fifths question is **not** properly tested here — those are
-chord- and key-level relations and NSynth is isolated notes. GiantSteps
-(`marble/GS`) is on disk if that test is worth running.
+    Music representations are topographic, but not musically topographic.
+
+Neither neural audio codecs nor a strong self-supervised music encoder show
+evidence of emergent chromatic, octave-equivalent or circle-of-fifths topology
+under these probes; their geometry is consistently dominated by absolute pitch
+height. In MERT, increasing depth strengthens the dominance of pitch height over
+pitch class rather than converting acoustic organisation into music-theoretic
+organisation.
+
+That is a more useful finding than a null. C3 and C4 are not, to these models,
+the special equivalence relation that a musician takes them to be — and the
+question worth asking next is **why music SSL does not form octave / chroma
+invariance**, which points straight at what pitch-shift and contrastive
+augmentation do to representation geometry.
+
+The question this repo should have been asking from the start is not "does
+musical topology emerge" but *what topology actually emerges across audio
+representation objectives* — with CQT -> codec -> music SSL as the axis. The
+spectral control already orders that axis: rho_pitch|spec is -0.054 for DAC,
+0.185 for EnCodec, 0.618 for MERT L16.
+
+### Still open
+
+Octave equivalence is properly tested with single notes and is absent. Chord-
+and key-level topology is tested separately on GiantSteps (`scripts/06_probe_gs.py`,
+`runs/gs_*.npz`) because NSynth's isolated notes cannot carry a key.
 
 ## Layout
 

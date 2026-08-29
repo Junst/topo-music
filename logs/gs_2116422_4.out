@@ -1,0 +1,4 @@
+arm=encodec_32k host=node22 start=2026-08-29T12:09:10+09:00
+[encodec_32k] 2406 clips
+8/2406  8s
+328/2406  54s

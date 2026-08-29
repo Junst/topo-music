@@ -23,10 +23,13 @@ Row = representation, at the level carrying most pitch nMI.
 | encodec_24k | 0.339 | 0.398 | 44.0 | 0.041 | 0.075 | 0.074 | -0.008 | -0.008 |
 | dac_44k | 0.165 | 0.291 | 19.9 | 0.078 | 0.040 | 0.036 | 0.018 | 0.015 |
 
-**Music SSL does not produce musical topology.** rho_chroma and rho_fifths are at
-noise in every arm, MERT included; the largest chroma value anywhere is 0.107.
-The pre-agreed reading was "if MERT also gives rho_abs >> rho_chroma then idea 3
-is close to dead". It does, at every depth.
+**Music SSL does not produce musical topology.** Chroma and fifths correlations
+remained small in every arm, MERT included: rho_chroma <= 0.107 and
+rho_fifths <= 0.054 across all eleven. ("Small", not "at noise" -- these
+statistics carry no permutation null, unlike the Moran's I column, and the
+distinction should survive into any writeup.) The pre-agreed reading was "if
+MERT also gives rho_abs >> rho_chroma then idea 3 is close to dead". It does, at
+every depth.
 
 **Depth makes it worse, not better.** The ratio rho_abs / rho_chroma rises
 monotonically through MERT:
@@ -39,10 +42,20 @@ the acoustic one (rho_abs 0.334 -> 0.668) while eroding the little chroma
 structure the input had (0.089 -> 0.024).
 
 **The input already carries the topography.** log-CQT is the *most*
-pitch-organised arm of all eleven -- nMI 0.691, Moran's I 0.760, above every
-model. This is the L0 experiment the ladder called for. Pitch topography is
-largely inherited from the input representation; no model here adds musical
-structure on top of it.
+pitch-organised arm of all eleven by nMI and Moran's I -- 0.691 and 0.760, above
+every model. This is the L0 experiment the ladder called for, and it forecloses
+the claim the project was built on: with 0.760 already present in the input, a
+network reaching 0.805 (mert_L4) did not invent the phenomenon.
+
+    Deep music representations inherit a strong pitch topology already present
+    in spectral input representations.
+
+**But MERT is not merely inheriting it.** Its rho_abs reaches 0.668 at L16
+against log-CQT's 0.465, so the network is doing something -- just not the
+something that was hoped for:
+
+    MERT transforms an inherited acoustic topology by selectively amplifying
+    pitch-height organisation.
 
 ## E2 — no, it is not "just spectral similarity"
 
@@ -64,8 +77,12 @@ An earlier draft of this project's writeup said the observed topography "is
 explained by spectral similarity alone, and that is not a new fact". **That was
 wrong**, and the control that would have caught it had not been run.
 
-- **MERT: not spectral.** Controlling log-mel barely touches it -- 0.668 to
-  0.618 at L16. Pitch organisation in MERT is not log-mel proximity relabelled.
+- **MERT: not coarse-spectral.** Controlling log-mel barely touches it -- 0.668
+  to 0.618 at L16. The defensible statement is exactly this and no more:
+  *MERT's pitch-height organisation cannot be explained by coarse log-mel
+  spectral similarity alone.* It does **not** license "MERT learns abstract
+  pitch": harmonic spacing, resolved harmonics, spectral envelope interactions
+  and F0 periodicity are all acoustic cues that survive this control.
 - **EnCodec: partly.** 0.312 to 0.185 -- roughly 40% of the effect is spectral,
   the rest is not.
 - **DAC: entirely.** 0.078 to -0.054. Its weak pitch effect is spectral position
@@ -87,3 +104,30 @@ wrong**, and the control that would have caught it had not been run.
   information. The E2 conclusion is stated at that strength.
 - NSynth is 16 kHz; every timbre number is biased by the missing band above
   8 kHz (PREREG §4).
+
+
+## The spectrum this actually reveals
+
+Ordering the arms by how much of their pitch geometry survives the spectral
+control turns the three representation families into a clean progression:
+
+| representation | rho_pitch \| spec |
+|---|---|
+| DAC | -0.054 |
+| EnCodec | 0.185 |
+| MERT L16 | 0.618 |
+
+The training objective determines not just *how much* pitch structure a
+representation has but *what kind*. DAC's is spectral position under another
+name; MERT's is not.
+
+So the question the project should have been asking was never "does musical
+topology emerge" -- answered, no -- but:
+
+    What topology actually emerges across audio representation objectives?
+
+with CQT -> codec -> music SSL as the axis, and spectral / pitch-height /
+chroma / timbre organisation as the things measured along it. The one-line
+summary of everything above:
+
+    Music representations are topographic, but not musically topographic.

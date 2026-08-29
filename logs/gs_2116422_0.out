@@ -1,0 +1,5 @@
+arm=cqt host=node15 start=2026-08-29T12:09:08+09:00
+[cqt] 2406 clips
+[cqt] kmeans on (80128, 84) (47s)
+8/2406  47s
+328/2406  74s

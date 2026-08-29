@@ -1,0 +1,3 @@
+arm=mert_L24 host=node23 start=2026-08-29T12:09:10+09:00
+[mert_L24] 2406 clips
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
