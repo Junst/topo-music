@@ -21,3 +21,6 @@ updated runs/clipkey_cqt_fold.json
 [cqt_norm/mean+std] fifths             rho=+0.626 z= +9.8 p=0.000
 [cqt_norm/mean+std] chromatic          rho=-0.113 z= -1.8 p=0.058
 [cqt_norm/mean+std] mode_mismatch      rho=-0.109 z= -1.8 p=0.058
+[cqt_norm/mean+std] key24 acc 0.466
+  (90s)
+updated runs/clipkey_cqt_norm.json

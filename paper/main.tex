@@ -1,0 +1,318 @@
+% ICASSP 2027 submission -- draft
+% Requires the official ICASSP kit: spconf.sty and IEEEbib.bst.
+% Download from the ICASSP author kit and drop both files in this directory.
+\documentclass{article}
+\usepackage{spconf,amsmath,amssymb,graphicx,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+
+\title{What Hides Musical Geometry in Audio Representations?}
+
+\name{Junyoung Koh\thanks{Code, pre-registrations and all run artefacts:
+\url{https://github.com/Junst/topo-music}. Every threshold and kill criterion
+reported here was registered before the corresponding run.}}
+\address{Department of Artificial Intelligence, Yonsei University}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Probing studies establish that audio representations encode musical attributes
+such as key, and this is routinely read as evidence that the representations are
+musically organised. We show these are different claims. Measuring the same
+$24$ musical keys on the same corpus three ways---linear decodability, the
+geometry of class centroids, and the geometry of a linear readout's
+weights---we find they dissociate: a log-CQT decodes key better than
+MERT-v1-330M ($.492$ vs.\ $.456$) while its centroid geometry shows no
+circle-of-fifths structure at all ($\rho=-0.035$), yet the same structure is
+strongly present in its probe weights ($+0.560$). We then identify two distinct
+mechanisms that hide musical structure from the ambient metric.
+\emph{Sample-limited masking} is class-independent nuisance variance; it
+averages away, and it alone accounts for clip-level key geometry
+($13.4\times$ from centroid sample size against $1.7\times$ from a
+$1000\times$ longer pooling window). \emph{Metric masking} is nuisance
+that is a function of the class; it does not average away at any sample size,
+and a rank-$4$ projection fitted on GiantSteps keys---never on notes---recovers
+octave equivalence in individual NSynth recordings using ${<}0.3\%$ of the
+variance. The distinction is not specific to music representations.
+\end{abstract}
+
+\begin{keywords}
+music representation learning, probing, representation geometry, key detection,
+octave equivalence
+\end{keywords}
+
+\section{Introduction}
+\label{sec:intro}
+
+Self-supervised audio encoders support strong linear probes
+\cite{probes} for key, pitch, genre and instrument \cite{mert,marble}, and the
+usual inference is that the attribute is \emph{organised} in the
+representation. Music makes that inference
+unusually testable, because music theory specifies not just which classes exist
+but how they are related: keys a perfect fifth apart share six of seven scale
+degrees and sit adjacent on the circle of fifths \cite{krumhansl1982,
+krumhansl1990}; pitches an octave apart are the same pitch class
+\cite{shepard1982}. A representation can therefore encode key perfectly while
+placing $\mathrm{C}$ and $\mathrm{G}$ no closer than $\mathrm{C}$ and
+$\mathrm{F}\sharp$.
+
+We ask when that theoretical structure is visible in the geometry a downstream
+model actually consumes, and find that decodability, ambient geometry and
+readout geometry come apart (Sec.~\ref{sec:three}). We then separate two
+reasons a representation can contain musical structure that its metric does not
+show. Writing an item of class $y$ as
+\begin{equation}
+z = s_y + n_y + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid y] = 0,
+\label{eq:decomp}
+\end{equation}
+with $s_y$ the structure of interest, $\varepsilon$ nuisance independent of the
+class and $n_y$ nuisance that is a \emph{function} of the class, the two terms
+behave differently under the two operations available to an analyst. Averaging
+$m$ examples drives $\varepsilon$ to zero, so structure hidden by $\varepsilon$
+appears once $m$ is large enough; it never removes $n_y$, which is present in
+every example of the class by construction. A linear projection $W^{\!\top} z$
+with $W^{\!\top} n_y \approx 0$ does the reverse. We show that clip-level key
+geometry is entirely the first case (Sec.~\ref{sec:sample}) and note-level
+octave equivalence entirely the second (Sec.~\ref{sec:metric}).
+
+Our contributions are: (i) a three-way measurement that separates musical
+information, ambient geometry and readout geometry, with synthetic controls
+that make a null interpretable; (ii) evidence that the apparent
+``clip-level vs.\ note-level'' contrast in music encoders is a property of the
+estimator rather than of temporal context; (iii) a cross-dataset, cross-task
+projection that exposes octave equivalence which no amount of averaging
+recovers; and (iv) the negative result that this structure is not confined to a
+compact subspace, so low-dimensional projection denoises rather than isolates
+it.
+
+\section{Measurements}
+\label{sec:method}
+
+\noindent\textbf{Representations.} MERT-v1-330M \cite{mert} layers $4$--$24$;
+EnCodec 32\,kHz \cite{encodec}, the codec MusicGen consumes \cite{musicgen};
+and a log-CQT \cite{brown1991,librosa} as an input floor. A chromagram is the
+music-theoretic positive control. Clips are pooled to a single vector by mean
+over frames.
+
+\noindent\textbf{Key-centroid geometry.} On GiantSteps \cite{giantsteps}
+($7035$ clips, all $24$ keys), we average clip embeddings within key to obtain
+$24$ centroids and rank-correlate their pairwise Euclidean distances against
+three reference structures: circle-of-fifths distance
+$d_5(i,j)=\mathrm{circ}_{12}(7i-7j)$, Krumhansl--Kessler key-profile distance,
+and semitone distance $d_{\mathrm{chr}}$. Significance uses a $2000$-draw
+permutation null over key labels; $\rho_5 \mid \mathrm{spec}$ additionally
+partials out mel-spectral centroid distance. Reporting $d_{\mathrm{chr}}$
+alongside $d_5$ is essential---a generic ``nearby keys look alike'' effect would
+raise both.
+
+\noindent\textbf{Readout geometry.} The same probe (multinomial logistic
+regression, $5$-fold CV) yields $24$ class weight vectors; we apply the identical
+measurement to their pairwise cosine distances. This asks whether a linear
+readout can reach structure the ambient metric does not express.
+
+\noindent\textbf{Octave equivalence.} On NSynth \cite{nsynth} we use
+\emph{real recordings only}---no DSP pitch shifting, which would build the
+answer into the stimulus. For each instrument we fix an anchor set of pitches
+supporting every transposition $k=1,\dots,25$, so the anchor set is constant
+across $k$, and measure $S(k)$, the mean cosine similarity between a note and
+its transposition by $k$ semitones. Three statistics are reported together, as
+registered in advance:
+\begin{align}
+\Delta_{12} &= S(12) - \tfrac{1}{2}\big(S(11)+S(13)\big), \\
+\Delta_{\mathrm{strict}} &= S(12) - \max_{8 \le k \le 11} S(k),
+\end{align}
+and $\beta_2$, the coefficient on $\cos(2\pi k/12)$ in a quadratic-plus-periodic
+fit of $S(k)$. Confidence intervals are bootstrapped over \emph{instruments}.
+$\Delta_{12}$ alone is not sufficient: a positive $\beta_2$ with no local peak
+at $k=12$ is a curve-fitting artefact, so we require agreement in sign.
+
+\noindent\textbf{Subspaces.} $W \in \mathbb{R}^{D \times d}$ is an orthonormal
+basis of the top-$d$ shrinkage-LDA discriminant directions for a stated target,
+$d \le 11$ (any linear map to a $12$-class target has rank $\le 11$). We report
+the variance fraction $\mathrm{tr}(W^{\!\top}\Sigma W)/\mathrm{tr}(\Sigma)$ and,
+as a control, matched random orthonormal subspaces---projection changes the
+metric whatever the directions are.
+
+\section{Information, metric and readout dissociate}
+\label{sec:three}
+
+Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips and
+keys. The control block sets the scale. An analytic circle of fifths scores
+$\approx 1$ in every column, so a null elsewhere is a null of the
+representation and not of the method. Random features carry no information and
+show nothing. The third control is the load-bearing one: orthogonal per-key
+codes decode key \emph{better than any real representation} ($.651$) with
+classes equidistant by construction, and their weight geometry is $-0.005$.
+In the sense of \cite{controltasks} it is a control task: it holds accuracy
+fixed and removes the structure, so what remains in the column is attributable
+to the representation. It rules out the natural sceptical reading---that
+keys a fifth apart are confusable whatever was fitted, so any accurate $24$-way
+classifier ends up with fifths-structured weights.
+
+The dissociation is then unambiguous. The log-CQT has the highest key accuracy
+of any real arm and no fifths structure in its centroids ($-0.035$, $p=.52$),
+while its probe weights carry that structure strongly ($+0.560$, $z=+9.1$).
+Tonal relations are linearly accessible in a log-spectrogram and simply absent
+from its metric. Notably, this phenomenon requires no learned encoder at all.
+
+The spectral block also refutes the obvious explanation of why a chromagram
+differs from a log-CQT. Neither octave folding nor per-frame normalisation
+alone produces fifths geometry ($-0.106$ and $-0.117$ against chroma's
+$+0.475$); each alone instead produces \emph{chromatic} structure ($+0.391$,
+$+0.491$), the opposite organisation. Only the conjunction yields the circle of
+fifths.
+
+What MERT does is move structure between columns rather than create it. Its
+readout geometry ($+0.41$ to $+0.48$) is \emph{lower} than that of log-CQT,
+EnCodec or chroma, while its centroid geometry is far higher. Across depth,
+tonal relational geometry weakens ($\rho_5^{\mathrm{cent}}$: $0.445 \to 0.294$,
+L4 to L24) while major/minor separability increases ($0.216 \to 0.328$). We
+report this as a correlation: key accuracy does not improve along the way
+($.451, .456, .440, .418$), and $\rho_{\mathrm{mode}}$ is $-0.054$ and not
+significant in the chromagram control, so the growing mode axis is not
+pitch-class based and is at least as consistent with production and
+instrumentation in an all-EDM corpus.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figs/fig1_averaging.pdf}
+\caption{Clip-level key geometry is set by centroid sample size, not by
+temporal context. Both panels plot the same quantity on the same $y$ axis.
+\textbf{(a)} A $1000\times$ longer pooling window moves MERT L12 by
+$1.7\times$, and moves the chromagram by $3\%$; a single $13$\,ms frame already
+carries $59\%$ of the $20$\,s value. \textbf{(b)} Increasing the number of
+clips averaged into each key centroid moves it by $13.4\times$, and at one clip
+per key---the condition a pairwise note-level test is in---the geometry is
+absent ($+0.035 \pm 0.042$). Error bars are $\pm 1$ s.d.\ over $5$ (a) and
+$10$ (b) draws.}
+\label{fig:averaging}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figs/fig2_mechanisms.pdf}
+\caption{Averaging removes sample noise; projection removes metric anisotropy.
+\textbf{(a)} Averaging notes of the same pitch into a pitch centroid does not
+produce octave equivalence at any sample size: every learned and spectral arm
+saturates by $n=4$ at approximately zero (max $+0.008$), and MERT L24 stays
+negative. The chromagram, off scale, has octave equivalence already in single
+notes. \textbf{(b)} A rank-$4$ projection fitted only on GiantSteps track
+tonics---no notes, no NSynth---applied unchanged to individual NSynth
+recordings. Both panels share a $y$ axis: rescaling (a) would invent structure
+that is not there. Error bars are instrument-bootstrap $95\%$ CIs.}
+\label{fig:mechanisms}
+\end{figure*}
+
+\input{table1.tex}
+
+\section{Sample-limited masking}
+\label{sec:sample}
+
+The clip-level result invites a temporal reading: keys are properties of
+seconds of music, so pooling more audio should reveal them. It does not.
+Fig.~\ref{fig:averaging}(a) sweeps the pooling window from one frame to the
+full $20$\,s clip, drawing one window per clip at every length so the number of
+clips behind each centroid is held constant. A single $13$\,ms MERT frame
+already yields $\rho_5=+0.276$, $59\%$ of the $20$\,s value, and the chromagram
+is flat to within $3\%$. There is no knee and no threshold.
+
+The clip-level measurement averages twice, and only one average was being
+varied. Fig.~\ref{fig:averaging}(b) holds the window at the full clip and
+sweeps the number of clips per centroid: $+0.035 \to +0.468$ for MERT L12, a
+$13.4\times$ change against $1.7\times$ for a $1000\times$ longer window. At
+$n=1$---one clip per key, which is the condition the pairwise note-level test
+is in---the geometry is indistinguishable from zero for every arm.
+
+This is Eq.~\eqref{eq:decomp} with $\varepsilon$ dominant. What differs between
+two GiantSteps tracks in the same key---production, instrumentation,
+subgenre---is largely unrelated to the key and cancels in the mean. What was
+missing at $n=1$ was samples, not audio.
+
+\section{Metric masking}
+\label{sec:metric}
+
+If low between-item SNR were the whole story, the same averaging should expose
+octave equivalence on NSynth. We pre-registered that prediction and it fails.
+Fig.~\ref{fig:mechanisms}(a) sweeps notes per pitch centroid: every arm
+saturates by $n=4$ at approximately zero, MERT L24 remains negative, and the
+chromagram needs no averaging at all ($\Delta_{\mathrm{strict}}=+0.566$ at
+$n=1$). Register and spectral envelope are functions of pitch, so they survive
+into every pitch centroid; averaging over instruments cancels the instrument,
+never the octave. This is the $n_y$ term.
+
+What removes $n_y$ is a projection, and the evidence is cross-dataset and
+cross-task. We fit LDA directions on \emph{GiantSteps track tonics only}---no
+notes, no NSynth, no octave information---and apply them unchanged to
+individual NSynth recordings with no averaging
+(Fig.~\ref{fig:mechanisms}(b)). At $d=4$, $\Delta_{\mathrm{strict}}$ moves from
+$-0.005$ to $+0.223$ for MERT L12, $-0.001$ to $+0.304$ for L4, and $+0.004$ to
+$+0.466$ for the log-CQT, with $\Delta_{12}$ and $\beta_2$ agreeing in sign and
+bootstrap CIs excluding zero. Matched random subspaces give
+$-0.019$ to $+0.007$. The subspace uses $0.11$--$0.24\%$ of MERT's variance and
+$1.85\%$ of the log-CQT's.
+
+It would overstate the case to say key supervision \emph{forces} pitch-height
+invariance: GiantSteps key correlates with subgenre, tempo and production, and
+an LDA may use any of it. The transfer is what licenses the claim, and licenses
+a stronger one---structure that survives the move to an independently recorded
+isolated-note corpus cannot be solely a GiantSteps-specific nuisance
+correlation. The invariance is demonstrated across datasets rather than
+guaranteed by the objective. Objectives that build key equivariance in by
+construction \cite{stone} are a complementary route we do not pursue here.
+
+\noindent\textbf{A registered prediction that failed.} We predicted that
+removing the subspace, $z - W W^{\!\top} z$, would at least halve clip-level
+$\rho_5$. Against a baseline recomputed on the same held-out clips it does not
+move it (MERT L12: $+0.127 \to +0.119$; L4: $+0.118 \to +0.114$), and only the
+$12$-dimensional chromagram collapses, which is a dimensionality effect. Tonal
+structure is therefore low-energy and invisible in the ambient metric, but
+\emph{not} confined to a compact subspace: many overlapping direction sets carry
+it, and a low-dimensional projection denoises a redundantly distributed signal
+rather than isolating a unique one.
+
+\section{Discussion}
+
+Three properties that probing literature often treats as one---information
+availability, metric visibility, and readout accessibility---are separable, and
+separating them changes what a probe result licenses. A high probe accuracy
+says $s_y$ is linearly recoverable; it says nothing about whether $s_y$ governs
+distances, which is what a downstream model relying on similarity, retrieval or
+a nearest-neighbour decision actually consumes.
+
+The two masking modes suggest different remedies. Sample-limited masking is a
+property of the evaluation, and the fix is more examples per class, not longer
+audio; reporting the number of items behind each centroid should be standard,
+since the same encoder scores $+0.035$ or $+0.468$ depending only on that.
+Metric masking is a property of the representation, and no evaluation protocol
+removes it---only a learned transform does.
+
+Nothing in Eq.~\eqref{eq:decomp} is musical. Semantic relations in vision may be
+linearly available while Euclidean geometry is dominated by pose or background,
+and phonetic structure in speech may be masked by speaker and channel. The
+distinction between information availability and metric visibility plausibly
+extends beyond music representations.
+
+\noindent\textbf{Limitations.} GiantSteps is entirely electronic dance music,
+where key correlates with subgenre; the cross-dataset transfer in
+Sec.~\ref{sec:metric} constrains that confound but does not remove it, and a
+key-balanced, genre-diverse corpus would settle it. NSynth is monophonic and
+synthesised or sampled from isolated instruments, so its nuisance structure is
+unusually clean. Our subspaces are linear by design; a nonlinear transform
+might expose more, at the cost of the interpretability that makes the
+$n_y$ account testable. Finally, $\rho_{\mathrm{mode}}$ is reported but not
+explained, and we do not claim it is harmonic.
+
+\section{Conclusion}
+
+Musical structure can be present in a representation, linearly accessible, and
+still invisible in its geometry---for two different reasons that call for two
+different operations. Averaging over examples removes class-independent
+nuisance and accounts entirely for clip-level key geometry; a rank-$4$
+projection fitted on a different dataset and a different task removes
+class-coupled nuisance and recovers note-level octave equivalence that no amount
+of averaging reaches. Neither operation creates the structure. Both reveal it.
+
+\bibliographystyle{IEEEbib}
+\bibliography{refs}
+
+\end{document}
