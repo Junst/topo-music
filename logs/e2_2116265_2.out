@@ -1,0 +1,20 @@
+task=2 host=node24 start=2026-08-29T11:15:53+09:00
+32/4096  24s
+672/4096  55s
+1312/4096  73s
+1952/4096  92s
+2592/4096  109s
+3232/4096  125s
+3872/4096  141s
+wrote runs/probe_dac_44k.npz in 147s
+[dac_44k] L0  used=756/1024  nMI(pitch)=0.165  nMI(fam)=0.227  MoranI(pitch|codespace)=0.291 z=19.9
+[dac_44k] L1  used=1024/1024  nMI(pitch)=0.135  nMI(fam)=0.105  MoranI(pitch|codespace)=0.231 z=20.2
+[dac_44k] L2  used=1024/1024  nMI(pitch)=0.111  nMI(fam)=0.061  MoranI(pitch|codespace)=0.158 z=12.9
+[dac_44k] L3  used=1024/1024  nMI(pitch)=0.097  nMI(fam)=0.056  MoranI(pitch|codespace)=0.150 z=11.6
+[dac_44k] L4  used=1024/1024  nMI(pitch)=0.082  nMI(fam)=0.044  MoranI(pitch|codespace)=0.167 z=13.8
+[dac_44k] L5  used=1024/1024  nMI(pitch)=0.071  nMI(fam)=0.045  MoranI(pitch|codespace)=0.159 z=12.4
+[dac_44k] L6  used=1024/1024  nMI(pitch)=0.057  nMI(fam)=0.039  MoranI(pitch|codespace)=0.149 z=11.6
+[dac_44k] L7  used=1024/1024  nMI(pitch)=0.053  nMI(fam)=0.040  MoranI(pitch|codespace)=0.179 z=13.4
+[dac_44k] L8  used=1024/1024  nMI(pitch)=0.050  nMI(fam)=0.033  MoranI(pitch|codespace)=0.106 z=8.5
+wrote runs/topo_dac_44k.json
+done=2026-08-29T11:19:50+09:00

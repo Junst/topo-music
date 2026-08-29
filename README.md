@@ -37,23 +37,36 @@ Two secondary results matter more than the kill:
 - **RVQ depth does not factorise** into pitch-then-timbre. Both nMI(pitch) and
   nMI(family) decay monotonically with depth in all three codecs.
 
-## Where this goes next
+## E2 / E3 — the follow-ups, now run
 
-The question is no longer "does topography emerge" but **which topology emerges
-under which training objective**:
+Full numbers in [`runs/E2_E3_results.md`](runs/E2_E3_results.md). Eleven arms,
+all quantised the same way (k-means K=1024 over the same 4096 NSynth notes) so
+that discrete-vs-continuous is not a confound.
 
 | | pitch height | chroma | fifths | octave equivalence |
 |---|---|---|---|---|
-| codec (EnCodec / DAC) | strong | absent | — | absent |
-| music SSL (MERT) | ? | ? | ? | ? |
+| log-CQT (input floor) | **strongest of all** | absent | absent | absent |
+| music SSL (MERT, 7 layers) | strong, **grows with depth** | absent, **shrinks with depth** | absent | absent |
+| codec (EnCodec / DAC) | present | absent | absent | absent |
 
-- **E2 — spectral control.** Regress spectral distance out and check whether the
-  pitch effect survives. Needed before any "it's just spectral similarity" claim.
-- **E3 — MERT, same probe, same metrics.** If MERT also gives
-  rho_abs >> rho_chroma, the "emergent harmonic topology" idea is close to dead
-  too. If chroma and octave equivalence appear in MERT but not in the codec, the
-  subject becomes *representation objectives converting acoustic topology into
-  musical topology* — a better question than the one this repo started from.
+**Music SSL does not produce musical topology either.** rho_chroma <= 0.107
+everywhere, rho_fifths <= 0.054. Through MERT's depth the ratio
+rho_abs / rho_chroma climbs 3.7x -> 22.7x: training *sharpens* the acoustic
+topology and *erodes* the chroma structure the input had. And log-CQT is the
+most pitch-organised arm of the eleven, so the topography is largely inherited
+from the input rather than built by any objective.
+
+**But it is not "just spectral similarity" — an earlier draft of this README said
+so and was wrong.** Controlling per-code log-mel distance barely touches MERT
+(rho 0.668 -> 0.618 at L16); it removes ~40% of EnCodec's effect and all of
+DAC's. The claim now stands only where the control supports it.
+
+### What is still open
+
+Octave equivalence is properly tested with single notes and is absent. The
+Tonnetz / circle-of-fifths question is **not** properly tested here — those are
+chord- and key-level relations and NSynth is isolated notes. GiantSteps
+(`marble/GS`) is on disk if that test is worth running.
 
 ## Layout
 

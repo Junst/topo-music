@@ -1,0 +1,15 @@
+task=0 host=node24 start=2026-08-29T11:15:52+09:00
+32/4096  23s
+672/4096  31s
+1312/4096  39s
+1952/4096  46s
+2592/4096  53s
+3232/4096  60s
+3872/4096  67s
+wrote runs/probe_encodec_32k.npz in 70s
+[encodec_32k] L0  used=1109/2048  nMI(pitch)=0.378  nMI(fam)=0.266  MoranI(pitch|codespace)=0.659 z=67.1
+[encodec_32k] L1  used=1501/2048  nMI(pitch)=0.333  nMI(fam)=0.200  MoranI(pitch|codespace)=0.399 z=51.1
+[encodec_32k] L2  used=1499/2048  nMI(pitch)=0.246  nMI(fam)=0.185  MoranI(pitch|codespace)=0.261 z=38.5
+[encodec_32k] L3  used=1595/2048  nMI(pitch)=0.215  nMI(fam)=0.161  MoranI(pitch|codespace)=0.175 z=23.7
+wrote runs/topo_encodec_32k.json
+done=2026-08-29T11:18:38+09:00

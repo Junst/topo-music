@@ -13,10 +13,18 @@ upsampled audio with no energy above 8 kHz. That biases *timbre* attribution
 (bright/dark distinctions live above 8 kHz) and must be stated in any writeup.
 It does not bias pitch attribution, which is the primary L1'-c statistic.
 
+Also accumulated, for the E2 spectral control: the mean log-mel spectrum of the
+frames that selected each code. The pitch effect we measure could simply be
+spectral position under another name, and the only way to say so is to regress
+spectral distance out and see whether the pitch effect survives. log-mel is used
+rather than the representation itself so that the control is external to
+whatever is being tested, and identical across codec / CQT / MERT arms.
+
 Output: runs/probe_<codec>.npz with
     pitch_counts  [L, K, n_pitch]   int32
     fam_counts    [L, K, n_family]  int32
     src_counts    [L, K, n_source]  int32
+    spec_sums     [L, K, n_mels]    float32   (divide by code count for the mean)
 """
 from __future__ import annotations
 
@@ -27,6 +35,7 @@ import numpy as np
 import soundfile as sf
 import torch
 import torchaudio
+import librosa
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from topo.codecs import load
@@ -43,6 +52,7 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--device", default="cpu")
+    ap.add_argument("--n-mels", type=int, default=64)
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
 
@@ -63,6 +73,7 @@ def main() -> None:
     pc = np.zeros((L, K, len(pitches)), np.int32)
     fc = np.zeros((L, K, len(fams)), np.int32)
     sc = np.zeros((L, K, len(srcs)), np.int32)
+    spec = np.zeros((L, K, a.n_mels), np.float32)
 
     rs = torchaudio.transforms.Resample(NSYNTH_SR, c.sr) if c.sr != NSYNTH_SR else None
     lo, hi = int(WIN[0] * NSYNTH_SR), int(WIN[1] * NSYNTH_SR)
@@ -80,14 +91,27 @@ def main() -> None:
         wav = torch.stack([w[:n] for w in wavs]).unsqueeze(1)     # [B,1,T]
 
         codes = c.encode(wav).numpy()                              # [B,L,T']
+
+        # log-mel at the codec's own frame rate, so mel frame t lines up with
+        # code frame t. hop is derived from the actual code length rather than
+        # assumed, because the codecs disagree on frame rate.
+        T = codes.shape[-1]
+        hop = max(1, wav.shape[-1] // T)
+        M = librosa.power_to_db(librosa.feature.melspectrogram(
+            y=wav[:, 0].numpy(), sr=c.sr, n_fft=2048, hop_length=hop,
+            n_mels=a.n_mels))                                      # [B, n_mels, T_m]
+        T = min(T, M.shape[-1])
         for j, k in enumerate(bk):
             pi, fi, si = (p_ix[meta[k]["pitch"]], f_ix[meta[k]["instrument_family"]],
                           s_ix[meta[k]["instrument_source"]])
+            Mj = M[j, :, :T].T                                     # [T, n_mels]
             for l in range(L):
-                u, cnt = np.unique(codes[j, l], return_counts=True)
+                cj = codes[j, l, :T]
+                u, cnt = np.unique(cj, return_counts=True)
                 pc[l, u, pi] += cnt.astype(np.int32)
                 fc[l, u, fi] += cnt.astype(np.int32)
                 sc[l, u, si] += cnt.astype(np.int32)
+                np.add.at(spec[l], cj, Mj)
 
         if b0 % (a.batch * 20) == 0:
             done = b0 + len(bk)
@@ -96,7 +120,7 @@ def main() -> None:
     out = Path(a.out or f"runs/probe_{a.codec}.npz")
     out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
-        out, pitch_counts=pc, fam_counts=fc, src_counts=sc,
+        out, pitch_counts=pc, fam_counts=fc, src_counts=sc, spec_sums=spec,
         pitches=np.array(pitches), families=np.array(fams), sources=np.array(srcs),
         codec=a.codec, split=a.split, n_clips=len(keys),
     )

@@ -1,0 +1,15 @@
+layer=12 host=node15 start=2026-08-29T11:18:45+09:00
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+[mert_L12] kmeans on (88064, 1024) (9s)
+[mert_L12] kmeans done (103s)
+16/4096  111s
+656/4096  127s
+1296/4096  144s
+1936/4096  160s
+2576/4096  176s
+3216/4096  192s
+3856/4096  210s
+wrote runs/probe_mert_L12.npz in 217s
+[mert_L12] L0  used=1022/1024  nMI(pitch)=0.545  nMI(fam)=0.628  MoranI(pitch|codespace)=0.803 z=70.0
+wrote runs/topo_mert_L12.json
+done=2026-08-29T11:23:42+09:00

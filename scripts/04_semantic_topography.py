@@ -16,6 +16,21 @@ claim. The sharp claim is semantic:
            not informative -> codes do not carry pitch at all; the probe, not
                               the codebook, is the thing to fix.
 
+  E2     Is the pitch effect just spectral position under another name? The
+         control descriptor is the per-code mean log-mel spectrum, which is
+         external to whatever representation is under test and identical across
+         the codec, CQT and MERT arms. Statistic: partial Spearman of code
+         distance against absolute pitch distance, controlling spectral
+         distance. Only if that collapses toward zero may anyone write "spectral
+         similarity explains it". Degenerate for the cqt arm, where the control
+         and the representation are near-collinear.
+
+  E3     Which topology, not whether topology. The same octave / chroma / fifths
+         statistics are computed for a codec codebook, a k-means codebook over
+         log-CQT (the input floor), and one over MERT hidden states, so the
+         question becomes whether a training objective converts acoustic
+         topology into musical topology.
+
   L1'-d  Does RVQ depth already factorise? Normalised MI(code; pitch) and
          MI(code; family) per level. The hypothesis is coarse levels carry
          pitch/harmony and deep levels carry timbre -- which, if true, gives a
@@ -35,6 +50,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from topo.codecs import load
 
 MIN_COUNT = 20          # codes seen fewer times than this are dropped
+
+
+def partial_spearman(x, y, z) -> float:
+    """Spearman of x,y controlling z, via the rank-correlation partial formula."""
+    rxy = spearmanr(x, y).statistic
+    rxz = spearmanr(x, z).statistic
+    ryz = spearmanr(y, z).statistic
+    d = np.sqrt(max(1 - rxz ** 2, 1e-12) * max(1 - ryz ** 2, 1e-12))
+    return float((rxy - rxz * ryz) / d)
+
+
+def circ12(d: np.ndarray) -> np.ndarray:
+    m = d % 12
+    return np.minimum(m, 12 - m)
 
 
 def norm_mi(counts: np.ndarray) -> float:
@@ -108,7 +137,13 @@ def main() -> None:
     codec = str(d["codec"])
     pc, fc = d["pitch_counts"], d["fam_counts"]
     pitches = d["pitches"]
-    E_all = load(codec).codebooks
+    # A k-means arm (scripts/05) ships its codebook inside the npz; a codec arm
+    # has it in the model weights.
+    E_all = d["codebook"] if "codebook" in d.files else load(codec).codebooks
+    spec = None
+    if "spec_sums" in d.files:
+        cnt = np.maximum(pc.sum(2, keepdims=True), 1)
+        spec = (d["spec_sums"] / cnt).astype(np.float64)   # per-code mean log-mel
     rng = np.random.default_rng(a.seed)
 
     out = {"codec": codec, "n_clips": int(d["n_clips"]), "levels": []}
@@ -145,14 +180,27 @@ def main() -> None:
                 iu = np.triu_indices(len(Es), 1)
                 dc = squareform(pdist(Es))[iu]
                 dp = np.abs(ps[:, None] - ps[None, :])[iu]
-                dchr = np.minimum(dp % 12, 12 - (dp % 12))
+                dchr = circ12(dp)
+                # circle of fifths: pitch class times 7, mod 12
+                fifth = (ps % 12) * 7 % 12
+                dfif = circ12(np.abs(fifth[:, None] - fifth[None, :])[iu])
                 rec["octave"] = dict(
                     n=int(strong.sum()),
                     rho_abs_pitch=float(spearmanr(dp, dc).statistic),
                     rho_chroma=float(spearmanr(dchr, dc).statistic),
-                    rho_chroma_partial=float(
-                        spearmanr(dchr - np.polyval(np.polyfit(dp, dchr, 1), dp), dc).statistic),
+                    rho_chroma_partial=partial_spearman(dchr, dc, dp),
+                    rho_fifths=float(spearmanr(dfif, dc).statistic),
+                    rho_fifths_partial=partial_spearman(dfif, dc, dp),
                 )
+                if spec is not None:
+                    Ss = spec[l][used][strong]
+                    dsp = squareform(pdist(Ss))[iu]
+                    rec["e2_spectral_control"] = dict(
+                        rho_spec=float(spearmanr(dsp, dc).statistic),
+                        rho_pitch=float(spearmanr(dp, dc).statistic),
+                        rho_pitch_given_spec=partial_spearman(dp, dc, dsp),
+                        rho_spec_given_pitch=partial_spearman(dsp, dc, dp),
+                    )
         out["levels"].append(rec)
 
         m = rec.get("moran_pitch_codespace", {})

@@ -42,7 +42,15 @@
         "n": 278,
         "rho_abs_pitch": 0.31214396616171525,
         "rho_chroma": 0.02463173078802538,
-        "rho_chroma_partial": -0.021879541943464555
+        "rho_chroma_partial": 0.01787402966367491,
+        "rho_fifths": 0.045987915218592655,
+        "rho_fifths_partial": 0.04130978250451622
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.35222643406099285,
+        "rho_pitch": 0.31214396616171525,
+        "rho_pitch_given_spec": 0.18476525691789536,
+        "rho_spec_given_pitch": 0.2502704557479625
       }
     },
     {
@@ -55,7 +63,7 @@
       "median_pitch_selectivity": 0.527968342708226,
       "moran_pitch_codespace": {
         "I": 0.3990729626419863,
-        "null_mean": -0.000547005226657554,
+        "null_mean": -0.0005470052266575539,
         "null_std": 0.007817307067256156,
         "z": 51.11990156960649,
         "p": 0.0
@@ -85,7 +93,15 @@
         "n": 376,
         "rho_abs_pitch": 0.25867917013767394,
         "rho_chroma": 0.013107836406957871,
-        "rho_chroma_partial": -0.02618386189689806
+        "rho_chroma_partial": 0.0057877305672363495,
+        "rho_fifths": 0.016119300301696157,
+        "rho_fifths_partial": 0.010427928528011124
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.42400156534039696,
+        "rho_pitch": 0.25867917013767394,
+        "rho_pitch_given_spec": -0.013285511422523218,
+        "rho_spec_given_pitch": 0.34801054948975224
       }
     },
     {
@@ -128,7 +144,15 @@
         "n": 375,
         "rho_abs_pitch": 0.22980224584374012,
         "rho_chroma": 0.007524499309883779,
-        "rho_chroma_partial": -0.02779037463502061
+        "rho_chroma_partial": -0.001253570419217282,
+        "rho_fifths": 0.010875619359747908,
+        "rho_fifths_partial": 0.007788589821449898
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.45492866303310325,
+        "rho_pitch": 0.22980224584374012,
+        "rho_pitch_given_spec": -0.08278662782493107,
+        "rho_spec_given_pitch": 0.4104676381068505
       }
     },
     {
@@ -141,7 +165,7 @@
       "median_pitch_selectivity": 0.39175252234684843,
       "moran_pitch_codespace": {
         "I": 0.17482039486157852,
-        "null_mean": -4.399000915642328e-05,
+        "null_mean": -4.3990009156423365e-05,
         "null_std": 0.00737389043743394,
         "z": 23.713992814337566,
         "p": 0.0
@@ -171,7 +195,15 @@
         "n": 399,
         "rho_abs_pitch": 0.3245517516358458,
         "rho_chroma": 0.007374146420806707,
-        "rho_chroma_partial": -0.04210280669071764
+        "rho_chroma_partial": -0.0059418195088744245,
+        "rho_fifths": 0.005900048503800076,
+        "rho_fifths_partial": -0.0011763813682217857
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.47726715071257625,
+        "rho_pitch": 0.3245517516358458,
+        "rho_pitch_given_spec": 0.05501043970411052,
+        "rho_spec_given_pitch": 0.3734685640438874
       }
     }
   ]

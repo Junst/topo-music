@@ -42,7 +42,15 @@
         "n": 189,
         "rho_abs_pitch": 0.07847267974038614,
         "rho_chroma": 0.04021095748663354,
-        "rho_chroma_partial": 0.028756389675210204
+        "rho_chroma_partial": 0.03641192799547179,
+        "rho_fifths": 0.01830028722047853,
+        "rho_fifths_partial": 0.014988139238110366
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.3407327004378937,
+        "rho_pitch": 0.07847267974038614,
+        "rho_pitch_given_spec": -0.05384860605245596,
+        "rho_spec_given_pitch": 0.3364534478494559
       }
     },
     {
@@ -85,7 +93,15 @@
         "n": 256,
         "rho_abs_pitch": 0.1450702090887463,
         "rho_chroma": 0.09793413851915432,
-        "rho_chroma_partial": 0.07709999115422214
+        "rho_chroma_partial": 0.0876665229230323,
+        "rho_fifths": 0.023232298521819572,
+        "rho_fifths_partial": 0.02247001901004067
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.329631556554548,
+        "rho_pitch": 0.1450702090887463,
+        "rho_pitch_given_spec": 0.043688932634800746,
+        "rho_spec_given_pitch": 0.3020479352913419
       }
     },
     {
@@ -128,7 +144,15 @@
         "n": 256,
         "rho_abs_pitch": 0.09061721320909316,
         "rho_chroma": 0.11445012112296868,
-        "rho_chroma_partial": 0.10295721694992317
+        "rho_chroma_partial": 0.11067131191306306,
+        "rho_fifths": 0.028609627801544767,
+        "rho_fifths_partial": 0.02820049287836848
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.2616216746142851,
+        "rho_pitch": 0.09061721320909316,
+        "rho_pitch_given_spec": 0.07001165322324696,
+        "rho_spec_given_pitch": 0.25561117013729834
       }
     },
     {
@@ -171,7 +195,15 @@
         "n": 256,
         "rho_abs_pitch": 0.060931597600319375,
         "rho_chroma": 0.08003937916142295,
-        "rho_chroma_partial": 0.07307320420611957
+        "rho_chroma_partial": 0.07664044658751892,
+        "rho_fifths": 0.03723114026463974,
+        "rho_fifths_partial": 0.035312326506991246
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.37533539056260523,
+        "rho_pitch": 0.060931597600319375,
+        "rho_pitch_given_spec": 0.0005433985692394677,
+        "rho_spec_given_pitch": 0.3710463466574703
       }
     },
     {
@@ -214,7 +246,15 @@
         "n": 256,
         "rho_abs_pitch": 0.13794006687789215,
         "rho_chroma": 0.026564451309328982,
-        "rho_chroma_partial": 0.007356156406527766
+        "rho_chroma_partial": 0.014655260082615917,
+        "rho_fifths": 0.006101071475780609,
+        "rho_fifths_partial": 0.0035098101176690532
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.3514413852275113,
+        "rho_pitch": 0.13794006687789215,
+        "rho_pitch_given_spec": 0.07549828849187445,
+        "rho_spec_given_pitch": 0.3340704841296345
       }
     },
     {
@@ -257,7 +297,15 @@
         "n": 256,
         "rho_abs_pitch": 0.11711508367978883,
         "rho_chroma": 0.037364281978631037,
-        "rho_chroma_partial": 0.02248478895775355
+        "rho_chroma_partial": 0.02894085738730099,
+        "rho_fifths": 0.01786165760824085,
+        "rho_fifths_partial": 0.0137317228105161
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.28504938128477497,
+        "rho_pitch": 0.11711508367978883,
+        "rho_pitch_given_spec": 0.08115626197867243,
+        "rho_spec_given_pitch": 0.27315152498213974
       }
     },
     {
@@ -300,7 +348,15 @@
         "n": 256,
         "rho_abs_pitch": 0.08176316852644437,
         "rho_chroma": 0.0584014186169835,
-        "rho_chroma_partial": 0.04786636360843291
+        "rho_chroma_partial": 0.05165395708880628,
+        "rho_fifths": 0.03832378989655676,
+        "rho_fifths_partial": 0.03230041713979324
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.35336485214682095,
+        "rho_pitch": 0.08176316852644437,
+        "rho_pitch_given_spec": 0.033386825215540275,
+        "rho_spec_given_pitch": 0.3463509031365114
       }
     },
     {
@@ -343,7 +399,15 @@
         "n": 256,
         "rho_abs_pitch": 0.09399039926149422,
         "rho_chroma": 0.00031386992988493174,
-        "rho_chroma_partial": -0.013061453987981373
+        "rho_chroma_partial": -0.006087188880925453,
+        "rho_fifths": 0.036229329034281735,
+        "rho_fifths_partial": 0.031094949709542408
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.35018431654855814,
+        "rho_pitch": 0.09399039926149422,
+        "rho_pitch_given_spec": 0.060423268371322995,
+        "rho_spec_given_pitch": 0.34357082684085777
       }
     },
     {
@@ -386,7 +450,15 @@
         "n": 256,
         "rho_abs_pitch": 0.07489017868075747,
         "rho_chroma": 0.006469812554217867,
-        "rho_chroma_partial": -0.003975928453119412
+        "rho_chroma_partial": 0.0024980072099330354,
+        "rho_fifths": 0.009314579010098792,
+        "rho_fifths_partial": 0.004282846193898701
+      },
+      "e2_spectral_control": {
+        "rho_spec": 0.2867984697103391,
+        "rho_pitch": 0.07489017868075747,
+        "rho_pitch_given_spec": 0.03518451288678394,
+        "rho_spec_given_pitch": 0.2796777532978038
       }
     }
   ]

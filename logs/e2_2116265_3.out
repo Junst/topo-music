@@ -1,0 +1,14 @@
+task=3 host=node03 start=2026-08-29T11:15:54+09:00
+[cqt] kmeans on (36864, 84) (36s)
+[cqt] kmeans done (46s)
+16/4096  46s
+656/4096  63s
+1296/4096  79s
+1936/4096  96s
+2576/4096  113s
+3216/4096  129s
+3856/4096  146s
+wrote runs/probe_cqt.npz in 152s
+[cqt] L0  used=1017/1024  nMI(pitch)=0.691  nMI(fam)=0.522  MoranI(pitch|codespace)=0.760 z=65.1
+wrote runs/topo_cqt.json
+done=2026-08-29T11:19:18+09:00

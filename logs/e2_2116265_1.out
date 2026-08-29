@@ -1,0 +1,43 @@
+task=1 host=node24 start=2026-08-29T11:15:52+09:00
+32/4096  25s
+672/4096  69s
+1312/4096  112s
+1952/4096  129s
+2592/4096  140s
+3232/4096  157s
+3872/4096  174s
+wrote runs/probe_encodec_24k.npz in 183s
+[encodec_24k] L0  used=831/1024  nMI(pitch)=0.330  nMI(fam)=0.307  MoranI(pitch|codespace)=0.526 z=46.4
+[encodec_24k] L1  used=970/1024  nMI(pitch)=0.339  nMI(fam)=0.209  MoranI(pitch|codespace)=0.398 z=44.0
+[encodec_24k] L2  used=958/1024  nMI(pitch)=0.226  nMI(fam)=0.190  MoranI(pitch|codespace)=0.271 z=29.4
+[encodec_24k] L3  used=993/1024  nMI(pitch)=0.188  nMI(fam)=0.167  MoranI(pitch|codespace)=0.210 z=23.9
+[encodec_24k] L4  used=987/1024  nMI(pitch)=0.155  nMI(fam)=0.158  MoranI(pitch|codespace)=0.117 z=14.8
+[encodec_24k] L5  used=993/1024  nMI(pitch)=0.128  nMI(fam)=0.147  MoranI(pitch|codespace)=0.122 z=15.4
+[encodec_24k] L6  used=972/1024  nMI(pitch)=0.106  nMI(fam)=0.142  MoranI(pitch|codespace)=0.080 z=10.0
+[encodec_24k] L7  used=929/1024  nMI(pitch)=0.088  nMI(fam)=0.132  MoranI(pitch|codespace)=0.040 z=5.2
+[encodec_24k] L8  used=935/1024  nMI(pitch)=0.074  nMI(fam)=0.127  MoranI(pitch|codespace)=0.016 z=2.4
+[encodec_24k] L9  used=876/1024  nMI(pitch)=0.064  nMI(fam)=0.122  MoranI(pitch|codespace)=0.015 z=2.1
+[encodec_24k] L10  used=858/1024  nMI(pitch)=0.056  nMI(fam)=0.118  MoranI(pitch|codespace)=-0.006 z=-0.6
+[encodec_24k] L11  used=834/1024  nMI(pitch)=0.052  nMI(fam)=0.116  MoranI(pitch|codespace)=0.021 z=2.8
+[encodec_24k] L12  used=790/1024  nMI(pitch)=0.046  nMI(fam)=0.111  MoranI(pitch|codespace)=0.013 z=1.8
+[encodec_24k] L13  used=773/1024  nMI(pitch)=0.043  nMI(fam)=0.108  MoranI(pitch|codespace)=0.019 z=2.4
+[encodec_24k] L14  used=759/1024  nMI(pitch)=0.041  nMI(fam)=0.105  MoranI(pitch|codespace)=-0.014 z=-1.6
+[encodec_24k] L15  used=723/1024  nMI(pitch)=0.039  nMI(fam)=0.107  MoranI(pitch|codespace)=-0.043 z=-5.0
+[encodec_24k] L16  used=665/1024  nMI(pitch)=0.037  nMI(fam)=0.104  MoranI(pitch|codespace)=-0.003 z=-0.3
+[encodec_24k] L17  used=567/1024  nMI(pitch)=0.032  nMI(fam)=0.098  MoranI(pitch|codespace)=-0.033 z=-3.6
+[encodec_24k] L18  used=804/1024  nMI(pitch)=0.040  nMI(fam)=0.105  MoranI(pitch|codespace)=-0.154 z=-19.6
+[encodec_24k] L19  used=797/1024  nMI(pitch)=0.039  nMI(fam)=0.102  MoranI(pitch|codespace)=-0.118 z=-14.4
+[encodec_24k] L20  used=772/1024  nMI(pitch)=0.036  nMI(fam)=0.098  MoranI(pitch|codespace)=-0.114 z=-13.9
+[encodec_24k] L21  used=740/1024  nMI(pitch)=0.037  nMI(fam)=0.096  MoranI(pitch|codespace)=-0.096 z=-11.9
+[encodec_24k] L22  used=714/1024  nMI(pitch)=0.036  nMI(fam)=0.096  MoranI(pitch|codespace)=-0.199 z=-22.3
+[encodec_24k] L23  used=681/1024  nMI(pitch)=0.037  nMI(fam)=0.091  MoranI(pitch|codespace)=-0.210 z=-22.2
+[encodec_24k] L24  used=660/1024  nMI(pitch)=0.034  nMI(fam)=0.087  MoranI(pitch|codespace)=-0.198 z=-21.3
+[encodec_24k] L25  used=634/1024  nMI(pitch)=0.034  nMI(fam)=0.086  MoranI(pitch|codespace)=-0.163 z=-19.5
+[encodec_24k] L26  used=616/1024  nMI(pitch)=0.033  nMI(fam)=0.082  MoranI(pitch|codespace)=-0.278 z=-29.7
+[encodec_24k] L27  used=593/1024  nMI(pitch)=0.035  nMI(fam)=0.079  MoranI(pitch|codespace)=-0.324 z=-37.3
+[encodec_24k] L28  used=579/1024  nMI(pitch)=0.034  nMI(fam)=0.077  MoranI(pitch|codespace)=-0.338 z=-39.4
+[encodec_24k] L29  used=555/1024  nMI(pitch)=0.030  nMI(fam)=0.075  MoranI(pitch|codespace)=-0.297 z=-32.5
+[encodec_24k] L30  used=540/1024  nMI(pitch)=0.032  nMI(fam)=0.074  MoranI(pitch|codespace)=-0.292 z=-32.6
+[encodec_24k] L31  used=518/1024  nMI(pitch)=0.031  nMI(fam)=0.069  MoranI(pitch|codespace)=-0.399 z=-40.9
+wrote runs/topo_encodec_24k.json
+done=2026-08-29T11:21:35+09:00
