@@ -6,13 +6,16 @@
 % references, funding acknowledgements and the ethics statement.
 \documentclass{article}
 \usepackage{spconf,amsmath,amssymb,graphicx,booktabs,microtype,hyperref}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
 
 \title{What Hides Musical Geometry in Audio Representations?}
 
 \name{Junyoung Koh\thanks{Code, pre-registrations and all run artefacts:
-\url{https://github.com/Junst/topo-music}. Every threshold and kill criterion
-reported here was registered before the corresponding run.}}
-\address{Department of Artificial Intelligence, Yonsei University}
+\url{https://github.com/Junst/topo-music}. Every threshold and kill criterion reported here was registered before the corresponding run.}}
+\address{School of Music, Theatre and Dance, University of Michigan \\ Department of Artificial Intelligence, Yonsei University}
 \begin{document}
 \maketitle
 
@@ -74,15 +77,35 @@ We show that clip-level key geometry is entirely the first case
 (Sec.~\ref{sec:sample}) and note-level octave equivalence entirely the second
 (Sec.~\ref{sec:metric}).
 
-Our contributions are: a three-way measurement that separates musical
-information, ambient geometry and readout geometry, with synthetic controls
-that make a null interpretable; evidence that the apparent contrast between
-clip-level and note-level results in music encoders is a property of the
-estimator rather than of temporal context; a cross-dataset, cross-task
-projection that exposes octave equivalence which no amount of averaging
-recovers; and the negative result that this structure is not confined to a
-compact subspace, so low-dimensional projection denoises rather than isolates
-it.
+Our contributions are a three-way measurement that separates musical
+information, ambient geometry and readout geometry with synthetic controls that
+make a null interpretable, a cross-dataset projection that exposes octave
+equivalence no amount of averaging recovers, and the negative result that this
+structure is redundantly distributed rather than confined to a compact
+subspace.
+
+\section{Related Work}
+\label{sec:related}
+
+Linear probes are the standard instrument for asking what a representation
+encodes \cite{probes}, and music audio encoders are routinely evaluated this
+way, with MERT \cite{mert} and the MARBLE benchmark \cite{marble} reporting
+probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} show that a probe's success has to be read
+against a control task holding accuracy fixed while removing the structure of
+interest, and we adopt that design for representation geometry rather than for
+probe complexity.
+
+The relational structure we test against is the one music cognition established
+for human listeners, in which perceived key relations follow the circle of
+fifths and Krumhansl--Kessler profiles \cite{krumhansl1982,krumhansl1990} and
+pitch is organised on a helix that separates height from chroma
+\cite{shepard1982}. Chroma features \cite{brown1991,librosa} build octave
+equivalence into the input by construction, which makes them a positive control
+rather than a competitor, while tonality-aware objectives such as STONE
+\cite{stone} impose key equivariance during training, whereas the question here
+is what a representation trained without such a constraint already contains. We
+also include the codec that music generation systems consume
+\cite{encodec,musicgen}, since the geometry a generator sees is that latent's.
 
 \section{Measurements}
 \label{sec:method}
@@ -133,7 +156,26 @@ whatever the directions are.
 
 \input{table1.tex}
 
-\section{Information, metric and readout dissociate}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig2_mechanisms.pdf}
+\caption{Averaging removes sample noise; projection removes metric anisotropy.
+Top: averaging notes of the same pitch into a pitch centroid does not produce
+octave equivalence at any sample size, with every learned and spectral arm
+saturating by four notes at approximately zero and MERT L24 staying negative.
+The chromagram, off scale, has octave equivalence already in single notes.
+Bottom: a rank-4 projection fitted only on GiantSteps track tonics, with no
+notes and no NSynth, applied unchanged to individual NSynth recordings. Both
+panels share a vertical axis, since rescaling the top one would invent
+structure that is not there. Error bars are instrument-bootstrap 95\%
+intervals.}
+\label{fig:mechanisms}
+\end{figure}
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Information, metric and readout dissociate}
 \label{sec:three}
 
 Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips and
@@ -156,13 +198,6 @@ at $-0.035$ with $p$ of .52, while its probe weights carry that structure
 strongly, at 0.560 with a $z$ of 9.1. Tonal relations are therefore linearly
 accessible in a log-spectrogram and simply absent from its metric, which is a
 phenomenon that requires no learned encoder at all.
-
-Two further arms, reported in full in the released artefacts, refute the
-obvious explanation of why a chromagram differs from a log-CQT. Neither octave
-folding nor per-frame normalisation alone produces fifths geometry, scoring
-$-0.106$ and $-0.117$ against the chromagram's 0.475, and each alone instead
-produces semitone-adjacency structure, at 0.391 and 0.491, the opposite
-organisation. Only the conjunction yields the circle of fifths.
 
 What MERT does is move structure between columns rather than create it. Its
 readout geometry, between 0.41 and 0.48, is \emph{lower} than that of the
@@ -190,7 +225,8 @@ standard deviation over 5 draws in (a) and 10 in (b).}
 \label{fig:averaging}
 \end{figure*}
 
-\section{Sample-limited masking}
+
+\subsection{Sample-limited masking}
 \label{sec:sample}
 
 The clip-level result invites a temporal reading, in which keys are properties
@@ -216,23 +252,7 @@ instrumentation and subgenre, is largely unrelated to the key and cancels in
 the mean, so what was missing at one clip per key was samples rather than
 audio.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figs/fig2_mechanisms.pdf}
-\caption{Averaging removes sample noise; projection removes metric anisotropy.
-Top: averaging notes of the same pitch into a pitch centroid does not produce
-octave equivalence at any sample size, with every learned and spectral arm
-saturating by four notes at approximately zero and MERT L24 staying negative.
-The chromagram, off scale, has octave equivalence already in single notes.
-Bottom: a rank-4 projection fitted only on GiantSteps track tonics, with no
-notes and no NSynth, applied unchanged to individual NSynth recordings. Both
-panels share a vertical axis, since rescaling the top one would invent
-structure that is not there. Error bars are instrument-bootstrap 95\%
-intervals.}
-\label{fig:mechanisms}
-\end{figure}
-
-\section{Metric masking}
+\subsection{Metric masking}
 \label{sec:metric}
 
 If low between-item signal-to-noise were the whole story, the same averaging
@@ -279,13 +299,11 @@ unique one.
 
 \section{Discussion}
 
-Three properties that the probing literature often treats as one, namely
-information availability, metric visibility and readout accessibility, are
-separable, and separating them changes what a probe result licenses. A high
-probe accuracy says the structure is linearly recoverable. It says nothing
-about whether that structure governs distances, which is what a downstream
-model relying on similarity, retrieval or a nearest-neighbour decision actually
-consumes.
+Three properties the probing literature often treats as one, namely information
+availability, metric visibility and readout accessibility, are separable, and
+separating them changes what a probe result licenses: a high probe accuracy
+says the structure is linearly recoverable, and says nothing about whether it
+governs the distances a model relying on similarity or retrieval consumes.
 
 The two masking modes suggest different remedies. Sample-limited masking is a
 property of the evaluation, and the fix is more examples per class, not longer
@@ -312,14 +330,14 @@ reported but not explained, and we do not claim it is harmonic.
 
 \section{Conclusion}
 
-Musical structure can be present in a representation, linearly accessible, and
-still invisible in its geometry, for two different reasons that call for two
-different operations. Averaging over examples removes class-independent
-nuisance and accounts entirely for clip-level key geometry. A rank-4 projection
-fitted on a different dataset and a different task removes class-coupled
-nuisance and recovers note-level octave equivalence that no amount of averaging
-reaches. Neither operation creates the structure it exposes, and recognising
-which of the two a given null calls for is what the distinction buys.
+Musical structure can be present in a representation, linearly accessible and
+still invisible in its geometry, for two reasons calling for two different
+operations. Averaging over examples removes class-independent nuisance and
+accounts entirely for clip-level key geometry, while a rank-4 projection fitted
+on another dataset and task removes class-coupled nuisance and recovers octave
+equivalence that averaging never reaches. Neither operation
+creates the structure it exposes, and knowing which of the two a null calls for
+is what separating them buys.
 
 \bibliographystyle{IEEEbib}
 \bibliography{refs}

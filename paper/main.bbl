@@ -30,15 +30,10 @@ Roger~N. Shepard,
 \newblock ``Geometrical approximations to the structure of musical pitch,''
 \newblock {\em Psychological Review}, vol. 89, no. 4, pp. 305--333, 1982.
 
-\bibitem{encodec}
-Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
-\newblock ``High fidelity neural audio compression,''
-\newblock {\em Transactions on Machine Learning Research (TMLR)}, 2023.
-
-\bibitem{musicgen}
-Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre D{\'e}fossez,
-\newblock ``Simple and controllable music generation,''
-\newblock in {\em Advances in Neural Information Processing Systems (NeurIPS)}, 2023.
+\bibitem{controltasks}
+John Hewitt and Percy Liang,
+\newblock ``Designing and interpreting probes with control tasks,''
+\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
 
 \bibitem{brown1991}
 Judith~C. Brown,
@@ -50,6 +45,21 @@ Brian McFee, Colin Raffel, Dawen Liang, Daniel~P.W. Ellis, Matt McVicar, Eric Ba
 \newblock ``librosa: Audio and music signal analysis in {P}ython,''
 \newblock in {\em Proceedings of the 14th Python in Science Conference}, 2015.
 
+\bibitem{stone}
+Yuexuan Kong, Vincent Lostanlen, Gabriel Meseguer-Brocal, Stella Wong, Mathieu Lagrange, and Romain Hennequin,
+\newblock ``{STONE}: Self-supervised tonality estimator,''
+\newblock in {\em International Society for Music Information Retrieval Conference (ISMIR)}, 2024.
+
+\bibitem{encodec}
+Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
+\newblock ``High fidelity neural audio compression,''
+\newblock {\em Transactions on Machine Learning Research (TMLR)}, 2023.
+
+\bibitem{musicgen}
+Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre D{\'e}fossez,
+\newblock ``Simple and controllable music generation,''
+\newblock in {\em Advances in Neural Information Processing Systems (NeurIPS)}, 2023.
+
 \bibitem{giantsteps}
 Peter Knees, {\'A}ngel Faraldo, Perfecto Herrera, Richard Vogl, Sebastian B{\"o}ck, Florian H{\"o}rschl{\"a}ger, and Mickael Le~Goff,
 \newblock ``Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections,''
@@ -59,15 +69,5 @@ Peter Knees, {\'A}ngel Faraldo, Perfecto Herrera, Richard Vogl, Sebastian B{\"o}
 Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan,
 \newblock ``Neural audio synthesis of musical notes with {WaveNet} autoencoders,''
 \newblock in {\em International Conference on Machine Learning (ICML)}, 2017.
-
-\bibitem{controltasks}
-John Hewitt and Percy Liang,
-\newblock ``Designing and interpreting probes with control tasks,''
-\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
-
-\bibitem{stone}
-Yuexuan Kong, Vincent Lostanlen, Gabriel Meseguer-Brocal, Stella Wong, Mathieu Lagrange, and Romain Hennequin,
-\newblock ``{STONE}: Self-supervised tonality estimator,''
-\newblock in {\em International Society for Music Information Retrieval Conference (ISMIR)}, 2024.
 
 \end{thebibliography}

@@ -95,7 +95,7 @@ NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
 cm = json.load(open("runs/nsynth_class_means.json"))
 # single-column width: three full-width floats do not fit in four ICASSP pages,
 # and this one reads fine narrow
-fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 4.1), sharey=True,
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 3.25), sharey=True,
                                gridspec_kw={"height_ratios": [1, 1]})
 for arm in ARMS2:
     c = cm[arm]["curve"]
