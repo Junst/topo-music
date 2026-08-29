@@ -1,12 +1,19 @@
 # topo-music
 
-When is musical structure visible in the geometry of an audio representation?
+**What hides musical geometry in audio representations?** Two mechanisms:
+sampling variance and metric anisotropy.
 
 The project began as "does topographic self-organisation buy anything for music
 representations?" and that branch was stopped 2026-08-29 on a pre-registered
 kill criterion ([`PREREG.md`](PREREG.md) Appendix B). What replaced it is a
 sharper question, and the current work is registered in
 [`PREREG_SCALES.md`](PREREG_SCALES.md).
+
+## Figures
+
+![averaging](runs/figs/fig1_averaging.png)
+
+![mechanisms](runs/figs/fig2_mechanisms.png)
 
 ## The result worth reading first
 
