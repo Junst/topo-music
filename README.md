@@ -1,41 +1,47 @@
 # topo-music
 
-Does topographic self-organisation buy anything for music representations?
+When is musical structure visible in the geometry of an audio representation?
 
-**Status: the RVQ-codebook branch was stopped 2026-08-29 on a pre-registered
-kill criterion.** Read [`PREREG.md`](PREREG.md) Appendix B for the verdict, then
-[`DESIGN.md`](DESIGN.md) §0 for the prior-art collisions that shaped the scope.
+The project began as "does topographic self-organisation buy anything for music
+representations?" and that branch was stopped 2026-08-29 on a pre-registered
+kill criterion ([`PREREG.md`](PREREG.md) Appendix B). What replaced it is a
+sharper question, and the current work is registered in
+[`PREREG_SCALES.md`](PREREG_SCALES.md).
 
 ## The result worth reading first
 
-Not the kill — this gap:
+The same MERT encoder gives two answers about whether it represents pitch class,
+depending only on how much audio is pooled before you measure.
 
-    Moran's I (pitch | codebook geometry) = 0.659   (z = 67)
-    Moran's I (pitch | code index)        = 0.034   (p = 0.09)
+    note level  (0.2-2.5 s, NSynth)   Delta_strict = -0.005    no octave equivalence
+    clip level  (20 s, GiantSteps)    rho_fifths   = +0.468    circle of fifths
 
-EnCodec gets no pitch supervision, yet pitch is a principal axis of its codebook
-*geometry* — which is then discarded into an arbitrary categorical ID, the one
-thing a downstream LM actually sees. And the axis is **absolute pitch height,
-not pitch class**: C3 and C4 are not neighbours. The equivalence relation a
-codec learns looks acoustic, not musical.
+Neither is a measurement error. Both are pre-registered statistics with positive
+controls that fire (analytic fifths control rho = +0.977; chromagram control
+Delta_12 = +0.697) and matched nulls that do not.
 
-## The kill
+Three follow-ups say what is going on, and none of them is what we expected:
 
-The codebooks that music generation systems ship (`encodec_32khz` — MusicGen's
-codec; `dac_44khz`; `encodec_24khz`) are already pitch-topographic in codebook
-space, so the training objective this project was built to justify has nothing
-left to induce. 2 of 3 codecs cross the pre-registered threshold.
+- **A projection fitted only on GiantSteps track keys creates note-level octave
+  equivalence in NSynth.** No notes, no NSynth, no octave information enters the
+  fit. Delta_strict goes from -0.005 to +0.223 for MERT L12 using **0.13%** of
+  its variance, and from +0.004 to +0.466 for a log-CQT. Matched random
+  subspaces give ~0. [`runs/SUBSPACE_results.md`](runs/SUBSPACE_results.md)
+- **But deleting that subspace changes nothing.** The clip-level fifths geometry
+  survives removal of its own best subspace in every high-dimensional arm
+  (<= 12% drop). Tonal structure is low-energy *and redundantly distributed*, so
+  a low-dimensional projection denoises it rather than isolating it.
+- **Key is decodable from a log-CQT better than from MERT (.492 vs .456) with
+  exactly zero fifths geometry in its centroids (-0.035) -- and its classifier
+  weights show that geometry strongly (+0.560).** Controls rule out the
+  artefact reading: random features fall to chance and show none of it, and
+  orthogonal per-key codes decode key *better* than any real arm (.651) while
+  showing none of it either.
 
-Two secondary results matter more than the kill:
-
-- **No octave equivalence anywhere.** Chroma distance, controlling for absolute
-  pitch distance, has partial Spearman |rho| <= 0.10 against code distance. The
-  organisation is substantially more consistent with acoustic pitch height than
-  with music-theoretic chroma. (Stated at that strength on purpose — spectral
-  distance has not yet been regressed out, so "spectral similarity alone
-  explains it" is *not* claimed. That is E2 below.)
-- **RVQ depth does not factorise** into pitch-then-timbre. Both nMI(pitch) and
-  nMI(family) decay monotonically with depth in all three codecs.
+So musical information, musical geometry, and decodability are three different
+properties. The information is present and linearly accessible even in the
+spectrogram; whether it appears as geometry depends on temporal scale and on
+which fraction of a percent of the variance you look at.
 
 ## E2 / E3 — the follow-ups, now run
 
