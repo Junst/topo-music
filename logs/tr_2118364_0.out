@@ -1,0 +1,28 @@
+arm=chroma host=node02 start=2026-08-29T21:14:05+09:00
+[chroma] 150 instruments, 8631 notes, kmax=25
+16/8631  11s
+656/8631  48s
+1296/8631  84s
+1936/8631  119s
+2576/8631  154s
+3216/8631  190s
+3856/8631  225s
+4496/8631  260s
+5136/8631  296s
+5776/8631  331s
+6416/8631  367s
+7056/8631  402s
+7696/8631  437s
+8336/8631  473s
+cached runs/nsynth_emb_chroma.npz
+[chroma]  PRIMARY (model-free)
+    delta12        +0.6972  CI[0.6541, 0.7373]
+    delta24        +0.6494  CI[0.6056, 0.6917]
+    delta_strict   +0.6980  CI[0.6553, 0.7377]
+  SECONDARY (fitted)
+    b1_pitch_height            +0.00318  CI[0.00264, 0.00371]
+    b2_chroma                  +0.09144  CI[0.08276, 0.10002]
+    b2_chroma_quadratic_trend  +0.09406  CI[0.08534, 0.10283]
+  S(11)=0.2496 S(12)=0.9476 S(13)=0.2511 | S(23)=0.2484 S(24)=0.8998 S(25)=0.2525
+wrote runs/transpose_chroma.json in 490s
+done=2026-08-29T21:22:32+09:00

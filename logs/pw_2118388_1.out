@@ -1,0 +1,11 @@
+[cqt/mean] kk_key_distance    rho=+0.880 z=+14.1 p=0.000
+[cqt/mean] fifths             rho=+0.560 z= +9.1 p=0.000
+[cqt/mean] chromatic          rho=-0.116 z= -1.8 p=0.066
+[cqt/mean] mode_mismatch      rho=-0.095 z= -1.6 p=0.084
+  (37s)
+[cqt/mean+std] kk_key_distance    rho=+0.890 z=+14.7 p=0.000
+[cqt/mean+std] fifths             rho=+0.629 z= +9.9 p=0.000
+[cqt/mean+std] chromatic          rho=-0.137 z= -2.1 p=0.039
+[cqt/mean+std] mode_mismatch      rho=-0.115 z= -1.9 p=0.050
+  (46s)
+updated runs/clipkey_cqt.json

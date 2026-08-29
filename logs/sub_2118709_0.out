@@ -1,0 +1,5 @@
+[mert_L12] D=1024 notes=8631 clips=7035 fit-inst=75 eval-inst=75
+  ambient done 26s
+  pc_lda     d=1   var= 0.07%gs d12=-0.002 dstr=+0.004 rho5=-0.053 rho5_comp=+0.467 (amb +0.468)  (36s)
+  pc_lda     d=2   var= 0.14%gs d12=+0.021 dstr=+0.023 rho5=-0.042 rho5_comp=+0.468 (amb +0.468)  (44s)
+  pc_lda     d=3   var= 0.21%gs d12=+0.063 dstr=+0.071 rho5=-0.034 rho5_comp=+0.470 (amb +0.468)  (51s)

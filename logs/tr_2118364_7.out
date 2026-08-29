@@ -1,0 +1,29 @@
+arm=mert_L20 host=node02 start=2026-08-29T21:22:32+09:00
+[mert_L20] 150 instruments, 8631 notes, kmax=25
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+16/8631  5s
+656/8631  10s
+1296/8631  16s
+1936/8631  21s
+2576/8631  27s
+3216/8631  32s
+3856/8631  38s
+4496/8631  44s
+5136/8631  50s
+5776/8631  56s
+6416/8631  61s
+7056/8631  67s
+7696/8631  73s
+8336/8631  79s
+cached runs/nsynth_emb_mert_L20.npz
+[mert_L20]  PRIMARY (model-free)
+    delta12        +0.0073  CI[0.0061, 0.0086]
+    delta24        +0.0032  CI[0.0022, 0.0042]
+    delta_strict   -0.0064  CI[-0.0091, -0.0037]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.00508  CI[-0.00549, -0.00467]
+    b2_chroma                  +0.00400  CI[0.00328, 0.00472]
+    b2_chroma_quadratic_trend  +0.00366  CI[0.0029, 0.00442]
+  S(11)=0.9158 S(12)=0.9189 S(13)=0.9073 | S(23)=0.8554 S(24)=0.8542 S(25)=0.8466
+wrote runs/transpose_mert_L20.json in 84s
+done=2026-08-29T21:24:19+09:00

@@ -1,0 +1,11 @@
+[encodec_32k/mean] kk_key_distance    rho=+0.878 z=+13.9 p=0.000
+[encodec_32k/mean] fifths             rho=+0.648 z=+10.4 p=0.000
+[encodec_32k/mean] chromatic          rho=-0.056 z= -0.9 p=0.375
+[encodec_32k/mean] mode_mismatch      rho=-0.108 z= -1.7 p=0.071
+  (44s)
+[encodec_32k/mean+std] kk_key_distance    rho=+0.860 z=+14.2 p=0.000
+[encodec_32k/mean+std] fifths             rho=+0.653 z=+10.4 p=0.000
+[encodec_32k/mean+std] chromatic          rho=-0.067 z= -1.0 p=0.274
+[encodec_32k/mean+std] mode_mismatch      rho=-0.067 z= -1.1 p=0.245
+  (54s)
+updated runs/clipkey_encodec_32k.json

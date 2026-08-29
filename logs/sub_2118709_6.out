@@ -1,0 +1,7 @@
+[encodec_32k] D=128 notes=8631 clips=7035 fit-inst=75 eval-inst=75
+  ambient done 26s
+  pc_lda     d=1   var= 0.07%gs d12=+0.267 dstr=+0.293 rho5=+0.008 rho5_comp=+0.177 (amb +0.177)  (34s)
+  pc_lda     d=2   var= 0.14%gs d12=+0.284 dstr=+0.304 rho5=+0.162 rho5_comp=+0.175 (amb +0.177)  (39s)
+  pc_lda     d=3   var= 0.27%gs d12=+0.464 dstr=+0.465 rho5=+0.475 rho5_comp=+0.144 (amb +0.177)  (45s)
+  pc_lda     d=4   var= 0.37%gs d12=+0.493 dstr=+0.478 rho5=+0.448 rho5_comp=+0.139 (amb +0.177)  (50s)
+  pc_lda     d=6   var= 0.58%gs d12=+0.540 dstr=+0.511 rho5=+0.665 rho5_comp=+0.123 (amb +0.177)  (56s)

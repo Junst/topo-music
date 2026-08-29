@@ -1,0 +1,11 @@
+[chroma/mean] kk_key_distance    rho=+0.915 z=+14.7 p=0.000
+[chroma/mean] fifths             rho=+0.692 z=+11.0 p=0.000
+[chroma/mean] chromatic          rho=-0.093 z= -1.4 p=0.116
+[chroma/mean] mode_mismatch      rho=-0.087 z= -1.4 p=0.105
+  (4s)
+[chroma/mean+std] kk_key_distance    rho=+0.841 z=+13.5 p=0.000
+[chroma/mean+std] fifths             rho=+0.685 z=+10.9 p=0.000
+[chroma/mean+std] chromatic          rho=-0.128 z= -2.0 p=0.045
+[chroma/mean+std] mode_mismatch      rho=-0.085 z= -1.3 p=0.114
+  (5s)
+updated runs/clipkey_chroma.json

@@ -1,0 +1,40 @@
+[cqt_norm] 7035 clips
+8/7035  7s
+488/7035  45s
+968/7035  82s
+1448/7035  125s
+1928/7035  168s
+2408/7035  211s
+2888/7035  255s
+3368/7035  295s
+3848/7035  335s
+4328/7035  381s
+4808/7035  426s
+5288/7035  468s
+5768/7035  509s
+6248/7035  557s
+6728/7035  605s
+[cqt_norm] embeddings (7035, 168) (634s)
+
+[cqt_norm] pooling = mean  dim=84
+  24-way key 0.486 (chance .042) | 12-way tonic 0.604 (chance .083)
+  [centroid] kk_key_distance    rho=-0.084  z= -1.6  p=0.114  rho|spec=-0.107
+  [centroid] fifths             rho=-0.117  z= -2.1  p=0.030  rho|spec=-0.136
+  [centroid] chromatic          rho=+0.491  z= +9.1  p=0.000  rho|spec=+0.491
+  [centroid] mode_mismatch      rho=+0.013  z= +0.2  p=0.833  rho|spec=+0.011
+  [probe-W ] kk_key_distance    rho=+0.897  z=+14.6  p=0.000  rho|spec=+0.891
+  [probe-W ] fifths             rho=+0.671  z=+10.6  p=0.000  rho|spec=+0.656
+  [probe-W ] chromatic          rho=-0.084  z= -1.3  p=0.135  rho|spec=-0.092
+  [probe-W ] mode_mismatch      rho=-0.078  z= -1.3  p=0.115  rho|spec=-0.085
+
+[cqt_norm] pooling = mean+std  dim=168
+  24-way key 0.465 (chance .042) | 12-way tonic 0.580 (chance .083)
+  [centroid] kk_key_distance    rho=-0.001  z= -0.0  p=0.981  rho|spec=-0.036
+  [centroid] fifths             rho=-0.074  z= -1.3  p=0.161  rho|spec=-0.105
+  [centroid] chromatic          rho=+0.450  z= +8.3  p=0.000  rho|spec=+0.451
+  [centroid] mode_mismatch      rho=+0.005  z= +0.0  p=0.941  rho|spec=+0.002
+  [probe-W ] kk_key_distance    rho=+0.869  z=+14.0  p=0.000  rho|spec=+0.861
+  [probe-W ] fifths             rho=+0.626  z= +9.8  p=0.000  rho|spec=+0.609
+  [probe-W ] chromatic          rho=-0.112  z= -1.8  p=0.059  rho|spec=-0.121
+  [probe-W ] mode_mismatch      rho=-0.108  z= -1.7  p=0.059  rho|spec=-0.116
+wrote runs/clipkey_cqt_norm.json in 1294s

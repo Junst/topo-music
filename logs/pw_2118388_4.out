@@ -1,0 +1,11 @@
+[mert_L12/mean] kk_key_distance    rho=+0.695 z=+11.4 p=0.000
+[mert_L12/mean] fifths             rho=+0.428 z= +7.1 p=0.000
+[mert_L12/mean] chromatic          rho=-0.046 z= -0.8 p=0.452
+[mert_L12/mean] mode_mismatch      rho=-0.150 z= -2.5 p=0.018
+  (36s)
+[mert_L12/mean+std] kk_key_distance    rho=+0.874 z=+14.6 p=0.000
+[mert_L12/mean+std] fifths             rho=+0.563 z= +9.1 p=0.000
+[mert_L12/mean+std] chromatic          rho=-0.072 z= -1.1 p=0.228
+[mert_L12/mean+std] mode_mismatch      rho=-0.088 z= -1.4 p=0.116
+  (29s)
+updated runs/clipkey_mert_L12.json
