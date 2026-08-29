@@ -67,10 +67,15 @@ cancels the instrument, never the octave.
 
 ## 4. What removes class-coupled nuisance is a projection
 
-`scripts/13`. The `key_lda` subspace is fitted only on GiantSteps track tonics,
-so the directions it keeps must be the ones that predict a pitch-class property
--- which forces them to be pitch-height-invariant. Applied to NSynth notes
-with no averaging at all, at 0.11-0.24% of MERT's variance:
+`scripts/13`. The `key_lda` subspace is fitted only on GiantSteps track tonics.
+It would be too strong to say this *forces* pitch-height invariance: key labels
+in GiantSteps correlate with subgenre, tempo and production, and an LDA is free
+to use any of it. What licenses the claim is the transfer itself -- because the
+key-supervised projection produces octave equivalence in an independently
+recorded isolated-note corpus, the structure it recovers cannot be explained
+solely by GiantSteps-specific nuisance correlations. The invariance is
+demonstrated across datasets, not guaranteed by the objective. Applied to
+NSynth notes with no averaging at all, at 0.11-0.24% of MERT's variance:
 
 | arm | ambient Delta_strict | projected (d=4) |
 |---|---|---|
@@ -85,6 +90,31 @@ in the ambient representation; it is neither created by the projection nor
 recoverable by averaging.
 
 ## The account these four support
+
+Write a representation of an item of class `y` as
+
+    z = s_y + n_y + eps,      E[eps | y] = 0,
+
+with `s_y` the structure of interest, `n_y` a nuisance component that is itself
+a function of the class, and `eps` nuisance that is not. The two masking modes
+are the two terms.
+
+**Sample-limited masking** is `eps`. Because it has zero conditional mean, the
+class mean converges, `mean(z | y) -> s_y + n_y`, and geometry that was invisible
+at n = 1 appears as n grows. GiantSteps is this case: what varies between two
+tracks in the same key -- production, instrumentation, subgenre -- is largely
+unrelated to the key, so it cancels. Hence 13.4x in examples and 1.7x in window
+length: the missing ingredient at n = 1 is samples, not audio.
+
+**Metric masking** is `n_y`. It does not average away, because it is there in
+every example of the class by construction. If it dominates the ambient
+distances, the geometry of `s_y` stays hidden however many samples are pooled.
+NSynth pitch is this case: register and spectral envelope are functions of
+pitch, so every pitch centroid keeps them. A projection `W^T z` chosen so that
+`W^T n_y ~ 0` removes what averaging cannot, and the octave-equivalent structure
+in `W^T s_y` becomes visible.
+
+
 
 Musical geometry is hidden in two different ways and they need two different
 operations to undo.
