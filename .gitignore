@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+logs/*.err
+logs/cuda_install.log
+# 32-clip smoke output; superseded. The 512-clip _pre_* files are kept because
+# PREREG.md Appendix A cites them as the pre-verdict evidence.
+runs/_smoke*
+# The slurm controller was down, then returned "Unexpected message received" on
+# sbatch calls that had actually been accepted -- so the retry loop submitted 16
+# duplicate arrays. Their logs are noise; one array is kept for the record.
+logs/probe_*.out
+!logs/probe_2115207_*.out
+logs/retry_submit.log
+logs/submit.log

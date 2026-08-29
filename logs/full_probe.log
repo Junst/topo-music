@@ -1,0 +1,29 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/116 [00:00<?, ?it/s]Loading weights: 100%|██████████| 116/116 [00:00<00:00, 10882.84it/s]
+32/4096  3s
+672/4096  61s
+1312/4096  126s
+1952/4096  184s
+2592/4096  241s
+3232/4096  300s
+3872/4096  361s
+wrote runs/probe_encodec_32k.npz in 383s
+Loading weights:   0%|          | 0/223 [00:00<?, ?it/s]Loading weights: 100%|██████████| 223/223 [00:00<00:00, 3707.02it/s]
+32/4096  20s
+672/4096  390s
+1312/4096  755s
+1952/4096  1113s
+2592/4096  1476s
+3232/4096  1829s
+3872/4096  2179s
+wrote runs/probe_dac_44k.npz in 2301s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/252 [00:00<?, ?it/s]Loading weights: 100%|██████████| 252/252 [00:00<00:00, 2562.05it/s]
+32/4096  2s
+672/4096  38s
+1312/4096  71s
+1952/4096  99s
+2592/4096  125s
+3232/4096  149s
+3872/4096  172s
+wrote runs/probe_encodec_24k.npz in 181s
