@@ -3,3 +3,33 @@ arm=mert_L4 host=node23 start=2026-08-29T12:22:50+09:00
 WARNING: feature_extractor_cqt requires the libray 'nnAudio'
 8/7035  4s
 488/7035  71s
+968/7035  146s
+1448/7035  228s
+1928/7035  297s
+2408/7035  365s
+2888/7035  434s
+3368/7035  502s
+3848/7035  570s
+4328/7035  639s
+4808/7035  705s
+5288/7035  767s
+5768/7035  829s
+6248/7035  892s
+6728/7035  974s
+[mert_L4] embeddings (7035, 2048) (1025s)
+
+[mert_L4] pooling = mean  dim=1024
+  24-way key 0.451 (chance .042) | 12-way tonic 0.537 (chance .083)
+  kk_key_distance    rho=+0.607  z=+12.0  p=0.000  rho|spec=+0.603
+  fifths             rho=+0.445  z= +8.8  p=0.000  rho|spec=+0.432
+  chromatic          rho=-0.025  z= -0.5  p=0.613  rho|spec=-0.051
+  mode_mismatch      rho=+0.216  z= +4.3  p=0.001  rho|spec=+0.218
+
+[mert_L4] pooling = mean+std  dim=2048
+  24-way key 0.477 (chance .042) | 12-way tonic 0.557 (chance .083)
+  kk_key_distance    rho=+0.584  z=+11.6  p=0.000  rho|spec=+0.577
+  fifths             rho=+0.427  z= +8.5  p=0.000  rho|spec=+0.412
+  chromatic          rho=-0.026  z= -0.5  p=0.603  rho|spec=-0.050
+  mode_mismatch      rho=+0.253  z= +5.1  p=0.000  rho|spec=+0.257
+wrote runs/clipkey_mert_L4.json in 1560s
+done=2026-08-29T12:49:16+09:00

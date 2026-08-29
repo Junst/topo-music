@@ -3,3 +3,32 @@ arm=cqt host=node24 start=2026-08-29T12:22:50+09:00
 8/7035  4s
 488/7035  49s
 968/7035  91s
+1448/7035  137s
+1928/7035  187s
+2408/7035  235s
+2888/7035  292s
+3368/7035  353s
+3848/7035  414s
+4328/7035  466s
+4808/7035  503s
+5288/7035  533s
+5768/7035  563s
+6248/7035  595s
+6728/7035  628s
+[cqt] embeddings (7035, 168) (648s)
+
+[cqt] pooling = mean  dim=84
+  24-way key 0.492 (chance .042) | 12-way tonic 0.625 (chance .083)
+  kk_key_distance    rho=+0.006  z= +0.1  p=0.924  rho|spec=-0.072
+  fifths             rho=-0.035  z= -0.6  p=0.523  rho|spec=-0.103
+  chromatic          rho=+0.174  z= +3.2  p=0.004  rho|spec=+0.176
+  mode_mismatch      rho=+0.165  z= +3.0  p=0.009  rho|spec=+0.168
+
+[cqt] pooling = mean+std  dim=168
+  24-way key 0.472 (chance .042) | 12-way tonic 0.605 (chance .083)
+  kk_key_distance    rho=+0.012  z= +0.2  p=0.839  rho|spec=-0.064
+  fifths             rho=-0.032  z= -0.6  p=0.548  rho|spec=-0.098
+  chromatic          rho=+0.174  z= +3.2  p=0.004  rho|spec=+0.176
+  mode_mismatch      rho=+0.170  z= +3.1  p=0.008  rho|spec=+0.173
+wrote runs/clipkey_cqt.json in 1125s
+done=2026-08-29T12:41:50+09:00

@@ -12,11 +12,29 @@ So: one embedding per clip (mean-pooled), and two things measured in order.
    geometry is only interpretable if the representation demonstrably encodes
    key at all. Chance is 1/24 = 4.2%.
 
+1b. PROBE-WEIGHT GEOMETRY. The same fitted probe gives 24 class weight vectors
+   w_k. Their pairwise geometry is measured against the same reference
+   structures as the representation centroids. Decodability and geometry can
+   come apart in two distinguishable ways: if neither the centroids nor the
+   weights show fifths structure, keys are merely linearly separable with no
+   music-theoretic relation; if the weights show it and the centroids do not,
+   the linear readout is *constructing* musical geometry out of an unstructured
+   representation. Costs one extra fit.
+
 2. GEOMETRY. Average the clip embeddings within each of the 24 keys to get 24
    key centroids, then ask whether the distances among those centroids follow
    known musical key structure. Averaging within class is what removes the
    timbre/genre variance that swamped the frame-level test, and 24 centroids is
    exactly the object the circle of fifths and Krumhansl's key torus describe.
+
+   Two positive controls, and they test different things -- conflating them was
+   an error in an earlier draft. A **chromagram** hard-codes octave equivalence
+   (C3 ~ C4) but does NOT hard-code circle-of-fifths geometry: nothing in it
+   makes d(C, G) < d(C, F#). So chroma is an octave/chroma control only. The
+   fifths control has to be built analytically -- 12 tonics placed on a unit
+   circle at theta_k = 2*pi*(7k mod 12)/12 -- which has circle-of-fifths
+   geometry by construction. Only if that arm recovers rho_fifths >> 0 can the
+   pipeline claim to detect fifths geometry where it exists.
 
    Reference structures, all reported separately rather than folded into one
    invented "torus metric":
@@ -105,6 +123,8 @@ def main():
     ap.add_argument("--batch", type=int, default=8)
     ap.add_argument("--n-mels", type=int, default=64)
     ap.add_argument("--n-perm", type=int, default=2000)
+    ap.add_argument("--fifths-noise", type=float, default=0.6)
+    ap.add_argument("--fifths-mode-gap", type=float, default=0.5)
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
@@ -160,6 +180,13 @@ def main():
                       if sr != native_sr else x)
         n = min(len(w) for w in ws)
         ws = [w[:n] for w in ws]
+        if a.arm == "fifths_analytic":
+            # Synthetic positive control for the *fifths* metric specifically.
+            # Each clip is placed on the circle of fifths at its own tonic, plus
+            # isotropic noise so the centroids are estimated, not exact. If the
+            # pipeline cannot recover fifths geometry here, a null anywhere else
+            # says nothing.
+            raise RuntimeError("fifths_analytic is synthesised, not read from audio")
         if a.arm == "chroma":
             # Explicit music-theoretic positive control. A chromagram is octave-
             # folded by construction, so if 24 key centroids can show a circle of
@@ -168,10 +195,29 @@ def main():
             # positive -- it is what separates "no geometry" from "broken metric".
             F = [librosa.feature.chroma_cqt(y=w, sr=native_sr, hop_length=512).T
                  for w in ws]
-        elif a.arm == "cqt":
-            F = [librosa.amplitude_to_db(np.abs(librosa.cqt(
-                w, sr=native_sr, hop_length=512, fmin=librosa.note_to_hz("C1"),
-                n_bins=84, bins_per_octave=12)), ref=np.max).T for w in ws]
+        elif a.arm in ("cqt", "cqt_fold", "cqt_norm"):
+            # A 2x2 that separates the two things that actually differ between
+            # the `cqt` and `chroma` arms. Claiming octave folding is the sole
+            # difference would be wrong: librosa's chroma_cqt also drops the dB
+            # scaling and normalises each frame. So all four cells are measured
+            # with the same CQT front end --
+            #   cqt      : 84 bins, dB           (unfolded, dB)
+            #   cqt_fold : 12 bins, dB           (folded,   dB)
+            #   cqt_norm : 84 bins, per-frame Linf (unfolded, normalised)
+            #   chroma   : 12 bins, per-frame Linf (folded,   normalised)
+            # -- so folding and normalisation can be attributed separately.
+            F = []
+            for w in ws:
+                C = np.abs(librosa.cqt(w, sr=native_sr, hop_length=512,
+                                       fmin=librosa.note_to_hz("C1"),
+                                       n_bins=84, bins_per_octave=12))
+                if a.arm == "cqt_fold":
+                    C = C.reshape(7, 12, -1).sum(0)
+                if a.arm == "cqt_norm":
+                    C = C / (np.abs(C).max(0, keepdims=True) + 1e-9)
+                else:
+                    C = librosa.amplitude_to_db(C, ref=np.max)
+                F.append(C.T)
         elif is_codec:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))  # [B,L,T]
             # the quantised latent the codec actually emits: sum over RVQ levels
@@ -189,17 +235,28 @@ def main():
         return E, mel
 
     t0 = time.time()
-    Z, S, Y = [], [], []
-    for b0 in range(0, len(rows), a.batch):
+    if a.arm == "fifths_analytic":
+        rr = np.random.default_rng(a.seed)
+        Y = np.array([r[1] * 2 + r[2] for r in rows])
+        th = 2 * np.pi * ((Y // 2) * 7 % 12) / 12
+        base = np.column_stack([np.cos(th), np.sin(th), (Y % 2) * a.fifths_mode_gap])
+        Z = np.concatenate([base + rr.normal(0, a.fifths_noise, base.shape),
+                            rr.normal(0, a.fifths_noise, base.shape)], 1)
+        S = rr.normal(0, 1.0, (len(rows), a.n_mels))
+        print(f"[{a.arm}] synthetic control, Z={Z.shape}", flush=True)
+    else:
+      Z, S = [], []
+      Y = []
+      for b0 in range(0, len(rows), a.batch):
         br = rows[b0:b0 + a.batch]
         E, M = batch_embed([r[0] for r in br])
         Z.extend(E); S.extend(M)
         Y.extend([r[1] * 2 + r[2] for r in br])
         if b0 % (a.batch * 60) == 0:
             print(f"{b0+len(br)}/{len(rows)}  {time.time()-t0:.0f}s", flush=True)
-    Z = np.stack(Z).astype(np.float64)          # [N, 2D] = [mean | std]
-    S = np.stack(S).astype(np.float64)
-    Y = np.array(Y)
+      Z = np.stack(Z); S = np.stack(S); Y = np.array(Y)
+    Z = np.asarray(Z, dtype=np.float64)         # [N, 2D] = [mean | std]
+    S = np.asarray(S, dtype=np.float64)
     print(f"[{a.arm}] embeddings {Z.shape} ({time.time()-t0:.0f}s)", flush=True)
 
     D = Z.shape[1] // 2
@@ -235,26 +292,39 @@ def main():
         print(f"  24-way key {acc.mean():.3f} (chance .042) | "
               f"12-way tonic {acc_t.mean():.3f} (chance .083)", flush=True)
 
+        clf.fit(ZP, Y)
+        W = clf[-1].coef_                                  # [n_classes, D]
+        assert list(clf[-1].classes_) == list(present)
+        Wn = W / (np.linalg.norm(W, axis=1, keepdims=True) + 1e-12)
+        dw = (1.0 - Wn @ Wn.T)[iu]                         # cosine distance
+
         C = np.stack([ZP[Y == k].mean(0) for k in present])
         dz = squareform(pdist(C))[iu]
         rng = np.random.default_rng(a.seed)
-        res = {}
-        for nm, dd in [("kk_key_distance", kk), ("fifths", dfif),
-                       ("chromatic", dchr), ("mode_mismatch", dmode)]:
-            obs = float(spearmanr(dd, dz).statistic)
-            null = np.empty(a.n_perm)
-            for i in range(a.n_perm):
-                Dp = squareform(pdist(C[rng.permutation(len(present))]))[iu]
-                null[i] = spearmanr(dd, Dp).statistic
-            res[nm] = dict(rho=obs, null_mean=float(null.mean()),
-                           null_std=float(null.std()),
-                           z=float((obs - null.mean()) / (null.std() + 1e-12)),
-                           p=float((np.abs(null) >= abs(obs)).mean()),
-                           rho_given_spec=partial_spearman(dd, dz, dsp))
-            print(f"  {nm:<18} rho={obs:+.3f}  z={res[nm]['z']:+5.1f}"
-                  f"  p={res[nm]['p']:.3f}  rho|spec={res[nm]['rho_given_spec']:+.3f}",
-                  flush=True)
-        rec["centroid_geometry"] = res
+
+        def geometry(dtarget, label):
+            res = {}
+            for nm, dd in [("kk_key_distance", kk), ("fifths", dfif),
+                           ("chromatic", dchr), ("mode_mismatch", dmode)]:
+                obs = float(spearmanr(dd, dtarget).statistic)
+                null = np.empty(a.n_perm)
+                for i in range(a.n_perm):
+                    perm = rng.permutation(len(present))
+                    P_ = squareform(squareform(dtarget, checks=False)[perm][:, perm],
+                                    checks=False)
+                    null[i] = spearmanr(dd, P_).statistic
+                res[nm] = dict(rho=obs, null_mean=float(null.mean()),
+                               null_std=float(null.std()),
+                               z=float((obs - null.mean()) / (null.std() + 1e-12)),
+                               p=float((np.abs(null) >= abs(obs)).mean()),
+                               rho_given_spec=partial_spearman(dd, dtarget, dsp))
+                print(f"  [{label}] {nm:<18} rho={obs:+.3f}  z={res[nm]['z']:+5.1f}"
+                      f"  p={res[nm]['p']:.3f}"
+                      f"  rho|spec={res[nm]['rho_given_spec']:+.3f}", flush=True)
+            return res
+
+        rec["centroid_geometry"] = geometry(dz, "centroid")
+        rec["probe_weight_geometry"] = geometry(dw, "probe-W ")
         out["poolings"][pool_name] = rec
 
     p = Path(a.out or f"runs/clipkey_{a.arm}.json")

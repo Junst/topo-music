@@ -1,0 +1,27 @@
+arm=encodec_32k host=node23 start=2026-08-29T12:49:15+09:00
+[encodec_32k] 150 instruments, 8631 notes, kmax=25
+16/8631  4s
+656/8631  6s
+1296/8631  8s
+1936/8631  11s
+2576/8631  13s
+3216/8631  15s
+3856/8631  17s
+4496/8631  20s
+5136/8631  22s
+5776/8631  24s
+6416/8631  27s
+7056/8631  29s
+7696/8631  31s
+8336/8631  33s
+[encodec_32k]  PRIMARY (model-free)
+    delta12        +0.0376  CI[0.0291, 0.0469]
+    delta24        +0.0213  CI[0.0161, 0.0271]
+    delta_strict   +0.0000  CI[-0.0112, 0.0115]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.01043  CI[-0.01182, -0.0091]
+    b2_chroma                  +0.00346  CI[0.00111, 0.00607]
+    b2_chroma_quadratic_trend  +0.00298  CI[0.00052, 0.00552]
+  S(11)=0.7784 S(12)=0.8051 S(13)=0.7566 | S(23)=0.6546 S(24)=0.6652 S(25)=0.6330
+wrote runs/transpose_encodec_32k.json in 35s
+done=2026-08-29T12:50:10+09:00

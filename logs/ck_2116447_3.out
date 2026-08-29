@@ -3,3 +3,33 @@ arm=mert_L16 host=node22 start=2026-08-29T12:22:50+09:00
 WARNING: feature_extractor_cqt requires the libray 'nnAudio'
 8/7035  4s
 488/7035  66s
+968/7035  128s
+1448/7035  190s
+1928/7035  252s
+2408/7035  314s
+2888/7035  376s
+3368/7035  438s
+3848/7035  501s
+4328/7035  563s
+4808/7035  625s
+5288/7035  687s
+5768/7035  749s
+6248/7035  811s
+6728/7035  873s
+[mert_L16] embeddings (7035, 2048) (913s)
+
+[mert_L16] pooling = mean  dim=1024
+  24-way key 0.440 (chance .042) | 12-way tonic 0.518 (chance .083)
+  kk_key_distance    rho=+0.492  z= +9.4  p=0.000  rho|spec=+0.474
+  fifths             rho=+0.395  z= +7.6  p=0.000  rho|spec=+0.377
+  chromatic          rho=+0.047  z= +0.9  p=0.359  rho|spec=+0.030
+  mode_mismatch      rho=+0.262  z= +5.1  p=0.001  rho|spec=+0.264
+
+[mert_L16] pooling = mean+std  dim=2048
+  24-way key 0.455 (chance .042) | 12-way tonic 0.543 (chance .083)
+  kk_key_distance    rho=+0.465  z= +8.9  p=0.000  rho|spec=+0.445
+  fifths             rho=+0.369  z= +7.1  p=0.000  rho|spec=+0.349
+  chromatic          rho=+0.039  z= +0.7  p=0.432  rho|spec=+0.023
+  mode_mismatch      rho=+0.313  z= +6.1  p=0.001  rho|spec=+0.317
+wrote runs/clipkey_mert_L16.json in 1311s
+done=2026-08-29T12:45:09+09:00

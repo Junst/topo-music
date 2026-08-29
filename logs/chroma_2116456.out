@@ -1,2 +1,32 @@
 [chroma] 7035 clips
 8/7035  5s
+488/7035  76s
+968/7035  146s
+1448/7035  216s
+1928/7035  287s
+2408/7035  357s
+2888/7035  428s
+3368/7035  498s
+3848/7035  567s
+4328/7035  642s
+4808/7035  714s
+5288/7035  783s
+5768/7035  853s
+6248/7035  922s
+6728/7035  992s
+[chroma] embeddings (7035, 24) (1037s)
+
+[chroma] pooling = mean  dim=12
+  24-way key 0.451 (chance .042) | 12-way tonic 0.549 (chance .083)
+  kk_key_distance    rho=+0.640  z=+11.2  p=0.000  rho|spec=+0.614
+  fifths             rho=+0.475  z= +8.4  p=0.000  rho|spec=+0.445
+  chromatic          rho=+0.140  z= +2.4  p=0.016  rho|spec=+0.140
+  mode_mismatch      rho=-0.054  z= -1.0  p=0.341  rho|spec=-0.063
+
+[chroma] pooling = mean+std  dim=24
+  24-way key 0.452 (chance .042) | 12-way tonic 0.556 (chance .083)
+  kk_key_distance    rho=+0.700  z=+12.0  p=0.000  rho|spec=+0.680
+  fifths             rho=+0.522  z= +9.0  p=0.000  rho|spec=+0.495
+  chromatic          rho=+0.118  z= +2.0  p=0.045  rho|spec=+0.117
+  mode_mismatch      rho=-0.059  z= -1.1  p=0.293  rho|spec=-0.070
+wrote runs/clipkey_chroma.json in 1073s

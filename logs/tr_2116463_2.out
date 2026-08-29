@@ -1,0 +1,28 @@
+arm=mert_L0 host=node23 start=2026-08-29T12:42:17+09:00
+[mert_L0] 150 instruments, 8631 notes, kmax=25
+WARNING: feature_extractor_cqt requires the libray 'nnAudio'
+16/8631  6s
+656/8631  13s
+1296/8631  19s
+1936/8631  29s
+2576/8631  52s
+3216/8631  76s
+3856/8631  99s
+4496/8631  122s
+5136/8631  145s
+5776/8631  171s
+6416/8631  194s
+7056/8631  216s
+7696/8631  240s
+8336/8631  262s
+[mert_L0]  PRIMARY (model-free)
+    delta12        +0.0177  CI[0.0126, 0.0231]
+    delta24        +0.0106  CI[0.0061, 0.0152]
+    delta_strict   -0.0350  CI[-0.0454, -0.0242]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.01293  CI[-0.01402, -0.01184]
+    b2_chroma                  +0.00245  CI[-0.0001, 0.00515]
+    b2_chroma_quadratic_trend  +0.00174  CI[-0.00094, 0.00436]
+  S(11)=0.7680 S(12)=0.7753 S(13)=0.7470 | S(23)=0.6154 S(24)=0.6156 S(25)=0.5946
+wrote runs/transpose_mert_L0.json in 273s
+done=2026-08-29T12:47:26+09:00

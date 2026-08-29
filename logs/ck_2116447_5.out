@@ -3,3 +3,32 @@ arm=encodec_32k host=node22 start=2026-08-29T12:22:50+09:00
 8/7035  3s
 488/7035  40s
 968/7035  79s
+1448/7035  126s
+1928/7035  175s
+2408/7035  223s
+2888/7035  274s
+3368/7035  321s
+3848/7035  362s
+4328/7035  400s
+4808/7035  434s
+5288/7035  464s
+5768/7035  494s
+6248/7035  524s
+6728/7035  554s
+[encodec_32k] embeddings (7035, 256) (573s)
+
+[encodec_32k] pooling = mean  dim=128
+  24-way key 0.404 (chance .042) | 12-way tonic 0.513 (chance .083)
+  kk_key_distance    rho=+0.176  z= +3.6  p=0.002  rho|spec=+0.184
+  fifths             rho=+0.177  z= +3.8  p=0.002  rho|spec=+0.218
+  chromatic          rho=+0.041  z= +0.7  p=0.384  rho|spec=-0.018
+  mode_mismatch      rho=+0.098  z= +2.0  p=0.043  rho|spec=+0.105
+
+[encodec_32k] pooling = mean+std  dim=256
+  24-way key 0.369 (chance .042) | 12-way tonic 0.484 (chance .083)
+  kk_key_distance    rho=+0.104  z= +2.3  p=0.025  rho|spec=+0.047
+  fifths             rho=+0.127  z= +2.7  p=0.011  rho|spec=+0.097
+  chromatic          rho=+0.055  z= +1.1  p=0.214  rho|spec=+0.021
+  mode_mismatch      rho=+0.269  z= +5.6  p=0.002  rho|spec=+0.331
+wrote runs/clipkey_encodec_32k.json in 1452s
+done=2026-08-29T12:47:28+09:00
