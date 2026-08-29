@@ -9,3 +9,21 @@ WARNING: feature_extractor_cqt requires the libray 'nnAudio'
 2888/7035  420s
 3368/7035  489s
 3848/7035  558s
+4328/7035  627s
+4808/7035  696s
+5288/7035  765s
+5768/7035  835s
+6248/7035  904s
+6728/7035  975s
+   0.02s n=1     fifths=+0.276+-0.020  kk=+0.401  chrom=-0.002  (1027s)
+   0.05s n=4     fifths=+0.341+-0.022  kk=+0.470  chrom=-0.012  (1035s)
+    0.1s n=7     fifths=+0.330+-0.024  kk=+0.471  chrom=-0.008  (1043s)
+   0.25s n=19    fifths=+0.386+-0.018  kk=+0.540  chrom=-0.012  (1050s)
+    0.5s n=37    fifths=+0.411+-0.024  kk=+0.558  chrom=-0.021  (1058s)
+    1.0s n=75    fifths=+0.402+-0.006  kk=+0.560  chrom=-0.016  (1066s)
+    2.0s n=150   fifths=+0.419+-0.017  kk=+0.576  chrom=-0.017  (1073s)
+    4.0s n=300   fifths=+0.430+-0.013  kk=+0.587  chrom=-0.016  (1081s)
+    8.0s n=600   fifths=+0.441+-0.006  kk=+0.601  chrom=-0.022  (1088s)
+   16.0s n=1199  fifths=+0.444+-0.004  kk=+0.606  chrom=-0.025  (1096s)
+    0.0s n=0     fifths=+0.445+-0.000  kk=+0.607  chrom=-0.025  (1104s)
+wrote runs/accum_mert_L4.json
