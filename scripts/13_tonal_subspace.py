@@ -210,6 +210,7 @@ def main():
 
     # ---- estimators ------------------------------------------------------
     tr = gsplit < 2
+    amb_cache = {}
     fits = {
         # octave-invariant by objective: octaves of one pitch class are pooled
         "pc_lda":    (Zn[fit_n], (pitch[fit_n] % 12)),
@@ -229,6 +230,17 @@ def main():
             r["nsynth_curve"], _ = curve_stats(
                 Zn @ W, anchors, kmax, eval_inst, np.random.default_rng(a.seed))
             gsel = np.ones(len(Yg), bool) if nm != "key_lda" else (gsplit == 2)
+            # The ambient value must be recomputed on the *same* clips. Key
+            # centroids get much noisier on a third of the corpus -- ambient
+            # rho_fifths is +0.468 over all 7035 clips but +0.127 on the 2406
+            # test clips alone -- so comparing a held-out projection against
+            # the all-splits ambient would manufacture an effect out of the
+            # sample size.
+            key = bool(gsel.all())
+            if key not in amb_cache:
+                amb_cache[key] = key_geometry(Zg[gsel], Yg[gsel],
+                                              np.random.default_rng(a.seed))
+            r["gs_geometry_ambient_matched"] = amb_cache[key]
             r["gs_geometry"] = key_geometry(Zg[gsel] @ W, Yg[gsel],
                                             np.random.default_rng(a.seed))
             # (iii) remove the subspace and ask whether the geometry goes with it
@@ -241,6 +253,7 @@ def main():
                   f"dstr={r['nsynth_curve']['d_strict']['v']:+.3f} "
                   f"rho5={r['gs_geometry']['fifths']['rho']:+.3f} "
                   f"rho5_comp={r['gs_geometry_complement']['fifths']['rho']:+.3f}"
+                  f" (amb {r['gs_geometry_ambient_matched']['fifths']['rho']:+.3f})"
                   f"  ({time.time()-t0:.0f}s)", flush=True)
 
     # ---- random-subspace control ----------------------------------------

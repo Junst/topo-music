@@ -62,7 +62,15 @@ instrument-level bootstrap CIs (2000 resamples) and 2000-permutation nulls.
   dataset, does not transfer", not as support for the hypothesis.
 - **S4 mechanism.** Removing the subspace, `z - W W^T z`, drops the clip-level
   rho_fifths to **at most half** its ambient value on the held-out GiantSteps
-  split.
+  split. The ambient value is computed on **the same clips**, not on the full
+  corpus: key centroids are far noisier on a third of the data (rho_fifths is
+  +0.468 over all 7035 clips but +0.127 over the 2406 test clips alone), so an
+  unmatched comparison would report sample size as a mechanism. A first pass
+  with a 2-D key-LDA subspace already shows why this matters: the complement
+  sits at +0.120 against a split-matched ambient of +0.127, i.e. no drop at
+  all, while projecting *onto* the subspace gives +0.573. If that holds, S4
+  fails while S2 succeeds, and the correct conclusion is that tonal information
+  is redundant across many directions rather than confined to a few.
 
 ## 4. Controls that can void the predictions
 
