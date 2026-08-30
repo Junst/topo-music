@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=topo-tr2
+#SBATCH --job-name=topo-acc3
 # a100 has three nodes and queues; these fit in 24 GB and the RTX/A6000
 # partitions have an order of magnitude more of them
 #SBATCH --partition=base_suma_rtx3090,suma_rtx4090,suma_a6000,gigabyte_a6000
@@ -8,17 +8,17 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=180G
 #SBATCH --time=06:00:00
-#SBATCH --array=0-0
-#SBATCH --output=logs/tr2_%A_%a.out
-#SBATCH --error=logs/tr2_%A_%a.err
+#SBATCH --array=0-3
+#SBATCH --output=logs/acc3_%A_%a.out
+#SBATCH --error=logs/acc3_%A_%a.err
 set -euo pipefail
 cd /scratch2/solbon1212/topo-music
 export HF_HOME=/scratch2/solbon1212/hf_cache
-# NSynth is missing for the two encoders added last, which leaves them in
-# Table 1 but out of the octave analysis
-ARMS=(matpac_L6)
+# the window sweep for the arms Fig 1 does not yet cover
+ARMS=(matpac_L6 pupujepa pq_stft hcqt)
 A=${ARMS[$SLURM_ARRAY_TASK_ID]}
 echo "arm=$A host=$(hostname) start=$(date -Is)"
-.venv/bin/python scripts/10_transposition_curve.py --arm "$A" --split nsynth-train \
-  --max-instruments 150 --anchors-per-group 6 --n-boot 5000 --device cuda --save-emb
+DEV=cuda; [[ "$A" == pq_stft || "$A" == hcqt ]] && DEV=cpu
+.venv/bin/python scripts/14_temporal_accumulation.py --arm "$A" --seconds 20 \
+  --batch 4 --repeats 5 --n-perm 1000 --device $DEV
 echo "done=$(date -Is)"

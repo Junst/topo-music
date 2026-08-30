@@ -1,0 +1,27 @@
+[matpac_L6] 150 instruments, 8631 notes, kmax=25
+16/8631  2s
+656/8631  27s
+1296/8631  51s
+1936/8631  73s
+2576/8631  94s
+3216/8631  115s
+3856/8631  136s
+4496/8631  157s
+5136/8631  177s
+5776/8631  196s
+6416/8631  216s
+7056/8631  237s
+7696/8631  257s
+8336/8631  275s
+cached runs/nsynth_emb_matpac_L6.npz
+[matpac_L6]  PRIMARY (model-free)
+    delta12        +0.0261  CI[0.0221, 0.0303]
+    delta24        +0.0138  CI[0.0109, 0.0168]
+    delta_strict   +0.0097  CI[0.0046, 0.015]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.00545  CI[-0.00586, -0.00503]
+    b2_chroma                  +0.00626  CI[0.00531, 0.00726]
+    b2_chroma_quadratic_trend  +0.00496  CI[0.00392, 0.00605]
+  S(11)=0.8480 S(12)=0.8694 S(13)=0.8387 | S(23)=0.7875 S(24)=0.7978 S(25)=0.7806
+wrote runs/transpose_matpac_L6.json in 289s
+done=2026-08-31T03:37:59+09:00

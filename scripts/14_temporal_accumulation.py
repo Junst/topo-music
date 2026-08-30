@@ -33,6 +33,7 @@ m9 = SourceFileLoader("s09", str(Path(__file__).with_name(
     "09_clip_key_geometry.py"))).load_module()
 
 GS, MERT_SR, CQT_SR, MUQ_SR = m9.GS, m9.MERT_SR, m9.CQT_SR, m9.MUQ_SR
+PQ_SR, HCQT_SR, MATPAC_SR, PUPU_SR = m9.PQ_SR, m9.HCQT_SR, m9.MATPAC_SR, m9.PUPU_SR
 # Window lengths in *seconds*, not frames: chroma/CQT run at 31.25 fps and MERT
 # at 75, so a frame-indexed sweep would compare 32 ms against 13 ms and put the
 # arms on different x axes. 0 = the whole clip.
@@ -90,6 +91,8 @@ def main():
     # codec and MuQ branches mirror script 09
     is_codec = a.arm.startswith(("encodec", "dac"))
     is_muq = a.arm.startswith("muq_L")
+    is_matpac = a.arm.startswith("matpac_L")
+    is_pupu = a.arm == "pupujepa"
     model = taps = codec = CB = None
     layer = None
     if is_codec:
@@ -97,6 +100,22 @@ def main():
         codec = load(a.arm, device=a.device)
         native_sr = codec.sr
         CB = torch.from_numpy(codec.codebooks)
+    elif is_matpac:
+        from matpac.model import get_matpac
+        layer = int(a.arm.split("_L")[1])
+        model = get_matpac(checkpoint_path=m9.MATPAC_CKPT,
+                           pull_time_dimension=False).to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MATPAC_SR
+    elif is_pupu:
+        from topo import pupujepa_feats as pj
+        model, pj_cfg = pj.load(device=a.device)
+        native_sr = PUPU_SR
+    elif a.arm == "pq_stft":
+        native_sr = PQ_SR
+    elif a.arm == "hcqt":
+        native_sr = HCQT_SR
     elif is_muq:
         from muq import MuQ
         layer = int(a.arm.split("_L")[1])
@@ -142,6 +161,40 @@ def main():
             return [librosa.amplitude_to_db(np.abs(librosa.cqt(
                 w, sr=native_sr, hop_length=512, fmin=librosa.note_to_hz("C1"),
                 n_bins=84, bins_per_octave=12)), ref=np.max).T for w in ws]
+        if a.arm == "hcqt":
+            fmin = librosa.note_to_hz("C1")
+            return [np.concatenate(
+                [librosa.amplitude_to_db(np.abs(librosa.cqt(
+                    w, sr=native_sr, hop_length=512, fmin=h * fmin,
+                    n_bins=m9.HCQT_NB, bins_per_octave=m9.HCQT_BPO)),
+                    ref=np.max) for h in m9.HCQT_H], 0).T for w in ws]
+        if a.arm == "pq_stft":
+            f_k = m9.PQ_FLOW * (2.0 ** (np.arange(m9.PQ_K) * m9.PQ_CENTS / 1200.0))
+            out = []
+            for w in ws:
+                yt = torch.from_numpy(np.ascontiguousarray(w))
+                ch = []
+                for n_fft in m9.PQ_NFFTS:
+                    spec = torch.stft(yt, n_fft=n_fft, hop_length=m9.PQ_HOP,
+                                      win_length=n_fft,
+                                      window=torch.hann_window(n_fft),
+                                      center=True, return_complex=True,
+                                      pad_mode="reflect")
+                    mag = spec.abs()
+                    idx = torch.from_numpy(
+                        np.floor(f_k / (native_sr / n_fft) + 0.5).astype(np.int64)
+                    ).clamp(0, mag.shape[0] - 1)
+                    c = torch.log1p(mag[idx, :])
+                    c = (c - c.mean()) / (c.std() + 1e-6)
+                    ch.append(c.numpy().astype(np.float32))
+                out.append(np.concatenate(ch, 0).T)
+            return out
+        if is_matpac:
+            with torch.no_grad():
+                _, lay = model(torch.from_numpy(np.stack(ws)).to(a.device))
+            return list(lay[:, layer - 1].float().cpu().numpy())
+        if is_pupu:
+            return pj.tokens(model, pj_cfg, np.stack(ws), device=a.device)
         if is_codec:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))

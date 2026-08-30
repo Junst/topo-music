@@ -1,0 +1,9 @@
+/scratch2/solbon1212/topo-music/scripts/25_geodesic_octave.py:47: UserWarning: A NumPy version >=1.26.4 and <2.7.0 is required for this version of SciPy (detected version 1.26.3)
+  from scipy.sparse import csr_matrix
+[matpac_L6] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=+0.0097 [+0.0048,+0.0150] d12=+0.0261
+  geodesic k=5   d_strict=+0.0575 [+0.0378,+0.0727] d12=+0.0665 b2=+0.0326 | 4 components, 69/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.0512 [+0.0397,+0.0627] d12=+0.0564 b2=+0.0268 | 1 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.0462 [+0.0342,+0.0553] d12=+0.0505 b2=+0.0224 | 1 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.0378 [+0.0263,+0.0468] d12=+0.0448 b2=+0.0172 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_matpac_L6.json

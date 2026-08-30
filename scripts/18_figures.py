@@ -21,16 +21,22 @@ import numpy as np
 
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 PURPLE, BROWN = "#8b5fd6", "#9c6b1f"
+CRIMSON, PINK, TEAL, OLIVE = "#c0392b", "#d64a9c", "#0e7c7b", "#8a8f1d"
 INK, INK2, GRID = "#1a1a19", "#55554e", "#dededa"
-# MuQ L6 sits at the same fraction of depth as MERT L12. Five series is the
-# most these panels take; hue, dash pattern and marker all differ so the figure
-# survives grayscale and CVD.
+# Line style groups the families and hue separates within them: solid for the
+# four self-supervised encoders, dashed for the chroma control, dotted for the
+# three log-frequency front ends, dash-dot for the codec. MuQ L6 and MATPAC L6
+# sit at the same fraction of depth as MERT L12.
 SERIES = {                       # arm -> (label, colour, linestyle, marker)
-    "mert_L12":    ("MERT L12", BLUE, "-", "o"),
-    "muq_L6":      ("MuQ L6",   PURPLE, "-", "D"),
-    "chroma":      ("chroma",   ORANGE, "--", "s"),
-    "cqt":         ("log-CQT",  AQUA, ":", "^"),
-    "encodec_32k": ("EnCodec",  BROWN, "-.", "v"),
+    "mert_L12":    ("MERT L12",  BLUE,    "-",  "o"),
+    "muq_L6":      ("MuQ L6",    PURPLE,  "-",  "D"),
+    "matpac_L6":   ("MATPAC L6", CRIMSON, "-",  "P"),
+    "pupujepa":    ("PupuJEPA",  PINK,    "-",  "X"),
+    "chroma":      ("chroma",    ORANGE,  "--", "s"),
+    "cqt":         ("log-CQT",   AQUA,    ":",  "^"),
+    "hcqt":        ("HCQT",      TEAL,    ":",  "v"),
+    "pq_stft":     ("PQ-STFT",   OLIVE,   ":",  "*"),
+    "encodec_32k": ("EnCodec",   BROWN,   "-.", "<"),
 }
 FIGDIR = Path("runs/figs"); FIGDIR.mkdir(parents=True, exist_ok=True)
 plt.rcParams.update({
@@ -52,7 +58,7 @@ def style(ax):
 # ---------------------------------------------------------------- figure 1
 # two panels only: the centroid distance matrices that used to sit in (c) show
 # the same rise as (b) and the section reads without them
-fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.6, 2.05), sharey=True,
+fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.7, 1.88), sharey=True,
                                gridspec_kw={"wspace": 0.10})
 for arm, (lab, col, ls, mk) in SERIES.items():
     d = json.load(open(f"runs/accum_{arm}.json"))
@@ -83,7 +89,8 @@ axa.set_xticklabels(["0.02", "0.1", "0.5", "2", "8", "20"])
 axb.set_xticks([1, 4, 16, 64, 293]); axb.set_xticklabels(["1", "4", "16", "64", "293"])
 handles, labels = axa.get_legend_handles_labels()
 fig.legend(handles, labels, frameon=False, ncol=5, loc="lower center",
-           bbox_to_anchor=(0.5, -0.155), handlelength=2.4)
+           bbox_to_anchor=(0.5, -0.33), handlelength=2.0, fontsize=6.8,
+           columnspacing=1.3)
 # the 1.7x and 13.4x labels are in the text; with five series the panels are
 # busy enough without them
 axb.set_xlim(right=380)
@@ -122,8 +129,11 @@ axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
 # paths on a kNN graph over the same embeddings, and the rank-4 projection
 # fitted on GiantSteps tonics. The matched random subspace is a tick rather
 # than a fourth bar, since it only matters where it sits relative to ambient.
+# the four patterns the section describes, one group each where possible:
+# MERT L4/L12 native-null but geodesic-positive, MERT L24 null under both,
+# MuQ a rising ladder, PupuJEPA null under all three
 BARS = [("mert_L4", "MERT L4"), ("mert_L12", "L12"), ("mert_L24", "L24"),
-        ("muq_L2", "MuQ L2"), ("muq_L6", "L6"), ("muq_L12", "L12")]
+        ("muq_L2", "MuQ L2"), ("muq_L12", "L12"), ("pupujepa", "PupuJEPA")]
 amb, geo, prj, perr, rnd = [], [], [], [[], []], []
 for a, _ in BARS:
     d = json.load(open(f"runs/subspace_{a}.json"))

@@ -59,8 +59,8 @@ under a different metric. Together, these results show that the absence of struc
 \includegraphics[width=0.92\textwidth]{figs/fig1_averaging.pdf}
 \caption{Clip-level fifths geometry is affected much more by the number of
 clips per centroid than by temporal context. (a) Pooling-window sweep with the
-number of clips fixed. (b) Clips-per-centroid sweep with full-clip pooling.
-Error bars show one standard deviation over 5 and 10 draws, respectively.}
+number of clips fixed. (b) Clips-per-centroid sweep at full-clip pooling.
+Error bars are one standard deviation over 5 and 10 draws.}
 \label{fig:averaging}
 \end{figure*}
 
@@ -193,15 +193,14 @@ across representations, including among handcrafted front ends.
 \label{sec:sample}
 
 Fig.~\ref{fig:averaging}(a) varies pooling duration while holding the number of
-clips per centroid fixed. A single 13\,ms MERT frame already yields 59\% of the
-20\,s value, MuQ starts at 66\% of its own, and the chromagram is flat to within
-3\%, with no knee anywhere in the sweep. EnCodec is the exception, rising sixfold.
+clips per centroid fixed. A single 13\,ms MERT frame already yields 59\% of the 20\,s value, MuQ starts
+at 66\% of its own, and the chromagram is flat to within 3\%, with no knee in
+the sweep. EnCodec is the exception, rising sixfold.
 
-By contrast, Fig.~\ref{fig:averaging}(b) varies clips per centroid at full-clip
-pooling. MERT L12 rises from 0.035 with one clip to 0.468 with all clips, a
-13.4-fold change against 1.7-fold across the thousandfold window sweep, and in
-the single-example regime fifths geometry is indistinguishable from zero for
-every arm.
+By contrast, Fig.~\ref{fig:averaging}(b) varies clips per centroid at full-
+clip pooling. MERT L12 rises from 0.035 to 0.468, a 13.4-fold change against
+1.7-fold across the thousandfold window sweep, and in the single-example
+regime fifths geometry is indistinguishable from zero for every arm.
 
 This pattern is consistent with a dominant contribution from $\varepsilon$ in
 Eq.~\eqref{eq:decomp}, as within-key variation across tracks is progressively
@@ -255,8 +254,8 @@ exclusively containing it.
 
 No single measurement characterizes musical structure in a representation.
 Probe performance tests linear accessibility, the native metric global
-visibility, geodesic distance local manifold organization, and supervised
-projection target-informed linear recoverability. When centroid geometry is weak, varying the number of examples distinguishes
+visibility, geodesic distance local manifold organization, and projection
+target-informed linear recoverability. When centroid geometry is weak, varying the number of examples distinguishes
 sample-limited estimation from stable metric effects, so the number of items behind each centroid should be reported as standard, since
 the same encoder scores 0.035 or 0.468 depending only on that. These measurements do not form a universal hierarchy, as which metric is most
 informative depends on how the relation is represented.
@@ -271,11 +270,9 @@ design.
 Musical structure does not occupy a fixed geometric form across
 representations. Decodability, ambient geometry, and readout geometry can
 dissociate substantially: log-CQT and PupuJEPA show weak centroid structure
-with strong readouts, and MATPAC, HCQT, PQ-STFT and early MuQ the reverse.
-Averaging identifies geometry limited by centroid estimation; across the three
-metrics a relation absent from global distances may still be organized on the
-manifold, become far stronger under reweighting, or go undetected by all
-three.
+with strong readouts, and MATPAC, HCQT, PQ-STFT and MuQ the reverse. A
+relation absent from global distances may be organized on the manifold, far
+stronger under reweighting, or undetected by all three.
 
 \bibliographystyle{IEEEbib}
 \bibliography{refs}

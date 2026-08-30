@@ -1,0 +1,5 @@
+/scratch2/solbon1212/topo-music/scripts/13_tonal_subspace.py:41: UserWarning: A NumPy version >=1.26.4 and <2.7.0 is required for this version of SciPy (detected version 1.26.3)
+  from scipy.spatial.distance import pdist, squareform
+[matpac_L6] D=3840 notes=8631 clips=7035 fit-inst=75 eval-inst=75
+  ambient done 15s
+  pc_lda     d=1   var= 0.04%gs d12=+0.013 dstr=+0.027 rho5=-0.063 rho5_comp=+0.662 (amb +0.663)  (48s)
