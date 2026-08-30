@@ -32,7 +32,7 @@ from importlib.machinery import SourceFileLoader
 m9 = SourceFileLoader("s09", str(Path(__file__).with_name(
     "09_clip_key_geometry.py"))).load_module()
 
-GS, MERT_SR, CQT_SR = m9.GS, m9.MERT_SR, m9.CQT_SR
+GS, MERT_SR, CQT_SR, MUQ_SR = m9.GS, m9.MERT_SR, m9.CQT_SR, m9.MUQ_SR
 # Window lengths in *seconds*, not frames: chroma/CQT run at 31.25 fps and MERT
 # at 75, so a frame-indexed sweep would compare 32 ms against 13 ms and put the
 # arms on different x axes. 0 = the whole clip.
@@ -86,9 +86,25 @@ def main():
         rows = rows[:a.max_clips]
     print(f"[{a.arm}] {len(rows)} clips", flush=True)
 
-    model = taps = None
+    # this script only handled the mert_L arms and the two spectral ones; the
+    # codec and MuQ branches mirror script 09
+    is_codec = a.arm.startswith(("encodec", "dac"))
+    is_muq = a.arm.startswith("muq_L")
+    model = taps = codec = CB = None
     layer = None
-    if a.arm.startswith("mert_L"):
+    if is_codec:
+        from topo.codecs import load
+        codec = load(a.arm, device=a.device)
+        native_sr = codec.sr
+        CB = torch.from_numpy(codec.codebooks)
+    elif is_muq:
+        from muq import MuQ
+        layer = int(a.arm.split("_L")[1])
+        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MUQ_SR
+    elif a.arm.startswith("mert_L"):
         from transformers import AutoModel
         layer = int(a.arm.split("_L")[1])
         model = AutoModel.from_pretrained("m-a-p/MERT-v1-330M",
@@ -126,10 +142,19 @@ def main():
             return [librosa.amplitude_to_db(np.abs(librosa.cqt(
                 w, sr=native_sr, hop_length=512, fmin=librosa.note_to_hz("C1"),
                 n_bins=84, bins_per_octave=12)), ref=np.max).T for w in ws]
-        taps.clear()
+        if is_codec:
+            codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))
+            lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))
+            return list(lat.numpy())
+        x = torch.from_numpy(np.stack(ws)).to(a.device)
         with torch.no_grad():
-            model(torch.from_numpy(np.stack(ws)).to(a.device))
-        return list(taps[layer].float().cpu().numpy())
+            if is_muq:
+                h = model(x, output_hidden_states=True).hidden_states[layer]
+            else:
+                taps.clear()
+                model(x)
+                h = taps[layer]
+        return list(h.float().cpu().numpy())
 
     rng = np.random.default_rng(a.seed)
     t0 = time.time()

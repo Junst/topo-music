@@ -2,7 +2,7 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textit{acc} is 24-way key accuracy, chance $.042$; $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho^{W}_{5}$ the same among the probe's class weight vectors; $\rho_{\text{chr}}$ is semitone adjacency, a discriminant a generic tendency for nearby keys to look alike would also raise. Partialling out mel-spectral centroid distance changes no sign. Orthogonal key codes decode at $.651$ with classes equidistant by construction and still show nothing, so $\rho^{W}_{5}$ is not an artefact of an accurate classifier. The four values in bold are the mirror-image pair of Sec.~\ref{sec:three}.}
+\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textit{acc} is 24-way key accuracy, chance $.042$; $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho^{W}_{5}$ the same among the probe's class weight vectors; $\rho_{\text{chr}}$ is semitone adjacency, a discriminant a generic tendency for nearby keys to look alike would also raise. Partialling out mel-spectral centroid distance changes no sign. Orthogonal key codes decode at $.651$ with classes equidistant by construction and still show nothing, so $\rho^{W}_{5}$ is not an artefact of an accurate classifier. Bold marks the two one-sided profiles of Sec.~\ref{sec:three}: readout geometry without ambient geometry in the log-CQT, and the reverse in PQ-STFT and MuQ layer 2.}
 \label{tab:decodable-vs-geometric}
 \begin{tabular}{l r r r r}
 \toprule
@@ -12,10 +12,11 @@ representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & $\rho_{\text{
 \quad analytic fifths & $0.274$ & $+0.977$ & $+0.986$ & $-0.085$ \\
 \quad random features & $0.055$ & $+0.009$ & $+0.033$ & $-0.001$ \\
 \quad orthogonal key codes & $0.651$ & $-0.008$ & $-0.005$ & $-0.001$ \\
-\multicolumn{5}{l}{\textit{Spectral front end (fold $\times$ norm)}} \\
+\multicolumn{5}{l}{\textit{Spectral front ends}} \\
 \quad log-CQT & $0.492$ & $\mathbf{-0.035}$ & $\mathbf{+0.560}$ & $+0.174$ \\
 \quad log-CQT, 84 bin, per-frame norm & $0.486$ & $-0.117$ & $+0.671$ & $+0.491$ \\
 \quad octave-summed, 12 bin, dB & $0.407$ & $-0.106$ & $+0.305$ & $+0.391$ \\
+\quad PQ-STFT & $0.479$ & $\mathbf{+0.550}$ & $\mathbf{+0.172}$ & $+0.112$ \\
 \quad chromagram & $0.451$ & $+0.475$ & $+0.692$ & $+0.140$ \\
 \multicolumn{5}{l}{\textit{Neural codec}} \\
 \quad EnCodec 32\,kHz & $0.404$ & $+0.177$ & $+0.648$ & $+0.041$ \\

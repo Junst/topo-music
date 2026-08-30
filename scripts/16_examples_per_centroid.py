@@ -25,7 +25,8 @@ import numpy as np
 from importlib.machinery import SourceFileLoader
 
 s13 = SourceFileLoader("s13", "scripts/13_tonal_subspace.py").load_module()
-ARMS = ["chroma", "cqt", "mert_L4", "mert_L12", "mert_L16", "mert_L24"]
+ARMS = ["chroma", "cqt", "mert_L4", "mert_L12", "mert_L16", "mert_L24",
+        "encodec_32k", "muq_L2", "muq_L6", "muq_L8", "muq_L12"]
 NPK = [1, 2, 4, 8, 16, 32, 64, 128, 0]          # 0 = every clip of that key
 R = 10
 

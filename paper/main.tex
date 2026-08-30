@@ -23,7 +23,9 @@
 \maketitle
 
 \begin{abstract}
-Learned representations are often evaluated by how well their attributes can be decoded. However, linear decodability does not imply that a representation's ambient geometry reflects the relationships among those attributes. Music makes this distinction directly testable because relationships between musical classes, such as keys and pitches, are explicitly defined. We examine this gap through linear decoding, class-centroid geometry, and linear-readout geometry. A log-CQT decodes key better than MERT-v1-330M (.492 vs.\ .456), yet shows no circle-of-fifths structure in its class centroids while the same structure is strongly expressed in its readout weights. We further find two distinct sources of this mismatch. First, increasing the number of examples per centroid changes fifths geometry by a factor of 13.4, compared with only 1.7 for a thousandfold increase in pooling duration. Second, averaging fails to recover octave equivalence, whereas a rank-4 projection fitted only on GiantSteps keys exposes octave structure in individual NSynth recordings using less than 0.3\% of the variance. These results show that decodability, ambient geometry, and readout geometry provide distinct views of musical information in audio representations.
+Learned representations are often evaluated by how well their attributes can be decoded. However, linear decodability does not imply that a representation's ambient geometry reflects the relationships among those attributes. Music makes this distinction directly testable because relationships between musical classes, such as keys and pitches, are explicitly defined. We examine this gap through linear decoding, class-centroid geometry, and linear-readout geometry. A log-CQT decodes key better than MERT-v1-330M (.492 vs.\ .456), yet shows no circle-of-fifths structure in its class centroids while the same structure is strongly expressed in its readout weights. We further find two distinct sources of this mismatch. First, increasing the number of examples per centroid changes fifths geometry by a factor of 13.4, compared with only 1.7 for a thousandfold increase in pooling duration. Second, averaging fails to recover octave equivalence, whereas a rank-4 projection fitted only on GiantSteps keys exposes octave structure in individual NSynth recordings using less than 0.3\% of the variance. These results show that decodability, ambient geometry, and readout geometry
+are distinct properties of a representation, and that musical relations can
+differ substantially in where and how strongly they appear.
 \end{abstract}
 
 \begin{keywords}
@@ -146,7 +148,13 @@ MuQ supplies the mirror image. Its layer 2 decodes key at .484,
 within a point of the log-CQT, carries the strongest centroid fifths geometry
 of any learned arm at 0.533, and yet shows none in its readout weights, at
 0.103 with $p$ of .078. Both one-sided cases therefore occur at matched accuracy, and across MuQ's
-depth the two exchange.
+depth the two exchange. PQ-STFT places the same profile on the other side of the learned and
+handcrafted divide, with the strongest centroid fifths geometry of any arm at
+0.550 and weaker readout geometry at 0.172, though its chromatic correlation
+is also positive, at 0.112 with $p$ of .048, so that centroid effect is not
+exclusively fifths-specific. Where relational structure appears is therefore a
+property of the representation and its metric rather than of whether it was
+learned.
 
 
 \subsection{Sample-limited masking}
@@ -175,45 +183,49 @@ instrumentation and subgenre, is largely unrelated to the key and cancels in
 the mean. Centroid sample size is therefore the dominant source of the apparent clip-
 level effect, and a longer window accounts for a small fraction of it.
 
-\subsection{Metric masking}
+\subsection{Projection exposes octave-equivalent structure}
 \label{sec:metric}
 
-If low between-item signal-to-noise were the whole story, the same averaging
-should expose octave equivalence on NSynth, and we pre-registered that
-prediction in advance of the run that refutes it.
-Across a sweep over notes per pitch centroid, every arm saturates by four
-notes at approximately zero, MERT L24 remains negative, and the chromagram
-needs no averaging at all, reaching 0.566 from single notes. Register and spectral envelope are functions of pitch, so averaging over
-instruments cancels the instrument but never the octave, which is the
-behaviour Eq.~\eqref{eq:decomp} attributes to $n_y$.
+Ambient octave equivalence varies across encoders. Under the sign-consistency
+criterion registered in advance, MuQ satisfies it at every tested layer,
+although weakly, its strict contrast falling from 0.037 at layer 2 to 0.022 at
+layer 12 against 0.698 for the chromagram. MERT and the codecs do not satisfy
+it at any depth. Averaging NSynth recordings into pitch centroids recovers no reliable effect
+in MERT at any sample size, so its near-zero ambient geometry is not explained
+by sample-limited centroid estimation, which is the behaviour
+Eq.~\eqref{eq:decomp} attributes to $n_y$.
 
-A projection can nonetheless expose the target relation despite $n_y$, and the
-evidence here is cross-dataset and cross-task. We fit LDA directions on GiantSteps track tonics only, with no notes and no
-octave information, and apply them unchanged to individual NSynth recordings
-with no averaging. At rank 4 the strict octave
-contrast moves from $-0.005$ to 0.223 for MERT L12, from $-0.001$ to 0.304 for
-layer 4, and from 0.004 to 0.466 for the log-CQT, with the other two statistics
-agreeing in sign and bootstrap intervals excluding zero.
+A rank-4 LDA projection fitted only to GiantSteps tonic labels, with no notes
+and no octave information, substantially increases octave equivalence on
+individual NSynth recordings. The strict contrast rises from $-0.001$ to 0.304 for MERT layer 4 and from
+0.035 to 0.346 for MuQ layer 2, with similar effects at later layers, and it
+is largest at the shallowest layer tested in both encoders.
 Fig.~\ref{fig:mechanisms}(a) shows the curve those contrasts are drawn from,
-where the projected similarities reach maxima at exactly twelve and twenty-
-four semitones against an ambient baseline that decays smoothly. Matched random subspaces
-stay between $-0.019$ and 0.007, and the subspace uses between 0.11 and 0.24\%
-of MERT's variance and 1.85\% of the log-CQT's. Where that absence has been read as a property of the pretraining objective
-\cite{pilataki2025}, the transfer here exposes the relation in a fixed
+where the projected similarities reach maxima at exactly twelve and twenty-four
+semitones. For MuQ the matched random rank-4 subspace retains approximately the
+ambient effect, at 0.039 for layer 2, and stays far below the learned
+projection, while for MERT it lies between $-0.019$ and 0.007. The recovered
+subspaces account for 0.08 to 0.29\% of NSynth variance in MuQ and 0.11 to
+0.13\% in MERT.
+
+Key supervision does not guarantee pitch-height invariance, since GiantSteps
+key labels may correlate with subgenre, tempo or production, though the cross-
+dataset transfer rules out an explanation resting only on GiantSteps-specific
+nuisance correlations. Nor is it a mechanistic claim, since
+whether the projection suppresses class-coupled variation or amplifies the
+tonal component is not identifiable from this measurement. Where the absence has been read as a property of the pretraining objective
+\cite{pilataki2025}, the transfer strengthens the relation in a fixed
 representation without retraining.
 
-Key supervision does not guarantee pitch-height invariance, because GiantSteps key labels may correlate with subgenre, tempo, or production. The cross-dataset transfer nevertheless rules out an explanation based only on GiantSteps-specific nuisance correlations. Nor is it a mechanistic claim, since whether the projection suppresses class-
-coupled variation or amplifies the tonal component is not identifiable from
-this measurement.
-
-\noindent\textbf{A registered prediction that failed.} We predicted that removing the subspace would at least halve clip-level fifths
-geometry. Against a baseline recomputed on the same held-out clips it does
-not, going from 0.127 to 0.119 for MERT L12 and from 0.118 to 0.114 for layer
-4, and only the twelve-dimensional chromagram collapses, which is a
-dimensionality effect. A subspace holding well under 1\% of the variance is therefore sufficient to
-expose the relation, but the relation is not localised exclusively to the one
-we recover. Establishing how widely it is distributed would need repeated
-recovery after sequential deflation.
+\noindent\textbf{A registered prediction that failed.} We predicted that
+removing the recovered subspace would at least halve clip-level fifths
+geometry. Against a baseline recomputed on the same held-out clips it produces
+little change, from 0.127 to 0.119 for MERT layer 12 and from 0.289 to 0.281
+for MuQ layer 2, and only the twelve-dimensional chromagram collapses, which is
+a dimensionality effect. The recovered subspace is therefore sufficient to
+expose the relation but does not exclusively contain it. Establishing how
+widely it is distributed would need repeated recovery after sequential
+deflation.
 
 \section{Discussion}
 
@@ -223,10 +235,11 @@ says the structure is linearly recoverable, and nothing about whether it
 governs the distances a similarity or retrieval system consumes.
 
 The two masking modes suggest different remedies. Sample-limited masking is a property of the evaluation, and the fix is more
-examples per class rather than longer audio, so the number of items behind
-each centroid should be reported as standard: the same encoder scores 0.035 or
-0.468 depending only on that. Metric masking instead requires changing how
-distances are measured.
+examples per class rather than longer audio, so the number of items behind each centroid should be reported as standard,
+since the same encoder scores 0.035 or 0.468 depending only on that. Metric masking instead requires changing how distances are measured, and the
+MuQ control separates that reweighting from dimensionality reduction: random
+rank-4 subspaces preserve about the ambient octave effect, while tonic-
+discriminative directions amplify it.
 
 Nothing in Eq.~\eqref{eq:decomp} is specific to music, since semantic
 relations in vision may be linearly available while the geometry is dominated
@@ -241,11 +254,14 @@ more at the cost of interpretability.
 
 \section{Conclusion}
 
-Musical structure can be present in a representation, linearly accessible and
-still invisible in its geometry, for two reasons that call for two different
-operations. Averaging over examples separates sample-limited estimates from stable metric
-effects, while a projection fitted on another dataset and task exposes octave
-equivalence that averaging never reaches.
+Musical structure does not occupy a fixed geometric form across
+representations. Decodability, ambient geometry and readout geometry vary
+independently: the log-CQT decodes key well with no fifths structure in its
+centroids and strong structure in its readout, while PQ-STFT and MuQ show the
+opposite profile at matched accuracy. Averaging over examples separates
+sample-limited estimates from stable metric effects, and a projection fitted
+on another dataset and task strengthens octave equivalence that averaging
+never reaches.
 
 \bibliographystyle{IEEEbib}
 \bibliography{refs}

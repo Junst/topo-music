@@ -51,10 +51,11 @@ BLOCKS = [
         ("random_feat",     "random features"),
         ("orthocode",       "orthogonal key codes"),
     ]),
-    (r"Spectral front end (fold $\times$ norm)", [
+    ("Spectral front ends", [
         ("cqt",      "log-CQT"),
         ("cqt_norm", "log-CQT, 84 bin, per-frame norm"),
         ("cqt_fold", "octave-summed, 12 bin, dB"),
+        ("pq_stft",  "PQ-STFT"),
         ("chroma",   "chromagram"),
     ]),
     ("Neural codec", [("encodec_32k", "EnCodec 32\\,kHz")]),
@@ -110,6 +111,7 @@ Path("runs/table1_rows.json").write_text(json.dumps(
 # a front end with readout geometry and no ambient geometry, and a learned
 # representation with ambient geometry and no readout geometry
 BOLD = {("log-CQT", "r5"), ("log-CQT", "rw"),
+        ("PQ-STFT", "r5"), ("PQ-STFT", "rw"),
         ("layer 2", "r5"), ("layer 2", "rw")}
 
 
@@ -136,8 +138,9 @@ L = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
      r"out mel-spectral centroid distance changes no sign. Orthogonal key "
      r"codes decode at $.651$ with classes equidistant by construction and "
      r"still show nothing, so $\rho^{W}_{5}$ is not an artefact of an "
-     r"accurate classifier. The four values in bold are the mirror-image "
-     r"pair of Sec.~\ref{sec:three}.}",
+     r"accurate classifier. Bold marks the two one-sided profiles of "
+     r"Sec.~\ref{sec:three}: readout geometry without ambient geometry in "
+     r"the log-CQT, and the reverse in PQ-STFT and MuQ layer 2.}",
      r"\label{tab:decodable-vs-geometric}",
      r"\begin{tabular}{l r r r r}", r"\toprule",
      r"representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & "

@@ -1,0 +1,28 @@
+arm=muq_L2 host=node42 start=2026-08-30T14:22:57+09:00
+[muq_L2] 150 instruments, 8631 notes, kmax=25
+16/8631  7s
+656/8631  29s
+1296/8631  53s
+1936/8631  77s
+2576/8631  101s
+3216/8631  123s
+3856/8631  145s
+4496/8631  167s
+5136/8631  188s
+5776/8631  209s
+6416/8631  230s
+7056/8631  251s
+7696/8631  273s
+8336/8631  293s
+cached runs/nsynth_emb_muq_L2.npz
+[muq_L2]  PRIMARY (model-free)
+    delta12        +0.0415  CI[0.0363, 0.0469]
+    delta24        +0.0231  CI[0.0192, 0.0271]
+    delta_strict   +0.0367  CI[0.0298, 0.0424]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.00711  CI[-0.00759, -0.00664]
+    b2_chroma                  +0.01594  CI[0.01434, 0.01761]
+    b2_chroma_quadratic_trend  +0.01404  CI[0.01217, 0.01595]
+  S(11)=0.7777 S(12)=0.8144 S(13)=0.7681 | S(23)=0.6923 S(24)=0.7123 S(25)=0.6862
+wrote runs/transpose_muq_L2.json in 305s
+done=2026-08-30T14:28:45+09:00
