@@ -59,23 +59,13 @@ perfectly while placing C and G no closer together than C and F\,$\sharp$.
 
 We ask when that theoretical structure is visible in the geometry a downstream
 model actually consumes, and find that decodability, ambient geometry and
-readout geometry come apart (Sec.~\ref{sec:three}). We then separate two
-reasons a representation can contain musical structure that its metric does not
-show. Write an item of class $y$ as
-\begin{equation}
-z = s_y + n_y + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid y] = 0,
-\label{eq:decomp}
-\end{equation}
-with $s_y$ the structure of interest, $\varepsilon$ nuisance independent of the
-class, and $n_y$ nuisance that varies with the class. The two nuisance terms
-behave differently under the two operations available to an analyst. Averaging
-many examples of a class drives $\varepsilon$ towards zero, so structure hidden
-by $\varepsilon$ appears once enough examples are pooled, whereas $n_y$ is
-present in every example of a class by construction and survives any amount of
-averaging. In that second regime a low-rank reweighting of the space can still
-expose the target relation, although it does not settle whether it did so by
-suppressing the class-coupled term or by amplifying the structure of interest.
-We show that centroid sample size is the dominant source of the apparent
+readout geometry come apart (Sec.~\ref{sec:three}). We then separate two reasons a representation can hold musical structure that
+its metric does not show. In the first, the variation that distinguishes items
+of the same class is unrelated to the class, so it cancels once enough
+examples are pooled and the structure appears with no change to the
+representation. In the second, the variation tracks the class itself, so it is
+present in every example, survives any amount of averaging, and yields only to
+a change of metric. We show that centroid sample size is the dominant source of the apparent
 clip-level key effect (Sec.~\ref{sec:sample}) and that note-level octave
 equivalence falls in the second regime (Sec.~\ref{sec:metric}).
 
@@ -85,9 +75,8 @@ equivalence falls in the second regime (Sec.~\ref{sec:metric}).
 Linear probes are the standard instrument for asking what a representation
 encodes \cite{probes}, and music audio encoders are routinely evaluated this
 way, with MERT \cite{mert} and MARBLE \cite{marble} reporting
-probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} show that a probe's success has to be read
-against a control task holding accuracy fixed while removing the structure of
-interest, and we adopt that design for representation geometry rather than for
+probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} show that a probe's success has to be read against a control task that removes
+the structure of interest, and we adopt that design for representation geometry rather than for
 probe complexity.
 
 The relational structure we test against is the one music cognition established
@@ -103,6 +92,16 @@ is what a representation trained without such a constraint already contains. We 
 \section{Measurements}
 \label{sec:method}
 
+\noindent\textbf{Two regimes of hiding.} Write an item of class $y$ as
+\begin{equation}
+z = s_y + n_y + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid y] = 0,
+\label{eq:decomp}
+\end{equation}
+with $s_y$ the structure of interest, $\varepsilon$ nuisance independent of the
+class, and $n_y$ nuisance that varies with the class. Averaging many examples of a class drives $\varepsilon$ towards zero, whereas
+$n_y$ is present in every example by construction, so the two regimes call for
+different operations and the measurements below are chosen to tell them apart.
+
 \noindent\textbf{Representations.} MERT-v1-330M \cite{mert} layers 4 to 24,
 EnCodec 32\,kHz \cite{encodec}, the codec MusicGen consumes \cite{musicgen},
 and a log-CQT \cite{brown1991,librosa} as an input floor. A chromagram serves
@@ -115,17 +114,15 @@ obtain 24 centroids and rank-correlate their pairwise Euclidean distances
 against three reference structures: circle-of-fifths distance, the
 Krumhansl--Kessler key-profile distance, and semitone distance. Significance
 uses a 2000-draw permutation null over key labels, and a partial Spearman
-additionally removes mel-spectral centroid distance. Reporting the semitone
-reference alongside the fifths reference is essential, because a generic
-tendency for nearby keys to look alike would raise both.
+additionally removes mel-spectral centroid distance. The semitone reference is reported alongside, because a generic tendency for
+nearby keys to look alike would raise both.
 
 \noindent\textbf{Readout geometry.} The same probe, a multinomial logistic
 regression under 5-fold cross-validation, yields 24 class weight vectors, and
 we apply the identical measurement to their pairwise cosine distances.
 
-\noindent\textbf{Octave equivalence.} On NSynth \cite{nsynth} we use real
-recordings only. Pitch shifting by signal processing would build the answer
-into the stimulus. For each instrument we fix an anchor set of pitches
+\noindent\textbf{Octave equivalence.} On NSynth \cite{nsynth} we use real recordings only, since pitch shifting by
+signal processing would build the answer into the stimulus. For each instrument we fix an anchor set of pitches
 supporting every transposition up to 25 semitones, so the anchor set is
 constant across transpositions, and measure the mean cosine similarity between
 a note and its transposition by $k$ semitones. Three statistics are reported
@@ -165,8 +162,8 @@ standard deviation over 5 draws in (a) and 10 in (b).}
 \subsection{Information, metric and readout dissociate}
 \label{sec:three}
 
-Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips and
-keys, and the control block is what sets the scale for reading it. An analytic
+Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips and keys, and the control block sets the
+scale for reading it. An analytic
 circle of fifths scores close to 1 in every column, so a null elsewhere is a
 null of the representation and not of the method, while random features show nothing anywhere. The load-bearing control is the third
 one, in which orthogonal per-key codes are equidistant by construction. They
@@ -263,8 +260,7 @@ subspaces stay between $-0.019$ and 0.007. The subspace uses between 0.11 and
 
 It would overstate the case to say key supervision \emph{forces} pitch-height
 invariance, since GiantSteps key correlates with subgenre, tempo and
-production, and an LDA may use any of it. The transfer is what licenses the
-claim, and it licenses a stronger one: structure that survives the move to an
+production, and an LDA may use any of it. What the transfer licenses is narrower: structure that survives the move to an
 independently recorded isolated-note corpus cannot be solely a
 GiantSteps-specific nuisance correlation. Nor is this a mechanistic claim about the projection, since what the transfer
 establishes is that a low-rank reweighting exposes octave-equivalent
@@ -278,9 +274,8 @@ does not move it, going from 0.127 to 0.119 for MERT L12 and from 0.118 to
 0.114 for layer 4, and only the twelve-dimensional chromagram collapses, which
 is a dimensionality effect. A subspace holding well under 1\% of the variance is
 therefore sufficient to expose the relation, but the relation is not localised
-exclusively to the one we recover. How widely it is distributed is a further
-question, which repeated recovery after sequential deflation would answer and
-which we do not attempt here.
+exclusively to the one we recover. How widely it is distributed would need repeated recovery after sequential
+deflation, which we do not attempt here.
 
 \section{Discussion}
 
