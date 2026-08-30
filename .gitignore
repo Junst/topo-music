@@ -13,3 +13,8 @@ logs/probe_*.out
 !logs/probe_2115207_*.out
 logs/retry_submit.log
 logs/submit.log
+
+# regenerable embedding caches; some exceed GitHub 100 MB (MATPAC ~188 MB)
+runs/*.npz
+runs/figs/_*.npz
+runs/figs/_*.npy

@@ -1,0 +1,257 @@
+/scratch2/solbon1212/topo-music/scripts/13_tonal_subspace.py:41: UserWarning: A NumPy version >=1.26.4 and <2.7.0 is required for this version of SciPy (detected version 1.26.3)
+  from scipy.spatial.distance import pdist, squareform
+[pupujepa] D=768 notes=8631 clips=7035 fit-inst=75 eval-inst=75
+  ambient done 46s
+  pc_lda     d=1   var= 0.08%gs d12=+0.247 dstr=+0.120 rho5=+0.091 rho5_comp=+0.072 (amb +0.072)  (59s)
+  pc_lda     d=2   var= 0.13%gs d12=+0.257 dstr=+0.113 rho5=+0.025 rho5_comp=+0.071 (amb +0.072)  (67s)
+  pc_lda     d=3   var= 0.18%gs d12=+0.265 dstr=+0.146 rho5=+0.143 rho5_comp=+0.070 (amb +0.072)  (74s)
+  pc_lda     d=4   var= 0.23%gs d12=+0.266 dstr=+0.174 rho5=+0.147 rho5_comp=+0.071 (amb +0.072)  (82s)
+  pc_lda     d=6   var= 0.35%gs d12=+0.185 dstr=+0.119 rho5=+0.322 rho5_comp=+0.069 (amb +0.072)  (89s)
+  pc_lda     d=8   var= 0.47%gs d12=+0.156 dstr=+0.113 rho5=+0.388 rho5_comp=+0.067 (amb +0.072)  (97s)
+  pc_lda     d=11  var= 0.77%gs d12=+0.102 dstr=+0.077 rho5=+0.353 rho5_comp=+0.066 (amb +0.072)  (105s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=1   var= 0.10%gs d12=-0.018 dstr=-0.107 rho5=+0.031 rho5_comp=+0.072 (amb +0.072)  (113s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=2   var= 0.21%gs d12=+0.020 dstr=-0.152 rho5=+0.021 rho5_comp=+0.072 (amb +0.072)  (120s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=3   var= 0.31%gs d12=+0.044 dstr=-0.135 rho5=-0.007 rho5_comp=+0.072 (amb +0.072)  (129s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=4   var= 0.38%gs d12=+0.084 dstr=-0.100 rho5=+0.038 rho5_comp=+0.073 (amb +0.072)  (137s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=6   var= 0.55%gs d12=+0.127 dstr=-0.073 rho5=+0.030 rho5_comp=+0.073 (amb +0.072)  (145s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=8   var= 0.72%gs d12=+0.143 dstr=-0.025 rho5=+0.116 rho5_comp=+0.071 (amb +0.072)  (154s)
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_shrunk_covariance.py:349: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/covariance/_empirical_covariance.py:100: UserWarning: Only one sample available. You may want to reshape your data array
+  warnings.warn(
+  pitch_lda  d=11  var= 0.92%gs d12=+0.118 dstr=+0.000 rho5=+0.220 rho5_comp=+0.068 (amb +0.072)  (162s)
+  key_lda    d=1   var= 0.05%gs d12=+0.000 dstr=-0.004 rho5=+0.019 rho5_comp=-0.033 (amb -0.032)  (173s)
+  key_lda    d=2   var= 0.09%gs d12=+0.027 dstr=+0.013 rho5=+0.241 rho5_comp=-0.034 (amb -0.032)  (181s)
+  key_lda    d=3   var= 0.14%gs d12=+0.046 dstr=+0.006 rho5=+0.256 rho5_comp=-0.034 (amb -0.032)  (190s)
+  key_lda    d=4   var= 0.18%gs d12=+0.066 dstr=+0.006 rho5=+0.255 rho5_comp=-0.034 (amb -0.032)  (197s)
+  key_lda    d=6   var= 0.32%gs d12=+0.041 dstr=+0.006 rho5=+0.253 rho5_comp=-0.035 (amb -0.032)  (204s)
+  key_lda    d=8   var= 0.48%gs d12=+0.040 dstr=+0.007 rho5=+0.242 rho5_comp=-0.035 (amb -0.032)  (212s)
+  key_lda    d=11  var= 0.75%gs d12=+0.038 dstr=+0.004 rho5=+0.192 rho5_comp=-0.035 (amb -0.032)  (219s)
+  random     d=1   d12=+0.008 dstr=-0.016 rho5=-0.012  (223s)
+  random     d=2   d12=+0.011 dstr=-0.006 rho5=+0.050  (227s)
+  random     d=3   d12=+0.007 dstr=-0.007 rho5=+0.020  (230s)
+  random     d=4   d12=+0.007 dstr=-0.010 rho5=+0.027  (234s)
+  random     d=6   d12=+0.009 dstr=-0.006 rho5=+0.063  (238s)
+  random     d=8   d12=+0.006 dstr=-0.004 rho5=+0.069  (242s)
+  random     d=11  d12=+0.007 dstr=-0.006 rho5=+0.065  (246s)
+wrote runs/subspace_pupujepa.json in 246s

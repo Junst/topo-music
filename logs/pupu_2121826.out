@@ -1,0 +1,43 @@
+arm=pupujepa host=node43 start=2026-08-30T15:25:43+09:00
+[pupujepa] 7035 clips
+!!!!!!!!! ATTENTION: PatchEmbed is using frequency_first = False !!!!!!!!!
+8/7035  5s
+488/7035  34s
+968/7035  62s
+1448/7035  90s
+1928/7035  118s
+2408/7035  146s
+2888/7035  174s
+3368/7035  201s
+3848/7035  230s
+4328/7035  258s
+4808/7035  286s
+5288/7035  314s
+5768/7035  342s
+6248/7035  370s
+6728/7035  398s
+[pupujepa] embeddings (7035, 1536) (416s)
+
+[pupujepa] pooling = mean  dim=768
+  24-way key 0.239 (chance .042) | 12-way tonic 0.305 (chance .083)
+  [centroid] kk_key_distance    rho=+0.066  z= +1.7  p=0.087  rho|spec=+0.035
+  [centroid] fifths             rho=+0.072  z= +1.9  p=0.052  rho|spec=+0.046
+  [centroid] chromatic          rho=-0.007  z= -0.2  p=0.847  rho|spec=-0.019
+  [centroid] mode_mismatch      rho=+0.302  z= +7.9  p=0.000  rho|spec=+0.301
+  [probe-W ] kk_key_distance    rho=+0.825  z=+13.6  p=0.000  rho|spec=+0.822
+  [probe-W ] fifths             rho=+0.570  z= +9.2  p=0.000  rho|spec=+0.563
+  [probe-W ] chromatic          rho=-0.055  z= -0.9  p=0.377  rho|spec=-0.062
+  [probe-W ] mode_mismatch      rho=-0.055  z= -0.9  p=0.352  rho|spec=-0.061
+
+[pupujepa] pooling = mean+std  dim=1536
+  24-way key 0.209 (chance .042) | 12-way tonic 0.268 (chance .083)
+  [centroid] kk_key_distance    rho=+0.069  z= +1.8  p=0.072  rho|spec=+0.039
+  [centroid] fifths             rho=+0.073  z= +1.9  p=0.046  rho|spec=+0.048
+  [centroid] chromatic          rho=-0.009  z= -0.3  p=0.815  rho|spec=-0.021
+  [centroid] mode_mismatch      rho=+0.303  z= +8.0  p=0.000  rho|spec=+0.302
+  [probe-W ] kk_key_distance    rho=+0.799  z=+13.3  p=0.000  rho|spec=+0.795
+  [probe-W ] fifths             rho=+0.515  z= +8.4  p=0.000  rho|spec=+0.507
+  [probe-W ] chromatic          rho=-0.030  z= -0.5  p=0.626  rho|spec=-0.037
+  [probe-W ] mode_mismatch      rho=-0.095  z= -1.6  p=0.101  rho|spec=-0.102
+wrote runs/clipkey_pupujepa.json in 828s
+done=2026-08-30T15:39:55+09:00

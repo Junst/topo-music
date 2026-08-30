@@ -1,0 +1,7 @@
+[mert_L12] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=-0.0029 [-0.0076,+0.0021] d12=+0.0156
+  geodesic k=5   d_strict=+0.0100 [+0.0009,+0.0149] d12=+0.0158 b2=+0.0233 | 3 components, 12/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.0121 [+0.0070,+0.0161] d12=+0.0161 b2=+0.0188 | 2 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.0135 [+0.0076,+0.0170] d12=+0.0170 b2=+0.0157 | 1 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.0128 [+0.0069,+0.0172] d12=+0.0176 b2=+0.0130 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_mert_L12.json

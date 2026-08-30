@@ -20,11 +20,10 @@
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2} Related Work}{1}{section.2}\protected@file@percent }
 \newlabel{sec:related}{{2}{1}{Related Work}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3} Method}{1}{section.3}\protected@file@percent }
-\newlabel{sec:method}{{3}{1}{Method}{section.3}{}}
-\newlabel{eq:decomp}{{1}{1}{Method}{equation.1}{}}
 \citation{mert}
 \citation{muq}
+\citation{matpac}
+\citation{pupujepa}
 \citation{encodec}
 \citation{musicgen}
 \citation{brown1991}
@@ -32,25 +31,26 @@
 \citation{librosa}
 \citation{giantsteps}
 \citation{nsynth}
-\citation{controltasks}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Clip-level key geometry is set by centroid sample size, not by temporal context. (a) and (b) share a vertical axis, with error bars of one standard deviation over 5 draws in (a) and 10 in (b). MuQ L6 sits at the same fraction of depth as MERT L12. (c) The same rise seen as geometry, for the 24 MERT L12 key centroids ordered round the circle of fifths with majors above the white rule. Each panel is rank-transformed over its own entries and each sampled one is the median of ten draws.}}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:averaging}{{1}{2}{Clip-level key geometry is set by centroid sample size, not by temporal context. (a) and (b) share a vertical axis, with error bars of one standard deviation over 5 draws in (a) and 10 in (b). MuQ L6 sits at the same fraction of depth as MERT L12. (c) The same rise seen as geometry, for the 24 MERT L12 key centroids ordered round the circle of fifths with majors above the white rule. Each panel is rank-transformed over its own entries and each sampled one is the median of ten draws}{figure.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4} Results}{2}{section.4}\protected@file@percent }
-\newlabel{sec:results}{{4}{2}{Results}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1} Information, metric and readout dissociate}{2}{subsection.4.1}\protected@file@percent }
-\newlabel{sec:three}{{4.1}{2}{Information, metric and readout dissociate}{subsection.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textit  {acc} is 24-way key accuracy, chance $.042$; $\rho ^{\text  {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho ^{W}_{5}$ the same among the probe's class weight vectors; $\rho _{\text  {chr}}$ is semitone adjacency, a discriminant a generic tendency for nearby keys to look alike would also raise. Partialling out mel-spectral centroid distance changes no sign. Orthogonal key codes decode at $.651$ with classes equidistant by construction and still show nothing, so $\rho ^{W}_{5}$ is not an artefact of an accurate classifier. In each of the first three columns blue marks the highest value among the real representations and red the lowest; the control block and $\rho _{\text  {chr}}$ are excluded.}}{3}{table.1}\protected@file@percent }
-\newlabel{tab:decodable-vs-geometric}{{1}{3}{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textit {acc} is 24-way key accuracy, chance $.042$; $\rho ^{\text {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho ^{W}_{5}$ the same among the probe's class weight vectors; $\rho _{\text {chr}}$ is semitone adjacency, a discriminant a generic tendency for nearby keys to look alike would also raise. Partialling out mel-spectral centroid distance changes no sign. Orthogonal key codes decode at $.651$ with classes equidistant by construction and still show nothing, so $\rho ^{W}_{5}$ is not an artefact of an accurate classifier. In each of the first three columns blue marks the highest value among the real representations and red the lowest; the control block and $\rho _{\text {chr}}$ are excluded}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Two views of the same rank-4 projection, fitted only on GiantSteps track tonics and applied unchanged to individual NSynth recordings. (a) Ambient similarity decays smoothly with transposition distance, while the projected curve reaches maxima at exactly twelve and twenty-four semitones. (b) The strict contrast that curve summarises, with the matched random subspace as a control. In MERT ambient and random are both near zero; in MuQ they are equal and above it, so there the learned projection must be read against the random one. Error bars are instrument-bootstrap 95\% intervals.}}{3}{figure.2}\protected@file@percent }
-\newlabel{fig:mechanisms}{{2}{3}{Two views of the same rank-4 projection, fitted only on GiantSteps track tonics and applied unchanged to individual NSynth recordings. (a) Ambient similarity decays smoothly with transposition distance, while the projected curve reaches maxima at exactly twelve and twenty-four semitones. (b) The strict contrast that curve summarises, with the matched random subspace as a control. In MERT ambient and random are both near zero; in MuQ they are equal and above it, so there the learned projection must be read against the random one. Error bars are instrument-bootstrap 95\% intervals}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2} Sample-limited masking}{3}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:sample}{{4.2}{3}{Sample-limited masking}{subsection.4.2}{}}
-\citation{pilataki2025}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Clip-level fifths geometry is affected much more by the number of clips per centroid than by temporal context. (a) Pooling-window sweep with the number of clips fixed. (b) Clips-per-centroid sweep with full-clip pooling. Error bars show one standard deviation over 5 and 10 draws, respectively.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:averaging}{{1}{2}{Clip-level fifths geometry is affected much more by the number of clips per centroid than by temporal context. (a) Pooling-window sweep with the number of clips fixed. (b) Clips-per-centroid sweep with full-clip pooling. Error bars show one standard deviation over 5 and 10 draws, respectively}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3} Method}{2}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{2}{Method}{section.3}{}}
+\newlabel{eq:decomp}{{1}{2}{Method}{equation.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. F1 is track-grouped macro F1 over the 24 imbalanced keys; accuracy is reported in the repository. $\rho ^{\text  {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho ^{W}_{5}$ the same among the probe's class weight vectors, while $\rho _{\text  {chr}}$ measures correlation with semitone distance and controls for proximity in chromatic pitch space. Orthogonal key codes reach a macro F1 of $.613$ with classes equidistant by construction and still show nothing, showing that fifths structure in $\rho ^{W}_{5}$ is not a consequence of classifier accuracy alone. In each of the first three columns blue marks the highest value among the real representations and red the lowest.}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:decodable-vs-geometric}{{1}{3}{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. F1 is track-grouped macro F1 over the 24 imbalanced keys; accuracy is reported in the repository. $\rho ^{\text {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho ^{W}_{5}$ the same among the probe's class weight vectors, while $\rho _{\text {chr}}$ measures correlation with semitone distance and controls for proximity in chromatic pitch space. Orthogonal key codes reach a macro F1 of $.613$ with classes equidistant by construction and still show nothing, showing that fifths structure in $\rho ^{W}_{5}$ is not a consequence of classifier accuracy alone. In each of the first three columns blue marks the highest value among the real representations and red the lowest}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4} Results}{3}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{3}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1} Information, metric and readout dissociate}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:three}{{4.1}{3}{Information, metric and readout dissociate}{subsection.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Two views of the same rank-4 projection, fitted only on GiantSteps track tonics and applied unchanged to individual NSynth recordings. (a) Ambient similarity decays smoothly with transposition distance, while the projected curve reaches maxima at exactly twelve and twenty-four semitones. (b) The strict contrast that curve summarizes, with the matched random subspace as a control. In MERT ambient and random are both near zero; in MuQ they are comparable and above zero, so there the learned projection must be read against the random one. Error bars are instrument-bootstrap 95\% intervals.}}{3}{figure.2}\protected@file@percent }
+\newlabel{fig:mechanisms}{{2}{3}{Two views of the same rank-4 projection, fitted only on GiantSteps track tonics and applied unchanged to individual NSynth recordings. (a) Ambient similarity decays smoothly with transposition distance, while the projected curve reaches maxima at exactly twelve and twenty-four semitones. (b) The strict contrast that curve summarizes, with the matched random subspace as a control. In MERT ambient and random are both near zero; in MuQ they are comparable and above zero, so there the learned projection must be read against the random one. Error bars are instrument-bootstrap 95\% intervals}{figure.2}{}}
 \bibstyle{IEEEbib}
 \bibdata{refs}
 \bibcite{probes}{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3} Projection exposes octave-equivalent structure}{4}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:metric}{{4.3}{4}{Projection exposes octave-equivalent structure}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2} Sample-limited masking}{4}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:sample}{{4.2}{4}{Sample-limited masking}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3} Octave equivalence depends on the metric}{4}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:metric}{{4.3}{4}{Octave equivalence depends on the metric}{subsection.4.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5} Discussion}{4}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6} Conclusion}{4}{section.6}\protected@file@percent }
 \bibcite{mert}{2}
@@ -64,9 +64,11 @@
 \bibcite{stone}{10}
 \bibcite{pilataki2025}{11}
 \bibcite{muq}{12}
-\bibcite{encodec}{13}
-\bibcite{musicgen}{14}
-\bibcite{giantsteps}{15}
-\bibcite{nsynth}{16}
+\bibcite{matpac}{13}
+\bibcite{pupujepa}{14}
+\bibcite{encodec}{15}
+\bibcite{musicgen}{16}
+\bibcite{giantsteps}{17}
+\bibcite{nsynth}{18}
 \@writefile{toc}{\contentsline {section}{\numberline {7} References}{5}{section.7}\protected@file@percent }
 \gdef \@abspage@last{5}

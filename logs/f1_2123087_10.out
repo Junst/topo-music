@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+mert_L24        0.422   0.340     0.751    0.737
+wrote runs/probe_f1_mert_L24.json

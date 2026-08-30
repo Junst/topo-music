@@ -1,0 +1,7 @@
+[muq_L6] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=+0.0339 [+0.0270,+0.0395] d12=+0.0380
+  geodesic k=5   d_strict=+0.0830 [+0.0665,+0.0987] d12=+0.0868 b2=+0.0864 | 1 components, 0/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.0723 [+0.0601,+0.0837] d12=+0.0766 b2=+0.0637 | 1 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.0646 [+0.0546,+0.0748] d12=+0.0693 b2=+0.0505 | 1 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.0581 [+0.0494,+0.0666] d12=+0.0618 b2=+0.0334 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_muq_L6.json

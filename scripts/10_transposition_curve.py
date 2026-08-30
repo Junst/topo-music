@@ -62,6 +62,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 NSYNTH = Path("/lustre/dataset/musicdataset/marble/nsynth")
 WIN = (0.2, 2.5)
 SR_IN, MERT_SR, CQT_SR, MUQ_SR = 16000, 24000, 16000, 24000
+MATPAC_SR, PUPU_SR = 16000, 24000
+MATPAC_CKPT = "/scratch2/solbon1212/ckpt/matpac_plus_music.pt"
 
 
 def main() -> None:
@@ -116,6 +118,8 @@ def main() -> None:
 
     is_codec = a.arm.startswith(("encodec", "dac"))
     is_muq = a.arm.startswith("muq_L")
+    is_matpac = a.arm.startswith("matpac_L")
+    is_pupu = a.arm == "pupujepa"
     model = taps = codec = CB = None
     layer = None
     if is_codec:
@@ -140,6 +144,18 @@ def main() -> None:
         for i, lyr in enumerate(model.encoder.layers):
             lyr.register_forward_hook(tap(i + 1))
         native_sr = MERT_SR
+    elif is_matpac:
+        from matpac.model import get_matpac
+        layer = int(a.arm.split("_L")[1])
+        model = get_matpac(checkpoint_path=MATPAC_CKPT,
+                           pull_time_dimension=False).to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MATPAC_SR
+    elif is_pupu:
+        from topo import pupujepa_feats as pj
+        model, pj_cfg = pj.load(device=a.device)
+        native_sr = PUPU_SR
     elif is_muq:
         from muq import MuQ
         layer = int(a.arm.split("_L")[1])
@@ -172,6 +188,12 @@ def main() -> None:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))
             return lat.mean(1).numpy()
+        if is_matpac:
+            with torch.no_grad():
+                _, lay = model(torch.from_numpy(np.stack(ws)).to(a.device))
+            return lay[:, layer - 1].float().mean(1).cpu().numpy()
+        if is_pupu:
+            return pj.embed(model, pj_cfg, np.stack(ws), device=a.device)
         x = torch.from_numpy(np.stack(ws)).to(a.device)
         with torch.no_grad():
             if is_muq:

@@ -1,0 +1,7 @@
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/utils/_param_validation.py:14: UserWarning: A NumPy version >=1.26.4 and <2.7.0 is required for this version of SciPy (detected version 1.26.3)
+  from scipy.sparse import csr_array, issparse
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+cqt             0.493   0.392     0.580    0.504
+cqt_norm        0.490   0.397     0.574    0.506
+cqt_fold        0.413   0.271     0.423    0.282

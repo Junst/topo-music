@@ -2,3 +2,41 @@ arm=hcqt host=node41 start=2026-08-30T14:59:24+09:00
 [hcqt] 7035 clips
 8/7035  9s
 488/7035  268s
+968/7035  527s
+1448/7035  788s
+1928/7035  1048s
+2408/7035  1312s
+2888/7035  1582s
+3368/7035  1845s
+3848/7035  2101s
+4328/7035  2360s
+4808/7035  2619s
+5288/7035  2877s
+5768/7035  3135s
+6248/7035  3393s
+6728/7035  3651s
+[hcqt] embeddings (7035, 4320) (3815s)
+
+[hcqt] pooling = mean  dim=2160
+  24-way key 0.455 (chance .042) | 12-way tonic 0.526 (chance .083)
+  [centroid] kk_key_distance    rho=+0.698  z=+13.0  p=0.000  rho|spec=+0.721
+  [centroid] fifths             rho=+0.554  z=+10.4  p=0.000  rho|spec=+0.566
+  [centroid] chromatic          rho=-0.038  z= -0.7  p=0.468  rho|spec=-0.072
+  [centroid] mode_mismatch      rho=+0.058  z= +1.0  p=0.247  rho|spec=+0.047
+  [probe-W ] kk_key_distance    rho=+0.204  z= +3.3  p=0.000  rho|spec=+0.198
+  [probe-W ] fifths             rho=+0.134  z= +2.2  p=0.030  rho|spec=+0.129
+  [probe-W ] chromatic          rho=-0.038  z= -0.6  p=0.518  rho|spec=-0.041
+  [probe-W ] mode_mismatch      rho=-0.081  z= -1.4  p=0.178  rho|spec=-0.084
+
+[hcqt] pooling = mean+std  dim=4320
+  24-way key 0.482 (chance .042) | 12-way tonic 0.559 (chance .083)
+  [centroid] kk_key_distance    rho=+0.697  z=+13.0  p=0.000  rho|spec=+0.723
+  [centroid] fifths             rho=+0.550  z=+10.4  p=0.000  rho|spec=+0.563
+  [centroid] chromatic          rho=-0.038  z= -0.7  p=0.465  rho|spec=-0.072
+  [centroid] mode_mismatch      rho=+0.059  z= +1.1  p=0.231  rho|spec=+0.049
+  [probe-W ] kk_key_distance    rho=+0.437  z= +7.3  p=0.000  rho|spec=+0.433
+  [probe-W ] fifths             rho=+0.282  z= +4.6  p=0.000  rho|spec=+0.276
+  [probe-W ] chromatic          rho=-0.079  z= -1.3  p=0.207  rho|spec=-0.083
+  [probe-W ] mode_mismatch      rho=-0.086  z= -1.4  p=0.144  rho|spec=-0.089
+wrote runs/clipkey_hcqt.json in 6132s
+done=2026-08-30T16:41:49+09:00

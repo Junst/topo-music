@@ -1,0 +1,29 @@
+arm=pupujepa host=node43 start=2026-08-30T23:35:15+09:00
+[pupujepa] 150 instruments, 8631 notes, kmax=25
+!!!!!!!!! ATTENTION: PatchEmbed is using frequency_first = False !!!!!!!!!
+16/8631  6s
+656/8631  49s
+1296/8631  92s
+1936/8631  135s
+2576/8631  176s
+3216/8631  217s
+3856/8631  258s
+4496/8631  299s
+5136/8631  338s
+5776/8631  377s
+6416/8631  416s
+7056/8631  456s
+7696/8631  494s
+8336/8631  532s
+cached runs/nsynth_emb_pupujepa.npz
+[pupujepa]  PRIMARY (model-free)
+    delta12        +0.0064  CI[0.0043, 0.0088]
+    delta24        +0.0026  CI[0.0008, 0.0045]
+    delta_strict   -0.0041  CI[-0.0069, -0.0013]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.00253  CI[-0.00285, -0.00222]
+    b2_chroma                  +0.00096  CI[0.00026, 0.00169]
+    b2_chroma_quadratic_trend  +0.00106  CI[0.00035, 0.00181]
+  S(11)=0.9380 S(12)=0.9423 S(13)=0.9338 | S(23)=0.9078 S(24)=0.9073 S(25)=0.9016
+wrote runs/transpose_pupujepa.json in 552s
+done=2026-08-30T23:44:57+09:00

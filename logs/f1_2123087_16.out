@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+matpac_L6       0.465   0.390     0.784    0.773
+wrote runs/probe_f1_matpac_L6.json

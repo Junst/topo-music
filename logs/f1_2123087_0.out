@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+cqt             0.493   0.392     0.580    0.504
+wrote runs/probe_f1_cqt.json

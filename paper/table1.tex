@@ -2,34 +2,35 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textit{acc} is 24-way key accuracy, chance $.042$; $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho^{W}_{5}$ the same among the probe's class weight vectors; $\rho_{\text{chr}}$ is semitone adjacency, a discriminant a generic tendency for nearby keys to look alike would also raise. Partialling out mel-spectral centroid distance changes no sign. Orthogonal key codes decode at $.651$ with classes equidistant by construction and still show nothing, so $\rho^{W}_{5}$ is not an artefact of an accurate classifier. In each of the first three columns blue marks the highest value among the real representations and red the lowest; the control block and $\rho_{\text{chr}}$ are excluded.}
+\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. F1 is track-grouped macro F1 over the 24 imbalanced keys; accuracy is reported in the repository. $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho^{W}_{5}$ the same among the probe's class weight vectors, while $\rho_{\text{chr}}$ measures correlation with semitone distance and controls for proximity in chromatic pitch space. Orthogonal key codes reach a macro F1 of $.613$ with classes equidistant by construction and still show nothing, showing that fifths structure in $\rho^{W}_{5}$ is not a consequence of classifier accuracy alone. In each of the first three columns blue marks the highest value among the real representations and red the lowest.}
 \label{tab:decodable-vs-geometric}
 \begin{tabular}{l r r r r}
 \toprule
-representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & $\rho_{\text{chr}}$ \\
+representation & F1 & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & $\rho_{\text{chr}}$ \\
 \midrule
 \multicolumn{5}{l}{\textit{Controls}} \\
-\quad analytic fifths & $0.274$ & $+0.977$ & $+0.986$ & $-0.085$ \\
-\quad random features & $0.055$ & $+0.009$ & $+0.033$ & $-0.001$ \\
-\quad orthogonal key codes & $0.651$ & $-0.008$ & $-0.005$ & $-0.001$ \\
+\quad analytic fifths & $0.181$ & $+0.977$ & $+0.986$ & $-0.085$ \\
+\quad random features & $0.039$ & $+0.009$ & $+0.033$ & $-0.001$ \\
+\quad orthogonal key codes & $0.613$ & $-0.008$ & $-0.005$ & $-0.001$ \\
 \multicolumn{5}{l}{\textit{Spectral front ends}} \\
-\quad log-CQT & \textcolor{hi}{$\mathbf{0.492}$} & $-0.035$ & $+0.560$ & $+0.174$ \\
-\quad log-CQT, 84 bin, per-frame norm & $0.486$ & \textcolor{lo}{$\mathbf{-0.117}$} & $+0.671$ & $+0.491$ \\
-\quad octave-summed, 12 bin, dB & $0.407$ & $-0.106$ & $+0.305$ & $+0.391$ \\
-\quad PQ-STFT & $0.479$ & \textcolor{hi}{$\mathbf{+0.550}$} & $+0.172$ & $+0.112$ \\
-\quad chromagram & $0.451$ & $+0.475$ & \textcolor{hi}{$\mathbf{+0.692}$} & $+0.140$ \\
+\quad log-CQT, 12 bin/oct & $0.392$ & \textcolor{lo}{$\mathbf{-0.035}$} & $+0.560$ & $+0.174$ \\
+\quad HCQT, 60 bin/oct & $0.389$ & $+0.554$ & $+0.134$ & $-0.038$ \\
+\quad PQ-STFT, 60 bin/oct & $0.391$ & $+0.550$ & $+0.172$ & $+0.112$ \\
+\quad chromagram & $0.346$ & $+0.475$ & \textcolor{hi}{$\mathbf{+0.692}$} & $+0.140$ \\
 \multicolumn{5}{l}{\textit{Neural codec}} \\
-\quad EnCodec 32\,kHz & \textcolor{lo}{$\mathbf{0.404}$} & $+0.177$ & $+0.648$ & $+0.041$ \\
+\quad EnCodec 32\,kHz & $0.332$ & $+0.177$ & $+0.648$ & $+0.041$ \\
 \multicolumn{5}{l}{\textit{MERT-v1-330M}} \\
-\quad layer 4 & $0.451$ & $+0.445$ & $+0.412$ & $-0.025$ \\
-\quad layer 12 & $0.456$ & $+0.468$ & $+0.428$ & $+0.024$ \\
-\quad layer 16 & $0.440$ & $+0.395$ & $+0.409$ & $+0.047$ \\
-\quad layer 24 & $0.418$ & $+0.294$ & $+0.484$ & $+0.049$ \\
+\quad layer 4 & $0.379$ & $+0.445$ & $+0.412$ & $-0.025$ \\
+\quad layer 12 & $0.371$ & $+0.468$ & $+0.428$ & $+0.024$ \\
+\quad layer 24 & $0.340$ & $+0.294$ & $+0.484$ & $+0.049$ \\
 \multicolumn{5}{l}{\textit{MuQ-large}} \\
-\quad layer 2 & $0.484$ & $+0.533$ & \textcolor{lo}{$\mathbf{+0.103}$} & $+0.021$ \\
-\quad layer 6 & $0.457$ & $+0.530$ & $+0.316$ & $+0.016$ \\
-\quad layer 8 & $0.434$ & $+0.545$ & $+0.364$ & $+0.002$ \\
-\quad layer 12 & $0.420$ & $+0.372$ & $+0.464$ & $+0.056$ \\
+\quad layer 2 & \textcolor{hi}{$\mathbf{0.418}$} & $+0.533$ & \textcolor{lo}{$\mathbf{+0.103}$} & $+0.021$ \\
+\quad layer 12 & $0.351$ & $+0.372$ & $+0.464$ & $+0.056$ \\
+\multicolumn{5}{l}{\textit{MATPAC++ music}} \\
+\quad layer 6 & $0.390$ & \textcolor{hi}{$\mathbf{+0.663}$} & $+0.366$ & $-0.061$ \\
+\quad layer 12 & $0.329$ & $+0.548$ & $+0.656$ & $-0.052$ \\
+\multicolumn{5}{l}{\textit{PupuJEPA}} \\
+\quad teacher encoder & \textcolor{lo}{$\mathbf{0.198}$} & $+0.072$ & $+0.570$ & $-0.007$ \\
 \bottomrule
 \end{tabular}
 \end{table}

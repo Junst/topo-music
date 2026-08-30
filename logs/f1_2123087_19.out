@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+pupujepa        0.255   0.198     0.536    0.520
+wrote runs/probe_f1_pupujepa.json

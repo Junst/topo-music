@@ -1,0 +1,7 @@
+[chroma] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=+0.6980 [+0.6560,+0.7388] d12=+0.6972
+  geodesic k=5   d_strict=+0.1857 [+0.1761,+0.1949] d12=+0.1842 b2=+0.0290 | 1 components, 0/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.1733 [+0.1644,+0.1817] d12=+0.1718 b2=+0.0228 | 1 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.1694 [+0.1607,+0.1778] d12=+0.1678 b2=+0.0189 | 1 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.1678 [+0.1594,+0.1760] d12=+0.1662 b2=+0.0165 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_chroma.json

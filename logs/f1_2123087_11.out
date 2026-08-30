@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+muq_L2          0.500   0.418     0.766    0.742
+wrote runs/probe_f1_muq_L2.json

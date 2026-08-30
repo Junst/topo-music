@@ -1,0 +1,57 @@
+arm=matpac_L6 host=node43 start=2026-08-30T15:19:25+09:00
+[matpac_L6] 7035 clips
+4/7035  9s
+244/7035  16s
+484/7035  22s
+724/7035  28s
+964/7035  34s
+1204/7035  40s
+1444/7035  46s
+1684/7035  53s
+1924/7035  59s
+2164/7035  65s
+2404/7035  72s
+2644/7035  78s
+2884/7035  84s
+3124/7035  90s
+3364/7035  96s
+3604/7035  102s
+3844/7035  109s
+4084/7035  115s
+4324/7035  121s
+4564/7035  127s
+4804/7035  133s
+5044/7035  139s
+5284/7035  146s
+5524/7035  152s
+5764/7035  158s
+6004/7035  164s
+6244/7035  170s
+6484/7035  177s
+6724/7035  183s
+6964/7035  189s
+[matpac_L6] embeddings (7035, 7680) (191s)
+
+[matpac_L6] pooling = mean  dim=3840
+  24-way key 0.463 (chance .042) | 12-way tonic 0.540 (chance .083)
+  [centroid] kk_key_distance    rho=+0.837  z=+14.6  p=0.000  rho|spec=+0.832
+  [centroid] fifths             rho=+0.663  z=+11.8  p=0.000  rho|spec=+0.649
+  [centroid] chromatic          rho=-0.061  z= -1.1  p=0.270  rho|spec=-0.075
+  [centroid] mode_mismatch      rho=+0.058  z= +1.0  p=0.246  rho|spec=+0.056
+  [probe-W ] kk_key_distance    rho=+0.606  z=+10.4  p=0.000  rho|spec=+0.588
+  [probe-W ] fifths             rho=+0.366  z= +6.1  p=0.000  rho|spec=+0.342
+  [probe-W ] chromatic          rho=+0.110  z= +1.8  p=0.067  rho|spec=+0.108
+  [probe-W ] mode_mismatch      rho=-0.034  z= -0.5  p=0.568  rho|spec=-0.038
+
+[matpac_L6] pooling = mean+std  dim=7680
+  24-way key 0.474 (chance .042) | 12-way tonic 0.551 (chance .083)
+  [centroid] kk_key_distance    rho=+0.834  z=+14.6  p=0.000  rho|spec=+0.828
+  [centroid] fifths             rho=+0.658  z=+11.7  p=0.000  rho|spec=+0.644
+  [centroid] chromatic          rho=-0.061  z= -1.1  p=0.271  rho|spec=-0.075
+  [centroid] mode_mismatch      rho=+0.064  z= +1.1  p=0.190  rho|spec=+0.062
+  [probe-W ] kk_key_distance    rho=+0.840  z=+13.8  p=0.000  rho|spec=+0.831
+  [probe-W ] fifths             rho=+0.586  z= +9.5  p=0.000  rho|spec=+0.567
+  [probe-W ] chromatic          rho=+0.047  z= +0.8  p=0.431  rho|spec=+0.043
+  [probe-W ] mode_mismatch      rho=-0.060  z= -1.0  p=0.275  rho|spec=-0.067
+wrote runs/clipkey_matpac_L6.json in 343s
+done=2026-08-30T15:25:35+09:00

@@ -1,0 +1,42 @@
+arm=dac_44k host=node43 start=2026-08-30T21:35:44+09:00
+[dac_44k] 7035 clips
+8/7035  8s
+488/7035  70s
+968/7035  130s
+1448/7035  193s
+1928/7035  256s
+2408/7035  318s
+2888/7035  382s
+3368/7035  442s
+3848/7035  500s
+4328/7035  563s
+4808/7035  626s
+5288/7035  687s
+5768/7035  749s
+6248/7035  813s
+6728/7035  876s
+[dac_44k] embeddings (7035, 16) (917s)
+
+[dac_44k] pooling = mean  dim=8
+  24-way key 0.096 (chance .042) | 12-way tonic 0.116 (chance .083)
+  [centroid] kk_key_distance    rho=+0.054  z= +1.1  p=0.267  rho|spec=-0.019
+  [centroid] fifths             rho=+0.049  z= +1.1  p=0.275  rho|spec=-0.007
+  [centroid] chromatic          rho=+0.051  z= +0.9  p=0.295  rho|spec=-0.001
+  [centroid] mode_mismatch      rho=-0.008  z= -0.1  p=0.875  rho|spec=-0.117
+  [probe-W ] kk_key_distance    rho=+0.099  z= +1.5  p=0.110  rho|spec=+0.092
+  [probe-W ] fifths             rho=+0.021  z= +0.3  p=0.748  rho|spec=+0.015
+  [probe-W ] chromatic          rho=-0.092  z= -1.5  p=0.130  rho|spec=-0.098
+  [probe-W ] mode_mismatch      rho=+0.221  z= +3.7  p=0.003  rho|spec=+0.217
+
+[dac_44k] pooling = mean+std  dim=16
+  24-way key 0.131 (chance .042) | 12-way tonic 0.169 (chance .083)
+  [centroid] kk_key_distance    rho=+0.136  z= +2.9  p=0.009  rho|spec=+0.129
+  [centroid] fifths             rho=+0.111  z= +2.5  p=0.021  rho|spec=+0.104
+  [centroid] chromatic          rho=+0.035  z= +0.7  p=0.466  rho|spec=-0.029
+  [centroid] mode_mismatch      rho=-0.005  z= -0.1  p=0.911  rho|spec=-0.113
+  [probe-W ] kk_key_distance    rho=+0.652  z=+10.6  p=0.000  rho|spec=+0.650
+  [probe-W ] fifths             rho=+0.507  z= +8.2  p=0.000  rho|spec=+0.505
+  [probe-W ] chromatic          rho=-0.079  z= -1.3  p=0.186  rho|spec=-0.084
+  [probe-W ] mode_mismatch      rho=-0.009  z= -0.1  p=0.892  rho|spec=-0.013
+wrote runs/clipkey_dac_44k.json in 942s
+done=2026-08-30T21:52:06+09:00

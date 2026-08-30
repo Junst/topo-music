@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+pq_stft         0.462   0.391     0.737    0.717
+wrote runs/probe_f1_pq_stft.json

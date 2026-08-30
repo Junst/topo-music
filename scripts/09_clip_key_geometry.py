@@ -86,6 +86,16 @@ PQ_NFFTS, PQ_HOP, PQ_K, PQ_FLOW, PQ_CENTS = (4096, 16384), 441, 360, 32.70, 20.0
 # what is stacked and how it is normalised each vary, which is what makes the
 # comparison in Sec. 4.1 informative. h=5 reaches 10.5 kHz, so it needs 22.05 kHz.
 HCQT_SR, HCQT_H, HCQT_BPO, HCQT_NB = 22050, (0.5, 1, 2, 3, 4, 5), 60, 360
+# MATPAC++ trained self-supervised on music, 85M parameters over 12 encoder
+# layers at 16 kHz. Its inference wrapper returns every layer at once, so the
+# matpac_L<n> arms index that stack the way mert_L and muq_L do.
+MATPAC_SR = 16000
+MATPAC_CKPT = "/scratch2/solbon1212/ckpt/matpac_plus_music.pt"
+# PupuJEPA: a music-domain JEPA on mel patches, the encoder family Pilataki et
+# al. report as carrying pitch height but not pitch class. Its released
+# checkpoint has no inference path, so topo/pupujepa_feats.py rebuilds the mel
+# and the teacher forward from the authors' training script.
+PUPU_SR = 24000
 TONIC = {n: i for i, n in enumerate(
     ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"])}
 ENH = {"Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#"}
@@ -184,6 +194,18 @@ def main():
         native_sr = PQ_SR
     elif a.arm == "hcqt":
         native_sr = HCQT_SR
+    elif a.arm == "pupujepa":
+        from topo import pupujepa_feats as pj
+        model, pj_cfg = pj.load(device=a.device)
+        native_sr = PUPU_SR
+    elif a.arm.startswith("matpac_L"):
+        from matpac.model import get_matpac
+        layer = int(a.arm.split("_L")[1])
+        model = get_matpac(checkpoint_path=MATPAC_CKPT,
+                           pull_time_dimension=False).to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MATPAC_SR
     elif is_muq:
         # MuQ returns its hidden states directly, so no forward hooks are
         # needed. Same parameter count and width as MERT-v1-330M but half the
@@ -282,6 +304,13 @@ def main():
             # the quantised latent the codec actually emits: sum over RVQ levels
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))          # [B,T,d]
             F = list(lat.numpy())
+        elif a.arm == "pupujepa":
+            F = pj.tokens(model, pj_cfg, np.stack(ws), device=a.device)
+        elif a.arm.startswith("matpac_L"):
+            x = torch.from_numpy(np.stack(ws)).to(a.device)
+            with torch.no_grad():
+                _, lay = model(x)                 # [B, 12, T, D] unpooled
+            F = list(lay[:, layer - 1].float().cpu().numpy())
         else:
             x = torch.from_numpy(np.stack(ws)).to(a.device)
             with torch.no_grad():

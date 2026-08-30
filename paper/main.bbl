@@ -60,6 +60,16 @@ Haina Zhu, Yizhi Zhou, Hangting Chen, Jianwei Yu, Ziyang Ma, Rongzhi Gu, et~al.,
 \newblock ``{MuQ}: Self-supervised music representation learning with mel residual vector quantization,''
 \newblock {\em IEEE Trans. Audio, Speech, Language Process.}, vol. 33, pp. 3653--3665, 2025.
 
+\bibitem{matpac}
+Aurian Quelennec, Micha{\"e}l Chouteau, Geoffroy Peeters, and Slim Essid,
+\newblock ``Masked latent prediction and classification for self-supervised audio representation learning,''
+\newblock in {\em Proc. IEEE ICASSP}, 2025.
+
+\bibitem{pupujepa}
+Yicheng Gu et~al.,
+\newblock ``Frequency-aware self-supervised music representation learning,''
+\newblock {\em arXiv:2606.25713}, 2026.
+
 \bibitem{encodec}
 Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
 \newblock ``High fidelity neural audio compression,''

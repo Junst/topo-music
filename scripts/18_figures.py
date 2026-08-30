@@ -50,17 +50,10 @@ def style(ax):
 
 
 # ---------------------------------------------------------------- figure 1
-# (c) is a 2x2 block rather than a row of three, which leaves (a) and (b)
-# wider in the same total width. Its first sub-row is an empty header whose
-# top edge coincides with (a) and (b), so the three panel titles sit on one
-# line even though the matrices below start lower.
-fig = plt.figure(figsize=(7.0, 2.40))
-gs = fig.add_gridspec(1, 3, width_ratios=[1.46, 1.46, 0.94], wspace=0.24)
-axa = fig.add_subplot(gs[0]); axb = fig.add_subplot(gs[1], sharey=axa)
-gsc = gs[2].subgridspec(3, 2, height_ratios=[0.001, 1, 1],
-                        wspace=0.10, hspace=0.46)
-axch = fig.add_subplot(gsc[0, :]); axch.axis("off")
-axc = [fig.add_subplot(gsc[i, j]) for i in (1, 2) for j in (0, 1)]
+# two panels only: the centroid distance matrices that used to sit in (c) show
+# the same rise as (b) and the section reads without them
+fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.6, 2.05), sharey=True,
+                               gridspec_kw={"wspace": 0.10})
 for arm, (lab, col, ls, mk) in SERIES.items():
     d = json.load(open(f"runs/accum_{arm}.json"))
     full = d["curve"][-1]["fifths"]["mean"]
@@ -77,12 +70,10 @@ for arm, (lab, col, ls, mk) in SERIES.items():
     es2 = [c["fifths_std"] for c in e["curve"]]
     axb.errorbar(xs2, ys2, yerr=es2, color=col, ls=ls, marker=mk, ms=3.2,
                  lw=1.6, capsize=1.5, elinewidth=0.7, zorder=3)
-    # no in-panel label here: the shared legend names all three arms, and a
-    # label hanging off the right edge collided with panel (c)
 
-for ax, xl, ti in [(axa, "pooling window (s)", "(a) more audio per clip"),
+for ax, xl, ti in [(axa, "pooling window (s)", "(a) averaging over time"),
                    (axb, "clips per key centroid",
-                    "(b) more clips per centroid")]:
+                    "(b) averaging over examples")]:
     style(ax); ax.set_xscale("log"); ax.set_xlabel(xl)
     ax.set_title(ti, loc="center", color=INK)
     ax.axhline(0, color=INK2, lw=0.6, zorder=2)
@@ -97,32 +88,6 @@ fig.legend(handles, labels, frameon=False, ncol=5, loc="lower center",
 # busy enough without them
 axb.set_xlim(right=380)
 plt.setp(axb.get_yticklabels(), visible=False)
-
-# (c) the same rise as geometry. Ordered round the circle of fifths, majors
-# then minors, and rank-transformed within each panel, which is what a Spearman
-# correlation sees, so the three are comparable without a scale choice.
-km = np.load(FIGDIR / "_key_matrices.npz")
-PCN = ["C", "C$\\sharp$", "D", "D$\\sharp$", "E", "F",
-       "F$\\sharp$", "G", "G$\\sharp$", "A", "A$\\sharp$", "B"]
-ton = km["tonic_order"]
-axch.set_title("(c) key-centroid distances", loc="center", color=INK)
-for ax, key, ttl, sub in [
-        (axc[0], "one", "1 audio clip", rf"$\rho={float(km['rho_one']):+.2f}$"),
-        (axc[1], "eight", "8 audio clips", rf"$\rho={float(km['rho_eight']):+.2f}$"),
-        (axc[2], "alle", "all audio clips", rf"$\rho={float(km['rho_all']):+.2f}$"),
-        (axc[3], "ref", "reference", "circle of fifths")]:
-    ax.imshow(km[key], cmap="magma", vmin=0, vmax=1, interpolation="nearest")
-    ax.set_title(ttl, loc="center", fontsize=6.2, color=INK, pad=2.2)
-    ax.set_xlabel(sub, fontsize=6.2, color=INK2, labelpad=1.5)
-    for v in (11.5,):                    # majors above and left, minors below
-        ax.axhline(v, color="white", lw=0.6, alpha=0.55)
-        ax.axvline(v, color="white", lw=0.6, alpha=0.55)
-    tk = np.arange(0, 24, 6)
-    ax.set_xticks([])
-    ax.set_yticks(tk)
-    ax.set_yticklabels([PCN[i] for i in ton[tk]] if ax in (axc[0], axc[2])
-                       else [], fontsize=5.5)
-    ax.tick_params(length=1.5, pad=1.0)
 
 fig.savefig(FIGDIR / "fig1_averaging.pdf"); fig.savefig(FIGDIR / "fig1_averaging.png")
 print("fig1 written")
@@ -153,37 +118,41 @@ axa.set_xlabel("transposition (semitones)", fontsize=7)
 axa.set_ylabel("mean similarity (z)", fontsize=7.5)
 axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
 
-# (b) three bars per arm, because the random subspace is the control that
-# makes the learned one readable and it does not sit at zero for every arm:
-# in MuQ it sits at the ambient level, since any four directions keep some of
-# what is already there.
-# one arm per family rather than a depth sweep: the sweep is in Table 1, and
-# four groups leave the three bars per group readable. The chromagram is left
-# out because its ambient value of 0.698 would compress everything else.
-BARS = [("cqt", "log-CQT"), ("encodec_32k", "EnCodec"),
-        ("mert_L12", "MERT L12"), ("muq_L6", "MuQ L6")]
-amb, rnd, prj, perr = [], [], [], [[], []]
+# (b) the same statistic under three metrics: the native cosine one, shortest
+# paths on a kNN graph over the same embeddings, and the rank-4 projection
+# fitted on GiantSteps tonics. The matched random subspace is a tick rather
+# than a fourth bar, since it only matters where it sits relative to ambient.
+BARS = [("mert_L4", "MERT L4"), ("mert_L12", "L12"), ("mert_L24", "L24"),
+        ("muq_L2", "MuQ L2"), ("muq_L6", "L6"), ("muq_L12", "L12")]
+amb, geo, prj, perr, rnd = [], [], [], [[], []], []
 for a, _ in BARS:
     d = json.load(open(f"runs/subspace_{a}.json"))
     amb.append(d["ambient"]["nsynth_curve"]["d_strict"]["v"])
     rnd.append(d["subspaces"]["random"]["4"]["d_strict"]["mean"])
     v = d["subspaces"]["key_lda"]["4"]["nsynth_curve"]["d_strict"]
     prj.append(v["v"]); perr[0].append(v["v"] - v["lo"]); perr[1].append(v["hi"] - v["v"])
+    geo.append(json.load(open(f"runs/geodesic_{a}.json"))["geodesic"]["10"]["d_strict"]["v"])
 x = np.arange(len(BARS)); w = 0.27
-axb.bar(x - w, amb, w, color=AQUA, label="ambient", zorder=3)
-axb.bar(x, rnd, w, color=GRID, edgecolor=INK2, linewidth=0.5,
-        label="random $d=4$", zorder=3)
+axb.bar(x - w, amb, w, color=AQUA, label="native", zorder=3)
+axb.bar(x, geo, w, color=PURPLE, label="geodesic", zorder=3)
 axb.bar(x + w, prj, w, color=BLUE, yerr=np.array(perr), capsize=1.8,
-        error_kw=dict(elinewidth=0.7, ecolor=INK2),
-        label="GS-key $d=4$", zorder=3)
+        error_kw=dict(elinewidth=0.7, ecolor=INK2), label="GS-key $d=4$", zorder=3)
+axb.scatter(x + w, rnd, marker="_", s=42, linewidths=1.1, color=INK2,
+            label="random $d=4$", zorder=5)
 style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
+# symlog: the native and geodesic values sit two orders of magnitude below the
+# projected ones, and on a linear axis the contrast this panel is about would
+# be invisible
+axb.set_yscale("symlog", linthresh=0.01, linscale=0.45)
+axb.set_yticks([0, 0.01, 0.1, 0.4])
+axb.set_yticklabels(["0", ".01", ".1", ".4"])
 axb.set_xticks(x); axb.set_xticklabels([n for _, n in BARS], fontsize=7)
 axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$", fontsize=7.5)
-axb.set_title("(b) octave equivalence after projection", loc="center",
+axb.set_title("(b) octave equivalence under three metrics", loc="center",
               color=INK, fontsize=7.5)
 
 h, l = axb.get_legend_handles_labels()
-fig.legend(h, l, frameon=False, ncol=3, loc="lower center",
+fig.legend(h, l, frameon=False, ncol=4, loc="lower center",
            bbox_to_anchor=(0.5, -0.10), handlelength=1.5, fontsize=7,
            columnspacing=1.2, handletextpad=0.5)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")

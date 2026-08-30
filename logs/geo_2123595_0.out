@@ -1,0 +1,7 @@
+[cqt] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=+0.0041 [+0.0034,+0.0048] d12=+0.0047
+  geodesic k=5   d_strict=+0.0061 [+0.0042,+0.0089] d12=+0.0055 b2=+0.0047 | 1 components, 0/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.0050 [+0.0033,+0.0077] d12=+0.0045 b2=+0.0044 | 1 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.0050 [+0.0034,+0.0077] d12=+0.0045 b2=+0.0044 | 1 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.0050 [+0.0034,+0.0077] d12=+0.0045 b2=+0.0044 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_cqt.json

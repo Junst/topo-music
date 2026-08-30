@@ -1,0 +1,4 @@
+7035 clips, 1763 tracks
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+chroma          0.455   0.346     0.471    0.373
+wrote runs/probe_f1_chroma.json

@@ -1,0 +1,7 @@
+[encodec_32k] 8631 notes, 150 instruments, kmax=25
+  cosine      d_strict=+0.0000 [-0.0109,+0.0118] d12=+0.0376
+  geodesic k=5   d_strict=+0.0336 [+0.0154,+0.0509] d12=+0.0488 b2=+0.0111 | 2 components, 0/22475 pairs unreachable
+  geodesic k=10  d_strict=+0.0301 [+0.0162,+0.0443] d12=+0.0425 b2=+0.0093 | 2 components, 0/22475 pairs unreachable
+  geodesic k=20  d_strict=+0.0268 [+0.0141,+0.0393] d12=+0.0405 b2=+0.0087 | 2 components, 0/22475 pairs unreachable
+  geodesic k=50  d_strict=+0.0227 [+0.0117,+0.0334] d12=+0.0386 b2=+0.0078 | 1 components, 0/22475 pairs unreachable
+wrote runs/geodesic_encodec_32k.json
