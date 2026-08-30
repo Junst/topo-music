@@ -48,8 +48,8 @@ def style(ax):
 # wider in the same total width. Its first sub-row is an empty header whose
 # top edge coincides with (a) and (b), so the three panel titles sit on one
 # line even though the matrices below start lower.
-fig = plt.figure(figsize=(7.0, 2.62))
-gs = fig.add_gridspec(1, 3, width_ratios=[1.34, 1.34, 1.04], wspace=0.26)
+fig = plt.figure(figsize=(7.0, 2.40))
+gs = fig.add_gridspec(1, 3, width_ratios=[1.46, 1.46, 0.94], wspace=0.24)
 axa = fig.add_subplot(gs[0]); axb = fig.add_subplot(gs[1], sharey=axa)
 gsc = gs[2].subgridspec(3, 2, height_ratios=[0.001, 1, 1],
                         wspace=0.10, hspace=0.46)
@@ -86,7 +86,7 @@ axa.set_xticklabels(["0.02", "0.1", "0.5", "2", "8", "20"])
 axb.set_xticks([1, 4, 16, 64, 293]); axb.set_xticklabels(["1", "4", "16", "64", "293"])
 handles, labels = axa.get_legend_handles_labels()
 fig.legend(handles, labels, frameon=False, ncol=3, loc="lower center",
-           bbox_to_anchor=(0.5, -0.10), handlelength=2.4)
+           bbox_to_anchor=(0.5, -0.155), handlelength=2.4)
 axa.annotate(r"$1.7\times$", (20, 0.468), xytext=(-4, -18),
              textcoords="offset points", ha="right", color=BLUE, fontsize=7.5)
 axb.annotate(r"$13.4\times$", (170, 0.16), color=BLUE, fontsize=7.5,
@@ -106,10 +106,10 @@ for ax, key, ttl, sub in [
         (axc[0], "one", "1 audio clip", rf"$\rho={float(km['rho_one']):+.2f}$"),
         (axc[1], "eight", "8 audio clips", rf"$\rho={float(km['rho_eight']):+.2f}$"),
         (axc[2], "alle", "all audio clips", rf"$\rho={float(km['rho_all']):+.2f}$"),
-        (axc[3], "ref", "circle of fifths", "reference")]:
+        (axc[3], "ref", "reference", "circle of fifths")]:
     ax.imshow(km[key], cmap="magma", vmin=0, vmax=1, interpolation="nearest")
-    ax.set_title(ttl, loc="center", fontsize=6.5, color=INK, pad=2.2)
-    ax.set_xlabel(sub, fontsize=6.5, color=INK2, labelpad=1.5)
+    ax.set_title(ttl, loc="center", fontsize=6.2, color=INK, pad=2.2)
+    ax.set_xlabel(sub, fontsize=6.2, color=INK2, labelpad=1.5)
     for v in (11.5,):                    # majors above and left, minors below
         ax.axhline(v, color="white", lw=0.6, alpha=0.55)
         ax.axvline(v, color="white", lw=0.6, alpha=0.55)
@@ -124,65 +124,50 @@ fig.savefig(FIGDIR / "fig1_averaging.pdf"); fig.savefig(FIGDIR / "fig1_averaging
 print("fig1 written")
 
 # ---------------------------------------------------------------- figure 2
+# Two panels, both contrasting the ambient metric with the same rank-4
+# projection, so one legend serves both. The averaging null that used to be a
+# third panel is a flat line at zero and the text states its numbers exactly,
+# so it costs a panel and shows nothing a sentence does not.
 ARMS2 = ["cqt", "mert_L4", "mert_L12", "mert_L16", "mert_L24"]
-NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
+# short tick labels: the full names crowd at this width
+NICE = {"cqt": "CQT", "mert_L4": "L4", "mert_L12": "L12",
         "mert_L16": "L16", "mert_L24": "L24"}
-cm = json.load(open("runs/nsynth_class_means.json"))
-# (a) and (c) share the top row and (b) spans the width below. (a) is a null,
-# so it needs little width, and giving (c) its own panel instead of an inset
-# leaves both readable. (a) and (b) still carry identical y limits on purpose.
-fig = plt.figure(figsize=(3.35, 3.05))
-gsf = fig.add_gridspec(2, 2, height_ratios=[1, 1.02], hspace=0.62, wspace=0.38)
-axa = fig.add_subplot(gsf[0, 0])
-axcc = fig.add_subplot(gsf[0, 1])
-axb = fig.add_subplot(gsf[1, :], sharey=axa)
-for arm in ARMS2:
-    c = cm[arm]["curve"]
-    npp = [r["n_per_pitch"] if r["n_per_pitch"] else 128 for r in c]
-    ys = [r["d_strict"]["mean"] for r in c]
-    col = BLUE if arm.startswith("mert") else AQUA
-    axa.plot(npp, ys, color=col, lw=1.3, marker="o", ms=2.6,
-             alpha=0.55 if arm != "mert_L12" else 1.0,
-             ls="-" if arm.startswith("mert") else ":", zorder=3)
-axa.annotate("MERT L4-L24,\nlog-CQT", (1.05, 0.055), color=INK2, fontsize=6.5)
-style(axa); axa.set_xscale("log"); axa.axhline(0, color=INK2, lw=0.6, zorder=2)
-axa.set_xticks([1, 8, 128]); axa.set_xticklabels(["1", "8", "all"])
-axa.set_xlabel("notes per pitch centroid")
-axa.set_ylabel(r"$\Delta_{\mathrm{strict}}$")
-axa.set_title("(a) averaging does not help", loc="center", color=INK, fontsize=7.5)
 
-sub = json.load(open("runs/subspace_mert_L12.json"))
-x = np.arange(len(ARMS2)); w = 0.36
-amb = [json.load(open(f"runs/subspace_{a}.json"))["ambient"]["nsynth_curve"]["d_strict"]["v"] for a in ARMS2]
+fig, (axa, axb) = plt.subplots(1, 2, figsize=(3.35, 1.92),
+                               gridspec_kw={"width_ratios": [1, 1.06],
+                                            "wspace": 0.42})
+
+# (a) the curve the strict contrast is a summary of
+oc = np.load("runs/figs/_octave_curve.npz")
+axa.plot(oc["ks"], oc["ambient"], color=AQUA, ls=":", lw=1.2, label="ambient")
+axa.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.2,
+         label="GS-key projection (d=4)")
+for k in (12, 24):
+    axa.axvline(k, color=INK2, lw=0.6, ls=":", zorder=1)
+style(axa)
+axa.set_xticks([1, 12, 24]); axa.set_yticks([])
+axa.set_xlabel("transposition (semitones)", fontsize=7)
+axa.set_ylabel("mean similarity (z)", fontsize=7.5)
+axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
+
+# (b) the same contrast as one number per representation
 prj = [json.load(open(f"runs/subspace_{a}.json"))["subspaces"]["key_lda"]["4"]["nsynth_curve"] for a in ARMS2]
+amb = [json.load(open(f"runs/subspace_{a}.json"))["ambient"]["nsynth_curve"]["d_strict"]["v"] for a in ARMS2]
 pv = [p["d_strict"]["v"] for p in prj]
 perr = np.array([[p["d_strict"]["v"] - p["d_strict"]["lo"] for p in prj],
                  [p["d_strict"]["hi"] - p["d_strict"]["v"] for p in prj]])
-axb.bar(x - w / 2, amb, w, color=AQUA, label="ambient", zorder=3)
+x = np.arange(len(ARMS2)); w = 0.36
+axb.bar(x - w / 2, amb, w, color=AQUA, zorder=3)
 axb.bar(x + w / 2, pv, w, color=BLUE, yerr=perr, capsize=2,
-        error_kw=dict(elinewidth=0.7, ecolor=INK2), label="GS-key projection (d=4)",
-        zorder=3)
+        error_kw=dict(elinewidth=0.7, ecolor=INK2), zorder=3)
 style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
-axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2])
-axb.set_xlabel("representation")
-axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$")
-axb.set_title("(b) a projection does", loc="center", color=INK, fontsize=7.5)
-axb.legend(frameon=False, loc="upper right", handlelength=1.1, fontsize=7,
-           borderpad=0.1, labelspacing=0.25, handletextpad=0.5)
+axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2], fontsize=6.5)
+axb.set_xlabel("representation", fontsize=7)
+axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$", fontsize=7.5)
+axb.set_title("(b) octave equivalence", loc="center", color=INK, fontsize=7.5)
 
-# (c) the curve the strict contrast in (b) is a summary of. Its vertical axis
-# is standardised mean similarity, unrelated to the Delta_strict axis of (a)
-# and (b), so it sits in its own panel.
-oc = np.load("runs/figs/_octave_curve.npz")
-axcc.plot(oc["ks"], oc["ambient"], color=AQUA, ls=":", lw=1.2)
-axcc.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.2)
-for k in (12, 24):
-    axcc.axvline(k, color=INK2, lw=0.6, ls=":", zorder=1)
-style(axcc)
-axcc.set_xticks([1, 12, 24]); axcc.set_yticks([])
-axcc.set_xlabel("transposition (semitones)", fontsize=6.2)
-axcc.set_ylabel("mean similarity (z)", fontsize=7)
-axcc.set_title("(c) MERT L12", loc="center", color=INK, fontsize=7.5)
-axcc.set_ylim(top=float(max(oc["projected"].max(), oc["ambient"].max())) + 0.6)
+h, l = axa.get_legend_handles_labels()
+fig.legend(h, l, frameon=False, ncol=2, loc="lower center",
+           bbox_to_anchor=(0.5, -0.30), handlelength=2.0, fontsize=7)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")

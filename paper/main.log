@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 14:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 14:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -354,21 +354,23 @@ Overfull \hbox (2.56871pt too wide) in paragraph at lines 7--34
  []
 
 )
-<figs/fig1_averaging.pdf, id=50, 431.46411pt x 197.06154pt>
+<figs/fig1_averaging.pdf, id=50, 437.01888pt x 191.01978pt>
 File: figs/fig1_averaging.pdf Graphic file (type pdf)
 <use figs/fig1_averaging.pdf>
 Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 44.
-(pdftex.def)             Requested size: 465.94139pt x 212.82025pt.
+(pdftex.def)             Requested size: 465.94139pt x 203.66919pt.
  [1{/home/solbon1212/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/solbon1212/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
 ]
-<figs/fig2_mechanisms.pdf, id=99, 220.75975pt x 210.35162pt>
+Underfull \vbox (badness 3407) has occurred while \output is active []
+
+<figs/fig2_mechanisms.pdf, id=99, 205.62828pt x 175.23601pt>
 File: figs/fig2_mechanisms.pdf Graphic file (type pdf)
 <use figs/fig2_mechanisms.pdf>
 Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 108.
-(pdftex.def)             Requested size: 244.6937pt x 233.16565pt.
+(pdftex.def)             Requested size: 244.6937pt x 208.52809pt.
  [2 <./figs/fig1_averaging.pdf>]
 Underfull \vbox (badness 2142) has occurred while \output is active []
 
@@ -383,15 +385,15 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  12256 strings out of 469115
  189817 string characters out of 5458670
- 659763 words of memory out of 5000000
+ 659638 words of memory out of 5000000
  40833 multiletter control sequences out of 15000+600000
  664374 words of font info for 244 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 74i,12n,79p,1281b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,12n,79p,1281b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 247961 bytes).
+Output written on main.pdf (5 pages, 245219 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
+ 356 PDF objects out of 1000 (max. 8388607)
  194 compressed objects within 2 object streams
  36 named destinations out of 1000 (max. 500000)
  53339 words of extra memory for PDF output out of 61914 (max. 10000000)

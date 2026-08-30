@@ -106,13 +106,12 @@ directions are.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\columnwidth]{figs/fig2_mechanisms.pdf}
-\caption{Two operations on NSynth notes, with one outcome each. (a) and (b) share a
-vertical axis, since rescaling (a) would invent structure that is not there.
-(a) Averaging notes of the same pitch into a pitch centroid does not produce
-octave equivalence at any sample size; the chromagram is off scale, moving
-only from 0.57 to 0.62. (b) A rank-4 projection fitted only on GiantSteps
-track tonics, applied unchanged to individual recordings, with instrument-
-bootstrap 95\% intervals. (c) The curve (b) summarises, in the same colours.}
+\caption{Two views of the same rank-4 projection, fitted only on GiantSteps
+track tonics and applied unchanged to individual NSynth recordings. (a) Ambient
+similarity decays smoothly with transposition distance, while the projected
+curve reaches maxima at exactly twelve and twenty-four semitones. (b) The
+strict octave contrast that curve summarises, per representation, with
+instrument-bootstrap 95\% intervals.}
 \label{fig:mechanisms}
 \end{figure}
 
@@ -195,9 +194,9 @@ with no averaging. At rank 4 the strict octave
 contrast moves from $-0.005$ to 0.223 for MERT L12, from $-0.001$ to 0.304 for
 layer 4, and from 0.004 to 0.466 for the log-CQT, with the other two statistics
 agreeing in sign and bootstrap intervals excluding zero.
-Fig.~\ref{fig:mechanisms}(c) shows the curve those contrasts are drawn from,
-where the projected similarities reach maxima at exactly twelve and twenty-four
-semitones against an ambient baseline that decays smoothly. Matched random subspaces
+Fig.~\ref{fig:mechanisms}(a) shows the curve those contrasts are drawn from,
+where the projected similarities reach maxima at exactly twelve and twenty-
+four semitones against an ambient baseline that decays smoothly. Matched random subspaces
 stay between $-0.019$ and 0.007, and the subspace uses between 0.11 and 0.24\%
 of MERT's variance and 1.85\% of the log-CQT's. Where that absence has been read as a property of the pretraining objective
 \cite{pilataki2025}, the transfer here exposes the relation in a fixed

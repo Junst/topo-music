@@ -72,7 +72,14 @@ from scipy.stats import spearmanr
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 GS = Path("/lustre/dataset/musicdataset/marble/GS")
-CQT_SR, MERT_SR, MUQ_SR = 16000, 24000, 24000
+CQT_SR, MERT_SR, MUQ_SR, PQ_SR = 16000, 24000, 24000, 44100
+# Multi-scale pitch-quantized STFT, the front end from our axis-quantized input
+# study: two FFT sizes read on a log-spaced pitch grid of 360 bins at 20 cents
+# (a fifth of a semitone) from C1, log(1+|X|), z-scored per scale. It is a
+# log-frequency front end like the CQT but finer and multi-scale, and like the
+# CQT it does no octave folding, so it tests whether the log-CQT's profile of
+# readout geometry without ambient geometry is specific to that resolution.
+PQ_NFFTS, PQ_HOP, PQ_K, PQ_FLOW, PQ_CENTS = (4096, 16384), 441, 360, 32.70, 20.0
 TONIC = {n: i for i, n in enumerate(
     ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"])}
 ENH = {"Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#"}
@@ -167,6 +174,8 @@ def main():
         for i, lyr in enumerate(model.encoder.layers):
             lyr.register_forward_hook(tap(i + 1))
         native_sr = MERT_SR
+    elif a.arm == "pq_stft":
+        native_sr = PQ_SR
     elif is_muq:
         # MuQ returns its hidden states directly, so no forward hooks are
         # needed. Same parameter count and width as MERT-v1-330M but half the
@@ -232,6 +241,26 @@ def main():
                 else:
                     C = librosa.amplitude_to_db(C, ref=np.max)
                 F.append(C.T)
+        elif a.arm == "pq_stft":
+            f_k = PQ_FLOW * (2.0 ** (np.arange(PQ_K) * PQ_CENTS / 1200.0))
+            F = []
+            for w in ws:
+                yt = torch.from_numpy(np.ascontiguousarray(w))
+                ch = []
+                for n_fft in PQ_NFFTS:
+                    spec = torch.stft(yt, n_fft=n_fft, hop_length=PQ_HOP,
+                                      win_length=n_fft,
+                                      window=torch.hann_window(n_fft),
+                                      center=True, return_complex=True,
+                                      pad_mode="reflect")
+                    mag = spec.abs()
+                    idx = torch.from_numpy(
+                        np.floor(f_k / (native_sr / n_fft) + 0.5).astype(np.int64)
+                    ).clamp(0, mag.shape[0] - 1)
+                    c = torch.log1p(mag[idx, :])
+                    c = (c - c.mean()) / (c.std() + 1e-6)
+                    ch.append(c.numpy().astype(np.float32))
+                F.append(np.concatenate(ch, 0).T)          # [T, 2K]
         elif is_codec:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))  # [B,L,T]
             # the quantised latent the codec actually emits: sum over RVQ levels
