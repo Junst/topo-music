@@ -217,11 +217,12 @@ the chromagram, whereas MERT and the codec largely fail it. Averaging NSynth rec
 in MERT, indicating that the near-zero geometry is not explained by finite-
 sample variation alone. A $k$-nearest-neighbor geodesic metric reveals small but reliable effects in
 MERT layers 4 and 12 and in EnCodec, stable for $k$ from 5 to 50, but not in
-layer 24.
-For example, MERT layer 12 changes from $-0.003$ under the native metric to
-0.012 under the geodesic one and 0.223 after a supervised rank-4 projection.
-Octave structure can therefore be absent from global distances, weakly
-preserved on the manifold, or visible only after supervised reweighting.
+layer 24. MERT layer 12 changes from $-0.003$ under the native metric to 0.012
+under the geodesic one and 0.223 after a supervised rank-4 projection.
+MATPAC follows the same ordering across the three metrics as MuQ, at 0.009,
+0.051 and 0.114. Octave structure can therefore be absent from global
+distances, weakly preserved on the manifold, or visible only after supervised
+reweighting.
 The geodesic metric is not uniformly more revealing: for the chromagram, which
 encodes octave identity directly, the contrast falls from 0.698 to 0.173.
 
@@ -230,7 +231,7 @@ octave information, and applied unchanged to NSynth recordings. It raises the st
 layer 2, and Fig.~\ref{fig:mechanisms}(a) shows the curve those contrasts come
 from, with maxima at exactly twelve and twenty-four semitones. In MuQ a matched random rank-4 subspace retains about the native effect, at
 0.039 for layer 2, but stays far below the learned projection, while in MERT
-it lies near zero. The learned
+it is near zero. The learned
 subspaces account for only 0.08 to 0.29\% of NSynth variance in MuQ and 0.11 to
 0.13\% in MERT. PupuJEPA is a contrasting case in which all three are indistinguishable from
 zero, and its GiantSteps key F1 is the lowest of any arm, so the absence there
