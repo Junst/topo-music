@@ -80,6 +80,12 @@ CQT_SR, MERT_SR, MUQ_SR, PQ_SR = 16000, 24000, 24000, 44100
 # CQT it does no octave folding, so it tests whether the log-CQT's profile of
 # readout geometry without ambient geometry is specific to that resolution.
 PQ_NFFTS, PQ_HOP, PQ_K, PQ_FLOW, PQ_CENTS = (4096, 16384), 441, 360, 32.70, 20.0
+# Harmonic CQT: the same 20-cent grid as PQ-STFT but stacked over harmonics
+# rather than over FFT sizes, and compressed the way the log-CQT is, in dB
+# relative to each clip's maximum. Between the three spectral arms, resolution,
+# what is stacked and how it is normalised each vary, which is what makes the
+# comparison in Sec. 4.1 informative. h=5 reaches 10.5 kHz, so it needs 22.05 kHz.
+HCQT_SR, HCQT_H, HCQT_BPO, HCQT_NB = 22050, (0.5, 1, 2, 3, 4, 5), 60, 360
 TONIC = {n: i for i, n in enumerate(
     ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"])}
 ENH = {"Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#"}
@@ -176,6 +182,8 @@ def main():
         native_sr = MERT_SR
     elif a.arm == "pq_stft":
         native_sr = PQ_SR
+    elif a.arm == "hcqt":
+        native_sr = HCQT_SR
     elif is_muq:
         # MuQ returns its hidden states directly, so no forward hooks are
         # needed. Same parameter count and width as MERT-v1-330M but half the
@@ -241,6 +249,14 @@ def main():
                 else:
                     C = librosa.amplitude_to_db(C, ref=np.max)
                 F.append(C.T)
+        elif a.arm == "hcqt":
+            fmin = librosa.note_to_hz("C1")
+            F = [np.concatenate(
+                    [librosa.amplitude_to_db(np.abs(librosa.cqt(
+                        w, sr=native_sr, hop_length=512, fmin=h * fmin,
+                        n_bins=HCQT_NB, bins_per_octave=HCQT_BPO)), ref=np.max)
+                     for h in HCQT_H], 0).T
+                 for w in ws]
         elif a.arm == "pq_stft":
             f_k = PQ_FLOW * (2.0 ** (np.arange(PQ_K) * PQ_CENTS / 1200.0))
             F = []

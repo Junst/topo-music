@@ -73,6 +73,13 @@ def cell(v, w=6, d=3, star=None):
     return (s + ("*" if star else " ")).rjust(w)
 
 
+# Highest and lowest value in each column, among the real representations only:
+# the control block is excluded because an analytic circle of fifths would win
+# every geometry column and orthogonal codes would win accuracy by construction.
+# rho_chr is left unmarked, since it is a discriminant where a high value is a
+# warning rather than a result.
+MARKED_COLS = ("acc", "r5", "rw")
+
 rows = []
 for block, arms in BLOCKS:
     rows.append((block, None))
@@ -93,6 +100,14 @@ for block, arms in BLOCKS:
             rc=c.get("chromatic", {}).get("rho"),
             rm=c.get("mode_mismatch", {}).get("rho"))))
 
+real = [(l, r) for l, r in rows if r and not l.startswith(("analytic", "random f", "orthogonal"))]
+marks = {}
+for c in MARKED_COLS:
+    vals = [(r[c], l) for l, r in real if r.get(c) is not None]
+    if not vals: continue
+    marks[(max(vals)[1], c)] = "hi"
+    marks[(min(vals)[1], c)] = "lo"
+
 hdr = f"{'representation':<38}{'acc':>7}{'r5_cent':>9}{'r5|spec':>9}{'r5_W':>8}{'z_W':>7}{'r_chrom':>9}{'r_mode':>8}"
 print("\n" + hdr); print("-" * len(hdr))
 for label, r in rows:
@@ -110,16 +125,13 @@ Path("runs/table1_rows.json").write_text(json.dumps(
 # the four cells that carry the mirror-image pair discussed in Sec. 4.1:
 # a front end with readout geometry and no ambient geometry, and a learned
 # representation with ambient geometry and no readout geometry
-BOLD = {("log-CQT", "r5"), ("log-CQT", "rw"),
-        ("PQ-STFT", "r5"), ("PQ-STFT", "rw"),
-        ("layer 2", "r5"), ("layer 2", "rw")}
 
 
-def tex(v, d=3, bold=False):
+def tex(v, d=3, mark=None):
     if v is None or (isinstance(v, float) and np.isnan(v)):
         return "--"
-    s = f"{v:+.{d}f}"
-    return rf"$\mathbf{{{s}}}$" if bold else f"${s}$"
+    s = f"${v:+.{d}f}$"
+    return rf"\textcolor{{{mark}}}{{$\mathbf{{{s[1:-1]}}}$}}" if mark else s
 
 
 # A single-column table. As a full-width table* every row costs two column
@@ -138,9 +150,9 @@ L = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
      r"out mel-spectral centroid distance changes no sign. Orthogonal key "
      r"codes decode at $.651$ with classes equidistant by construction and "
      r"still show nothing, so $\rho^{W}_{5}$ is not an artefact of an "
-     r"accurate classifier. Bold marks the two one-sided profiles of "
-     r"Sec.~\ref{sec:three}: readout geometry without ambient geometry in "
-     r"the log-CQT, and the reverse in PQ-STFT and MuQ layer 2.}",
+     r"accurate classifier. In each of the first three columns blue marks "
+     r"the highest value among the real representations and red the lowest; "
+     r"the control block and $\rho_{\text{chr}}$ are excluded.}",
      r"\label{tab:decodable-vs-geometric}",
      r"\begin{tabular}{l r r r r}", r"\toprule",
      r"representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & "
@@ -149,10 +161,15 @@ for label, r in rows:
     if r is None:
         L.append(r"\multicolumn{5}{l}{\textit{" + label + r"}} \\")
         continue
-    acc = f"${r['acc']:.3f}$" if r["acc"] else "--"
-    bd = lambda k: (label, k) in BOLD
-    L.append(f"\\quad {label} & {acc} & {tex(r['r5'], bold=bd('r5'))} & "
-             f"{tex(r['rw'], bold=bd('rw'))} & {tex(r['rc'])} \\\\")
+    mk = lambda k: marks.get((label, k))
+    if not r["acc"]:
+        acc = "--"
+    else:
+        acc = f"${r['acc']:.3f}$"
+        if mk("acc"):
+            acc = rf"\textcolor{{{mk('acc')}}}{{$\mathbf{{{acc[1:-1]}}}$}}"
+    L.append(f"\\quad {label} & {acc} & {tex(r['r5'], mark=mk('r5'))} & "
+             f"{tex(r['rw'], mark=mk('rw'))} & {tex(r['rc'])} \\\\")
 L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
 Path("runs/table1.tex").write_text("\n".join(L) + "\n")
 print("wrote runs/table1_rows.json and runs/table1.tex")

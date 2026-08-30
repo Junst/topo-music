@@ -20,11 +20,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
+PURPLE, BROWN = "#8b5fd6", "#9c6b1f"
 INK, INK2, GRID = "#1a1a19", "#55554e", "#dededa"
+# MuQ L6 sits at the same fraction of depth as MERT L12. Five series is the
+# most these panels take; hue, dash pattern and marker all differ so the figure
+# survives grayscale and CVD.
 SERIES = {                       # arm -> (label, colour, linestyle, marker)
-    "mert_L12": ("MERT L12", BLUE, "-", "o"),
-    "chroma":   ("chroma",   ORANGE, "--", "s"),
-    "cqt":      ("log-CQT",  AQUA, ":", "^"),
+    "mert_L12":    ("MERT L12", BLUE, "-", "o"),
+    "muq_L6":      ("MuQ L6",   PURPLE, "-", "D"),
+    "chroma":      ("chroma",   ORANGE, "--", "s"),
+    "cqt":         ("log-CQT",  AQUA, ":", "^"),
+    "encodec_32k": ("EnCodec",  BROWN, "-.", "v"),
 }
 FIGDIR = Path("runs/figs"); FIGDIR.mkdir(parents=True, exist_ok=True)
 plt.rcParams.update({
@@ -85,7 +91,7 @@ axa.set_xticks([0.02, 0.1, 0.5, 2, 8, 20])
 axa.set_xticklabels(["0.02", "0.1", "0.5", "2", "8", "20"])
 axb.set_xticks([1, 4, 16, 64, 293]); axb.set_xticklabels(["1", "4", "16", "64", "293"])
 handles, labels = axa.get_legend_handles_labels()
-fig.legend(handles, labels, frameon=False, ncol=3, loc="lower center",
+fig.legend(handles, labels, frameon=False, ncol=5, loc="lower center",
            bbox_to_anchor=(0.5, -0.155), handlelength=2.4)
 axa.annotate(r"$1.7\times$", (20, 0.468), xytext=(-4, -18),
              textcoords="offset points", ha="right", color=BLUE, fontsize=7.5)
@@ -139,9 +145,8 @@ fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 2.85),
 
 # (a) the curve the strict contrast is a summary of
 oc = np.load("runs/figs/_octave_curve.npz")
-axa.plot(oc["ks"], oc["ambient"], color=AQUA, ls=":", lw=1.2, label="ambient")
-axa.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.2,
-         label="GS-key projection (d=4)")
+axa.plot(oc["ks"], oc["ambient"], color=AQUA, ls=":", lw=1.2)
+axa.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.2)
 for k in (12, 24):
     axa.axvline(k, color=INK2, lw=0.6, ls=":", zorder=1)
 style(axa)
@@ -150,24 +155,38 @@ axa.set_xlabel("transposition (semitones)", fontsize=7)
 axa.set_ylabel("mean similarity (z)", fontsize=7.5)
 axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
 
-# (b) the same contrast as one number per representation
-prj = [json.load(open(f"runs/subspace_{a}.json"))["subspaces"]["key_lda"]["4"]["nsynth_curve"] for a in ARMS2]
-amb = [json.load(open(f"runs/subspace_{a}.json"))["ambient"]["nsynth_curve"]["d_strict"]["v"] for a in ARMS2]
-pv = [p["d_strict"]["v"] for p in prj]
-perr = np.array([[p["d_strict"]["v"] - p["d_strict"]["lo"] for p in prj],
-                 [p["d_strict"]["hi"] - p["d_strict"]["v"] for p in prj]])
-x = np.arange(len(ARMS2)); w = 0.36
-axb.bar(x - w / 2, amb, w, color=AQUA, zorder=3)
-axb.bar(x + w / 2, pv, w, color=BLUE, yerr=perr, capsize=2,
-        error_kw=dict(elinewidth=0.7, ecolor=INK2), zorder=3)
+# (b) three bars per arm, because the random subspace is the control that
+# makes the learned one readable and it does not sit at zero for every arm:
+# in MuQ it sits at the ambient level, since any four directions keep some of
+# what is already there.
+# one arm per family rather than a depth sweep: the sweep is in Table 1, and
+# four groups leave the three bars per group readable. The chromagram is left
+# out because its ambient value of 0.698 would compress everything else.
+BARS = [("cqt", "log-CQT"), ("encodec_32k", "EnCodec"),
+        ("mert_L12", "MERT L12"), ("muq_L6", "MuQ L6")]
+amb, rnd, prj, perr = [], [], [], [[], []]
+for a, _ in BARS:
+    d = json.load(open(f"runs/subspace_{a}.json"))
+    amb.append(d["ambient"]["nsynth_curve"]["d_strict"]["v"])
+    rnd.append(d["subspaces"]["random"]["4"]["d_strict"]["mean"])
+    v = d["subspaces"]["key_lda"]["4"]["nsynth_curve"]["d_strict"]
+    prj.append(v["v"]); perr[0].append(v["v"] - v["lo"]); perr[1].append(v["hi"] - v["v"])
+x = np.arange(len(BARS)); w = 0.27
+axb.bar(x - w, amb, w, color=AQUA, label="ambient", zorder=3)
+axb.bar(x, rnd, w, color=GRID, edgecolor=INK2, linewidth=0.5,
+        label="random $d=4$", zorder=3)
+axb.bar(x + w, prj, w, color=BLUE, yerr=np.array(perr), capsize=1.8,
+        error_kw=dict(elinewidth=0.7, ecolor=INK2),
+        label="GS-key $d=4$", zorder=3)
 style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
-axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2], fontsize=7)
-axb.set_xlabel("representation", fontsize=7)
+axb.set_xticks(x); axb.set_xticklabels([n for _, n in BARS], fontsize=7)
 axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$", fontsize=7.5)
-axb.set_title("(b) octave equivalence", loc="center", color=INK, fontsize=7.5)
+axb.set_title("(b) octave equivalence after projection", loc="center",
+              color=INK, fontsize=7.5)
 
-h, l = axa.get_legend_handles_labels()
-fig.legend(h, l, frameon=False, ncol=2, loc="lower center",
-           bbox_to_anchor=(0.5, -0.11), handlelength=2.0, fontsize=7)
+h, l = axb.get_legend_handles_labels()
+fig.legend(h, l, frameon=False, ncol=3, loc="lower center",
+           bbox_to_anchor=(0.5, -0.10), handlelength=1.5, fontsize=7,
+           columnspacing=1.2, handletextpad=0.5)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")
