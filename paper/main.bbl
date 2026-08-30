@@ -50,6 +50,11 @@ Yuexuan Kong, Vincent Lostanlen, Gabriel Meseguer-Brocal, Stella Wong, Mathieu L
 \newblock ``{STONE}: Self-supervised tonality estimator,''
 \newblock in {\em International Society for Music Information Retrieval Conference (ISMIR)}, 2024.
 
+\bibitem{jepamt}
+Mary Pilataki, Matthias Mauch, and Simon Dixon,
+\newblock ``Self-supervised representation learning with a {JEPA} framework for multi-instrument music transcription,''
+\newblock in {\em IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA)}, 2025.
+
 \bibitem{encodec}
 Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
 \newblock ``High fidelity neural audio compression,''

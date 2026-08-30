@@ -121,8 +121,8 @@ NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
 cm = json.load(open("runs/nsynth_class_means.json"))
 # single-column width: three full-width floats do not fit in four ICASSP pages,
 # and this one reads fine narrow
-fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 3.4), sharey=True,
-                               gridspec_kw={"height_ratios": [1, 1], "hspace": 0.46})
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 3.15), sharey=True,
+                               gridspec_kw={"height_ratios": [1, 1], "hspace": 0.44})
 for arm in ARMS2:
     c = cm[arm]["curve"]
     npp = [r["n_per_pitch"] if r["n_per_pitch"] else 128 for r in c]
