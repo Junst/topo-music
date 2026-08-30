@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 01:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,19 +352,21 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 
-] (./table1.tex)
-<figs/fig2_mechanisms.pdf, id=99, 221.7635pt x 222.44104pt>
-File: figs/fig2_mechanisms.pdf Graphic file (type pdf)
-<use figs/fig2_mechanisms.pdf>
-Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 161.
-(pdftex.def)             Requested size: 244.6937pt x 245.45296pt.
- [2]
-<figs/fig1_averaging.pdf, id=118, 431.07098pt x 206.6301pt>
+] (./table1.tex) [2]
+<figs/fig1_averaging.pdf, id=117, 431.07098pt x 206.6301pt>
 File: figs/fig1_averaging.pdf Graphic file (type pdf)
 <use figs/fig1_averaging.pdf>
-Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 216.
+Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 201.
 (pdftex.def)             Requested size: 465.94139pt x 223.34634pt.
- [3 <./figs/fig2_mechanisms.pdf>] (./main.bbl [4 <./figs/fig1_averaging.pdf>]) [5] (./main.aux)
+<figs/fig2_octave_peak.pdf, id=118, 228.16492pt x 134.21979pt>
+File: figs/fig2_octave_peak.pdf Graphic file (type pdf)
+<use figs/fig2_octave_peak.pdf>
+Package pdftex.def Info: figs/fig2_octave_peak.pdf  used on input line 215.
+(pdftex.def)             Requested size: 244.6937pt x 143.94757pt.
+ [3]
+Underfull \vbox (badness 3168) has occurred while \output is active []
+
+ (./main.bbl [4 <./figs/fig1_averaging.pdf> <./figs/fig2_octave_peak.pdf>]) [5] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
@@ -373,18 +375,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: BC44E7DB141C93AF2DDD98BDA620DCE1;1329.
  ) 
 Here is how much of TeX's memory you used:
- 12238 strings out of 469115
- 189580 string characters out of 5458670
- 650784 words of memory out of 5000000
+ 12244 strings out of 469115
+ 189637 string characters out of 5458670
+ 650419 words of memory out of 5000000
  40822 multiletter control sequences out of 15000+600000
- 663075 words of font info for 239 fonts, out of 8000000 for 9000
+ 663313 words of font info for 243 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  74i,12n,79p,1001b,611s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 236737 bytes).
+Output written on main.pdf (5 pages, 228088 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
+ 353 PDF objects out of 1000 (max. 8388607)
+ 192 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
  50779 words of extra memory for PDF output out of 51595 (max. 10000000)
 

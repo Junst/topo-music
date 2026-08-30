@@ -156,21 +156,6 @@ whatever the directions are.
 
 \input{table1.tex}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figs/fig2_mechanisms.pdf}
-\caption{Averaging removes sample noise; projection removes metric anisotropy.
-Top: averaging notes of the same pitch into a pitch centroid does not produce
-octave equivalence at any sample size, with every learned and spectral arm
-saturating by four notes at approximately zero and MERT L24 staying negative.
-The chromagram, off scale, has octave equivalence already in single notes.
-Bottom: a rank-4 projection fitted only on GiantSteps track tonics, with no
-notes and no NSynth, applied unchanged to individual NSynth recordings. Both
-panels share a vertical axis, since rescaling the top one would invent
-structure that is not there. Error bars are instrument-bootstrap 95\%
-intervals.}
-\label{fig:mechanisms}
-\end{figure}
 
 \section{Results}
 \label{sec:results}
@@ -225,6 +210,20 @@ standard deviation over 5 draws in (a) and 10 in (b).}
 \label{fig:averaging}
 \end{figure*}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig2_octave_peak.pdf}
+\caption{The curve behind the strict octave contrast, for MERT layer 12 on
+NSynth notes. In the ambient metric mean similarity decreases with
+transposition distance, and the octave is not set apart from its neighbours by
+more than that decay. Under a rank-4 projection fitted only on GiantSteps track
+tonics, with no notes and no NSynth, the same recordings show sharp maxima at
+exactly twelve and twenty-four semitones, together with subsidiary maxima at
+the fourth and the fifth. Both curves are standardised within an arm, since the
+projection changes the scale of the similarities and the claim concerns where
+the maxima fall rather than how large they are.}
+\label{fig:octave}
+\end{figure}
 
 \subsection{Sample-limited masking}
 \label{sec:sample}
@@ -258,10 +257,9 @@ audio.
 If low between-item signal-to-noise were the whole story, the same averaging
 should expose octave equivalence on NSynth, and we pre-registered that
 prediction in advance of the run that refutes it.
-Fig.~\ref{fig:mechanisms} sweeps notes per pitch centroid, and
-every arm saturates by four notes at approximately zero, MERT L24 remains
-negative, and the chromagram needs no averaging at all, at 0.566 from single
-notes. Register and spectral envelope are functions of pitch, so they survive
+Across a sweep over notes per pitch centroid, every arm saturates by four
+notes at approximately zero, MERT L24 remains negative, and the chromagram
+needs no averaging at all, reaching 0.566 from single notes. Register and spectral envelope are functions of pitch, so they survive
 into every pitch centroid, so averaging over instruments cancels the
 instrument but never the octave, which is exactly the behaviour of the $n_y$
 term.
@@ -272,7 +270,10 @@ notes, no NSynth and no octave information, and apply them unchanged to
 individual NSynth recordings with no averaging. At rank 4 the strict octave
 contrast moves from $-0.005$ to 0.223 for MERT L12, from $-0.001$ to 0.304 for
 layer 4, and from 0.004 to 0.466 for the log-CQT, with the other two statistics
-agreeing in sign and bootstrap intervals excluding zero. Matched random
+agreeing in sign and bootstrap intervals excluding zero.
+Fig.~\ref{fig:octave} shows the curve those contrasts are drawn from, where
+the projected similarities peak at exactly twelve and twenty-four semitones
+against an ambient baseline that decays smoothly. Matched random
 subspaces stay between $-0.019$ and 0.007. The subspace uses between 0.11 and
 0.24\% of MERT's variance and 1.85\% of the log-CQT's.
 

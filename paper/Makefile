@@ -6,7 +6,7 @@
 #   make clean    remove build products, keep main.pdf
 #   make check    report anything still unresolved in the final pass
 
-main.pdf: main.tex refs.bib table1.tex figs/fig1_averaging.pdf figs/fig2_mechanisms.pdf
+main.pdf: main.tex refs.bib table1.tex figs/fig1_averaging.pdf figs/fig2_octave_peak.pdf
 	latexmk -pdf -interaction=nonstopmode main.tex
 
 .PHONY: manual clean check
