@@ -15,6 +15,11 @@ Ruibin Yuan, Yinghao Ma, Yizhi Li, Ge~Zhang, Xingran Chen, Hanzhi Yin, Yiqi Liu,
 \newblock ``{MARBLE}: Music audio representation benchmark for universal evaluation,''
 \newblock in {\em Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track}, 2023.
 
+\bibitem{controltasks}
+John Hewitt and Percy Liang,
+\newblock ``Designing and interpreting probes with control tasks,''
+\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
+
 \bibitem{krumhansl1982}
 Carol~L. Krumhansl and Edward~J. Kessler,
 \newblock ``Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys,''
@@ -29,11 +34,6 @@ Carol~L. Krumhansl,
 Roger~N. Shepard,
 \newblock ``Geometrical approximations to the structure of musical pitch,''
 \newblock {\em Psychological Review}, vol. 89, no. 4, pp. 305--333, 1982.
-
-\bibitem{controltasks}
-John Hewitt and Percy Liang,
-\newblock ``Designing and interpreting probes with control tasks,''
-\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
 
 \bibitem{brown1991}
 Judith~C. Brown,

@@ -52,12 +52,14 @@ for i, a_, k, r in anch:
 unit = lambda X: X / (np.linalg.norm(X, axis=1, keepdims=True) + 1e-12)
 ks = np.arange(1, kmax + 1)
 
+curves = {}
 fig, ax = plt.subplots(figsize=(3.35, 2.05))
 for Zx, col, ls, nm in [(unit(Zn), AQUA, "--", "ambient"),
                         (unit(Zn @ W), BLUE, "-", "rank-4 projection")]:
     S = np.array([np.mean([Zx[a] @ Zx[b] for a, b in byk[k]]) for k in ks])
     S = (S - S.mean()) / S.std()
     ax.plot(ks, S, color=col, ls=ls, lw=1.5, marker="o", ms=2.4, label=nm)
+    curves[nm] = S
     print(nm, np.round(S, 3), flush=True)
 for k in (12, 24):
     ax.axvline(k, color=INK2, lw=.7, ls=":", zorder=1)
@@ -71,5 +73,7 @@ ax.legend(frameon=False, loc="upper center", ncol=2, handlelength=2.2,
 for sp in ("top", "right"):
     ax.spines[sp].set_visible(False)
 fig.tight_layout()
+np.savez(FIG / "_octave_curve.npz", ks=ks,
+         ambient=curves["ambient"], projected=curves["rank-4 projection"])
 fig.savefig(FIG / "fig2_octave_peak.png"); fig.savefig(FIG / "fig2_octave_peak.pdf")
 print("fig2_octave_peak written", flush=True)

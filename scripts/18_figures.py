@@ -95,8 +95,8 @@ NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
 cm = json.load(open("runs/nsynth_class_means.json"))
 # single-column width: three full-width floats do not fit in four ICASSP pages,
 # and this one reads fine narrow
-fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 3.25), sharey=True,
-                               gridspec_kw={"height_ratios": [1, 1]})
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 3.4), sharey=True,
+                               gridspec_kw={"height_ratios": [1, 1], "hspace": 0.46})
 for arm in ARMS2:
     c = cm[arm]["curve"]
     npp = [r["n_per_pitch"] if r["n_per_pitch"] else 128 for r in c]
@@ -105,14 +105,12 @@ for arm in ARMS2:
     axa.plot(npp, ys, color=col, lw=1.3, marker="o", ms=2.6,
              alpha=0.55 if arm != "mert_L12" else 1.0,
              ls="-" if arm.startswith("mert") else ":", zorder=3)
-axa.annotate("MERT L4-L24, log-CQT:\nflat at zero (max $+0.008$)",
-             (1.6, 0.08), color=INK2, fontsize=6.5)
-axa.annotate("chroma: $+0.57\\rightarrow+0.62$, off scale",
-             (1.05, 0.43), color=ORANGE, fontsize=6.5)
+axa.annotate("MERT L4-L24 and log-CQT", (1.05, 0.045), color=INK2, fontsize=7)
 style(axa); axa.set_xscale("log"); axa.axhline(0, color=INK2, lw=0.6, zorder=2)
 axa.set_xticks([1, 4, 16, 64, 128]); axa.set_xticklabels(["1", "4", "16", "64", "all"])
 axa.set_xlabel("notes per pitch centroid (log)")
-axa.set_ylabel(r"$\Delta_{\mathrm{strict}}$ (octave equivalence)")
+fig.supylabel(r"$\Delta_{\mathrm{strict}}$ (octave equivalence)",
+              fontsize=8, x=0.005)
 axa.set_title("(a) averaging does not help", loc="left", color=INK)
 
 sub = json.load(open("runs/subspace_mert_L12.json"))
@@ -130,6 +128,25 @@ style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
 axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2])
 axb.set_xlabel("representation")
 axb.set_title("(b) a projection does", loc="left", color=INK)
-axb.legend(frameon=False, loc="upper right", handlelength=1.2, fontsize=6.5)
+axb.legend(frameon=False, loc="upper right", handlelength=1.1, fontsize=7,
+           borderpad=0.1, labelspacing=0.25, handletextpad=0.5)
+
+# (c) the curve the strict contrast in (b) is a summary of, inset into the
+# empty upper region of (a). Its axes are unrelated to the shared Delta_strict
+# axis, so it carries its own frame and is labelled as a separate panel.
+oc = np.load("runs/figs/_octave_curve.npz")
+ins = axa.inset_axes([0.40, 0.44, 0.585, 0.51])
+ins.plot(oc["ks"], oc["ambient"], color=AQUA, ls=":", lw=1.0)
+ins.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.0)
+for k in (12, 24):
+    ins.axvline(k, color=INK2, lw=0.5, ls=":", zorder=1)
+ins.set_xticks([1, 12, 24]); ins.set_yticks([])
+ins.tick_params(labelsize=6, pad=1.5, length=2)
+ins.set_xlabel("transposition (semitones)", fontsize=6.5, labelpad=1.0)
+ins.set_title("(c) MERT L12, mean similarity", loc="left", fontsize=7,
+              color=INK, pad=2.0)
+for sp in ins.spines.values():
+    sp.set_color(GRID); sp.set_linewidth(0.6)
+ins.set_facecolor("white"); ins.patch.set_alpha(0.95)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")
