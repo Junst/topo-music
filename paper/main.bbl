@@ -6,19 +6,19 @@ Guillaume Alain and Yoshua Bengio,
 \newblock in {\em International Conference on Learning Representations (ICLR), Workshop Track}, 2017.
 
 \bibitem{mert}
-Yizhi Li, Ruibin Yuan, Ge~Zhang, Yinghao Ma, Xingran Chen, Hanzhi Yin, Chenghua Xiao, Chenghua Lin, Anton Ragni, Emmanouil Benetos, Norbert Gyenge, Roger Dannenberg, Ruibo Liu, Wenhu Chen, Gus Xia, Yemin Shi, Wenhao Huang, Yike Wang, Yike Guo, and Jie Fu,
+Yizhi Li, Ruibin Yuan, Ge~Zhang, Yinghao Ma, Xingran Chen, Hanzhi Yin, Chenghao Xiao, Chenghua Lin, Anton Ragni, Emmanouil Benetos, Norbert Gyenge, Roger Dannenberg, Ruibo Liu, Wenhu Chen, Gus Xia, Yemin Shi, Wenhao Huang, Zili Wang, Yike Guo, and Jie Fu,
 \newblock ``{MERT}: Acoustic music understanding model with large-scale self-supervised training,''
 \newblock in {\em International Conference on Learning Representations (ICLR)}, 2024.
 
 \bibitem{marble}
-Ruibin Yuan, Yinghao Ma, Yizhi Li, Ge~Zhang, Xingran Chen, Hanzhi Yin, Yiqi Liu, Jiawen Huang, Zeyue Tian, Binyue Deng, Ningzhi Wang, Chenghua Lin, Emmanouil Benetos, Anton Ragni, Norbert Gyenge, Roger Dannenberg, Wenhu Chen, Gus Xia, Wei Xue, Si~Liu, Shi Wang, Ruibo Liu, Yike Guo, and Jie Fu,
+Ruibin Yuan, Yinghao Ma, Yizhi Li, Ge~Zhang, Xingran Chen, Hanzhi Yin, Le~Zhuo, Yiqi Liu, Jiawen Huang, Zeyue Tian, Binyue Deng, Ningzhi Wang, Chenghua Lin, Emmanouil Benetos, Anton Ragni, Norbert Gyenge, Roger Dannenberg, Wenhu Chen, Gus Xia, Wei Xue, Si~Liu, Shi Wang, Ruibo Liu, Yike Guo, and Jie Fu,
 \newblock ``{MARBLE}: Music audio representation benchmark for universal evaluation,''
 \newblock in {\em Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track}, 2023.
 
 \bibitem{controltasks}
 John Hewitt and Percy Liang,
 \newblock ``Designing and interpreting probes with control tasks,''
-\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019.
+\newblock in {\em Conference on Empirical Methods in Natural Language Processing (EMNLP)}, 2019, pp. 2733--2743.
 
 \bibitem{krumhansl1982}
 Carol~L. Krumhansl and Edward~J. Kessler,
@@ -28,7 +28,7 @@ Carol~L. Krumhansl and Edward~J. Kessler,
 \bibitem{krumhansl1990}
 Carol~L. Krumhansl,
 \newblock {\em Cognitive Foundations of Musical Pitch},
-\newblock Oxford University Press, 1990.
+\newblock Oxford University Press, New York, 1990.
 
 \bibitem{shepard1982}
 Roger~N. Shepard,
