@@ -20,24 +20,7 @@
 \maketitle
 
 \begin{abstract}
-Probing studies establish that audio representations encode musical attributes
-such as key, and this is routinely read as evidence that the representations
-are musically organised. We show these are different claims. Measuring the same
-24 musical keys on the same corpus three ways, by linear decodability, by the
-geometry of class centroids, and by the geometry of a linear readout's weights,
-we find they dissociate. A log-CQT decodes key better than MERT-v1-330M, at
-.492 against .456, while its centroid geometry shows no circle-of-fifths
-structure at all, yet the same structure is strongly present in its probe
-weights. We then identify two empirically distinct regimes in which musical structure
-is hidden from the ambient metric. In the first, class-independent variation
-obscures centroid geometry at small sample sizes, and increasing the number of
-examples behind each centroid changes fifths geometry by a factor of 13.4,
-against only 1.7 for a thousandfold longer pooling window. In the second,
-averaging saturates without recovering octave equivalence at any sample size,
-whereas a rank-4 projection fitted only on GiantSteps keys, never on notes,
-exposes octave structure in individual NSynth recordings using under 0.3\% of
-the variance. This distinction suggests a more general caution for interpreting
-representation geometry.
+Learned representations are often evaluated by how well their attributes can be decoded. However, linear decodability does not imply that a representation's ambient geometry reflects the relationships among those attributes. Music makes this distinction directly testable because relationships between musical classes, such as keys and pitches, are explicitly defined. We examine this gap through linear decoding, class-centroid geometry, and linear-readout geometry. A log-CQT decodes key better than MERT-v1-330M (.492 vs.\ .456), yet shows no circle-of-fifths structure in its class centroids while the same structure is strongly expressed in its readout weights. We further find two distinct sources of this mismatch. First, increasing the number of examples per centroid changes fifths geometry by a factor of 13.4, compared with only 1.7 for a thousandfold increase in pooling duration. Second, averaging fails to recover octave equivalence, whereas a rank-4 projection fitted only on GiantSteps keys exposes octave structure in individual NSynth recordings using less than 0.3\% of the variance. These results show that decodability, ambient geometry, and readout geometry provide distinct views of musical information in audio representations.
 \end{abstract}
 
 \begin{keywords}
@@ -47,75 +30,30 @@ octave equivalence
 
 \section{Introduction}
 \label{sec:intro}
+Self-supervised music audio encoders support linear probes \cite{probes} for key, pitch, genre, and instrument \cite{mert,marble}, and this is usually taken to mean that these attributes are \emph{organized} in the representation. Music provides a useful setting for testing this interpretation because music theory specifies not only which classes exist, but also how they are related. Keys a perfect fifth apart share six of seven scale degrees and are adjacent on the circle of fifths, while pitches an octave apart belong to the same pitch class.
 
-Self-supervised audio encoders support strong linear probes \cite{probes} for
-key, pitch, genre and instrument \cite{mert,marble}, and the usual inference is
-that the attribute is \emph{organised} in the representation. Music makes that
-inference unusually testable, because music theory specifies not just which
-classes exist but how they are related. Keys a perfect fifth apart share six of
-seven scale degrees and sit adjacent on the circle of fifths, and pitches an octave apart are the same
-pitch class. A representation can therefore encode key
-perfectly while placing C and G no closer together than C and F\,$\sharp$.
-
-We ask when that theoretical structure is visible in the geometry a downstream
-model actually consumes, and find that decodability, ambient geometry and
-readout geometry come apart (Sec.~\ref{sec:three}). We then separate two reasons a representation can hold musical structure that
-its metric does not show. In the first, the variation that distinguishes items
-of the same class is unrelated to the class, so it cancels once enough
-examples are pooled and the structure appears with no change to the
-representation. In the second, the variation tracks the class itself, so it is
-present in every example, survives any amount of averaging, and yields only to
-a change of metric. We show that centroid sample size is the dominant source of the apparent
-clip-level key effect (Sec.~\ref{sec:sample}) and that note-level octave
-equivalence falls in the second regime (Sec.~\ref{sec:metric}).
+We compare what can be decoded from a representation, how musical classes are arranged by distances in the original representation space, and how those classes are arranged in the weights of a linear classifier. Across these measurements, linear accessibility does not necessarily correspond to structure in the original representation geometry. Our results trace this mismatch to two distinct sources. For clip-level key geometry, the dominant factor is the number of examples used to estimate each class centroid rather than the duration of each example. For note-level octave equivalence, increasing the number of examples does not recover the structure, whereas a learned projection exposes it under a different metric. Together, these results show that the absence of structure in the original geometry does not by itself imply the absence of that structure from the representation.
 
 \section{Related Work}
 \label{sec:related}
 
 Linear probes are the standard instrument for asking what a representation
-encodes \cite{probes}, and music audio encoders are routinely evaluated this
-way, with MERT \cite{mert} and MARBLE \cite{marble} reporting
-probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} show that a probe's success has to be read against a control task that removes
-the structure of interest, and we adopt that design for representation geometry rather than for
-probe complexity.
+encodes \cite{probes}, and music audio encoders are routinely evaluated this way, with MERT \cite{mert} and MARBLE \cite{marble} reporting probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} show that a probe's success has to be read against a control task that removes the structure of interest, and we adopt that design for representation geometry rather than for probe complexity.
 
-The relational structure we test against is the one music cognition established
-for human listeners, in which key relations follow the circle of fifths and Krumhansl--Kessler
-profiles \cite{krumhansl1982,krumhansl1990} and pitch separates into height
-and chroma \cite{shepard1982}. Chroma features \cite{brown1991,librosa} build octave
-equivalence into the input by construction, which makes them a positive control
-rather than a competitor, while tonality-aware objectives such as STONE
-\cite{stone} impose key equivariance during training, whereas the question here
-is what a representation trained without such a constraint already contains. We also include the codec latent that music generation systems consume
-\cite{encodec,musicgen}.
+Music cognition has established well-defined relational structures for both key and pitch. Perceived key relationships follow the circle of fifths and Krumhansl--Kessler profiles \cite{krumhansl1982,krumhansl1990}, while pitch perception separates pitch height from chroma \cite{shepard1982}. Chroma features \cite{brown1991,librosa} encode octave equivalence by construction and therefore provide a positive control for these relationships. Tonality-aware objectives such as STONE \cite{stone} explicitly impose key equivariance during training.
 
-\section{Measurements}
+\section{Method}
 \label{sec:method}
-
-\noindent\textbf{Two regimes of hiding.} Write an item of class $y$ as
+\noindent\textbf{Representation decomposition.} We write an item of class $y$ as
 \begin{equation}
 z = s_y + n_y + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid y] = 0,
 \label{eq:decomp}
 \end{equation}
-with $s_y$ the structure of interest, $\varepsilon$ nuisance independent of the
-class, and $n_y$ nuisance that varies with the class. Averaging many examples of a class drives $\varepsilon$ towards zero, whereas
-$n_y$ is present in every example by construction, so the two regimes call for
-different operations and the measurements below are chosen to tell them apart.
+where $s_y$ represents the class-dependent signal whose relations encode the structure of interest, such as key relationships or octave equivalence, $n_y$ captures other variation that depends on the class, and $\varepsilon$ captures variation whose conditional mean is zero within each class. Averaging examples from the same class reduces $\varepsilon$ but not $n_y$, whereas a change of metric can alter how $s_y$ and $n_y$ contribute to the measured geometry.
 
-\noindent\textbf{Representations.} MERT-v1-330M \cite{mert} layers 4 to 24,
-EnCodec 32\,kHz \cite{encodec}, the codec MusicGen consumes \cite{musicgen},
-and a log-CQT \cite{brown1991,librosa} as an input floor. A chromagram serves
-as the music-theoretic positive control. Clips are pooled to a single vector by
-a mean over frames.
+\noindent\textbf{Representations.} MERT-v1-330M \cite{mert} layers 4 to 24, EnCodec 32\,kHz \cite{encodec}, as used by MusicGen \cite{musicgen}, and a log-CQT \cite{brown1991,librosa} as a spectral baseline. A CQT chromagram \cite{librosa}, which folds frequencies across octaves into 12 pitch classes, provides a positive control for octave-invariant structure. Frame-level representations are averaged over time to obtain one vector per audio clip.
 
-\noindent\textbf{Key-centroid geometry.} On GiantSteps \cite{giantsteps}, with
-7035 clips covering all 24 keys, we average clip embeddings within key to
-obtain 24 centroids and rank-correlate their pairwise Euclidean distances
-against three reference structures: circle-of-fifths distance, the
-Krumhansl--Kessler key-profile distance, and semitone distance. Significance
-uses a 2000-draw permutation null over key labels, and a partial Spearman
-additionally removes mel-spectral centroid distance. The semitone reference is reported alongside, because a generic tendency for
-nearby keys to look alike would raise both.
+\noindent\textbf{Key-centroid geometry.} On GiantSteps \cite{giantsteps}, with 7035 clips covering all 24 keys, we average the representation vectors of tracks sharing the same key to obtain 24 class centroids and rank-correlate their pairwise Euclidean distances against three reference structures: circle-of-fifths distance, the Krumhansl--Kessler key-profile distance, and semitone distance. Significance uses a 2000-draw permutation null over key labels, and a partial Spearman additionally removes mel-spectral centroid distance. Semitone distance is included as a control to distinguish circle-of-fifths structure from proximity in chromatic pitch space.
 
 \noindent\textbf{Readout geometry.} The same probe, a multinomial logistic
 regression under 5-fold cross-validation, yields 24 class weight vectors, and
@@ -146,13 +84,20 @@ whatever the directions are.
 \centering
 \includegraphics[width=0.92\textwidth]{figs/fig1_averaging.pdf}
 \caption{Clip-level key geometry is set by centroid sample size, not by
-temporal context. Both panels plot the same quantity on the same vertical axis.
-(a) A thousandfold longer pooling window moves MERT L12 by a factor of 1.7 and
-moves the chromagram by 3\%, and a single 13\,ms frame already carries 59\% of
-the 20\,s value. (b) Increasing the number of clips averaged into each key
-centroid moves it by a factor of 13.4, and in the single-example centroid
-regime the geometry is absent. Error bars are one
-standard deviation over 5 draws in (a) and 10 in (b).}
+temporal context. Panels (a) and (b) plot the same quantity on the same
+vertical axis. (a) A thousandfold longer pooling window moves MERT L12 by a
+factor of 1.7 and moves the chromagram by 3\%, and a single 13\,ms frame
+already carries 59\% of the 20\,s value. (b) Increasing the number of clips
+averaged into each key centroid moves it by a factor of 13.4, and in the
+single-example centroid regime the geometry is absent. Error bars are one
+standard deviation over 5 draws in (a) and 10 in (b). (c) The same rise seen as
+geometry: pairwise distances between the 24 MERT L12 key centroids, ordered
+round the circle of fifths with the major keys above the white rule and the
+minor keys below, beside the reference they are correlated against. Each panel
+is rank-transformed over its own entries, which is what a Spearman correlation
+sees. At one clip per key there is no visible band, and with every clip a band
+aligned with the reference appears in each quadrant. The single-clip panel is
+the median of ten draws.}
 \label{fig:averaging}
 \end{figure*}
 
@@ -165,25 +110,13 @@ standard deviation over 5 draws in (a) and 10 in (b).}
 Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips and keys, and the control block sets the
 scale for reading it. An analytic
 circle of fifths scores close to 1 in every column, so a null elsewhere is a
-null of the representation and not of the method, while random features show nothing anywhere. The load-bearing control is the third
-one, in which orthogonal per-key codes are equidistant by construction. They
-decode key at .651, exceeding the accuracy of every real representation, and
-yet they show no fifths geometry in either their centroids, at $-0.008$, or
+null of the representation and not of the method, while random features show nothing anywhere. Orthogonal per-key codes provide a control in which key is highly decodable but tonal relations are absent by construction. They decode key at .651, exceeding the accuracy of every real representation, and yet they show no fifths geometry in either their centroids, at $-0.008$, or
 their readout weights, at $-0.005$. This follows the logic of control tasks
-\cite{controltasks} without relying on matched accuracy, and it rules out the
-natural sceptical reading, that keys a fifth apart are confusable whatever was
-fitted, so any accurate 24-way classifier ends up with fifths-structured
-weights.
+\cite{controltasks} without relying on matched accuracy, and this rules out an alternative explanation: that any sufficiently accurate 24-way classifier acquires fifths-structured weights because neighboring keys are intrinsically confusable.
 
-The dissociation that follows is unambiguous, in that the log-CQT has the
-highest key accuracy of any real arm and no fifths structure in its centroids,
-at $-0.035$ with $p$ of .52, while its probe weights carry that structure
-strongly, at 0.560 with a $z$ of 9.1. Tonal relations are therefore linearly
-accessible in a log-spectrogram and simply absent from its metric, which requires no learned encoder at all.
+The dissociation that follows is unambiguous, in that the log-CQT has the highest key accuracy of any real arm and no fifths structure in its centroids, at $-0.035$ with $p$ of .52, while its probe weights carry that structure strongly, at 0.560 with a $z$ of 9.1. Tonal relations are therefore linearly accessible in a log-CQT without being expressed in its ambient centroid geometry.
 
-What MERT does is move structure between columns rather than create it. Its
-readout geometry, between 0.41 and 0.48, is \emph{lower} than that of the
-log-CQT, EnCodec or the chromagram, while its centroid geometry is far higher.
+For MERT, the main change is in ambient geometry rather than linear accessibility. Its readout geometry, between 0.41 and 0.48, is \emph{lower} than that of the log-CQT, EnCodec or the chromagram, while its centroid geometry is far higher.
 Across depth, tonal relational geometry weakens, from 0.445 at layer 4 to 0.294
 at layer 24, while major and minor become more separable, from 0.216 to 0.328.
 We report this as a correlation rather than a mechanism, since key accuracy does not improve along the way, and the mode effect is $-0.054$ and not
@@ -223,7 +156,9 @@ being varied. Fig.~\ref{fig:averaging}(b) holds the window at the full clip and
 sweeps the number of clips per centroid, giving 0.035 at one clip and 0.468 at
 all of them for MERT L12, a factor of 13.4 against 1.7 for a thousandfold
 longer window. In the single-example centroid regime, fifths geometry is
-indistinguishable from zero for every arm.
+indistinguishable from zero for every arm. Fig.~\ref{fig:averaging}(c) shows
+what that correlation is a summary of, in the centroid distance matrices
+themselves.
 
 This is Eq.~\eqref{eq:decomp} with $\varepsilon$ dominant, because what differs
 between two GiantSteps tracks in the same key, namely production,
@@ -258,11 +193,7 @@ semitones against an ambient baseline that decays smoothly. Matched random
 subspaces stay between $-0.019$ and 0.007. The subspace uses between 0.11 and
 0.24\% of MERT's variance and 1.85\% of the log-CQT's.
 
-It would overstate the case to say key supervision \emph{forces} pitch-height
-invariance, since GiantSteps key correlates with subgenre, tempo and
-production, and an LDA may use any of it. What the transfer licenses is narrower: structure that survives the move to an
-independently recorded isolated-note corpus cannot be solely a
-GiantSteps-specific nuisance correlation. Nor is this a mechanistic claim about the projection, since what the transfer
+Key supervision does not guarantee pitch-height invariance, because GiantSteps key labels may correlate with subgenre, tempo, or production. The cross-dataset transfer nevertheless rules out an explanation based only on GiantSteps-specific nuisance correlations. Nor is this a mechanistic claim about the projection, since what the transfer
 establishes is that a low-rank reweighting exposes octave-equivalent
 structure, and whether it does so by suppressing class-coupled variation or by
 amplifying the tonal component is not identifiable from this measurement.
@@ -288,8 +219,7 @@ retrieval consumes.
 The two masking modes suggest different remedies. Sample-limited masking is a
 property of the evaluation, and the fix is more examples per class, not longer
 audio. Reporting the number of items behind each centroid should be standard,
-since the same encoder scores 0.035 or 0.468 depending only on that. Metric masking is a property of the representation itself, which no evaluation
-protocol removes and which a learned transform can work around.
+since the same encoder scores 0.035 or 0.468 depending only on that. Metric masking persists under additional averaging and instead requires changing how distances are measured, for example through a learned transform.
 
 Nothing in Eq.~\eqref{eq:decomp} is specific to music. Semantic relations in
 vision may equally be linearly available while the Euclidean geometry is
@@ -311,9 +241,7 @@ Musical structure can be present in a representation, linearly accessible and
 still invisible in its geometry, for two reasons calling for two different
 operations. Averaging over examples accounts for most of the apparent clip-level key
 geometry, while a rank-4 projection fitted on another dataset and task exposes
-octave equivalence that no amount of averaging reaches. Neither operation
-creates the structure it exposes, and knowing which of the two a null calls for
-is what separating them buys.
+octave equivalence that no amount of averaging reaches. Averaging distinguishes sample-limited estimates from stable metric effects, whereas cross-dataset projection tests whether the target relation remains linearly recoverable outside the ambient metric.
 
 \bibliographystyle{IEEEbib}
 \bibliography{refs}

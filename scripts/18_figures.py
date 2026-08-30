@@ -44,7 +44,11 @@ def style(ax):
 
 
 # ---------------------------------------------------------------- figure 1
-fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.6, 2.5), sharey=True)
+fig = plt.figure(figsize=(7.0, 2.18))
+gs = fig.add_gridspec(1, 5, width_ratios=[1.42, 1.42, 1.0, 1.0, 1.0],
+                      wspace=0.22)
+axa = fig.add_subplot(gs[0]); axb = fig.add_subplot(gs[1], sharey=axa)
+axc = [fig.add_subplot(gs[i]) for i in (2, 3, 4)]
 for arm, (lab, col, ls, mk) in SERIES.items():
     d = json.load(open(f"runs/accum_{arm}.json"))
     full = d["curve"][-1]["fifths"]["mean"]
@@ -61,14 +65,11 @@ for arm, (lab, col, ls, mk) in SERIES.items():
     es2 = [c["fifths_std"] for c in e["curve"]]
     axb.errorbar(xs2, ys2, yerr=es2, color=col, ls=ls, marker=mk, ms=3.2,
                  lw=1.6, capsize=1.5, elinewidth=0.7, zorder=3)
-    # staggered, because MERT L12 and chroma land within 0.007 of each other
-    dy = {"mert_L12": -6.5, "chroma": 6.5, "cqt": 0.0}[arm]
-    axb.annotate(lab, (xs2[-1], ys2[-1]), xytext=(5, dy),
-                 textcoords="offset points", color=col, fontsize=7,
-                 va="center", fontweight="bold")
+    # no in-panel label here: the shared legend names all three arms, and a
+    # label hanging off the right edge collided with panel (c)
 
-for ax, xl, ti in [(axa, "pooling window (s, log)", "(a) more audio per clip"),
-                   (axb, "clips per key centroid (log)",
+for ax, xl, ti in [(axa, "pooling window (s)", "(a) more audio per clip"),
+                   (axb, "clips per key centroid",
                     "(b) more clips per centroid")]:
     style(ax); ax.set_xscale("log"); ax.set_xlabel(xl)
     ax.set_title(ti, loc="left", color=INK)
@@ -84,7 +85,32 @@ axa.annotate(r"$1.7\times$", (20, 0.468), xytext=(-4, -18),
              textcoords="offset points", ha="right", color=BLUE, fontsize=7.5)
 axb.annotate(r"$13.4\times$", (170, 0.16), color=BLUE, fontsize=7.5,
              ha="center")
-axb.set_xlim(right=430)
+axb.set_xlim(right=380)
+plt.setp(axb.get_yticklabels(), visible=False)
+
+# (c) the same rise as geometry. Ordered round the circle of fifths, majors
+# then minors, and rank-transformed within each panel, which is what a Spearman
+# correlation sees, so the three are comparable without a scale choice.
+km = np.load(FIGDIR / "_key_matrices.npz")
+PCN = ["C", "C$\\sharp$", "D", "D$\\sharp$", "E", "F",
+       "F$\\sharp$", "G", "G$\\sharp$", "A", "A$\\sharp$", "B"]
+ton = km["tonic_order"]
+for ax, key, ttl, rho in [
+        (axc[0], "one", "(c) 1 clip per key", rf"$\rho={float(km['rho_one']):+.3f}$"),
+        (axc[1], "alle", "all clips per key", rf"$\rho={float(km['rho_all']):+.3f}$"),
+        (axc[2], "ref", "circle of fifths", "reference")]:
+    ax.imshow(km[key], cmap="magma", vmin=0, vmax=1, interpolation="nearest")
+    ax.set_title(f"{ttl}\n{rho}", loc="left", fontsize=7.5, color=INK, pad=2.5)
+    for v in (11.5,):                    # majors above and left, minors below
+        ax.axhline(v, color="white", lw=0.6, alpha=0.55)
+        ax.axvline(v, color="white", lw=0.6, alpha=0.55)
+    tk = np.arange(0, 24, 6)
+    ax.set_xticks([])
+    ax.set_yticks(tk)
+    ax.set_yticklabels([PCN[i] for i in ton[tk]] if ax is axc[0] else [],
+                       fontsize=6)
+    ax.tick_params(length=2, pad=1.2)
+
 fig.savefig(FIGDIR / "fig1_averaging.pdf"); fig.savefig(FIGDIR / "fig1_averaging.png")
 print("fig1 written")
 

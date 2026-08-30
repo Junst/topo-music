@@ -15,19 +15,18 @@
 \citation{brown1991}
 \citation{librosa}
 \citation{stone}
-\citation{encodec}
-\citation{musicgen}
 \@writefile{toc}{\contentsline {section}{\numberline {1} Introduction}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2} Related Work}{1}{section.2}\protected@file@percent }
 \newlabel{sec:related}{{2}{1}{Related Work}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3} Measurements}{1}{section.3}\protected@file@percent }
-\newlabel{sec:method}{{3}{1}{Measurements}{section.3}{}}
-\newlabel{eq:decomp}{{1}{1}{Measurements}{equation.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3} Method}{1}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{1}{Method}{section.3}{}}
+\newlabel{eq:decomp}{{1}{1}{Method}{equation.1}{}}
 \citation{mert}
 \citation{encodec}
 \citation{musicgen}
 \citation{brown1991}
+\citation{librosa}
 \citation{librosa}
 \citation{giantsteps}
 \citation{nsynth}
@@ -38,8 +37,8 @@
 \newlabel{sec:three}{{4.1}{2}{Information, metric and readout dissociate}{subsection.4.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Key information, ambient geometry and readout geometry come apart. Same 7035 GiantSteps clips, same 24 keys. \textit  {acc} is 24-way key accuracy (chance $.042$); $\rho ^{\text  {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids, i.e.\ the ambient metric; $\rho ^{W}_{5}$ is the same correlation among the probe's 24 class weight vectors, i.e.\ what a linear readout reaches. The controls fix the scale for reading the two geometry columns.}}{2}{table.1}\protected@file@percent }
 \newlabel{tab:decodable-vs-geometric}{{1}{2}{Key information, ambient geometry and readout geometry come apart. Same 7035 GiantSteps clips, same 24 keys. \textit {acc} is 24-way key accuracy (chance $.042$); $\rho ^{\text {cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids, i.e.\ the ambient metric; $\rho ^{W}_{5}$ is the same correlation among the probe's 24 class weight vectors, i.e.\ what a linear readout reaches. The controls fix the scale for reading the two geometry columns}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Clip-level key geometry is set by centroid sample size, not by temporal context. Both panels plot the same quantity on the same vertical axis. (a) A thousandfold longer pooling window moves MERT L12 by a factor of 1.7 and moves the chromagram by 3\%, and a single 13\,ms frame already carries 59\% of the 20\,s value. (b) Increasing the number of clips averaged into each key centroid moves it by a factor of 13.4, and in the single-example centroid regime the geometry is absent. Error bars are one standard deviation over 5 draws in (a) and 10 in (b).}}{3}{figure.1}\protected@file@percent }
-\newlabel{fig:averaging}{{1}{3}{Clip-level key geometry is set by centroid sample size, not by temporal context. Both panels plot the same quantity on the same vertical axis. (a) A thousandfold longer pooling window moves MERT L12 by a factor of 1.7 and moves the chromagram by 3\%, and a single 13\,ms frame already carries 59\% of the 20\,s value. (b) Increasing the number of clips averaged into each key centroid moves it by a factor of 13.4, and in the single-example centroid regime the geometry is absent. Error bars are one standard deviation over 5 draws in (a) and 10 in (b)}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Clip-level key geometry is set by centroid sample size, not by temporal context. Panels (a) and (b) plot the same quantity on the same vertical axis. (a) A thousandfold longer pooling window moves MERT L12 by a factor of 1.7 and moves the chromagram by 3\%, and a single 13\,ms frame already carries 59\% of the 20\,s value. (b) Increasing the number of clips averaged into each key centroid moves it by a factor of 13.4, and in the single-example centroid regime the geometry is absent. Error bars are one standard deviation over 5 draws in (a) and 10 in (b). (c) The same rise seen as geometry: pairwise distances between the 24 MERT L12 key centroids, ordered round the circle of fifths with the major keys above the white rule and the minor keys below, beside the reference they are correlated against. Each panel is rank-transformed over its own entries, which is what a Spearman correlation sees. At one clip per key there is no visible band, and with every clip a band aligned with the reference appears in each quadrant. The single-clip panel is the median of ten draws.}}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:averaging}{{1}{3}{Clip-level key geometry is set by centroid sample size, not by temporal context. Panels (a) and (b) plot the same quantity on the same vertical axis. (a) A thousandfold longer pooling window moves MERT L12 by a factor of 1.7 and moves the chromagram by 3\%, and a single 13\,ms frame already carries 59\% of the 20\,s value. (b) Increasing the number of clips averaged into each key centroid moves it by a factor of 13.4, and in the single-example centroid regime the geometry is absent. Error bars are one standard deviation over 5 draws in (a) and 10 in (b). (c) The same rise seen as geometry: pairwise distances between the 24 MERT L12 key centroids, ordered round the circle of fifths with the major keys above the white rule and the minor keys below, beside the reference they are correlated against. Each panel is rank-transformed over its own entries, which is what a Spearman correlation sees. At one clip per key there is no visible band, and with every clip a band aligned with the reference appears in each quadrant. The single-clip panel is the median of ten draws}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2} Sample-limited masking}{3}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:sample}{{4.2}{3}{Sample-limited masking}{subsection.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3} Metric masking}{3}{subsection.4.3}\protected@file@percent }
@@ -51,7 +50,6 @@
 \newlabel{fig:mechanisms}{{2}{4}{Two operations on NSynth notes, with one outcome each. Panels (a) and (b) share a vertical axis, since rescaling (a) would invent structure that is not there. (a) Averaging notes of the same pitch into a pitch centroid does not produce octave equivalence at any sample size, with every MERT layer and the log-CQT flat at zero and MERT L24 remaining negative. The chromagram is off scale throughout, moving only from 0.57 to 0.62, because it has octave equivalence already in single notes. (b) A rank-4 projection fitted only on GiantSteps track tonics, applied unchanged to individual recordings, with instrument-bootstrap 95\% intervals. (c) The curve (b) summarises, for MERT layer 12 and in the colours of (b), standardised within each condition}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5} Discussion}{4}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6} Conclusion}{4}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7} References}{4}{section.7}\protected@file@percent }
 \bibcite{mert}{2}
 \bibcite{marble}{3}
 \bibcite{controltasks}{4}
@@ -65,4 +63,5 @@
 \bibcite{musicgen}{12}
 \bibcite{giantsteps}{13}
 \bibcite{nsynth}{14}
+\@writefile{toc}{\contentsline {section}{\numberline {7} References}{5}{section.7}\protected@file@percent }
 \gdef \@abspage@last{5}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 12:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 13:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -353,40 +353,37 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 
 ] (./table1.tex)
-<figs/fig1_averaging.pdf, id=99, 431.07098pt x 206.6301pt>
+<figs/fig1_averaging.pdf, id=93, 426.19728pt x 181.65358pt>
 File: figs/fig1_averaging.pdf Graphic file (type pdf)
 <use figs/fig1_averaging.pdf>
-Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 147.
-(pdftex.def)             Requested size: 465.94139pt x 223.34634pt.
-<figs/fig2_mechanisms.pdf, id=102, 219.57433pt x 229.8284pt>
+Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 85.
+(pdftex.def)             Requested size: 465.94139pt x 198.59717pt.
+<figs/fig2_mechanisms.pdf, id=96, 219.57433pt x 229.8284pt>
 File: figs/fig2_mechanisms.pdf Graphic file (type pdf)
 <use figs/fig2_mechanisms.pdf>
-Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 196.
+Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 129.
 (pdftex.def)             Requested size: 244.6937pt x 256.13304pt.
- [2]
-Underfull \vbox (badness 1867) has occurred while \output is active []
-
- [3 <./figs/fig1_averaging.pdf>] (./main.bbl [4 <./figs/fig2_mechanisms.pdf>]) [5] (./main.aux)
+ [2] [3 <./figs/fig1_averaging.pdf>] (./main.bbl [4 <./figs/fig2_mechanisms.pdf>]) [5] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: BC44E7DB141C93AF2DDD98BDA620DCE1;1329.
+(rerunfilecheck)             Checksum: 4BA906F5C7C6EB1EF1E33F8294D423B4;1299.
  ) 
 Here is how much of TeX's memory you used:
- 12244 strings out of 469115
- 189643 string characters out of 5458670
- 652806 words of memory out of 5000000
+ 12250 strings out of 469115
+ 189688 string characters out of 5458670
+ 655995 words of memory out of 5000000
  40822 multiletter control sequences out of 15000+600000
- 663477 words of font info for 243 fonts, out of 8000000 for 9000
+ 663630 words of font info for 247 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 74i,12n,79p,1001b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,12n,79p,1281b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 234171 bytes).
+Output written on main.pdf (5 pages, 236397 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
+ 347 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
  50779 words of extra memory for PDF output out of 51595 (max. 10000000)
 
