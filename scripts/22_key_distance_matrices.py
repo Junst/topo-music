@@ -105,12 +105,12 @@ for ax, (nm, rho, M) in zip(axs, panels):
     ax.set_yticklabels([PC[t] for t in tonic[order][tk]] if ax is axs[0] else [])
     ax.tick_params(length=2, pad=1.5)
 # the three panels Fig 1(c) uses, cached so the figure script stays cheap
-one = [p for p in panels if p[0] == "1"][0]
-alle = [p for p in panels if p[0] == "all"][0]
-ref = panels[-1]
-np.savez(FIG / "_key_matrices.npz", one=one[2], rho_one=one[1],
-         alle=alle[2], rho_all=alle[1], ref=ref[2],
-         tonic_order=tonic[order])
+pick = {p[0]: p for p in panels}
+np.savez(FIG / "_key_matrices.npz",
+         one=pick["1"][2], rho_one=pick["1"][1],
+         eight=pick["8"][2], rho_eight=pick["8"][1],
+         alle=pick["all"][2], rho_all=pick["all"][1],
+         ref=panels[-1][2], tonic_order=tonic[order])
 
 fig.savefig(FIG / "fig6_key_matrices.png"); fig.savefig(FIG / "fig6_key_matrices.pdf")
 print("fig6 written", flush=True)

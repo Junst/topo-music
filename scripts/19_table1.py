@@ -47,18 +47,21 @@ for kind in ("random_feat", "orthocode"):
 # --- assemble ---------------------------------------------------------------
 BLOCKS = [
     ("Controls", [
-        ("fifths_analytic", "analytic fifths (metric ctrl)"),
-        ("random_feat",     "random features (no info)"),
-        ("orthocode",       "orthogonal key codes (no tonal rel.)"),
+        ("fifths_analytic", "analytic fifths"),
+        ("random_feat",     "random features"),
+        ("orthocode",       "orthogonal key codes"),
     ]),
     (r"Spectral front end (fold $\times$ norm)", [
-        ("cqt",      "log-CQT, 84 bin, dB"),
+        ("cqt",      "log-CQT"),
         ("cqt_norm", "log-CQT, 84 bin, per-frame norm"),
         ("cqt_fold", "octave-summed, 12 bin, dB"),
-        ("chroma",   "chromagram (fold + norm)"),
+        ("chroma",   "chromagram"),
     ]),
-    ("Neural codec", [("encodec_32k", "EnCodec 32 kHz")]),
+    ("Neural codec", [("encodec_32k", "EnCodec 32\\,kHz")]),
     ("MERT-v1-330M", [(f"mert_L{l}", f"layer {l}") for l in (4, 12, 16, 24)]),
+    # MuQ has 12 layers to MERT's 24, so these sit at the same relative depths
+    # layers 2 and 12 are the poles of the crossing
+    ("MuQ-large", [(f"muq_L{l}", f"layer {l}") for l in (2, 6, 8, 12)]),
 ]
 
 
@@ -103,41 +106,50 @@ Path("runs/table1_rows.json").write_text(json.dumps(
     [{"label": l, **(r or {})} for l, r in rows], indent=2))
 
 
-def tex(v, d=3):
-    return "--" if v is None or (isinstance(v, float) and np.isnan(v)) \
-        else f"${v:+.{d}f}$"
+# the four cells that carry the mirror-image pair discussed in Sec. 4.1:
+# a front end with readout geometry and no ambient geometry, and a learned
+# representation with ambient geometry and no readout geometry
+BOLD = {("log-CQT", "r5"), ("log-CQT", "rw"),
+        ("layer 2", "r5"), ("layer 2", "rw")}
 
 
-L = [r"\begin{table*}[t]", r"\centering", r"\small",
+def tex(v, d=3, bold=False):
+    if v is None or (isinstance(v, float) and np.isnan(v)):
+        return "--"
+    s = f"{v:+.{d}f}"
+    return rf"$\mathbf{{{s}}}$" if bold else f"${s}$"
+
+
+# A single-column table. As a full-width table* every row costs two column
+# lines, and with four blocks that was about a third of the four pages. The
+# columns dropped here (the spectral partial, z_W and the mode discriminant)
+# are in runs/TABLE1.md and summarised in the caption.
+L = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
+     r"\setlength{\tabcolsep}{3pt}",
      r"\caption{Key information, ambient geometry and readout geometry come "
-     r"apart. All columns are measured on the same 7035 GiantSteps clips and "
-     r"the same 24 keys. \textit{acc}: 24-way key accuracy from the pooled "
-     r"clip embedding (chance $.042$). $\rho^{\text{cent}}_{5}$: "
-     r"circle-of-fifths correlation among the 24 key centroids, i.e.\ the "
-     r"ambient metric; $\rho_{5}\!\mid\!\text{spec}$ partials out "
-     r"mel-spectral centroid distance. $\rho^{W}_{5}$: the same correlation "
-     r"among the fitted probe's 24 class weight vectors, i.e.\ what a linear "
-     r"readout can reach. $\rho_{\text{chr}}$ (semitone adjacency) and "
-     r"$\rho_{\text{mode}}$ (major/minor) are reported as discriminants. "
-     r"The control block fixes the scale: an analytic circle of fifths scores "
-     r"$\approx\!1$ everywhere; random features carry no information and "
-     r"show nothing; orthogonal per-key codes decode key better than any real "
-     r"representation ($.651$) with equidistant classes by construction, and "
-     r"show nothing either -- so $\rho^{W}_{5}$ is not an artefact of an "
-     r"accurate classifier on this label set.}",
+     r"apart, on the same 7035 GiantSteps clips and 24 keys. \textit{acc} is "
+     r"24-way key accuracy, chance $.042$; $\rho^{\text{cent}}_{5}$ is the "
+     r"circle-of-fifths correlation among the 24 key centroids and "
+     r"$\rho^{W}_{5}$ the same among the probe's class weight vectors; "
+     r"$\rho_{\text{chr}}$ is semitone adjacency, a discriminant a generic "
+     r"tendency for nearby keys to look alike would also raise. Partialling "
+     r"out mel-spectral centroid distance changes no sign. Orthogonal key "
+     r"codes decode at $.651$ with classes equidistant by construction and "
+     r"still show nothing, so $\rho^{W}_{5}$ is not an artefact of an "
+     r"accurate classifier. The four values in bold are the mirror-image "
+     r"pair of Sec.~\ref{sec:three}.}",
      r"\label{tab:decodable-vs-geometric}",
-     r"\begin{tabular}{l r r r r r r r}", r"\toprule",
-     r"representation & acc & $\rho^{\text{cent}}_{5}$ & "
-     r"$\rho_{5}\!\mid\!\text{spec}$ & $\rho^{W}_{5}$ & $z_W$ & "
-     r"$\rho_{\text{chr}}$ & $\rho_{\text{mode}}$ \\", r"\midrule"]
+     r"\begin{tabular}{l r r r r}", r"\toprule",
+     r"representation & acc & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & "
+     r"$\rho_{\text{chr}}$ \\", r"\midrule"]
 for label, r in rows:
     if r is None:
-        L.append(r"\multicolumn{8}{l}{\textit{" + label + r"}} \\")
+        L.append(r"\multicolumn{5}{l}{\textit{" + label + r"}} \\")
         continue
     acc = f"${r['acc']:.3f}$" if r["acc"] else "--"
-    zw = f"${r['zw']:+.1f}$" if r["zw"] is not None else "--"
-    L.append(f"\\quad {label} & {acc} & {tex(r['r5'])} & {tex(r['r5s'])} & "
-             f"{tex(r['rw'])} & {zw} & {tex(r['rc'])} & {tex(r['rm'])} \\\\")
-L += [r"\bottomrule", r"\end{tabular}", r"\end{table*}"]
+    bd = lambda k: (label, k) in BOLD
+    L.append(f"\\quad {label} & {acc} & {tex(r['r5'], bold=bd('r5'))} & "
+             f"{tex(r['rw'], bold=bd('rw'))} & {tex(r['rc'])} \\\\")
+L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
 Path("runs/table1.tex").write_text("\n".join(L) + "\n")
 print("wrote runs/table1_rows.json and runs/table1.tex")

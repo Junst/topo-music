@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 13:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  30 AUG 2026 14:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -259,7 +259,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip55
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 19.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 22.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -268,24 +268,24 @@ File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count315
@@ -305,13 +305,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \microtypecontext on input line 19.
-Package microtype Info: Applying patch `item' on input line 19.
-Package microtype Info: Applying patch `toc' on input line 19.
-Package microtype Info: Applying patch `eqnum' on input line 19.
-Package microtype Info: Applying patch `footnote' on input line 19.
-Package microtype Info: Applying patch `verbatim' on input line 19.
-LaTeX Info: Redefining \microtypesetup on input line 19.
+LaTeX Info: Redefining \microtypecontext on input line 22.
+Package microtype Info: Applying patch `item' on input line 22.
+Package microtype Info: Applying patch `toc' on input line 22.
+Package microtype Info: Applying patch `eqnum' on input line 22.
+Package microtype Info: Applying patch `footnote' on input line 22.
+Package microtype Info: Applying patch `verbatim' on input line 22.
+LaTeX Info: Redefining \microtypesetup on input line 22.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -325,7 +325,7 @@ Package microtype Info: No adjustment of character kerning.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 19.
+Package hyperref Info: Link coloring OFF on input line 22.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -333,44 +333,46 @@ Package hyperref Info: Link coloring OFF on input line 19.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 21.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 24.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1{/home/solbon1212/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/solbon1212/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
+) (./table1.tex
+Overfull \hbox (2.56871pt too wide) in paragraph at lines 7--34
+ [][] 
+ []
 
-
-
-] (./table1.tex)
-<figs/fig1_averaging.pdf, id=95, 426.19728pt x 181.65358pt>
+)
+<figs/fig1_averaging.pdf, id=50, 431.46411pt x 197.06154pt>
 File: figs/fig1_averaging.pdf Graphic file (type pdf)
 <use figs/fig1_averaging.pdf>
-Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 89.
-(pdftex.def)             Requested size: 465.94139pt x 198.59717pt.
+Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 44.
+(pdftex.def)             Requested size: 465.94139pt x 212.82025pt.
+ [1{/home/solbon1212/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/solbon1212/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2]
-<figs/fig2_mechanisms.pdf, id=113, 219.57433pt x 215.91641pt>
+
+]
+<figs/fig2_mechanisms.pdf, id=99, 220.75975pt x 210.35162pt>
 File: figs/fig2_mechanisms.pdf Graphic file (type pdf)
 <use figs/fig2_mechanisms.pdf>
-Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 134.
-(pdftex.def)             Requested size: 244.6937pt x 240.62878pt.
- [3 <./figs/fig1_averaging.pdf>]
-Underfull \vbox (badness 2846) has occurred while \output is active []
+Package pdftex.def Info: figs/fig2_mechanisms.pdf  used on input line 108.
+(pdftex.def)             Requested size: 244.6937pt x 233.16565pt.
+ [2 <./figs/fig1_averaging.pdf>]
+Underfull \vbox (badness 2142) has occurred while \output is active []
 
- (./main.bbl [4 <./figs/fig2_mechanisms.pdf>]) [5] (./main.aux)
+ [3 <./figs/fig2_mechanisms.pdf>] (./main.bbl [4]) [5] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
@@ -379,18 +381,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 4BA906F5C7C6EB1EF1E33F8294D423B4;1299.
  ) 
 Here is how much of TeX's memory you used:
- 12258 strings out of 469115
- 189767 string characters out of 5458670
- 650588 words of memory out of 5000000
- 40823 multiletter control sequences out of 15000+600000
- 664032 words of font info for 251 fonts, out of 8000000 for 9000
+ 12256 strings out of 469115
+ 189817 string characters out of 5458670
+ 659763 words of memory out of 5000000
+ 40833 multiletter control sequences out of 15000+600000
+ 664374 words of font info for 244 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  74i,12n,79p,1281b,607s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 236449 bytes).
+</home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (5 pages, 247961 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 50779 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 361 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 53339 words of extra memory for PDF output out of 61914 (max. 10000000)
 

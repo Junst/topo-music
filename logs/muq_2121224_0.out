@@ -15,3 +15,28 @@ arm=muq_L2 host=node42 start=2026-08-30T13:34:51+09:00
 5768/7035  464s
 6248/7035  505s
 6728/7035  545s
+[muq_L2] embeddings (7035, 2048) (570s)
+
+[muq_L2] pooling = mean  dim=1024
+  24-way key 0.484 (chance .042) | 12-way tonic 0.586 (chance .083)
+  [centroid] kk_key_distance    rho=+0.806  z=+14.0  p=0.000  rho|spec=+0.808
+  [centroid] fifths             rho=+0.533  z= +9.3  p=0.000  rho|spec=+0.522
+  [centroid] chromatic          rho=+0.021  z= +0.3  p=0.714  rho|spec=+0.005
+  [centroid] mode_mismatch      rho=-0.033  z= -0.6  p=0.581  rho|spec=-0.047
+  [probe-W ] kk_key_distance    rho=+0.260  z= +4.3  p=0.000  rho|spec=+0.263
+  [probe-W ] fifths             rho=+0.103  z= +1.8  p=0.078  rho|spec=+0.104
+  [probe-W ] chromatic          rho=+0.071  z= +1.2  p=0.234  rho|spec=+0.071
+  [probe-W ] mode_mismatch      rho=+0.018  z= +0.3  p=0.788  rho|spec=+0.018
+
+[muq_L2] pooling = mean+std  dim=2048
+  24-way key 0.520 (chance .042) | 12-way tonic 0.616 (chance .083)
+  [centroid] kk_key_distance    rho=+0.806  z=+14.0  p=0.000  rho|spec=+0.807
+  [centroid] fifths             rho=+0.536  z= +9.4  p=0.000  rho|spec=+0.525
+  [centroid] chromatic          rho=+0.021  z= +0.3  p=0.717  rho|spec=+0.005
+  [centroid] mode_mismatch      rho=-0.025  z= -0.5  p=0.672  rho|spec=-0.039
+  [probe-W ] kk_key_distance    rho=+0.735  z=+12.2  p=0.000  rho|spec=+0.730
+  [probe-W ] fifths             rho=+0.384  z= +6.3  p=0.000  rho|spec=+0.374
+  [probe-W ] chromatic          rho=-0.020  z= -0.3  p=0.733  rho|spec=-0.027
+  [probe-W ] mode_mismatch      rho=+0.001  z= +0.0  p=0.983  rho|spec=-0.004
+wrote runs/clipkey_muq_L2.json in 639s
+done=2026-08-30T13:46:21+09:00
