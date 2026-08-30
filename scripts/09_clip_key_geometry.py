@@ -72,7 +72,7 @@ from scipy.stats import spearmanr
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 GS = Path("/lustre/dataset/musicdataset/marble/GS")
-CQT_SR, MERT_SR = 16000, 24000
+CQT_SR, MERT_SR, MUQ_SR = 16000, 24000, 24000
 TONIC = {n: i for i, n in enumerate(
     ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"])}
 ENH = {"Db": "C#", "Eb": "D#", "Gb": "F#", "Ab": "G#", "Bb": "A#"}
@@ -142,6 +142,7 @@ def main():
     print(f"[{a.arm}] {len(rows)} clips", flush=True)
 
     is_codec = a.arm.startswith(("encodec", "dac"))
+    is_muq = a.arm.startswith("muq_L")
     model = taps = codec = None
     layer = None
     if is_codec:
@@ -166,6 +167,19 @@ def main():
         for i, lyr in enumerate(model.encoder.layers):
             lyr.register_forward_hook(tap(i + 1))
         native_sr = MERT_SR
+    elif is_muq:
+        # MuQ returns its hidden states directly, so no forward hooks are
+        # needed. Same parameter count and width as MERT-v1-330M but half the
+        # depth and a third of the frame rate, and a different objective:
+        # masked prediction of Mel-RVQ tokens rather than MERT's acoustic and
+        # musical teachers. hidden_states[0] is the input to layer 1, so the
+        # index matches the mert_L convention.
+        from muq import MuQ
+        layer = int(a.arm.split("_L")[1])
+        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MUQ_SR
     else:
         native_sr = CQT_SR
 
@@ -224,10 +238,15 @@ def main():
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))          # [B,T,d]
             F = list(lat.numpy())
         else:
-            taps.clear()
+            x = torch.from_numpy(np.stack(ws)).to(a.device)
             with torch.no_grad():
-                model(torch.from_numpy(np.stack(ws)).to(a.device))
-            F = list(taps[layer].float().cpu().numpy())
+                if is_muq:
+                    h = model(x, output_hidden_states=True).hidden_states[layer]
+                else:
+                    taps.clear()
+                    model(x)
+                    h = taps[layer]
+            F = list(h.float().cpu().numpy())
         E = [np.concatenate([f.mean(0), f.std(0)]) for f in F]   # [mean | std]
         mel = [librosa.power_to_db(librosa.feature.melspectrogram(
             y=w, sr=native_sr, n_fft=2048, hop_length=512, n_mels=a.n_mels)).mean(1)

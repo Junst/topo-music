@@ -61,7 +61,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 NSYNTH = Path("/lustre/dataset/musicdataset/marble/nsynth")
 WIN = (0.2, 2.5)
-SR_IN, MERT_SR, CQT_SR = 16000, 24000, 16000
+SR_IN, MERT_SR, CQT_SR, MUQ_SR = 16000, 24000, 16000, 24000
 
 
 def main() -> None:
@@ -115,6 +115,7 @@ def main() -> None:
           flush=True)
 
     is_codec = a.arm.startswith(("encodec", "dac"))
+    is_muq = a.arm.startswith("muq_L")
     model = taps = codec = CB = None
     layer = None
     if is_codec:
@@ -139,6 +140,13 @@ def main() -> None:
         for i, lyr in enumerate(model.encoder.layers):
             lyr.register_forward_hook(tap(i + 1))
         native_sr = MERT_SR
+    elif is_muq:
+        from muq import MuQ
+        layer = int(a.arm.split("_L")[1])
+        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        for p_ in model.parameters():
+            p_.requires_grad_(False)
+        native_sr = MUQ_SR
     else:
         native_sr = CQT_SR
 
@@ -164,10 +172,15 @@ def main() -> None:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))
             return lat.mean(1).numpy()
-        taps.clear()
+        x = torch.from_numpy(np.stack(ws)).to(a.device)
         with torch.no_grad():
-            model(torch.from_numpy(np.stack(ws)).to(a.device))
-        return taps[layer].float().mean(1).cpu().numpy()
+            if is_muq:
+                h = model(x, output_hidden_states=True).hidden_states[layer]
+            else:
+                taps.clear()
+                model(x)
+                h = taps[layer]
+        return h.float().mean(1).cpu().numpy()
 
     t0 = time.time()
     Z: dict[str, np.ndarray] = {}
