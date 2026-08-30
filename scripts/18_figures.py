@@ -129,13 +129,13 @@ print("fig1 written")
 # third panel is a flat line at zero and the text states its numbers exactly,
 # so it costs a panel and shows nothing a sentence does not.
 ARMS2 = ["cqt", "mert_L4", "mert_L12", "mert_L16", "mert_L24"]
-# short tick labels: the full names crowd at this width
-NICE = {"cqt": "CQT", "mert_L4": "L4", "mert_L12": "L12",
+NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
         "mert_L16": "L16", "mert_L24": "L24"}
 
-fig, (axa, axb) = plt.subplots(1, 2, figsize=(3.35, 1.92),
-                               gridspec_kw={"width_ratios": [1, 1.06],
-                                            "wspace": 0.42})
+# stacked rather than side by side: each panel then gets the full column
+# width, which the 25-point transposition curve in (a) needs
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 2.85),
+                               gridspec_kw={"hspace": 0.78})
 
 # (a) the curve the strict contrast is a summary of
 oc = np.load("runs/figs/_octave_curve.npz")
@@ -145,7 +145,7 @@ axa.plot(oc["ks"], oc["projected"], color=BLUE, lw=1.2,
 for k in (12, 24):
     axa.axvline(k, color=INK2, lw=0.6, ls=":", zorder=1)
 style(axa)
-axa.set_xticks([1, 12, 24]); axa.set_yticks([])
+axa.set_xticks([1, 5, 7, 12, 17, 19, 24]); axa.set_yticks([])
 axa.set_xlabel("transposition (semitones)", fontsize=7)
 axa.set_ylabel("mean similarity (z)", fontsize=7.5)
 axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
@@ -161,13 +161,13 @@ axb.bar(x - w / 2, amb, w, color=AQUA, zorder=3)
 axb.bar(x + w / 2, pv, w, color=BLUE, yerr=perr, capsize=2,
         error_kw=dict(elinewidth=0.7, ecolor=INK2), zorder=3)
 style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
-axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2], fontsize=6.5)
+axb.set_xticks(x); axb.set_xticklabels([NICE[a] for a in ARMS2], fontsize=7)
 axb.set_xlabel("representation", fontsize=7)
 axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$", fontsize=7.5)
 axb.set_title("(b) octave equivalence", loc="center", color=INK, fontsize=7.5)
 
 h, l = axa.get_legend_handles_labels()
 fig.legend(h, l, frameon=False, ncol=2, loc="lower center",
-           bbox_to_anchor=(0.5, -0.30), handlelength=2.0, fontsize=7)
+           bbox_to_anchor=(0.5, -0.11), handlelength=2.0, fontsize=7)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")
