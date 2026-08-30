@@ -93,10 +93,8 @@ axb.set_xticks([1, 4, 16, 64, 293]); axb.set_xticklabels(["1", "4", "16", "64", 
 handles, labels = axa.get_legend_handles_labels()
 fig.legend(handles, labels, frameon=False, ncol=5, loc="lower center",
            bbox_to_anchor=(0.5, -0.155), handlelength=2.4)
-axa.annotate(r"$1.7\times$", (20, 0.468), xytext=(-4, -18),
-             textcoords="offset points", ha="right", color=BLUE, fontsize=7.5)
-axb.annotate(r"$13.4\times$", (170, 0.16), color=BLUE, fontsize=7.5,
-             ha="center")
+# the 1.7x and 13.4x labels are in the text; with five series the panels are
+# busy enough without them
 axb.set_xlim(right=380)
 plt.setp(axb.get_yticklabels(), visible=False)
 
