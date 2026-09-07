@@ -1,0 +1,4 @@
+fmak: one excerpt per track
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+chroma          0.447   0.400       nan      nan
+wrote runs/probe_f1_chroma_fmak.json

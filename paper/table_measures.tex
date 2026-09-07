@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{The three measurements, all computed on the same clips, the same 24 keys and the same probe.}
+\label{tab:measures}
+\begin{tabular}{@{}l p{0.85\columnwidth}@{}}
+\toprule
+F1 & \textbf{How easily key can be read out.} Macro-F1 of a multinomial
+logistic probe over 24 keys, folds grouped by track. \\
+\addlinespace[2pt]
+$\rho^{\text{cent}}_{5}$ & \textbf{Whether the representation space is itself
+arranged by key relation.} Spearman correlation between the pairwise distances
+of the 24 key centroids and circle-of-fifths distance. \\
+\addlinespace[2pt]
+$\rho^{W}_{5}$ & \textbf{Whether the directions the probe learns are arranged
+the same way.} The same correlation on the pairwise distances of its 24 class
+weight vectors. \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,15 @@
+host=node41 arms=matpac_L6 pupujepa encodec_32k out=runs/_permnull_part2.json start=2026-09-05T06:40:47+09:00
+  [matpac_L6] 50/200  424s
+  [matpac_L6] 100/200  832s
+  [matpac_L6] 150/200  1236s
+[matpac_L6] observed +0.114 | permuted mean +0.002 [-0.019,+0.023] max +0.042 | p=0.0000  (1633s)
+  [pupujepa] 50/200  35s
+  [pupujepa] 100/200  68s
+  [pupujepa] 150/200  102s
+[pupujepa] observed +0.006 | permuted mean -0.016 [-0.037,-0.001] max +0.001 | p=0.0000  (136s)
+  [encodec_32k] 50/200  12s
+  [encodec_32k] 100/200  25s
+  [encodec_32k] 150/200  37s
+[encodec_32k] observed +0.459 | permuted mean -0.021 [-0.055,+0.018] max +0.037 | p=0.0000  (48s)
+wrote runs/_permnull_part2.json
+done=2026-09-05T07:11:29+09:00

@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{1.5pt}
+\caption{Centroid geometry, readout geometry and the chromatic control, measured on FMAK rather than GiantSteps: 5476 tracks over 17 genres, one excerpt per track. The three $\Delta$ columns are the NSynth octave contrast under the native metric and after a rank-4 projection fitted on GiantSteps and on FMAK keys. $\Delta^{\mathrm{nat}}$ is measured on NSynth alone and so does not depend on the corpus.}
+\label{tab:fmak}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l r r r r r r}
+\toprule
+representation & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & $\rho_{\text{chr}}$ & $\Delta^{\mathrm{nat}}$ & $\Delta^{\mathrm{GS}}$ & $\Delta^{\mathrm{FM}}$ \\
+\midrule
+\multicolumn{7}{l}{\textit{Spectral representations}} \\
+\hspace{3pt}log-CQT~\cite{brown1991} & $+0.057$ & $+0.474$ & \textcolor{hi}{$\mathbf{-0.046}$} & $+0.004$ & $+0.466$ & $+0.507$ \\
+\hspace{3pt}HCQT~\cite{hcqt} & $+0.389$ & $+0.167$ & \textcolor{lo}{$\mathbf{-0.092}$} & $+0.011$ & $+0.535$ & $+0.421$ \\
+\hspace{3pt}PQ-STFT & $+0.454$ & $+0.263$ & $-0.055$ & \textcolor{hi}{$\mathbf{+0.227}$} & \textcolor{hi}{$\mathbf{+0.603}$} & \textcolor{hi}{$\mathbf{+0.513}$} \\
+\hspace{3pt}chromagram~\cite{librosa} & $+0.632$ & $+0.496$ & $-0.092$ & $+0.698$ & $+0.878$ & $+0.689$ \\
+\multicolumn{7}{l}{\textit{Neural codec}} \\
+\hspace{3pt}EnCodec~\cite{encodec} & $+0.207$ & $+0.421$ & $-0.076$ & $+0.000$ & $+0.459$ & $-0.001$ \\
+\multicolumn{7}{l}{\textit{Learned encoders}} \\
+\hspace{3pt}MERT L12~\cite{mert} & $+0.437$ & $+0.102$ & $-0.068$ & $-0.003$ & $+0.223$ & $+0.197$ \\
+\hspace{3pt}MuQ L6~\cite{muq} & $+0.467$ & $+0.184$ & $-0.068$ & $+0.034$ & $+0.307$ & $+0.204$ \\
+\hspace{3pt}MATPAC L6~\cite{matpac} & \textcolor{hi}{$\mathbf{+0.597}$} & \textcolor{lo}{$\mathbf{-0.064}$} & $-0.091$ & $+0.010$ & $+0.114$ & $+0.069$ \\
+\hspace{3pt}PupuJEPA~\cite{pupujepa} & \textcolor{lo}{$\mathbf{+0.031}$} & \textcolor{hi}{$\mathbf{+0.489}$} & $-0.078$ & \textcolor{lo}{$\mathbf{-0.004}$} & \textcolor{lo}{$\mathbf{+0.006}$} & \textcolor{lo}{$\mathbf{-0.002}$} \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,51 @@
+arm=hcqt host=node56 start=2026-08-31T07:08:17+09:00
+  dropped 13 unreadable or short files, e.g. [('011438.mp3', 'shorter than the excerpt window'), ('021823.mp3', 'shorter than the excerpt window'), ('061480.mp3', "Error opening '/lustre/dataset/musicdataset/fma_large/061/061480.mp3'")]
+[hcqt] fmak: 5476 clips
+4/5476  7s
+244/5476  119s
+484/5476  229s
+724/5476  339s
+964/5476  450s
+1204/5476  563s
+1444/5476  676s
+1684/5476  790s
+1924/5476  903s
+2164/5476  1016s
+2404/5476  1129s
+2644/5476  1244s
+2884/5476  1359s
+3124/5476  1474s
+3364/5476  1589s
+3604/5476  1706s
+3844/5476  1821s
+4084/5476  1935s
+4324/5476  2050s
+4564/5476  2164s
+4804/5476  2278s
+5044/5476  2392s
+5284/5476  2505s
+[hcqt] embeddings (5476, 4320) (2594s)
+
+[hcqt] pooling = mean  dim=2160
+  24-way key 0.352 (chance .042) | 12-way tonic 0.415 (chance .083)
+  [centroid] kk_key_distance    rho=+0.513  z= +9.2  p=0.000  rho|spec=+0.600
+  [centroid] fifths             rho=+0.389  z= +7.1  p=0.000  rho|spec=+0.422
+  [centroid] chromatic          rho=-0.092  z= -1.6  p=0.079  rho|spec=-0.056
+  [centroid] mode_mismatch      rho=+0.405  z= +7.3  p=0.000  rho|spec=+0.303
+  [probe-W ] kk_key_distance    rho=+0.226  z= +3.6  p=0.000  rho|spec=+0.214
+  [probe-W ] fifths             rho=+0.167  z= +2.7  p=0.005  rho|spec=+0.154
+  [probe-W ] chromatic          rho=+0.017  z= +0.3  p=0.776  rho|spec=+0.026
+  [probe-W ] mode_mismatch      rho=+0.079  z= +1.3  p=0.202  rho|spec=+0.049
+
+[hcqt] pooling = mean+std  dim=4320
+  24-way key 0.352 (chance .042) | 12-way tonic 0.390 (chance .083)
+  [centroid] kk_key_distance    rho=+0.514  z= +9.2  p=0.000  rho|spec=+0.601
+  [centroid] fifths             rho=+0.388  z= +7.1  p=0.000  rho|spec=+0.420
+  [centroid] chromatic          rho=-0.092  z= -1.6  p=0.080  rho|spec=-0.057
+  [centroid] mode_mismatch      rho=+0.408  z= +7.3  p=0.000  rho|spec=+0.306
+  [probe-W ] kk_key_distance    rho=+0.240  z= +4.0  p=0.000  rho|spec=+0.232
+  [probe-W ] fifths             rho=+0.097  z= +1.6  p=0.114  rho|spec=+0.087
+  [probe-W ] chromatic          rho=-0.059  z= -1.0  p=0.334  rho|spec=-0.053
+  [probe-W ] mode_mismatch      rho=+0.058  z= +1.0  p=0.340  rho|spec=+0.037
+wrote runs/clipkey_hcqt_fmak.json in 7622s
+done=2026-08-31T09:15:35+09:00

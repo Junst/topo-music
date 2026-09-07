@@ -54,21 +54,34 @@ BLOCKS = [
     # the fold x norm 2x2 (cqt_norm, cqt_fold) is registered in PREREG_SCALES.md
     # and printed in runs/TABLE1.md; it is left out here because no sentence in
     # the four pages leans on it
-    ("Spectral front ends", [
-        ("cqt",      "log-CQT, 12 bin/oct"),
-        ("hcqt",     "HCQT, 60 bin/oct"),
+    ("Spectral representations", [
+        ("cqt",      r"log-CQT~\cite{brown1991}, 12 bin/oct"),
+        ("hcqt",     r"HCQT~\cite{hcqt}, 60 bin/oct"),
         ("pq_stft",  "PQ-STFT, 60 bin/oct"),
-        ("chroma",   "chromagram"),
+        ("chroma",   r"chromagram~\cite{librosa}"),
     ]),
     # DAC is in runs/TABLE1.md; at a macro F1 of .096 its geometry columns are
     # not interpretable, and EnCodec already carries the codec case
-    ("Neural codec", [("encodec_32k", "EnCodec 32\\,kHz")]),
-    # the layers the text cites, at matched fractions of depth; the full sweeps
-    # are in runs/TABLE1.md
-    ("MERT-v1-330M", [(f"mert_L{l}", f"layer {l}") for l in (4, 12, 24)]),
-    ("MuQ-large", [(f"muq_L{l}", f"layer {l}") for l in (2, 12)]),
-    ("MATPAC++ music", [(f"matpac_L{l}", f"layer {l}") for l in (6, 12)]),
-    ("PupuJEPA", [("pupujepa", "teacher encoder")]),
+    ("Neural codec", [("encodec_32k", r"EnCodec 32\,kHz~\cite{encodec}")]),
+    # The reference row for each encoder is the output its own interface
+    # returns: AutoModel's last_hidden_state for MERT, the last hidden state of
+    # MuQ's forward, and MATPAC's emb, all of which are the final layer. The
+    # second row is the best of a four-point layer sweep, reported because this
+    # family is conventionally probed layer-wise and because the default output
+    # turns out to be the weakest of the four in all three encoders.
+    # The third row is MARBLE's own protocol: a softmax weight over every
+    # hidden layer, learned jointly with the head, so no layer is chosen by
+    # hand and the best-layer row cannot be a selection artifact.
+    (r"MERT-v1-330M~\cite{mert}", [("mert_L24", "default output, L24"),
+                      ("mert_L4", "best layer, L4"),
+                      ("mert_wsum", "weighted sum, all layers")]),
+    (r"MuQ-large~\cite{muq}", [("muq_L12", "default output, L12"),
+                   ("muq_L2", "best layer, L2"),
+                   ("muq_wsum", "weighted sum, all layers")]),
+    (r"MATPAC++ music~\cite{matpac}", [("matpac_L12", "default output, L12"),
+                        ("matpac_L6", "best layer, L6"),
+                        ("matpac_wsum", "weighted sum, all layers")]),
+    (r"PupuJEPA~\cite{pupujepa}", [("pupujepa", "teacher encoder")]),
 ]
 
 
@@ -84,7 +97,11 @@ def cell(v, w=6, d=3, star=None):
 # every geometry column and orthogonal codes would win accuracy by construction.
 # rho_chr is left unmarked, since it is a discriminant where a high value is a
 # warning rather than a result.
-MARKED_COLS = ("f1", "r5", "rw")
+# rho_chr is marked on the same rule as the rest. It is a discriminant rather
+# than a score, so blue on it flags the arm most confounded with chromatic
+# proximity, not the best one; the caption says "highest" and "lowest" rather
+# than "best" and "worst" for exactly that reason.
+MARKED_COLS = ("f1", "r5", "rw", "rc")
 
 # Accuracy and macro F1 come from script 23, which runs the same probe under
 # StratifiedGroupKFold on track identity. The clips are chunks of 1763 tracks,
@@ -108,7 +125,7 @@ for block, arms in BLOCKS:
         rows.append((label, dict(
             arm=arm,
             acc=g.get("acc", pr.get("key24_acc")),
-            f1=g.get("macro_f1"),
+            f1=g.get("macro_f1", pr.get("grouped_macro_f1")),
             r5=c.get("fifths", {}).get("rho"),
             r5s=c.get("fifths", {}).get("rho_given_spec"),
             rw=w.get("fifths", {}).get("rho"),
@@ -116,8 +133,13 @@ for block, arms in BLOCKS:
             rc=c.get("chromatic", {}).get("rho"),
             rm=c.get("mode_mismatch", {}).get("rho"))))
 
+# The weighted-sum rows are a control on the layer sweep, not a competing
+# representation, and their probe is fitted with a different optimizer than the
+# rest of the F1 column, so they are excluded from the column extremes for the
+# same reason the control block is.
 real = [(l, r) for l, r in rows
-        if r and not l.startswith(("analytic", "random f", "orthogonal"))]
+        if r and not l.startswith(("analytic", "random f", "orthogonal",
+                                   "weighted sum"))]
 marks = {}
 for c in MARKED_COLS:
     vals = [(r[c], r["arm"]) for l, r in real if r.get(c) is not None]
@@ -141,7 +163,7 @@ Path("runs/table1_rows.json").write_text(json.dumps(
 
 
 # the four cells that carry the mirror-image pair discussed in Sec. 4.1:
-# a front end with readout geometry and no ambient geometry, and a learned
+# a spectral representation with readout geometry and no ambient geometry, and a learned
 # representation with ambient geometry and no readout geometry
 
 
@@ -158,19 +180,13 @@ def tex(v, d=3, mark=None):
 # are in runs/TABLE1.md and summarised in the caption.
 L = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
      r"\setlength{\tabcolsep}{3pt}",
-     r"\caption{Key information, ambient geometry and readout geometry come "
-     r"apart, on the same 7035 GiantSteps clips and 24 keys. F1 is "
-     r"track-grouped macro F1 over the 24 imbalanced keys; accuracy is "
-     r"reported in the repository. $\rho^{\text{cent}}_{5}$ is the "
-     r"circle-of-fifths correlation among the 24 key centroids and "
-     r"$\rho^{W}_{5}$ the same among the probe's class weight vectors, while "
-     r"$\rho_{\text{chr}}$ measures correlation with semitone distance and "
-     r"controls for proximity in chromatic pitch space. Orthogonal key codes "
-     r"reach a macro F1 of $.613$ with classes equidistant by construction "
-     r"and still show nothing, showing that fifths structure in "
-     r"$\rho^{W}_{5}$ is not a consequence of classifier accuracy alone. In "
-     r"each of the first three columns blue marks the highest value among "
-     r"the real representations and red the lowest.}",
+     r"\caption{Key information, ambient geometry and readout geometry "
+     r"come apart, on the same 7035 GiantSteps clips and 24 keys. "
+     r"\textcolor{hi}{Blue} marks the highest value in a column among the "
+     r"real representations and \textcolor{lo}{red} the lowest. "
+     r"$\rho_{\text{chr}}$ is the same correlation taken against semitone "
+     r"distance, a control on which a high value is a warning rather than "
+     r"a result.}",
      r"\label{tab:decodable-vs-geometric}",
      r"\begin{tabular}{l r r r r}", r"\toprule",
      r"representation & F1 & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & "
@@ -184,7 +200,8 @@ for label, r in rows:
     if r.get("f1") is not None and mk("f1"):
         f1 = rf"\textcolor{{{mk('f1')}}}{{$\mathbf{{{r['f1']:.3f}}}$}}"
     L.append(f"\\quad {label} & {f1} & {tex(r['r5'], mark=mk('r5'))} & "
-             f"{tex(r['rw'], mark=mk('rw'))} & {tex(r['rc'])} \\\\")
+             f"{tex(r['rw'], mark=mk('rw'))} & "
+             f"{tex(r['rc'], mark=mk('rc'))} \\\\")
 L += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
 Path("runs/table1.tex").write_text("\n".join(L) + "\n")
 print("wrote runs/table1_rows.json and runs/table1.tex")
@@ -197,7 +214,7 @@ print("wrote runs/table1_rows.json and runs/table1.tex")
 # 2x2, DAC, and every layer of each encoder.
 FULL = [
     ("Controls", ["fifths_analytic", "random_feat", "orthocode"]),
-    ("Spectral front ends", ["cqt", "cqt_norm", "cqt_fold", "hcqt", "pq_stft",
+    ("Spectral representations", ["cqt", "cqt_norm", "cqt_fold", "hcqt", "pq_stft",
                              "chroma"]),
     ("Neural codecs", ["encodec_32k", "dac_44k"]),
     ("MERT-v1-330M", ["mert_L4", "mert_L12", "mert_L16", "mert_L24"]),

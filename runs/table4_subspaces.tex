@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\caption{The strict octave contrast on the same NSynth notes under rank-4 subspaces that differ only in what they were fitted on: nothing, the notes themselves, and GiantSteps clip key labels.}
+\label{tab:subspaces}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l r r r r r r}
+\toprule
+subspace & MERT L12 & MuQ L6 & MATPAC L6 & EnCodec & log-CQT & PupuJEPA \\
+\midrule
+\hspace{3pt}random subspace & $-0.019$ & $+0.028$ & $+0.009$ & $+0.003$ & $+0.007$ & $-0.010$ \\
+\addlinespace[1.5pt]
+\hspace{3pt}leading components & $-0.076$ & $-0.013$ & $-0.046$ & $-0.049$ & $-0.001$ & $-0.007$ \\
+\hspace{3pt}pitch height & $+0.027$ & $+0.045$ & $-0.010$ & $+0.149$ & $+0.060$ & $-0.100$ \\
+\hspace{3pt}pitch class & $+0.096$ & $+0.317$ & $+0.114$ & $+0.478$ & $+0.245$ & $+0.174$ \\
+\addlinespace[1.5pt]
+\hspace{3pt}permuted labels & $+0.013$ & $+0.019$ & $+0.002$ & $-0.021$ & $+0.016$ & $-0.016$ \\
+\hspace{3pt}true labels & $+0.223$ & $+0.307$ & $+0.114$ & $+0.459$ & $+0.466$ & $+0.006$ \\
+\bottomrule
+\end{tabular}}
+\end{table}

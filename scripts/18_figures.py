@@ -58,8 +58,11 @@ def style(ax):
 # ---------------------------------------------------------------- figure 1
 # two panels only: the centroid distance matrices that used to sit in (c) show
 # the same rise as (b) and the section reads without them
-fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.7, 1.88), sharey=True,
-                               gridspec_kw={"wspace": 0.10})
+# back across both columns, with a one-row legend. Nine series stacked into a
+# single column left the curves on top of each other; the width is what
+# separates them, and a leaner legend pays for most of it
+fig, (axa, axb) = plt.subplots(1, 2, figsize=(6.7, 2.05), sharey=True,
+                               gridspec_kw={"wspace": 0.09})
 for arm, (lab, col, ls, mk) in SERIES.items():
     d = json.load(open(f"runs/accum_{arm}.json"))
     full = d["curve"][-1]["fifths"]["mean"]
@@ -78,7 +81,7 @@ for arm, (lab, col, ls, mk) in SERIES.items():
                  lw=1.6, capsize=1.5, elinewidth=0.7, zorder=3)
 
 for ax, xl, ti in [(axa, "pooling window (s)", "(a) averaging over time"),
-                   (axb, "clips per key centroid",
+                   (axb, "audio clips per key centroid",
                     "(b) averaging over examples")]:
     style(ax); ax.set_xscale("log"); ax.set_xlabel(xl)
     ax.set_title(ti, loc="center", color=INK)
@@ -88,9 +91,12 @@ axa.set_xticks([0.02, 0.1, 0.5, 2, 8, 20])
 axa.set_xticklabels(["0.02", "0.1", "0.5", "2", "8", "20"])
 axb.set_xticks([1, 4, 16, 64, 293]); axb.set_xticklabels(["1", "4", "16", "64", "293"])
 handles, labels = axa.get_legend_handles_labels()
-fig.legend(handles, labels, frameon=False, ncol=5, loc="lower center",
-           bbox_to_anchor=(0.5, -0.33), handlelength=2.0, fontsize=6.8,
-           columnspacing=1.3)
+# 7.3 pt rather than 7: the figure is drawn 6.7 in wide and placed at
+# 0.92\textwidth, which is 6.44 in, so everything in it lands on the page at
+# 0.961 of the size it was authored at
+fig.legend(handles, labels, frameon=False, ncol=9, loc="lower center",
+           bbox_to_anchor=(0.5, -0.26), handlelength=1.4, fontsize=7.3,
+           columnspacing=0.7, handletextpad=0.3)
 # the 1.7x and 13.4x labels are in the text; with five series the panels are
 # busy enough without them
 axb.set_xlim(right=380)
@@ -110,8 +116,8 @@ NICE = {"cqt": "log-CQT", "mert_L4": "L4", "mert_L12": "L12",
 
 # stacked rather than side by side: each panel then gets the full column
 # width, which the 25-point transposition curve in (a) needs
-fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 2.85),
-                               gridspec_kw={"hspace": 0.78})
+fig, (axa, axb) = plt.subplots(2, 1, figsize=(3.35, 2.62),
+                               gridspec_kw={"hspace": 0.70})
 
 # (a) the curve the strict contrast is a summary of
 oc = np.load("runs/figs/_octave_curve.npz")
@@ -134,7 +140,12 @@ axa.set_title("(a) MERT L12 notes", loc="center", color=INK, fontsize=7.5)
 # MuQ a rising ladder, PupuJEPA null under all three
 BARS = [("mert_L4", "MERT L4"), ("mert_L12", "L12"), ("mert_L24", "L24"),
         ("muq_L2", "MuQ L2"), ("muq_L12", "L12"), ("pupujepa", "PupuJEPA")]
-amb, geo, prj, perr, rnd = [], [], [], [[], []], []
+# the unsupervised rank-4 subspace is a fourth bar rather than a sentence of
+# numbers in the text: it is the control a reader reaches for first, and where
+# it lands relative to the key-fitted bar is the whole of the answer
+_PCA = json.load(open("runs/pca_helix.json"))
+_NUL = json.load(open("runs/label_permutation_null.json"))
+amb, geo, pca, shf, sherr, prj, perr, rnd = [], [], [], [], [[], []], [], [[], []], []
 for a, _ in BARS:
     d = json.load(open(f"runs/subspace_{a}.json"))
     amb.append(d["ambient"]["nsynth_curve"]["d_strict"]["v"])
@@ -142,28 +153,46 @@ for a, _ in BARS:
     v = d["subspaces"]["key_lda"]["4"]["nsynth_curve"]["d_strict"]
     prj.append(v["v"]); perr[0].append(v["v"] - v["lo"]); perr[1].append(v["hi"] - v["v"])
     geo.append(json.load(open(f"runs/geodesic_{a}.json"))["geodesic"]["10"]["d_strict"]["v"])
-x = np.arange(len(BARS)); w = 0.27
-axb.bar(x - w, amb, w, color=AQUA, label="native", zorder=3)
-axb.bar(x, geo, w, color=PURPLE, label="geodesic", zorder=3)
-axb.bar(x + w, prj, w, color=BLUE, yerr=np.array(perr), capsize=1.8,
-        error_kw=dict(elinewidth=0.7, ecolor=INK2), label="GS-key $d=4$", zorder=3)
-axb.scatter(x + w, rnd, marker="_", s=42, linewidths=1.1, color=INK2,
+    pca.append(_PCA[a]["pca"]["4"]["nsynth_curve"]["d_strict"]["v"])
+    # the supervised null: the same fit after the key labels are permuted over
+    # tracks. Its bar is the mean over 200 permutations and its whisker the
+    # 2.5 to 97.5 percentile of that distribution
+    q = _NUL[a]
+    shf.append(q["null_mean"])
+    sherr[0].append(q["null_mean"] - q["null_lo"])
+    sherr[1].append(q["null_hi"] - q["null_mean"])
+x = np.arange(len(BARS)); w = 0.21
+# The supervised null is a band rather than a fifth bar. On the symlog axis a
+# bar at 0.02 stands about half as tall as one at 0.3, which reads as a much
+# larger null than it is; a band behind the group says where a permuted-label
+# fit lands without competing for height.
+lo = np.array(shf) - np.array(sherr[0]); hi = np.array(shf) + np.array(sherr[1])
+for xi, l, h in zip(x, lo, hi):
+    axb.bar(xi, h - l, 4.6 * w, bottom=l, color="#e2e2dc", edgecolor="none",
+            zorder=1.5, label="shuffled key $d=4$" if xi == 0 else None)
+axb.bar(x - 1.5 * w, amb, w, color=AQUA, label="native", zorder=3)
+axb.bar(x - 0.5 * w, geo, w, color=PURPLE, label="geodesic", zorder=3)
+axb.bar(x + 0.5 * w, pca, w, color=OLIVE, label="PCA $d=4$", zorder=3)
+axb.bar(x + 1.5 * w, prj, w, color=BLUE, yerr=np.array(perr), capsize=1.5,
+        error_kw=dict(elinewidth=0.6, ecolor=INK2), label="GS-key $d=4$", zorder=3)
+axb.scatter(x + 1.5 * w, rnd, marker="_", s=32, linewidths=1.0, color=INK2,
             label="random $d=4$", zorder=5)
 style(axb); axb.axhline(0, color=INK2, lw=0.6, zorder=2)
 # symlog: the native and geodesic values sit two orders of magnitude below the
 # projected ones, and on a linear axis the contrast this panel is about would
 # be invisible
 axb.set_yscale("symlog", linthresh=0.01, linscale=0.45)
-axb.set_yticks([0, 0.01, 0.1, 0.4])
-axb.set_yticklabels(["0", ".01", ".1", ".4"])
+axb.set_yticks([-0.1, 0, 0.01, 0.1, 0.4])
+axb.set_yticklabels(["-.1", "0", ".01", ".1", ".4"])
 axb.set_xticks(x); axb.set_xticklabels([n for _, n in BARS], fontsize=7)
 axb.set_ylabel(r"$\Delta_{\mathrm{strict}}$", fontsize=7.5)
-axb.set_title("(b) octave equivalence under three metrics", loc="center",
+axb.set_title("(b) octave equivalence, four metrics and two nulls",
+              loc="center",
               color=INK, fontsize=7.5)
 
 h, l = axb.get_legend_handles_labels()
-fig.legend(h, l, frameon=False, ncol=4, loc="lower center",
-           bbox_to_anchor=(0.5, -0.10), handlelength=1.5, fontsize=7,
-           columnspacing=1.2, handletextpad=0.5)
+fig.legend(h, l, frameon=False, ncol=3, loc="lower center",
+           bbox_to_anchor=(0.5, -0.19), handlelength=1.4, fontsize=6.6,
+           columnspacing=0.9, handletextpad=0.4)
 fig.savefig(FIGDIR / "fig2_mechanisms.pdf"); fig.savefig(FIGDIR / "fig2_mechanisms.png")
 print("fig2 written")

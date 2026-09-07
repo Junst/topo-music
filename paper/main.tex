@@ -1,7 +1,7 @@
 % ICASSP 2027 submission -- draft.
-% Uses the official ICASSP paper kit: spconf.sty and IEEEbib.bst are in this
-% directory, taken from the ICASSP 2026 kit (the 2027 kit was not yet posted;
-% spconf is stable across years, but re-download and re-check before submitting).
+% spconf.sty and IEEEbib.bst in this directory come from the official
+% ICASSP 2027 kit (ICASSP2027_Paper_Templates/). Both are byte-identical to the
+% 2026 kit's, so no layout changed when the 2027 kit replaced it.
 % Deadline: 16 September 2026. Limit: 5 pages, of which the 5th may hold only
 % references, funding acknowledgements and the ethics statement.
 \documentclass{article}
@@ -19,22 +19,19 @@
 
 \title{What Hides Musical Geometry in Audio Representations?}
 
-\name{Junyoung Koh\thanks{Code, pre-registrations and all run artifacts:
-\url{https://github.com/Junst/topo-music}. Every threshold and kill criterion reported here was registered before the corresponding run.}}
-\address{School of Music, Theatre and Dance, University of Michigan \\ Department of Artificial Intelligence, Yonsei University}
+% Superscript affiliations rather than \twoauthors: the first author holds
+% both, and side-by-side address blocks cannot show a shared one.
+\name{Junyoung Koh$^{1,2}$, Hao-Wen Dong$^{2}$
+      \thanks{Code, pre-registrations and all run artifacts:
+\url{https://github.com/Junst/topo-music}.}}
+\address{$^{1}$Yonsei University, Seoul, Republic of Korea\\
+  $^{2}$University of Michigan, Ann Arbor, MI, USA}
 \begin{document}
+\ninept
 \maketitle
 
 \begin{abstract}
-Learned representations are often evaluated by how well their attributes can be decoded. However, linear decodability does not imply that a representation's ambient geometry reflects the relationships among those attributes. Music makes this distinction directly testable because relationships between musical classes, such as keys and pitches, are explicitly defined. We examine this gap through linear decoding, class-centroid geometry, and linear-readout geometry. A log-CQT decodes key more accurately than MERT layer 12 under track-grouped
-cross-validation (macro F1 .392 vs.\ .371), yet shows no circle-of-fifths
-structure in its class centroids while the same structure is strong in its
-readout weights. We further identify two factors that determine geometric visibility. First, increasing the number of examples per centroid changes fifths geometry by a factor of 13.4, compared with only 1.7 for a thousandfold increase in pooling duration. Second, octave equivalence differs across metrics: it can be absent from
-global distances, weakly preserved in geodesic geometry, and substantially
-strengthened by a supervised rank-4 projection fitted only on GiantSteps keys,
-in subspaces accounting for less than 0.3\% of the variance. These results show that decodability, ambient geometry, and readout geometry
-are distinct properties of a representation, and that musical relations can
-differ substantially in where and how strongly they appear.
+Learned representations are often evaluated by how well their attributes can be decoded, but decodability does not imply that a representation's ambient geometry reflects the relations among those attributes. Music makes the distinction testable, since relations between keys and between pitches are explicitly defined. Across nine audio representations, linear decoding, class-centroid geometry and readout geometry dissociate: a log-frequency spectrogram matches a self-supervised encoder at decoding key while showing no circle-of-fifths structure among its centroids, though its probe weights carry that structure strongly. Two factors govern how visible the geometry is: the number of examples behind each class centroid, which moves fifths geometry 13.4-fold where a thousandfold change in pooling duration moves it 1.7-fold, and the metric, under which octave equivalence absent from ambient distances is recovered by a rank-4 projection fitted on key labels alone. Helical pitch organization dissociates from octave equivalence in turn, the best helix fit belonging to the representation with no octave contrast.
 \end{abstract}
 
 \begin{keywords}
@@ -44,236 +41,229 @@ octave equivalence
 
 \section{Introduction}
 \label{sec:intro}
-Self-supervised music audio encoders support linear probes \cite{probes} for key, pitch, genre, and instrument \cite{mert,marble}, and this is often interpreted as evidence that these attributes are
-\emph{represented} in the embedding. Music provides a useful setting for testing this interpretation because music theory specifies not only which classes exist, but also how they are related. Keys a perfect fifth apart share six of seven scale degrees and are adjacent on the circle of fifths, while pitches an octave apart belong to the same pitch class.
 
-We compare what can be decoded from a representation, how musical classes are arranged by distances in the original representation space, and how those classes are arranged in the weights of a linear classifier. Across these measurements, linear accessibility does not necessarily correspond to structure in the original representation geometry. Our results trace this mismatch to two distinct sources. For clip-level key geometry, the dominant factor is the number of examples used to estimate each class centroid rather than the duration of each example. For note-level octave equivalence, whether the structure is present in the
-ambient metric at all depends on the encoder, and increasing the number of
-examples does not change that, whereas a learned projection strengthens it
-under a different metric. Together, these results show that the absence of structure in the original geometry does not by itself imply the absence of that structure from the representation.
+Self-supervised music audio encoders support linear probes
+\cite{probes} for key, pitch, genre, and instrument \cite{mert,marble}, and probe performance is commonly used to assess what information their representations make accessible. Yet successful
+decoding establishes accessibility, not the geometric form in which that
+information is organized. Two representations can support similarly accurate linear classifiers while arranging the corresponding classes differently in their embedding spaces. Music provides a direct setting for separating these questions because its attributes come with explicit relational structure. Musical keys are not merely 24 category labels: their relationships are organized by structures such as the circle of fifths and Krumhansl--Kessler profiles. Likewise, pitch contains both pitch height and pitch class, with octave equivalence relating notes separated by twelve semitones. These structures make it possible to ask not only whether key or pitch can be decoded, but whether distances within a representation reflect the expected relations between them.
 
+We examine the same musical classes using three measurements, summarized in Table~\ref{tab:measures}. Linear decoding measures how well class information can be recovered by a linear probe. We use class-centroid geometry to refer to the distances among class means in the
+original representation space, and probe-weight geometry to the distances among the
+corresponding classifier weights. Both are read by correlating those distances with
+a reference structure, as in representational similarity analysis \cite{rsa}.
+
+Across nine audio representations, these measurements reveal distinct geometric profiles. We identify two factors that determine when musical geometry becomes visible. At the audio-clip level, circle-of-fifths geometry depends much more strongly on the number of examples used to estimate each key centroid than on temporal pooling duration. At the note level, octave equivalence depends strongly on the metric. Structure absent from ambient distances can remain weakly visible on a local manifold or become pronounced under a low-rank projection learned solely from key labels. We further show that helical pitch organization dissociates from octave equivalence, demonstrating that different geometric measurements of the same musical relation need not agree.
+
+\input{table_measures.tex}
 \input{table1.tex}
 
-\begin{figure*}[t]
+\begin{figure}[tb]
 \centering
-\includegraphics[width=0.92\textwidth]{figs/fig1_averaging.pdf}
-\caption{Clip-level fifths geometry is affected much more by the number of
-clips per centroid than by temporal context. (a) Pooling-window sweep with the
-number of clips fixed. (b) Clips-per-centroid sweep at full-clip pooling.
-Error bars are one standard deviation over 5 and 10 draws.}
+\includegraphics[width=\columnwidth]{figs/fig1_averaging.pdf}
+\caption{Clip-level fifths geometry depends far more on the number of audio clips per centroid (b) than on temporal context (a). Error bars are one standard deviation over 5 and 10 draws.}
 \label{fig:averaging}
-\end{figure*}
+\end{figure}
 
 \section{Related Work}
 \label{sec:related}
 
+\noindent\textbf{Probing Audio Representations.}
 Linear probes are the standard instrument for asking what a representation
-encodes \cite{probes}, and music audio encoders are routinely evaluated this way, with MERT \cite{mert} and MARBLE \cite{marble} reporting probe accuracy for key, pitch, genre and instrument. Hewitt and Liang \cite{controltasks} argue that probe performance should be
-interpreted relative to control tasks designed to measure probe selectivity.
+encodes \cite{probes}, and music audio encoders are routinely evaluated this way, with MERT \cite{mert} and MARBLE \cite{marble} reporting probe accuracy for key, pitch, genre and instrument. Castellon et al. \cite{castellon2021} similarly evaluate music representations through shallow probes, including key detection. Hewitt and Liang \cite{controltasks} argue that probe performance should be
+interpreted relative to control tasks designed to measure probe selectivity,
+Voita and Titov \cite{voita2020} recast the measurement as description length
+rather than accuracy, and Belinkov \cite{belinkov2022} surveys what the
+instrument can and cannot support. A parallel line compares two representations
+to each other, as in centered kernel alignment \cite{cka}, whereas we ask
+whether one representation matches a relational structure specified in
+advance.
 
+\noindent\textbf{Tonal Geometry.}
 Music cognition has established well-defined relational structures for both key and pitch. Perceived key relationships follow the circle of fifths and Krumhansl--Kessler profiles \cite{krumhansl1982,krumhansl1990}, while pitch perception separates pitch height from chroma \cite{shepard1982}. Chroma features \cite{brown1991,librosa} encode octave equivalence by construction and therefore provide a positive control for these relationships. Tonality-aware objectives such as STONE \cite{stone} explicitly impose key
-equivariance during training. Pilataki et al. \cite{pilataki2025} report a related observation in a JEPA-based transcription model, where NSynth embeddings show strong separation by timbre and pitch height but weak separation by pitch class.
+equivariance during training. Pilataki et al. \cite{pilataki2025} report a related observation in a JEPA-based transcription model, where NSynth embeddings show strong separation by timbre and pitch height but weak separation by pitch class. Closest to the octave measurements, Yagi et al. \cite{yagi2026} fit a parametric helix to principal components of
+Jukebox \cite{jukebox} and MusicGen \cite{musicgen} representations of
+synthesized isolated notes, and report a helical arrangement whose clarity varies with the instrument and with the harmonic content of the signal.
 
 \section{Method}
 \label{sec:method}
-\noindent\textbf{Representation decomposition.} We write an item of class $y$ as
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig2_curve.pdf}
+\caption{A rank-4 projection fitted only on GiantSteps track tonics and applied unchanged to NSynth. The projected curve peaks at exactly twelve and twenty-four semitones, where
+the native one only falls off with distance.}
+\label{fig:mechanisms}
+\end{figure}
+
+\noindent\textbf{Representation decomposition.} We decompose the representation $z$ of a sample with class label $y$ as
 \begin{equation}
 z = s_y + n_y + \varepsilon, \qquad \mathbb{E}[\varepsilon \mid y] = 0,
 \label{eq:decomp}
 \end{equation}
-where $s_y$ represents the class-dependent signal whose relations encode the structure of interest, such as key relationships or octave equivalence, $n_y$ captures other variation that depends on the class, and $\varepsilon$ captures variation whose conditional mean is zero within each class. Averaging examples from the same class reduces $\varepsilon$ but not $n_y$, whereas a change of metric can alter how $s_y$ and $n_y$ contribute to the measured geometry.
+\noindent where $s_y$ is the class-dependent signal whose relations encode the structure of interest, $n_y$ is other class-dependent variation and $\varepsilon$ is the residual. Averaging examples from the same class reduces $\varepsilon$ but not $n_y$, whereas a change of metric can alter how $s_y$ and $n_y$ contribute to the measured geometry.
+
+\noindent\textbf{Representations.} We consider three self-supervised music encoders,
+MERT-v1-330M \cite{mert}, MuQ-large \cite{muq} and MATPAC++ \cite{matpac}, evaluated at matched relative depths. MuQ and MATPAC++ have half as many layers as MERT. We also include PupuJEPA \cite{pupujepa}, a music-domain JEPA over mel patches, using its teacher encoder, and EnCodec 32\,kHz \cite{encodec}, a neural codec used by MusicGen  \cite{musicgen}. The log-frequency representations comprise a log-CQT \cite{brown1991,librosa} at 12 bins per octave, an HCQT \cite{hcqt} at 60 bins per octave stacked over six harmonics, and a multi-scale pitch-quantized STFT at 60 bins per octave. A CQT chromagram \cite{librosa} folds octaves into 12 pitch classes and serves as a positive control. Frame-level representations are averaged over time to obtain one vector per clip.
+
+\noindent\textbf{Datasets.} GiantSteps \cite{giantsteps} contains 7,035 clips covering all 24 keys from 1,763 tracks, all within electronic dance music. FMAK \cite{fmak} contains 5,476 usable tracks with expert key and mode annotations across 17 genres. We use one excerpt per track, preventing overlap across splits and reducing genre-specific confounding of key.
+
+\noindent\textbf{Key and readout geometry.} In addition to the circle of fifths, centroid distances are compared with Krumhansl–Kessler key-profile distance and semitone distance ($\rho_{\text{chr}}$). The fifths and semitone references are nearly uncorrelated ($\rho=-0.038$). Significance is assessed with 2,000 permutations of the key labels. Partial Spearman correlation additionally controls for mel-spectral centroid distance. Probe folds are grouped by track.
+
+\noindent\textbf{Octave equivalence.} On NSynth \cite{nsynth}, we use only real recordings and exclude signal-processed pitch shifts. For each instrument, a fixed anchor set supports all transpositions up to 25 semitones. We measure the mean cosine similarity between each note and its transposition by k semitones. We report three preregistered statistics. The local contrast compares 12 semitones with the mean of 11 and 13 semitones, the strict contrast compares it with the maximum similarity from 8 to 11 semitones, and the periodic coefficient is obtained from a fitted twelve-semitone periodic term. Confidence intervals are bootstrapped over instruments, and all three statistics are required to agree in sign.
+
+\noindent\textbf{Metrics.} We compute the octave statistics under three metrics on the same recordings. The native metric uses cosine distance in the original representation space. The geodesic metric uses shortest-path distance on a
+symmetric $k$-nearest-neighbor graph with cosine-weighted edges, as in Isomap
+\cite{isomap}. We sweep k from 5 to 50 and report unreachable pairs without imputation. The supervised metric is induced by the linear projection described below. Distances are negated before computing the contrasts, so positive values consistently indicate stronger octave equivalence.
+
+\noindent\textbf{Subspaces.} We construct each supervised subspace from the top $d$
+Ledoit--Wolf shrinkage-LDA \cite{ledoit2004} discriminant directions for the specified target, with $d\leq11$, the maximum rank for a twelve-class target. We report the fraction of total variance retained by each subspace. Matched random orthonormal subspaces control for the
+effect of dimensionality reduction itself. As a supervised null we repeat the
+same fit after permuting the GiantSteps key labels across tracks, which leaves
+the label distribution and the several-clips-per-track structure intact and
+destroys only the correspondence with audio, and report the resulting NSynth
+contrast over 200 draws.
+
+\noindent\textbf{Helical organization.} We also fit the parametric pitch helix
+of Yagi et al.~\cite{yagi2026}, which measures a different property of the same
+notes. For each instrument we average every pitch over a contiguous
+three-octave window, the span they use, and keep the 66 evaluation instruments
+that cover one. We apply PCA to those pitch means, enumerate the ten
+three-component projections of the top five components, fit the nine-parameter
+helix to each, and report the best. Their score is an inverse mean squared
+error and therefore depends on the scale of the embedding, so we report the
+fraction of pitch-centroid variance the helix explains, and read it against the
+same fit after the pitch order is shuffled, which leaves the point cloud intact
+and destroys only its correspondence with pitch.
 
 
+\input{table2_fmak.tex}
 
-\noindent\textbf{Representations.} Three self-supervised music encoders,
-MERT-v1-330M \cite{mert}, MuQ-large \cite{muq} and MATPAC++ \cite{matpac} in
-its music variant, sampled at matched fractions of depth, since the latter two
-are half as deep; PupuJEPA \cite{pupujepa}, a music-domain JEPA over mel
-patches, read from its teacher encoder; a neural codec, EnCodec 32\,kHz \cite{encodec} as used by MusicGen
-\cite{musicgen}; and
-three log-frequency front ends, a log-CQT \cite{brown1991,librosa} at 12 bins
-per octave and, at 60 bins per octave, an HCQT stacked over six harmonics and
-a multi-scale pitch-quantized STFT. A CQT chromagram \cite{librosa} folds
-octaves into 12 pitch classes and serves as a positive control. Frame-level
-representations are averaged over time to one vector per clip.
-
-\noindent\textbf{Key-centroid geometry.} On GiantSteps \cite{giantsteps}, with 7035 clips covering all 24 keys, we
-average the vectors of tracks sharing a key into 24 class centroids and rank-
-correlate their pairwise Euclidean distances against three references: circle-
-of-fifths distance, the Krumhansl--Kessler key-profile distance, and semitone
-distance. Significance uses a 2000-draw permutation null over key labels, and a partial Spearman additionally removes mel-spectral centroid distance. Semitone distance is included as a control to distinguish circle-of-fifths structure from proximity in chromatic pitch space.
-
-\noindent\textbf{Readout geometry.} The same probe, a multinomial logistic
-regression, yields 24 class weight vectors, and we apply the identical
-measurement to their pairwise cosine distances. All key probes use
-\textsc{StratifiedGroupKFold} with track identity as the grouping variable,
-since the 7035 clips come from 1763 tracks and excerpts of one track must not
-appear in both training and test folds.
-
-\noindent\textbf{Octave equivalence.} On NSynth \cite{nsynth} we use real recordings only, since pitch shifting by
-signal processing would build the answer into the stimulus. For each instrument we fix an anchor set of pitches supporting every
-transposition up to 25 semitones, held constant across transpositions, and
-measure the mean cosine similarity between a note and its transposition by $k$
-semitones. Three statistics are reported together, as registered in advance: a
-local octave contrast against the mean of 11 and 13 semitones; a strict
-contrast against the largest similarity from 8 to 11; and the coefficient on a
-twelve-semitone periodic term in a fitted curve.
-Confidence intervals are bootstrapped over \emph{instruments}. We require the three to agree in sign, since a positive periodic coefficient
-with no local peak at 12 semitones is a curve-fitting artifact.
-
-\noindent\textbf{Metrics.} The same octave statistics are computed under three
-metrics on the same recordings. The native metric is cosine distance in the
-representation. The geodesic metric is the shortest path on a symmetric
-$k$-nearest-neighbor graph over the embeddings with cosine distance on the
-edges, which involves no supervision and no linear map, and we sweep $k$ from
-5 to 50 and report unreachable pairs rather than imputing them. The third is the supervised linear metric induced by the projection below. For
-the distance-based metrics we negate distances before computing the same
-contrasts, so a positive value means the same thing throughout.
-\noindent\textbf{Subspaces.} Each subspace is an orthonormal basis of the top
-$d$ shrinkage-LDA discriminant directions for a stated target, with $d$ at
-most 11, the rank of any linear map to a twelve-class target. We report the
-fraction of total variance it holds and, as a control, matched random
-orthonormal subspaces, since projection changes the metric whatever the
-directions are.
-
-
-\begin{figure}[tb]
-\centering
-\includegraphics[width=\columnwidth]{figs/fig2_mechanisms.pdf}
-\caption{Two views of the same rank-4 projection, fitted only on GiantSteps
-track tonics and applied unchanged to individual NSynth recordings. (a) Ambient
-similarity decays smoothly with transposition distance, while the projected
-curve reaches maxima at exactly twelve and twenty-four semitones. (b) The strict contrast that curve summarizes, with the matched random
-subspace as a control. In MERT ambient and random are both near zero; in MuQ they are comparable and
-above zero, so there the learned projection must be read against the random
-one. Error bars are instrument-bootstrap 95\% intervals.}
-\label{fig:mechanisms}
-\end{figure}
 
 \section{Results}
 \label{sec:results}
 
 \subsection{Information, metric and readout dissociate}
+
 \label{sec:three}
+The controls in Table~\ref{tab:decodable-vs-geometric} establish that decodability alone does not imply fifths geometry. Orthogonal per-key codes achieve higher key F1 than any real representation while showing no fifths structure in either centroid or probe-weight geometry.
 
-Table~\ref{tab:decodable-vs-geometric} measures all three on the same clips
-and keys, and the control block sets the scale. The analytic fifths and random-feature controls verify the expected positive
-and null regimes.
-Orthogonal per-key codes are highly decodable with tonal relations absent by
-construction. They reach a macro F1 of .613, far above every real representation, and yet
-show no fifths geometry in either their centroids, at $-0.008$, or their
-readout weights, at $-0.005$. This rules out the reading that any sufficiently accurate 24-way classifier
-acquires fifths-structured weights because neighboring keys are intrinsically
-confusable.
+The log-CQT provides a direct example of this dissociation. It outperforms MERT layer 12 in grouped key decoding while showing no fifths structure in its centroids, despite strong fifths structure in its probe weights ($\rho^W_5=0.560$). Randomly shuffled folds inflate performance for several representations and
+reverse the log-CQT--MERT comparison, motivating track-grouped evaluation
+throughout. The inflation is far from uniform, adding 0.33 to MERT layer 12 and
+to the pitch-quantized STFT but 0.03 to the chromagram, so the leak is largest
+where a representation can identify the track rather than the key.
 
-The log-CQT outperforms MERT layer 12 under track-grouped cross-validation, at
-a macro F1 of .392 against .371, despite showing no fifths structure in its
-class centroids, at $-0.035$ with $p$ of .52, while its probe weights carry
-that structure strongly, at 0.560. Tonal relations are therefore linearly accessible in a
-log-CQT without being expressed in its ambient geometry. Randomly shuffled folds substantially inflate performance for several
-representations, particularly MERT, MuQ and PQ-STFT, and reverse this
-comparison, motivating the grouped protocol used throughout.
+Across depth, centroid and probe-weight geometry move in opposite directions in all three learned music encoders, while key F1 does not systematically improve. To control for post-hoc layer selection, we also follow MARBLE and learn a softmax-weighted combination of all hidden layers jointly with the probe. The weighted models match or slightly underperform the swept best layers when both are fitted with the same optimizer, with learned weights concentrating near the selected layers for MuQ and MATPAC.
 
-Across depth the two geometries move in opposite directions in all three
-learned music encoders. Centroid geometry weakens, from 0.445 to 0.294 in
-MERT, 0.533 to 0.372 in MuQ and 0.663 to 0.548 in MATPAC, while readout
-geometry strengthens over the same layers. We report this as a correlation
-rather than a mechanism, since key F1 does not improve along the way.
-
-The reverse profile is common: MuQ layer 2 shows 0.533 against 0.103, MATPAC
-layer 6 the strongest centroid geometry of any arm at 0.663 with a chromatic
-correlation of $-0.061$, and the two 60-bin-per-octave front ends behave the
-same way, HCQT at 0.554 against 0.134 and PQ-STFT at 0.550 against 0.172,
-though resolution is confounded with stacking and normalization. PupuJEPA similarly shows weak ambient geometry, at 0.072 with $p$ of .052, but
-strong readout geometry at 0.570; its low F1 limits direct comparison. The location of tonal structure therefore differs
-across representations, including among handcrafted front ends.
+The centroid--readout dissociations persist on FMAK, with no representation reversing its relative pattern. Chromatic proximity differs across corpora, appearing for several spectral representations on GiantSteps but not on FMAK.
 
 
 \subsection{Sample-limited masking}
 \label{sec:sample}
 
-Fig.~\ref{fig:averaging}(a) varies pooling duration while holding the number of
-clips per centroid fixed. A single 13\,ms MERT frame already yields 59\% of the 20\,s value, MuQ starts
-at 66\% of its own, and the chromagram is flat to within 3\%, with no knee in
-the sweep. EnCodec is the exception, rising sixfold.
+Fig.~\ref{fig:averaging}(a) shows relatively limited changes with pooling duration for most representations, with EnCodec as the main exception.
+By contrast, increasing the number of clips per centroid produces a much larger change. MERT L12 rises from 0.035 to 0.468, a 13.4-fold increase compared with 1.7-fold across the thousandfold pooling-duration sweep. With one example per centroid, fifths geometry is indistinguishable from zero for every representation.
 
-By contrast, Fig.~\ref{fig:averaging}(b) varies clips per centroid at full-
-clip pooling. MERT L12 rises from 0.035 to 0.468, a 13.4-fold change against
-1.7-fold across the thousandfold window sweep, and in the single-example
-regime fifths geometry is indistinguishable from zero for every arm.
-
-This pattern is consistent with a dominant contribution from $\varepsilon$ in
-Eq.~\eqref{eq:decomp}, as within-key variation across tracks is progressively
-reduced when more examples contribute to each centroid. Centroid sample size
-is therefore the dominant source of the apparent clip-level effect.
+This pattern is consistent with a dominant contribution from $\varepsilon$ in Eq.~\eqref{eq:decomp}, as within-key variation across tracks is reduced when more examples contribute to each centroid.
 
 \subsection{Octave equivalence depends on the metric}
+\label{pg:s43}
 \label{sec:metric}
 
-Octave equivalence depends strongly on the metric. Under the native metric and the sign-consistency criterion registered in
-advance, MuQ shows a weak but reliable effect at every layer, its strict
-contrast falling from 0.037 at layer 2 to 0.022 at layer 12 against 0.698 for
-the chromagram, whereas MERT and the codec largely fail it. Averaging NSynth recordings into pitch centroids recovers no reliable effect
-in MERT, indicating that the near-zero geometry is not explained by finite-
-sample variation alone. A $k$-nearest-neighbor geodesic metric reveals small but reliable effects in
+Under the native metric and the sign-consistency criterion registered in
+advance, MuQ shows a weak but reliable effect at every layer, whereas MERT and
+the codec largely fail it. Averaging NSynth recordings into pitch centroids recovers no reliable effect
+in MERT, so the near-zero geometry is not finite-sample variation alone. A $k$-nearest-neighbor geodesic metric reveals small but reliable effects in
 MERT layers 4 and 12 and in EnCodec, stable for $k$ from 5 to 50, but not in
-layer 24. MERT layer 12 changes from $-0.003$ under the native metric to 0.012
-under the geodesic one and 0.223 after a supervised rank-4 projection.
-MATPAC follows the same ordering across the three metrics as MuQ, at 0.009,
-0.051 and 0.114. Octave structure can therefore be absent from global
-distances, weakly preserved on the manifold, or visible only after supervised
-reweighting.
-The geodesic metric is not uniformly more revealing: for the chromagram, which
-encodes octave identity directly, the contrast falls from 0.698 to 0.173.
+layer 24. MERT layer 12 changes from $-0.003$ under the native metric to 0.012 under the
+geodesic one. Octave structure can therefore be absent from global distances, weakly
+preserved on the manifold, or visible only after supervised reweighting, and
+the geodesic metric is not uniformly more revealing.
 
-The projection is fitted only to GiantSteps tonic labels, with no notes and no
-octave information, and applied unchanged to NSynth recordings. It raises the strict contrast to 0.304 for MERT layer 4 and 0.346 for MuQ
-layer 2, and Fig.~\ref{fig:mechanisms}(a) shows the curve those contrasts come
-from, with maxima at exactly twelve and twenty-four semitones. In MuQ a matched random rank-4 subspace retains about the native effect, at
-0.039 for layer 2, but stays far below the learned projection, while in MERT
-it is near zero. The learned
-subspaces account for only 0.08 to 0.29\% of NSynth variance in MuQ and 0.11 to
-0.13\% in MERT. PupuJEPA is a contrasting case in which all three are indistinguishable from
-zero, and its GiantSteps key F1 is the lowest of any arm, so the absence there
-is a statement about the metrics we tested rather than about the
-representation.
+The $\Delta^{\mathrm{nat}}$ column of Table~\ref{tab:fmak} shows that this
+metric dependence is not specific to learned representations, only the
+pitch-quantized STFT carrying substantial native octave structure.
 
-Key supervision does not guarantee pitch-height invariance, since GiantSteps
-key labels may correlate with subgenre, tempo or production, though the
-transfer rules out an explanation resting only on GiantSteps-specific nuisance
-correlations. Nor is it mechanistic: whether the projection suppresses or
-amplifies is not identifiable here.
+\noindent\textbf{Transfer of the supervised projection.} The projection is
+fitted only to GiantSteps tonic labels, with no notes and no octave
+information, and applied unchanged to NSynth recordings. It raises the strict
+contrast to 0.346 for MuQ layer 2, and Fig.~\ref{fig:mechanisms} shows the curve, with maxima at exactly twelve and twenty-four semitones. Refitting it on
+FMAK keys and applying it unchanged to the same recordings reproduces the
+transfer for MERT and the log-CQT, at 0.197 for MERT layer 12 against 0.223
+from GiantSteps, even though MERT's clip-level readout geometry falls from
+0.428 to 0.102 between the corpora, so the transfer does not depend on the corpus the projection was fitted on.
 
-\noindent\textbf{A registered prediction that failed.} We predicted that removing the recovered subspace would at least halve clip-
-level fifths geometry. Against a baseline recomputed on the same held-out
-clips it barely moves, from 0.127 to 0.119 for MERT layer 12 and from 0.289 to
-0.281 for MuQ layer 2, and only the twelve-dimensional chromagram collapses.
+\noindent\textbf{Alternative projections and nulls.}
+Fig.~\ref{fig:subspaces} compares rank-4 subspaces fitted to different targets. Pitch-class supervision recovers octave equivalence for several representations, whereas pitch-height supervision does not show the same pattern. Permuting the key labels across tracks reduces the contrast to near the unfitted level, with none of 200 permutations reaching the true-label result for any learned encoder. The key-supervised effect therefore depends on the correspondence between audio and key labels rather than on supervised low-rank projection alone. The permuted-label contrast is higher for the chromagram and pitch-quantized STFT, reaching 0.18 and 0.21, respectively, but remains below 0.04 for the learned encoders. The effect is also stable across projection rank for MERT layer 12, emerging at $d=2$ and remaining between 0.21 and 0.24 through $d=11$. PupuJEPA provides a contrasting case: its key-supervised contrast is near zero, while pitch-class supervision reaches 0.174, indicating that the null key-transfer result does not imply an absence of octave structure under other metrics. The learned subspaces retain less than 0.3\% of the variance in NSynth.
+
+\noindent\textbf{Helical organization.}
+Helicality measures a different geometric property from the preceding octave contrasts. A helix separates octaves along its height axis rather than identifying them. On the same notes, helical fit and octave equivalence rank the representations oppositely: MERT layer 12 has the strongest helix fit but weak octave equivalence, whereas the chromagram shows the reverse (Fig.~\ref{fig:helix}).
+
+Key supervision does not guarantee pitch-height invariance, since GiantSteps key labels may correlate with subgenre, tempo or production, though the transfer rules out an explanation resting only on GiantSteps-specific nuisance correlations. Nor is it mechanistic: whether the projection suppresses or amplifies is not identifiable here.
+
+\noindent\textbf{A failed registered prediction.} We predicted that removing the recovered subspace, in the manner of nullspace
+projection \cite{inlp} and amnesic probing \cite{amnesic}, would at least
+halve clip-level fifths geometry. Against a baseline recomputed on the same held-out
+clips it barely moves, from 0.127 to 0.119 for MERT layer 12, and only the
+twelve-dimensional chromagram collapses.
 The subspace is therefore sufficient to expose the relation without
 exclusively containing it.
 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig4_helix.pdf}
+\caption{Helical organization does not imply octave equivalence. (a) The two
+scores order the representations in opposite directions. (b) Every
+representation fits the pitch helix of Yagi et al.~\cite{yagi2026} far better
+than a pitch-shuffled reference, over 528 instrument fits.}
+\label{fig:helix}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=\columnwidth]{figs/fig5_radar.pdf}
+\caption{The strict octave contrast on the same NSynth notes under rank-4
+subspaces differing only in their fitting target. The band spans the two nulls,
+a random subspace and a permuted-label fit. Encoders are at MERT L12, MuQ L6
+and MATPAC L6. The chromagram is omitted, a random rank-4 subspace of its
+twelve dimensions already reaching 0.569.}
+\label{fig:subspaces}
+\end{figure}
+
 \section{Discussion}
+\label{pg:disc}
 
-No single measurement characterizes musical structure in a representation.
-Probe performance tests linear accessibility, the native metric global
-visibility, geodesic distance local manifold organization, and projection
-target-informed linear recoverability. When centroid geometry is weak, varying the number of examples distinguishes
-sample-limited estimation from stable metric effects, so the number of items behind each centroid should be reported as standard, since
-the same encoder scores 0.035 or 0.468 depending only on that. These measurements do not form a universal hierarchy, as which metric is most
-informative depends on how the relation is represented.
+The results separate linear accessibility from the geometry in which musical classes are arranged. At the clip level, weak centroid geometry can result from limited class sampling, while at the note level the same musical relation changes substantially across ambient, geodesic, and supervised metrics. Probe accuracy and geometric similarity should therefore not be treated as
+interchangeable evidence that a representation has learned a musical relation.
+Geometric measurements depend on how examples are aggregated and how distances
+are defined, and comparisons should report these choices explicitly.
 
-\noindent\textbf{Limitations.} GiantSteps is entirely electronic dance music,
-where key correlates with subgenre, and the transfer constrains that confound
-without removing it. NSynth is monophonic, and our subspaces are linear by
-design.
+\noindent\textbf{Limitations.} NSynth is monophonic, our subspaces are linear
+by design, and the instrument split that separates fitting from evaluation on
+NSynth is a single draw. The FMAK-fitted projection does not transfer for
+EnCodec, where it falls from 0.459 to $-0.001$, so what a supervised projection
+recovers from a codec latent may itself be corpus-specific. Our helix numbers
+are also not directly comparable with those of Yagi et al.~\cite{yagi2026}, who
+analyze different models on synthesized notes and score the fit by an inverse
+mean squared error that depends on the scale of the embedding. We report the
+scale-free form of the same fit and compare orderings rather than values.
 
 \section{Conclusion}
+\label{pg:concl}
 
-Musical structure does not occupy a fixed geometric form across
-representations. Decodability, ambient geometry, and readout geometry can
-dissociate substantially: log-CQT and PupuJEPA show weak centroid structure
-with strong readouts, and MATPAC, HCQT, PQ-STFT and MuQ the reverse. A
-relation absent from global distances may be organized on the manifold, far
-stronger under reweighting, or undetected by all three.
+We measured linear decodability, class-centroid geometry and readout geometry
+for the same musical classes, across nine audio representations and three
+corpora. The three come apart, and two factors account for most of the
+difference: at the clip level, how many examples estimate each centroid rather
+than how long each one is, and at the note level, the metric under which
+distances are compared. A rank-4 subspace fitted on clip-level key labels
+exposes octave periodicity in isolated notes that neither the ambient metric
+nor the leading principal components reveal, and neither a permuted-label fit
+nor a subspace fitted on pitch height reproduces it. Helical organization and
+octave equivalence order the same representations differently, so even two
+geometric readings of one relation need not agree. A musical relation therefore has no single geometric expression within a representation. Geometric claims should specify the measurement under which the structure appears.
+
+\label{pg:endtext}
 
 \bibliographystyle{IEEEbib}
 \bibliography{refs}

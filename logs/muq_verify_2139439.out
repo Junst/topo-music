@@ -1,0 +1,55 @@
+host=node42 start=2026-09-02T03:19:36+09:00
+[muq] gs: 7035 clips
+8/7035  5s
+488/7035  22s
+968/7035  39s
+1448/7035  57s
+1928/7035  74s
+2408/7035  91s
+2888/7035  108s
+3368/7035  126s
+3848/7035  143s
+4328/7035  160s
+4808/7035  178s
+5288/7035  195s
+5768/7035  212s
+6248/7035  229s
+6728/7035  247s
+wrote runs/layers_muq.npz  Z=(7035, 13, 2048) (270s)
+max abs diff 0.0
+IDENTICAL to the hook-only extraction
+[muq_L6] gs: 2406 clips
+8/2406  5s
+488/2406  28s
+968/2406  52s
+1448/2406  75s
+1928/2406  98s
+2406/2406  121s
+[muq_L6] embeddings (2406, 2048) (121s)
+
+[muq_L6] pooling = mean  dim=1024
+  24-way key 0.498 (chance .042) | 12-way tonic 0.532 (chance .083)
+  [centroid] kk_key_distance    rho=+0.412  z= +9.2  p=0.000  rho|spec=+0.491
+  [centroid] fifths             rho=+0.263  z=+21.6  p=0.000  rho|spec=+0.338
+  [centroid] chromatic          rho=-0.017  z= +0.5  p=0.600  rho|spec=-0.033
+  [centroid] mode_mismatch      rho=+0.100  z= +9.5  p=0.000  rho|spec=+0.031
+  [probe-W ] kk_key_distance    rho=+0.536  z=+11.9  p=0.000  rho|spec=+0.547
+  [probe-W ] fifths             rho=+0.320  z= +5.1  p=0.000  rho|spec=+0.321
+  [probe-W ] chromatic          rho=+0.069  z= +2.9  p=0.000  rho|spec=+0.072
+  [probe-W ] mode_mismatch      rho=+0.008  z= +0.7  p=1.000  rho|spec=+0.030
+
+[muq_L6] pooling = mean+std  dim=2048
+  24-way key 0.507 (chance .042) | 12-way tonic 0.540 (chance .083)
+  [centroid] kk_key_distance    rho=+0.381  z= +8.7  p=0.000  rho|spec=+0.458
+  [centroid] fifths             rho=+0.242  z=+20.6  p=0.000  rho|spec=+0.317
+  [centroid] chromatic          rho=-0.017  z= +0.5  p=0.600  rho|spec=-0.034
+  [centroid] mode_mismatch      rho=+0.114  z=+10.7  p=0.000  rho|spec=+0.047
+  [probe-W ] kk_key_distance    rho=+0.651  z=+11.1  p=0.000  rho|spec=+0.667
+  [probe-W ] fifths             rho=+0.408  z= +8.9  p=0.000  rho|spec=+0.411
+  [probe-W ] chromatic          rho=+0.039  z= +1.6  p=0.200  rho|spec=+0.043
+  [probe-W ] mode_mismatch      rho=+0.002  z= +0.5  p=1.000  rho|spec=+0.027
+wrote runs/_smoke_muq09.json in 334s
+smoke rows (2406, 2048) compared against last (2406, 2048) cached rows
+max abs diff 4.5299530029296875e-05
+script 09 muq path reproduces the cached embeddings
+done=2026-09-02T03:30:47+09:00

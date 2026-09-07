@@ -32,6 +32,11 @@ from sklearn.preprocessing import StandardScaler
 
 m9 = SourceFileLoader("m9", "scripts/09_clip_key_geometry.py").load_module()
 
+DATASET = "gs"
+if sys.argv[1:2] == ["--fmak"]:
+    DATASET, sys.argv = "fmak", sys.argv[:1] + sys.argv[2:]
+TAG = "" if DATASET == "gs" else f"_{DATASET}"
+
 ARMS = sys.argv[1:] or [
     "cqt", "cqt_norm", "cqt_fold", "pq_stft", "chroma", "encodec_32k",
     "mert_L4", "mert_L12", "mert_L16", "mert_L24",
@@ -51,8 +56,11 @@ def track_groups():
     return np.array(g)
 
 
-G = track_groups()
-print(f"{len(G)} clips, {len(set(G))} tracks", flush=True)
+# FMAK has one excerpt per track, so a stratified split is already
+# track-disjoint and no grouping variable is needed
+G = track_groups() if DATASET == "gs" else None
+print(f"{DATASET}: " + (f"{len(G)} clips, {len(set(G))} tracks" if G is not None
+                        else "one excerpt per track"), flush=True)
 
 out = {}
 print(f"{'arm':<12}{'acc_grp':>9}{'F1_grp':>8}{'acc_shuf':>10}{'F1_shuf':>9}", flush=True)
@@ -66,19 +74,22 @@ for a in ARMS:
         Y = gz["Y"]
         Z = s11.synth(a, Y, gz["keys"], np.random.default_rng(0))
     else:
-        f = Path(f"runs/clipkey_{a}.npz")
+        f = Path(f"runs/clipkey_{a}{TAG}.npz")
         if not f.exists():
             continue
         d = np.load(f)
         Z = d["Z"].astype(np.float64)
         Z = Z[:, :Z.shape[1] // 2]
         Y = d["Y"]
-    assert len(Y) == len(G)
     row = {}
-    for tag, splitter, kw in [
-            ("grouped", StratifiedGroupKFold(5, shuffle=True, random_state=0),
-             dict(groups=G)),
-            ("shuffled", StratifiedKFold(5, shuffle=True, random_state=0), {})]:
+    if G is None:
+        plans = [("grouped", StratifiedKFold(5, shuffle=True, random_state=0), {})]
+    else:
+        assert len(Y) == len(G)
+        plans = [("grouped", StratifiedGroupKFold(5, shuffle=True, random_state=0),
+                  dict(groups=G)),
+                 ("shuffled", StratifiedKFold(5, shuffle=True, random_state=0), {})]
+    for tag, splitter, kw in plans:
         clf = make_pipeline(StandardScaler(),
                             LogisticRegression(max_iter=2000, C=1.0))
         pred = np.empty_like(Y)
@@ -87,12 +98,13 @@ for a in ARMS:
         row[tag] = dict(acc=float((pred == Y).mean()),
                         macro_f1=float(f1_score(Y, pred, average="macro")))
     out[a] = row
+    sh = row.get("shuffled", {})
     print(f"{a:<12}{row['grouped']['acc']:>9.3f}{row['grouped']['macro_f1']:>8.3f}"
-          f"{row['shuffled']['acc']:>10.3f}{row['shuffled']['macro_f1']:>9.3f}",
+          f"{sh.get('acc', float('nan')):>10.3f}{sh.get('macro_f1', float('nan')):>9.3f}",
           flush=True)
 # one file per arm when a single arm is requested, so the arms can be run in
 # parallel and merged; the merged file is what script 19 reads
-dst = (Path(f"runs/probe_f1_{ARMS[0]}.json") if len(ARMS) == 1
-       else Path("runs/probe_f1.json"))
+dst = (Path(f"runs/probe_f1_{ARMS[0]}{TAG}.json") if len(ARMS) == 1
+       else Path(f"runs/probe_f1{TAG}.json"))
 dst.write_text(json.dumps(out, indent=2))
 print("wrote", dst)

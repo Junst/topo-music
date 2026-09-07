@@ -1,0 +1,52 @@
+arm=pupujepa host=node56 start=2026-08-31T09:15:48+09:00
+  dropped 13 unreadable or short files, e.g. [('011438.mp3', 'shorter than the excerpt window'), ('021823.mp3', 'shorter than the excerpt window'), ('061480.mp3', "Error opening '/lustre/dataset/musicdataset/fma_large/061/061480.mp3'")]
+[pupujepa] fmak: 5476 clips
+!!!!!!!!! ATTENTION: PatchEmbed is using frequency_first = False !!!!!!!!!
+4/5476  12s
+244/5476  28s
+484/5476  43s
+724/5476  59s
+964/5476  76s
+1204/5476  92s
+1444/5476  108s
+1684/5476  124s
+1924/5476  140s
+2164/5476  156s
+2404/5476  173s
+2644/5476  190s
+2884/5476  207s
+3124/5476  223s
+3364/5476  239s
+3604/5476  255s
+3844/5476  272s
+4084/5476  290s
+4324/5476  307s
+4564/5476  324s
+4804/5476  341s
+5044/5476  359s
+5284/5476  377s
+[pupujepa] embeddings (5476, 1536) (391s)
+
+[pupujepa] pooling = mean  dim=768
+  24-way key 0.229 (chance .042) | 12-way tonic 0.278 (chance .083)
+  [centroid] kk_key_distance    rho=+0.014  z= +0.2  p=0.798  rho|spec=-0.022
+  [centroid] fifths             rho=+0.031  z= +0.5  p=0.554  rho|spec=-0.004
+  [centroid] chromatic          rho=-0.078  z= -1.4  p=0.108  rho|spec=-0.061
+  [centroid] mode_mismatch      rho=+0.705  z=+13.3  p=0.000  rho|spec=+0.682
+  [probe-W ] kk_key_distance    rho=+0.764  z=+12.7  p=0.000  rho|spec=+0.761
+  [probe-W ] fifths             rho=+0.489  z= +7.9  p=0.000  rho|spec=+0.481
+  [probe-W ] chromatic          rho=-0.066  z= -1.0  p=0.300  rho|spec=-0.058
+  [probe-W ] mode_mismatch      rho=+0.013  z= +0.2  p=0.842  rho|spec=-0.020
+
+[pupujepa] pooling = mean+std  dim=1536
+  24-way key 0.208 (chance .042) | 12-way tonic 0.264 (chance .083)
+  [centroid] kk_key_distance    rho=+0.015  z= +0.3  p=0.781  rho|spec=-0.020
+  [centroid] fifths             rho=+0.032  z= +0.6  p=0.539  rho|spec=-0.003
+  [centroid] chromatic          rho=-0.076  z= -1.4  p=0.116  rho|spec=-0.059
+  [centroid] mode_mismatch      rho=+0.701  z=+13.3  p=0.000  rho|spec=+0.677
+  [probe-W ] kk_key_distance    rho=+0.727  z=+12.5  p=0.000  rho|spec=+0.723
+  [probe-W ] fifths             rho=+0.440  z= +7.4  p=0.000  rho|spec=+0.431
+  [probe-W ] chromatic          rho=-0.109  z= -1.8  p=0.066  rho|spec=-0.101
+  [probe-W ] mode_mismatch      rho=+0.086  z= +1.5  p=0.121  rho|spec=+0.054
+wrote runs/clipkey_pupujepa_fmak.json in 995s
+done=2026-08-31T09:34:03+09:00

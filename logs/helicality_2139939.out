@@ -1,0 +1,53 @@
+host=node41 start=2026-09-02T05:56:17+09:00
+--- fitter selftest ---
+  exact helix w=0.524: R2=0.9981
+  exact helix w=0.785: R2=0.9969
+  exact helix w=1.047: R2=0.9995
+  helix + noise 0.1: R2=0.9993
+  helix + noise 0.5: R2=0.9777
+  helix + noise 1.0: R2=0.9341
+  random points: R2 mean 0.1345 max 0.1940
+  flat circle (no height): R2=1.0000
+selftest passed
+--- arms ---
+[mert_L12] n=66  helicality 0.002 (median 0.001)  R2 0.811 (shuffled 0.184)  d_strict -0.010  pos 30%  rho(hel,d)=+0.267  rho(R2,d)=-0.109  65s
+[muq_L6] n=66  helicality 0.047 (median 0.029)  R2 0.753 (shuffled 0.187)  d_strict +0.023  pos 64%  rho(hel,d)=-0.213  rho(R2,d)=-0.143  66s
+[matpac_L6] n=66  helicality 0.155 (median 0.042)  R2 0.802 (shuffled 0.184)  d_strict +0.008  pos 47%  rho(hel,d)=-0.304  rho(R2,d)=-0.175  64s
+[pupujepa] n=66  helicality 0.433 (median 0.305)  R2 0.598 (shuffled 0.178)  d_strict -0.009  pos 15%  rho(hel,d)=+0.039  rho(R2,d)=-0.263  66s
+[encodec_32k] n=66  helicality 5.715 (median 0.082)  R2 0.711 (shuffled 0.177)  d_strict -0.012  pos 33%  rho(hel,d)=+0.118  rho(R2,d)=-0.134  61s
+[cqt] n=66  helicality 0.002 (median 0.001)  R2 0.804 (shuffled 0.191)  d_strict +0.003  pos 88%  rho(hel,d)=-0.153  rho(R2,d)=+0.284  62s
+[pq_stft] n=66  helicality 0.071 (median 0.034)  R2 0.720 (shuffled 0.188)  d_strict +0.199  pos 88%  rho(hel,d)=-0.246  rho(R2,d)=+0.075  65s
+[chroma] n=66  helicality 11.373 (median 9.344)  R2 0.578 (shuffled 0.178)  d_strict +0.671  pos 97%  rho(hel,d)=-0.229  rho(R2,d)=+0.160  75s
+
+per-instrument d_strict agreement between arms:
+  muq_L6|matpac_L6             rho=+0.775
+  cqt|pq_stft                  rho=+0.630
+  mert_L12|matpac_L6           rho=+0.604
+  mert_L12|encodec_32k         rho=+0.552
+  muq_L6|cqt                   rho=+0.551
+  muq_L6|pq_stft               rho=+0.528
+  mert_L12|muq_L6              rho=+0.497
+  mert_L12|pq_stft             rho=+0.493
+  matpac_L6|cqt                rho=+0.473
+  pupujepa|encodec_32k         rho=+0.440
+  mert_L12|cqt                 rho=+0.429
+  cqt|chroma                   rho=+0.425
+  matpac_L6|pupujepa           rho=+0.408
+  matpac_L6|pq_stft            rho=+0.398
+  muq_L6|pupujepa              rho=+0.390
+  pq_stft|chroma               rho=+0.372
+  mert_L12|pupujepa            rho=+0.335
+  matpac_L6|encodec_32k        rho=+0.303
+  muq_L6|chroma                rho=+0.287
+  pupujepa|chroma              rho=+0.244
+  muq_L6|encodec_32k           rho=+0.221
+  matpac_L6|chroma             rho=+0.185
+  encodec_32k|pq_stft          rho=+0.161
+  encodec_32k|cqt              rho=+0.156
+  pupujepa|cqt                 rho=+0.140
+  mert_L12|chroma              rho=-0.136
+  encodec_32k|chroma           rho=-0.114
+  pupujepa|pq_stft             rho=+0.111
+
+wrote runs/helicality.json
+done=2026-09-02T06:05:28+09:00

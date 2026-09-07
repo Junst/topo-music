@@ -73,6 +73,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 GS = Path("/lustre/dataset/musicdataset/marble/GS")
 CQT_SR, MERT_SR, MUQ_SR, PQ_SR = 16000, 24000, 24000, 44100
+FMA_ROOT = Path("/lustre/dataset/musicdataset/fma_large")
+FMAK_CSV = "/scratch2/solbon1212/fmak/keys.csv"
+WINDOW_END = 22.0        # 2 s offset plus the 20 s excerpt
 # Multi-scale pitch-quantized STFT, the front end from our axis-quantized input
 # study: two FFT sizes read on a log-spaced pitch grid of 360 bins at 20 cents
 # (a fifth of a semitone) from C1, log(1+|X|), z-scored per scale. It is a
@@ -116,6 +119,55 @@ def parse_key(lab):
     return TONIC[t], 0 if mode.lower() == "major" else 1
 
 
+def gs_rows(splits):
+    """GiantSteps: 30 s clips, several per track, key from the jsonl label."""
+    rows = []
+    for sp in splits:
+        for line in (GS / sp).read_text().splitlines():
+            r = json.loads(line)
+            km = parse_key(r["label"])
+            p = GS / Path(r["audio_path"]).relative_to("data/GS")
+            if km is not None and p.exists():
+                rows.append((p, *km))
+    return rows
+
+
+def fmak_rows():
+    """FMAK: expert key and mode for 5489 Free Music Archive tracks.
+
+    One excerpt per track, unlike GiantSteps where several clips share a track,
+    so a shuffled split cannot read the track back and the sample-size sweep
+    varies songs rather than excerpts of the same song. fma_large stores the
+    same 30 s at 44.1 kHz that the GiantSteps clips use, so the window rule
+    carries over unchanged.
+    """
+    import csv
+    rows, dropped = [], []
+    raw = list(csv.reader(open(FMAK_CSV)))
+    for r in raw[2:]:
+        if not r or not r[0].isdigit():
+            continue
+        km = parse_key(r[2])
+        tid = int(r[0])
+        p = FMA_ROOT / f"{tid // 1000:03d}" / f"{tid:06d}.mp3"
+        if km is None or not p.exists():
+            continue
+        # a handful of fma_large files are truncated to about 1 kB and fail to
+        # open; reading the header is the cheapest way to find them, and they
+        # are dropped rather than silently substituted
+        try:
+            if sf.info(p).duration < WINDOW_END:
+                raise RuntimeError("shorter than the excerpt window")
+        except Exception as e:
+            dropped.append((p.name, str(e).split(":")[0]))
+            continue
+        rows.append((p, *km))
+    if dropped:
+        print(f"  dropped {len(dropped)} unreadable or short files, "
+              f"e.g. {dropped[:3]}", flush=True)
+    return rows
+
+
 def kk_profiles():
     """24 profiles, index = tonic*2 + mode."""
     P = np.zeros((24, 12))
@@ -123,6 +175,60 @@ def kk_profiles():
         P[t * 2 + 0] = np.roll(KK_MAJOR, t)
         P[t * 2 + 1] = np.roll(KK_MINOR, t)
     return P
+
+
+
+def patch_muq_hidden_states(model):
+    """Restore the per-layer hidden states MuQ expects back from its conformer.
+
+    MuQ calls its wav2vec2-conformer encoder with output_hidden_states=True and
+    then reads out["hidden_states"]. Recent transformers releases removed both
+    halves of that: the encoder no longer accumulates per-layer states and
+    swallows the flag in **kwargs, and it reads _attn_implementation off the
+    config, which MuQ supplies as an EasyDict that does not carry the
+    attribute. So three things are needed, and all three are inert on versions
+    where the original path still works: give the config the missing attribute,
+    tap the layers directly, and put the tapped tensors back on the encoder
+    output under the key MuQ reads. The tuple matches what transformers used to
+    return, hidden state 0 being the input to the first layer, so the layer
+    indexing used by the callers does not change.
+    """
+    for mod in model.modules():
+        cfg = getattr(mod, "config", None)
+        if cfg is not None and not hasattr(cfg, "_attn_implementation"):
+            try:
+                cfg._attn_implementation = "eager"
+            except Exception:
+                pass
+    conformer = next((m for m in model.modules()
+                      if m.__class__.__name__ == "Wav2Vec2ConformerEncoder"),
+                     None)
+    if conformer is None:
+        return model
+    taps = {}
+
+    def tap(i):
+        def fn(_m, _in, o):
+            taps[i] = o[0] if isinstance(o, tuple) else o
+        return fn
+
+    def pre_tap(_m, inp):
+        taps.clear()
+        taps[0] = inp[0]
+
+    conformer.layers[0].register_forward_pre_hook(pre_tap)
+    for i, lyr in enumerate(conformer.layers):
+        lyr.register_forward_hook(tap(i + 1))
+    inner = conformer.forward
+
+    def forward_with_hidden(*args, **kw):
+        kw.pop("output_hidden_states", None)
+        out = inner(*args, **kw)
+        out["hidden_states"] = tuple(taps[i] for i in sorted(taps))
+        return out
+
+    conformer.forward = forward_with_hidden
+    return model
 
 
 def circ12(d):
@@ -140,6 +246,7 @@ def partial_spearman(x, y, z):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", required=True)
+    ap.add_argument("--dataset", default="gs", choices=["gs", "fmak"])
     ap.add_argument("--splits", nargs="+",
                     default=["GS.train.jsonl", "GS.val.jsonl", "GS.test.jsonl"])
     ap.add_argument("--seconds", type=float, default=20.0)
@@ -154,15 +261,8 @@ def main():
     a = ap.parse_args()
 
     import librosa
-    rows = []
-    for sp in a.splits:
-        for line in (GS / sp).read_text().splitlines():
-            r = json.loads(line)
-            km = parse_key(r["label"])
-            p = GS / Path(r["audio_path"]).relative_to("data/GS")
-            if km is not None and p.exists():
-                rows.append((p, *km))
-    print(f"[{a.arm}] {len(rows)} clips", flush=True)
+    rows = fmak_rows() if a.dataset == "fmak" else gs_rows(a.splits)
+    print(f"[{a.arm}] {a.dataset}: {len(rows)} clips", flush=True)
 
     is_codec = a.arm.startswith(("encodec", "dac"))
     is_muq = a.arm.startswith("muq_L")
@@ -215,7 +315,8 @@ def main():
         # index matches the mert_L convention.
         from muq import MuQ
         layer = int(a.arm.split("_L")[1])
-        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        model = patch_muq_hidden_states(
+            MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval())
         for p_ in model.parameters():
             p_.requires_grad_(False)
         native_sr = MUQ_SR
@@ -353,7 +454,8 @@ def main():
     print(f"[{a.arm}] embeddings {Z.shape} ({time.time()-t0:.0f}s)", flush=True)
 
     D = Z.shape[1] // 2
-    out = {"arm": a.arm, "n_clips": int(len(Y)), "dim": int(D), "poolings": {}}
+    out = {"arm": a.arm, "dataset": a.dataset, "n_clips": int(len(Y)),
+           "dim": int(D), "poolings": {}}
     POOLINGS = {"mean": Z[:, :D], "mean+std": Z}
 
     # ---- 1. power ---------------------------------------------------------
@@ -420,7 +522,8 @@ def main():
         rec["probe_weight_geometry"] = geometry(dw, "probe-W ")
         out["poolings"][pool_name] = rec
 
-    p = Path(a.out or f"runs/clipkey_{a.arm}.json")
+    tag = "" if a.dataset == "gs" else f"_{a.dataset}"
+    p = Path(a.out or f"runs/clipkey_{a.arm}{tag}.json")
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(out, indent=2))
     np.savez_compressed(p.with_suffix(".npz"), Z=Z.astype(np.float32),

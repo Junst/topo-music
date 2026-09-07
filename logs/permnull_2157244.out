@@ -1,0 +1,15 @@
+host=node41 arms=cqt pq_stft chroma out=runs/_permnull_part3.json start=2026-09-05T06:40:47+09:00
+  [cqt] 50/200  26s
+  [cqt] 100/200  51s
+  [cqt] 150/200  76s
+[cqt] observed +0.466 | permuted mean +0.016 [-0.001,+0.050] max +0.090 | p=0.0000  (100s)
+  [pq_stft] 50/200  807s
+  [pq_stft] 100/200  1582s
+  [pq_stft] 150/200  2513s
+[pq_stft] observed +0.603 | permuted mean +0.213 [+0.090,+0.328] max +0.358 | p=0.0000  (3322s)
+  [chroma] 50/200  6s
+  [chroma] 100/200  11s
+  [chroma] 150/200  19s
+[chroma] observed +0.878 | permuted mean +0.184 [+0.139,+0.240] max +0.282 | p=0.0000  (25s)
+wrote runs/_permnull_part3.json
+done=2026-09-05T07:38:40+09:00

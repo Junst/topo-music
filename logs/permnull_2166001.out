@@ -1,0 +1,7 @@
+host=node41 arms=hcqt out=runs/_permnull_hcqt.json start=2026-09-07T05:21:20+09:00
+  [hcqt] 50/200  146s
+  [hcqt] 100/200  281s
+  [hcqt] 150/200  415s
+[hcqt] observed +0.535 | permuted mean +0.128 [+0.044,+0.207] max +0.279 | p=0.0000  (547s)
+wrote runs/_permnull_hcqt.json
+done=2026-09-07T05:31:20+09:00

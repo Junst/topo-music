@@ -1,0 +1,4362 @@
+{
+  "arms": {
+    "mert_L12": {
+      "n_inst": 66,
+      "helicality_mean": 0.002472790739682813,
+      "helicality_median": 0.0011006979323807905,
+      "r2_mean": 0.811179556896172,
+      "r2_shuffled_mean": 0.18394598252900993,
+      "d_strict_mean": -0.010141377672644262,
+      "frac_inst_positive": 0.30303030303030304,
+      "rho_helicality_dstrict": 0.26679887276902203,
+      "rho_r2_dstrict": -0.1085272936019205,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.0011031670972512198,
+          "r2": 0.8948024377424239,
+          "helicality_shuffled": 0.00030939048110401084,
+          "r2_shuffled": 0.1721340381191523,
+          "d_strict": 9.191323303570087e-05
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.0010536540632147247,
+          "r2": 0.8758541727572609,
+          "helicality_shuffled": 0.0004039725428246085,
+          "r2_shuffled": 0.17922460049352873,
+          "d_strict": -0.003117966726854382
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.0014784056033632328,
+          "r2": 0.8190477283995691,
+          "helicality_shuffled": 0.0008223490917656293,
+          "r2_shuffled": 0.14529026636191056,
+          "d_strict": -0.009131578959914677
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.0006512378085985771,
+          "r2": 0.5660577586056394,
+          "helicality_shuffled": 0.0005485912434976332,
+          "r2_shuffled": 0.15763853899451807,
+          "d_strict": 0.003969232492322838
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.0008839739568447594,
+          "r2": 0.7519977507496892,
+          "helicality_shuffled": 0.0004517519910349266,
+          "r2_shuffled": 0.17426615933770295,
+          "d_strict": 0.03436086045841502
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.0013818361332098598,
+          "r2": 0.8813906439602245,
+          "helicality_shuffled": 0.0005834216865908483,
+          "r2_shuffled": 0.12788603702437829,
+          "d_strict": -0.01140569308712891
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.0010402570930699946,
+          "r2": 0.8417244876666954,
+          "helicality_shuffled": 0.0005263581982537506,
+          "r2_shuffled": 0.2054883936676528,
+          "d_strict": -0.03252703534218371
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.0009470350684682012,
+          "r2": 0.8130115063775709,
+          "helicality_shuffled": 0.00044438690486915715,
+          "r2_shuffled": 0.21084427621102075,
+          "d_strict": 0.028504013700518804
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.0006885512452800885,
+          "r2": 0.8626418546747017,
+          "helicality_shuffled": 0.0003533671504426089,
+          "r2_shuffled": 0.1257034963347089,
+          "d_strict": 0.019434811540659735
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.0006687161240274569,
+          "r2": 0.6646795721601313,
+          "helicality_shuffled": 0.00040089374481266617,
+          "r2_shuffled": 0.1954818195579836,
+          "d_strict": 0.02989012916280509
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.002046323514922805,
+          "r2": 0.8467946697780635,
+          "helicality_shuffled": 0.0006913076571753527,
+          "r2_shuffled": 0.18261208071850576,
+          "d_strict": 0.01925248458005513
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.0010513990719910442,
+          "r2": 0.8948533690506938,
+          "helicality_shuffled": 0.0007553892920340537,
+          "r2_shuffled": 0.17418551712032992,
+          "d_strict": -0.018125132251721965
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.001085251057876629,
+          "r2": 0.916511163926987,
+          "helicality_shuffled": 0.0005172800984035912,
+          "r2_shuffled": 0.1307305092149178,
+          "d_strict": -0.021662935989936294
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.0017419949831212877,
+          "r2": 0.9014233409880805,
+          "helicality_shuffled": 0.0008894685252896882,
+          "r2_shuffled": 0.21013330946123432,
+          "d_strict": -0.01743740797595572
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.0012254099211888483,
+          "r2": 0.8468377657865591,
+          "helicality_shuffled": 0.0007287878724755709,
+          "r2_shuffled": 0.14853195798096097,
+          "d_strict": -0.032605803332786065
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.0020676253823988596,
+          "r2": 0.8775716615790456,
+          "helicality_shuffled": 0.0009409935744328312,
+          "r2_shuffled": 0.29740003740159704,
+          "d_strict": -0.01955261902927663
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.0009367724073598885,
+          "r2": 0.6690333291444206,
+          "helicality_shuffled": 0.000874047539654334,
+          "r2_shuffled": 0.19488331925687674,
+          "d_strict": -0.03838285630531246
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.0008958003109165358,
+          "r2": 0.8781942563995326,
+          "helicality_shuffled": 0.0005378605440700776,
+          "r2_shuffled": 0.21200387216352679,
+          "d_strict": -0.027596242053423148
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.001445747480350198,
+          "r2": 0.7926492788071255,
+          "helicality_shuffled": 0.0009588201613867775,
+          "r2_shuffled": 0.16473063391061893,
+          "d_strict": -0.029021331622532398
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.0009744630378074042,
+          "r2": 0.8645149497856728,
+          "helicality_shuffled": 0.0006000089928099977,
+          "r2_shuffled": 0.17724734844351098,
+          "d_strict": -0.0679580285193645
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.003790371235710388,
+          "r2": 0.784410847518338,
+          "helicality_shuffled": 0.002686808632449292,
+          "r2_shuffled": 0.15012929693571353,
+          "d_strict": -0.009345956516568332
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.0009780977195748704,
+          "r2": 0.8084392660542188,
+          "helicality_shuffled": 0.0004604335761777198,
+          "r2_shuffled": 0.19956140605958994,
+          "d_strict": 0.004174102029765758
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.0011337107530784488,
+          "r2": 0.7518570421691628,
+          "helicality_shuffled": 0.0005638698338096133,
+          "r2_shuffled": 0.21276391798915995,
+          "d_strict": -0.002386594275477716
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.0019183973304091524,
+          "r2": 0.8740962896897653,
+          "helicality_shuffled": 0.0012733245100290942,
+          "r2_shuffled": 0.22736429350127596,
+          "d_strict": -0.025740396163160817
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.0013714817408741978,
+          "r2": 0.8143184267427975,
+          "helicality_shuffled": 0.0006171543446604119,
+          "r2_shuffled": 0.19819552545802477,
+          "d_strict": 0.00806541966767016
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.0007524795972250102,
+          "r2": 0.6871171318402673,
+          "helicality_shuffled": 0.0004338299447196402,
+          "r2_shuffled": 0.17304488082998792,
+          "d_strict": -0.029408747380257227
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.0009239598487290526,
+          "r2": 0.8028542500282614,
+          "helicality_shuffled": 0.0004873365407764473,
+          "r2_shuffled": 0.1379514829567805,
+          "d_strict": 0.010823109341929982
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.0010117968942913293,
+          "r2": 0.8129888255303394,
+          "helicality_shuffled": 0.0004988687544570411,
+          "r2_shuffled": 0.24943947894898288,
+          "d_strict": -0.0264284928723858
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.003406812814521202,
+          "r2": 0.46899290601233834,
+          "helicality_shuffled": 0.0020841961218991253,
+          "r2_shuffled": 0.17398094186220492,
+          "d_strict": -0.014055246906282903
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.0020251967531825592,
+          "r2": 0.7366093121407509,
+          "helicality_shuffled": 0.0008675360045265565,
+          "r2_shuffled": 0.1528422032192256,
+          "d_strict": -0.00527146728728789
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.000920549398723732,
+          "r2": 0.9094426740041995,
+          "helicality_shuffled": 0.00031161975195849505,
+          "r2_shuffled": 0.18969813722290285,
+          "d_strict": -0.008229952517447958
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.0011484112896659408,
+          "r2": 0.7582343703458951,
+          "helicality_shuffled": 0.000697061088651772,
+          "r2_shuffled": 0.17260629824534368,
+          "d_strict": 0.007530074192305003
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.0010460142343352112,
+          "r2": 0.8747101043159211,
+          "helicality_shuffled": 0.0005015598791546605,
+          "r2_shuffled": 0.1915230962008525,
+          "d_strict": -0.050721634289647044
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.0008878721639691766,
+          "r2": 0.8170025263247526,
+          "helicality_shuffled": 0.0003846817330883264,
+          "r2_shuffled": 0.2256721642827466,
+          "d_strict": -0.012085553605468813
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.0007566355244589798,
+          "r2": 0.7889350367885496,
+          "helicality_shuffled": 0.000599956194564419,
+          "r2_shuffled": 0.18650113959612002,
+          "d_strict": -0.02223331317622068
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.0014122827133944758,
+          "r2": 0.8728973657181515,
+          "helicality_shuffled": 0.00045392841499425465,
+          "r2_shuffled": 0.14799645427982933,
+          "d_strict": 0.047689180076707305
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.0008114519953542564,
+          "r2": 0.854100144247104,
+          "helicality_shuffled": 0.0004198817009945082,
+          "r2_shuffled": 0.18489702160033206,
+          "d_strict": -0.02252654032946788
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.0028153111469022846,
+          "r2": 0.7893013797495217,
+          "helicality_shuffled": 0.0016911860637292377,
+          "r2_shuffled": 0.15674537686998302,
+          "d_strict": -0.014701622736848496
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 0.018123389052470774,
+          "r2": 0.800149125235795,
+          "helicality_shuffled": 0.007917032526077781,
+          "r2_shuffled": 0.16835142310235007,
+          "d_strict": -0.0016508915271857827
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 0.003241597255688661,
+          "r2": 0.8300534037154201,
+          "helicality_shuffled": 0.0018774646599613255,
+          "r2_shuffled": 0.17065812748544862,
+          "d_strict": 0.0015187154171786288
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.001222857168815668,
+          "r2": 0.8792664360839045,
+          "helicality_shuffled": 0.0007529339636925241,
+          "r2_shuffled": 0.24071430202334843,
+          "d_strict": -0.02458782187432984
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.0011440983207203154,
+          "r2": 0.8548213623933842,
+          "helicality_shuffled": 0.0007779469675874891,
+          "r2_shuffled": 0.1743952886810347,
+          "d_strict": -0.012155232832672058
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.0007976781143787602,
+          "r2": 0.7942444245494102,
+          "helicality_shuffled": 0.0004861553576297104,
+          "r2_shuffled": 0.16675834347075724,
+          "d_strict": -0.05911744008812114
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 0.0367299006514184,
+          "r2": 0.8571043314197858,
+          "helicality_shuffled": 0.02063768215086642,
+          "r2_shuffled": 0.2418452922675468,
+          "d_strict": -0.0011765662049645353
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 0.017782587037228934,
+          "r2": 0.7914873010974844,
+          "helicality_shuffled": 0.01349477691371956,
+          "r2_shuffled": 0.14956347007509596,
+          "d_strict": 0.00038546365176506114
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.0011462846866702881,
+          "r2": 0.8257512628794645,
+          "helicality_shuffled": 0.0005159476534477144,
+          "r2_shuffled": 0.17182030145074012,
+          "d_strict": 0.033220289547581494
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.0009548717855244478,
+          "r2": 0.769206741848001,
+          "helicality_shuffled": 0.0005169134485208928,
+          "r2_shuffled": 0.19853964880955366,
+          "d_strict": 0.026347403013928572
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.0008857160188638184,
+          "r2": 0.7110131513131883,
+          "helicality_shuffled": 0.0007105359937233109,
+          "r2_shuffled": 0.18721517373621654,
+          "d_strict": -0.0031009001654564994
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.0007738445504046283,
+          "r2": 0.6136138046902072,
+          "helicality_shuffled": 0.0004088018278524999,
+          "r2_shuffled": 0.2034531689509842,
+          "d_strict": -0.06106992731541838
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.001046417373095967,
+          "r2": 0.8586465144887057,
+          "helicality_shuffled": 0.0005174248244627636,
+          "r2_shuffled": 0.1777084930190277,
+          "d_strict": -0.012553627909352882
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.0019512731733720681,
+          "r2": 0.8971393234117956,
+          "helicality_shuffled": 0.0010598842987331093,
+          "r2_shuffled": 0.15475899952786576,
+          "d_strict": -0.004857265646722064
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.0006288108568154653,
+          "r2": 0.8273245524459082,
+          "helicality_shuffled": 0.00044561553335065,
+          "r2_shuffled": 0.1639266905112795,
+          "d_strict": -0.028323190594256253
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.0017729833817148803,
+          "r2": 0.8809703507233035,
+          "helicality_shuffled": 0.0006024496507974443,
+          "r2_shuffled": 0.12692119136848412,
+          "d_strict": 0.0026341756573569075
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.0012403777081243642,
+          "r2": 0.8706946659218184,
+          "helicality_shuffled": 0.0006618256826777361,
+          "r2_shuffled": 0.21935185124191936,
+          "d_strict": -0.02682864562099785
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.002511095770208228,
+          "r2": 0.9284711146108751,
+          "helicality_shuffled": 0.0005705909199337261,
+          "r2_shuffled": 0.19810269945506886,
+          "d_strict": 0.002039115041809314
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.0011342079543767767,
+          "r2": 0.8102022311729964,
+          "helicality_shuffled": 0.0006279833107220125,
+          "r2_shuffled": 0.1572194664243005,
+          "d_strict": -0.0012853627956437297
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.0022525383181918384,
+          "r2": 0.8873529311769061,
+          "helicality_shuffled": 0.0005969096920959038,
+          "r2_shuffled": 0.19255284953076512,
+          "d_strict": 0.03968963360878175
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.0010982287675103612,
+          "r2": 0.8466754007626722,
+          "helicality_shuffled": 0.0005828239881822325,
+          "r2_shuffled": 0.15600832268144138,
+          "d_strict": -0.004589407761740216
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.0006727692702237844,
+          "r2": 0.8061351202600909,
+          "helicality_shuffled": 0.0004807189834406971,
+          "r2_shuffled": 0.20634811781557405,
+          "d_strict": -0.02998242948827967
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.001329692142383146,
+          "r2": 0.9303440566890916,
+          "helicality_shuffled": 0.0006799318457000731,
+          "r2_shuffled": 0.29199346717048236,
+          "d_strict": -0.035372774849913746
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.0010276342074655841,
+          "r2": 0.9045249100879528,
+          "helicality_shuffled": 0.0005901564926194785,
+          "r2_shuffled": 0.20841942266475366,
+          "d_strict": -0.031049004750128617
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.0005538786944661826,
+          "r2": 0.761325113032394,
+          "helicality_shuffled": 0.0004399858348410023,
+          "r2_shuffled": 0.18527128164914186,
+          "d_strict": -0.04272221261239051
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.004290653703648343,
+          "r2": 0.5553207421723574,
+          "helicality_shuffled": 0.0030905632864408183,
+          "r2_shuffled": 0.1797851428348114,
+          "d_strict": 0.009130453549058615
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.0006965082468142174,
+          "r2": 0.7957882508981087,
+          "helicality_shuffled": 0.0004133781452064165,
+          "r2_shuffled": 0.14672379476066133,
+          "d_strict": -0.021823390667196296
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.001068676997291524,
+          "r2": 0.8861691357744979,
+          "helicality_shuffled": 0.0005437927269933135,
+          "r2_shuffled": 0.18380885027200566,
+          "d_strict": -0.02000160203212542
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.006647163095516378,
+          "r2": 0.6981553987314154,
+          "helicality_shuffled": 0.005296037312476508,
+          "r2_shuffled": 0.2008903381003051,
+          "d_strict": -0.00417366236836425
+        }
+      ]
+    },
+    "muq_L6": {
+      "n_inst": 66,
+      "helicality_mean": 0.04733807472108324,
+      "helicality_median": 0.0292154051694695,
+      "r2_mean": 0.7529531819081047,
+      "r2_shuffled_mean": 0.18655491584237371,
+      "d_strict_mean": 0.022549052688328807,
+      "frac_inst_positive": 0.6363636363636364,
+      "rho_helicality_dstrict": -0.21265003653063358,
+      "rho_r2_dstrict": -0.142678217305083,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.021845704814675806,
+          "r2": 0.7638640256437521,
+          "helicality_shuffled": 0.007887710502685639,
+          "r2_shuffled": 0.17635156592203627,
+          "d_strict": 0.032913129615468995
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.03456664272063188,
+          "r2": 0.8466927406314377,
+          "helicality_shuffled": 0.008926541967867064,
+          "r2_shuffled": 0.1390699657731348,
+          "d_strict": 0.04510053355247856
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.04595767836352712,
+          "r2": 0.8631002635754523,
+          "helicality_shuffled": 0.013228392627664804,
+          "r2_shuffled": 0.17911624814740212,
+          "d_strict": -0.015192734839863276
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.02006678242108325,
+          "r2": 0.5618901164352681,
+          "helicality_shuffled": 0.017735488065958916,
+          "r2_shuffled": 0.14348290928690288,
+          "d_strict": 0.026309588610301082
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.028990064041129172,
+          "r2": 0.7327890320333821,
+          "helicality_shuffled": 0.01482687457577685,
+          "r2_shuffled": 0.17790862348843373,
+          "d_strict": 0.09253976026892352
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.034059991168761024,
+          "r2": 0.8039339080343174,
+          "helicality_shuffled": 0.01943727623344334,
+          "r2_shuffled": 0.27359763741951204,
+          "d_strict": -0.005767196875893554
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.045174076618582554,
+          "r2": 0.8885956619123866,
+          "helicality_shuffled": 0.016302018095685544,
+          "r2_shuffled": 0.14154909278208738,
+          "d_strict": 0.026562454583492046
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.022241536649004332,
+          "r2": 0.7515058145897808,
+          "helicality_shuffled": 0.011113173953431588,
+          "r2_shuffled": 0.20488814327284766,
+          "d_strict": 0.10092913274050597
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.033058757088106995,
+          "r2": 0.8545361542392818,
+          "helicality_shuffled": 0.008629874377891538,
+          "r2_shuffled": 0.1692244210734538,
+          "d_strict": 0.09314505335619161
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.021201186014697573,
+          "r2": 0.5000002741198106,
+          "helicality_shuffled": 0.01483295171958185,
+          "r2_shuffled": 0.20120031584053044,
+          "d_strict": 0.12795181639100517
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.02375569442629818,
+          "r2": 0.7586932421206928,
+          "helicality_shuffled": 0.011017331484683627,
+          "r2_shuffled": 0.14656463401523134,
+          "d_strict": 0.01486343442937621
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.017926546092327956,
+          "r2": 0.7257170625857907,
+          "helicality_shuffled": 0.013313637949126485,
+          "r2_shuffled": 0.21193092649491818,
+          "d_strict": -0.005352537103962662
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.01971592689917056,
+          "r2": 0.707156593030348,
+          "helicality_shuffled": 0.010879686846570404,
+          "r2_shuffled": 0.1885634134120342,
+          "d_strict": 0.0839113396889376
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.0490856263745733,
+          "r2": 0.8577343064885056,
+          "helicality_shuffled": 0.01785891351995918,
+          "r2_shuffled": 0.18425272387346803,
+          "d_strict": -0.0071472179143444725
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.05201686663605903,
+          "r2": 0.7529603150475821,
+          "helicality_shuffled": 0.022291157572814812,
+          "r2_shuffled": 0.15647623288045842,
+          "d_strict": 0.017966122659637485
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.05231831159281736,
+          "r2": 0.8343390083661877,
+          "helicality_shuffled": 0.01834352474769257,
+          "r2_shuffled": 0.16494796137130208,
+          "d_strict": -0.013838648096099804
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.01612165758099963,
+          "r2": 0.6537603776183023,
+          "helicality_shuffled": 0.01369598531366562,
+          "r2_shuffled": 0.22579670699051002,
+          "d_strict": -0.026644628782527824
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.02582979139860538,
+          "r2": 0.7835296351954996,
+          "helicality_shuffled": 0.010694302938031676,
+          "r2_shuffled": 0.16144957120686831,
+          "d_strict": -0.02992802370739278
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.036964966221948566,
+          "r2": 0.8080311613797894,
+          "helicality_shuffled": 0.017288025736472413,
+          "r2_shuffled": 0.19374009318291752,
+          "d_strict": -0.03494821859498687
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.03482676022259342,
+          "r2": 0.7607366262459876,
+          "helicality_shuffled": 0.013358822416909034,
+          "r2_shuffled": 0.1581233751619261,
+          "d_strict": -0.01668213809393093
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.09819839353332567,
+          "r2": 0.7771406863975276,
+          "helicality_shuffled": 0.06495516911851697,
+          "r2_shuffled": 0.1439172619884811,
+          "d_strict": -0.012859104726136827
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.02301931338169372,
+          "r2": 0.7550553991206875,
+          "helicality_shuffled": 0.011820695672842286,
+          "r2_shuffled": 0.19069610981814733,
+          "d_strict": -0.00368943741468597
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.02945429600693932,
+          "r2": 0.7624504679382458,
+          "helicality_shuffled": 0.01461531930347279,
+          "r2_shuffled": 0.19461508201068423,
+          "d_strict": 0.0384158398835468
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.046151542485621415,
+          "r2": 0.8581793302797006,
+          "helicality_shuffled": 0.025360632665359872,
+          "r2_shuffled": 0.22785019457507405,
+          "d_strict": -0.02024349123327651
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.023736135801056404,
+          "r2": 0.7578435861837391,
+          "helicality_shuffled": 0.01064975374894396,
+          "r2_shuffled": 0.19449790958965563,
+          "d_strict": 0.06867632372462229
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.015733165232951016,
+          "r2": 0.584393435555161,
+          "helicality_shuffled": 0.010863935258185966,
+          "r2_shuffled": 0.19925111756744673,
+          "d_strict": 0.06284502098006806
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.03042030499116486,
+          "r2": 0.780730171594428,
+          "helicality_shuffled": 0.013502761227599762,
+          "r2_shuffled": 0.20575483521004245,
+          "d_strict": 0.0655196329059512
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.023303478118652052,
+          "r2": 0.7051267322140679,
+          "helicality_shuffled": 0.018517235215100725,
+          "r2_shuffled": 0.2057358897562337,
+          "d_strict": -0.040196296881446436
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.09780607185482643,
+          "r2": 0.5579681198640422,
+          "helicality_shuffled": 0.061234994186296625,
+          "r2_shuffled": 0.16707499558241923,
+          "d_strict": -0.003675672726148549
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.03403347781371117,
+          "r2": 0.8042072731319462,
+          "helicality_shuffled": 0.013967988946467625,
+          "r2_shuffled": 0.17565775742601974,
+          "d_strict": -0.01737286724441578
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.016568938333661208,
+          "r2": 0.8005396694437408,
+          "helicality_shuffled": 0.0069567425566250535,
+          "r2_shuffled": 0.1712962910483924,
+          "d_strict": 0.04091203088326312
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.021309841941185095,
+          "r2": 0.71825322398912,
+          "helicality_shuffled": 0.012396299897380595,
+          "r2_shuffled": 0.21400657013078916,
+          "d_strict": 0.02065835126439508
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.017000519329606927,
+          "r2": 0.7005824496753291,
+          "helicality_shuffled": 0.010817356927394607,
+          "r2_shuffled": 0.18831119849380085,
+          "d_strict": -0.03319567883818908
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.04866753836651314,
+          "r2": 0.8688353497645525,
+          "helicality_shuffled": 0.013690758938505293,
+          "r2_shuffled": 0.19138342759933602,
+          "d_strict": -0.017345202345341537
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.027346137857997135,
+          "r2": 0.7226108921550477,
+          "helicality_shuffled": 0.014291190690975574,
+          "r2_shuffled": 0.18546169072639618,
+          "d_strict": 0.04284568338087047
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.041789301410857294,
+          "r2": 0.8535317430133136,
+          "helicality_shuffled": 0.010597134733040999,
+          "r2_shuffled": 0.1946564229786556,
+          "d_strict": 0.09678857932579599
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.017583888210637135,
+          "r2": 0.6826349683561771,
+          "helicality_shuffled": 0.010497568550883539,
+          "r2_shuffled": 0.1518844497600641,
+          "d_strict": 0.03556025016309705
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.08067228183619611,
+          "r2": 0.8409066485909138,
+          "helicality_shuffled": 0.04097752423777469,
+          "r2_shuffled": 0.12343734463899902,
+          "d_strict": -0.03522282348143135
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 0.11533796714505742,
+          "r2": 0.8300241836189284,
+          "helicality_shuffled": 0.06796927468697023,
+          "r2_shuffled": 0.14784725961710077,
+          "d_strict": -0.011447800096476834
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 0.5098788439926056,
+          "r2": 0.9563120343414998,
+          "helicality_shuffled": 0.0582135929375579,
+          "r2_shuffled": 0.19115481637438847,
+          "d_strict": 0.008214900264958747
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.03029050181877262,
+          "r2": 0.755787722269371,
+          "helicality_shuffled": 0.017858935681189476,
+          "r2_shuffled": 0.2302410972186988,
+          "d_strict": -0.004917886927316095
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.0366830420741292,
+          "r2": 0.7541925337256687,
+          "helicality_shuffled": 0.023710307419709028,
+          "r2_shuffled": 0.1946576640191845,
+          "d_strict": 0.013330707574871203
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.026096046555189854,
+          "r2": 0.8128881238019467,
+          "helicality_shuffled": 0.009440471497679216,
+          "r2_shuffled": 0.24218373379106406,
+          "d_strict": 0.025413092896698353
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 0.21468346990891088,
+          "r2": 0.8725899393275047,
+          "helicality_shuffled": 0.04361509105065633,
+          "r2_shuffled": 0.17723614851119063,
+          "d_strict": 0.0010869005860852932
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 0.13181756901449712,
+          "r2": 0.7973610262916284,
+          "helicality_shuffled": 0.12141472299876448,
+          "r2_shuffled": 0.16271513247194513,
+          "d_strict": 0.0016984930706710477
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.01736614982898065,
+          "r2": 0.6576907777228016,
+          "helicality_shuffled": 0.010663588336119797,
+          "r2_shuffled": 0.16159515542028602,
+          "d_strict": 0.08491421864394
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.023492046919188356,
+          "r2": 0.7295404255522491,
+          "helicality_shuffled": 0.01245001693302097,
+          "r2_shuffled": 0.19060550033078294,
+          "d_strict": 0.06263624691050085
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.03835479104066803,
+          "r2": 0.7000998892233258,
+          "helicality_shuffled": 0.02068712296076496,
+          "r2_shuffled": 0.24357155877169712,
+          "d_strict": 0.018611287827043355
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.009364885953249243,
+          "r2": 0.28503604309906916,
+          "helicality_shuffled": 0.009455748723158863,
+          "r2_shuffled": 0.2031631606436951,
+          "d_strict": -0.0691742895321048
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.026918033064250946,
+          "r2": 0.7877782060429407,
+          "helicality_shuffled": 0.009976281335806494,
+          "r2_shuffled": 0.18285334726729885,
+          "d_strict": 0.08689125224182304
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.022583860831880874,
+          "r2": 0.7650924024306565,
+          "helicality_shuffled": 0.015281761137215901,
+          "r2_shuffled": 0.15646269776472654,
+          "d_strict": 0.015470168980662002
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.025175540319955506,
+          "r2": 0.7934083330245709,
+          "helicality_shuffled": 0.010858079418900041,
+          "r2_shuffled": 0.20442846484506172,
+          "d_strict": 0.008459616154613103
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.04432890366409374,
+          "r2": 0.7798886040945834,
+          "helicality_shuffled": 0.022100683820010413,
+          "r2_shuffled": 0.1869281952824855,
+          "d_strict": 0.01165169757525053
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.0273421932430742,
+          "r2": 0.7216620659297722,
+          "helicality_shuffled": 0.014796374122183865,
+          "r2_shuffled": 0.22458583803989007,
+          "d_strict": 0.03887004488229562
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.04542430222693038,
+          "r2": 0.8476417763499052,
+          "helicality_shuffled": 0.011688926446804615,
+          "r2_shuffled": 0.1797769451850164,
+          "d_strict": 0.09045572307281746
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.02944074629780983,
+          "r2": 0.7776820532022874,
+          "helicality_shuffled": 0.011139213620233856,
+          "r2_shuffled": 0.157383274752111,
+          "d_strict": 0.02427517780742705
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.02628952609280758,
+          "r2": 0.6788899450184059,
+          "helicality_shuffled": 0.014518253535243178,
+          "r2_shuffled": 0.20656179307552158,
+          "d_strict": 0.059866220100072476
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.020352271029331476,
+          "r2": 0.7834348249560562,
+          "helicality_shuffled": 0.013275287628388864,
+          "r2_shuffled": 0.1637235131229996,
+          "d_strict": -0.027209061095848752
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.039405073681891466,
+          "r2": 0.8348289121968591,
+          "helicality_shuffled": 0.013856421547868975,
+          "r2_shuffled": 0.1789436852113646,
+          "d_strict": 0.004936561979951071
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.022026974905387582,
+          "r2": 0.783294567129351,
+          "helicality_shuffled": 0.010163720441150294,
+          "r2_shuffled": 0.23612883990191058,
+          "d_strict": 0.020485874050252262
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.027639462024017965,
+          "r2": 0.8388702940157446,
+          "helicality_shuffled": 0.010012850860753377,
+          "r2_shuffled": 0.23530572774510794,
+          "d_strict": -0.018025813982908145
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.02068323934072313,
+          "r2": 0.7376909879328171,
+          "helicality_shuffled": 0.00951696643234142,
+          "r2_shuffled": 0.20832065341436368,
+          "d_strict": 0.0837767212477627
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.0878395820892065,
+          "r2": 0.47142937300094623,
+          "helicality_shuffled": 0.0642528250839656,
+          "r2_shuffled": 0.19919236551779818,
+          "d_strict": 0.023906245269276205
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.03915354970267036,
+          "r2": 0.8548562366346528,
+          "helicality_shuffled": 0.010687330464886464,
+          "r2_shuffled": 0.14227778001093883,
+          "d_strict": 0.1018203347699076
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.02636660534043535,
+          "r2": 0.7656363212691774,
+          "helicality_shuffled": 0.014071520151845273,
+          "r2_shuffled": 0.18513103217975857,
+          "d_strict": 0.04112916188097826
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.11145855963358883,
+          "r2": 0.5807459371708854,
+          "helicality_shuffled": 0.0907084909912996,
+          "r2_shuffled": 0.19592595461366713,
+          "d_strict": -0.004000478231356297
+        }
+      ]
+    },
+    "matpac_L6": {
+      "n_inst": 66,
+      "helicality_mean": 0.15478005564302835,
+      "helicality_median": 0.042149043268242134,
+      "r2_mean": 0.8024428430816358,
+      "r2_shuffled_mean": 0.18352301744408261,
+      "d_strict_mean": 0.007808385399163968,
+      "frac_inst_positive": 0.4696969696969697,
+      "rho_helicality_dstrict": -0.3038722471558293,
+      "rho_r2_dstrict": -0.17478342552969423,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.02176482422457701,
+          "r2": 0.7780155338608551,
+          "helicality_shuffled": 0.008509505888774003,
+          "r2_shuffled": 0.13095388758536175,
+          "d_strict": 0.024999223242955892
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.05596116951031294,
+          "r2": 0.8947238110001411,
+          "helicality_shuffled": 0.011912105193896837,
+          "r2_shuffled": 0.14321707217624668,
+          "d_strict": 0.01532124084354658
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.066776215747188,
+          "r2": 0.8641229799267216,
+          "helicality_shuffled": 0.028507558408528186,
+          "r2_shuffled": 0.15883688372917915,
+          "d_strict": -0.022846037214645953
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.03275529408021558,
+          "r2": 0.5053350079842596,
+          "helicality_shuffled": 0.03248351964397197,
+          "r2_shuffled": 0.15186368221928392,
+          "d_strict": -0.0022847213866422633
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.02770996922326519,
+          "r2": 0.8062880102810651,
+          "helicality_shuffled": 0.010813728714344783,
+          "r2_shuffled": 0.1982253911691344,
+          "d_strict": 0.07323481332637982
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.04331141708281804,
+          "r2": 0.8929118896529418,
+          "helicality_shuffled": 0.013267096689588299,
+          "r2_shuffled": 0.15504338796083172,
+          "d_strict": -0.0024286175966474755
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.027357357437109604,
+          "r2": 0.8215139051927555,
+          "helicality_shuffled": 0.015232920783445535,
+          "r2_shuffled": 0.18429882692621058,
+          "d_strict": -0.020466148962043573
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.036587206358658635,
+          "r2": 0.8456333938970992,
+          "helicality_shuffled": 0.012368423057291819,
+          "r2_shuffled": 0.18267301118771928,
+          "d_strict": 0.08040900972355458
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.036227823507120775,
+          "r2": 0.865146354325018,
+          "helicality_shuffled": 0.009335422044552717,
+          "r2_shuffled": 0.1387262212419761,
+          "d_strict": 0.07732148230846603
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.02484855121797534,
+          "r2": 0.714952727692622,
+          "helicality_shuffled": 0.010892869217935013,
+          "r2_shuffled": 0.21701949451570313,
+          "d_strict": 0.06598339211880666
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.033162542430999774,
+          "r2": 0.8946478618269318,
+          "helicality_shuffled": 0.00962996670325304,
+          "r2_shuffled": 0.1356264754123,
+          "d_strict": 5.613907003909624e-05
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.08511809051982545,
+          "r2": 0.8434915997677612,
+          "helicality_shuffled": 0.057415501557847415,
+          "r2_shuffled": 0.20076397968958204,
+          "d_strict": -0.004085931173376189
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.03611776021435879,
+          "r2": 0.8134937745396316,
+          "helicality_shuffled": 0.014480208388488796,
+          "r2_shuffled": 0.17804554122650074,
+          "d_strict": 0.04806322615392844
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.15891376452728523,
+          "r2": 0.8905988077831656,
+          "helicality_shuffled": 0.06245436948348576,
+          "r2_shuffled": 0.20432636126827242,
+          "d_strict": -0.003588292316808017
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.07475530586021897,
+          "r2": 0.7355862288212974,
+          "helicality_shuffled": 0.05346024434320092,
+          "r2_shuffled": 0.17358242085787579,
+          "d_strict": -0.006995393355671786
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.22495163973895155,
+          "r2": 0.8743637193074685,
+          "helicality_shuffled": 0.09050731435232585,
+          "r2_shuffled": 0.23494116774932372,
+          "d_strict": -0.004607292548318376
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.0507794104804792,
+          "r2": 0.7977952560648689,
+          "helicality_shuffled": 0.02746865467022724,
+          "r2_shuffled": 0.21214235772528,
+          "d_strict": -0.014325611095427626
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.03268622595773759,
+          "r2": 0.7346832010436217,
+          "helicality_shuffled": 0.021306743667810567,
+          "r2_shuffled": 0.16789542999400586,
+          "d_strict": -0.031263053111663996
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.1433082509513775,
+          "r2": 0.8236330162770702,
+          "helicality_shuffled": 0.08367926259082392,
+          "r2_shuffled": 0.16166665978520312,
+          "d_strict": -0.012178323282269643
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.08000269763930092,
+          "r2": 0.8578022667004959,
+          "helicality_shuffled": 0.0329197678344022,
+          "r2_shuffled": 0.15529711190965212,
+          "d_strict": -0.027244713512061036
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.2911200559893941,
+          "r2": 0.73501304444645,
+          "helicality_shuffled": 0.20078010973222368,
+          "r2_shuffled": 0.1373893686204789,
+          "d_strict": -0.004811862148459856
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.036167228322124274,
+          "r2": 0.8776077590662854,
+          "helicality_shuffled": 0.011397185147693728,
+          "r2_shuffled": 0.20386962111937956,
+          "d_strict": 0.009942193271165967
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.047710269956221865,
+          "r2": 0.7937126684300223,
+          "helicality_shuffled": 0.02443056686067625,
+          "r2_shuffled": 0.18544562928374742,
+          "d_strict": 0.006321899932635322
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.20547591098076273,
+          "r2": 0.8928699352119756,
+          "helicality_shuffled": 0.09657013411544499,
+          "r2_shuffled": 0.20138345183929063,
+          "d_strict": -0.007814501089528081
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.04291233358420796,
+          "r2": 0.8059268789261486,
+          "helicality_shuffled": 0.019493621472217317,
+          "r2_shuffled": 0.1704363129172869,
+          "d_strict": -0.0013387584387478668
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.027342331267866646,
+          "r2": 0.7852176597146012,
+          "helicality_shuffled": 0.01093908295088396,
+          "r2_shuffled": 0.18033639012180935,
+          "d_strict": -0.004881846013836899
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.03130183660447102,
+          "r2": 0.7888808583539455,
+          "helicality_shuffled": 0.013476980647572663,
+          "r2_shuffled": 0.16837514847791857,
+          "d_strict": 0.03027261146454363
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.031894820133490445,
+          "r2": 0.8449685291490754,
+          "helicality_shuffled": 0.011430784227981522,
+          "r2_shuffled": 0.1828420025222225,
+          "d_strict": -0.049599408152478985
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.18435643376683433,
+          "r2": 0.7448531458172208,
+          "helicality_shuffled": 0.07272350260897249,
+          "r2_shuffled": 0.19398152311650907,
+          "d_strict": -3.3820581349819356e-05
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.07774994091324665,
+          "r2": 0.8063131327051158,
+          "helicality_shuffled": 0.03868321080411182,
+          "r2_shuffled": 0.16711491931041533,
+          "d_strict": -0.01570586370734317
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.021198910896968584,
+          "r2": 0.7788299634570384,
+          "helicality_shuffled": 0.0119043619591421,
+          "r2_shuffled": 0.19373958805455027,
+          "d_strict": 0.007248289397788876
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.029451373869498417,
+          "r2": 0.7871997401590856,
+          "helicality_shuffled": 0.014143599356345462,
+          "r2_shuffled": 0.1575741572855891,
+          "d_strict": 0.0035406727137239358
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.03608024686077606,
+          "r2": 0.8838264603771866,
+          "helicality_shuffled": 0.011657505197608647,
+          "r2_shuffled": 0.19630079492180252,
+          "d_strict": -0.019391857733280338
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.027138038686682117,
+          "r2": 0.8829288136605843,
+          "helicality_shuffled": 0.008911151310058011,
+          "r2_shuffled": 0.22557995210515125,
+          "d_strict": -0.02672176911719737
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.026211813429542263,
+          "r2": 0.6131941051080982,
+          "helicality_shuffled": 0.01891615758994988,
+          "r2_shuffled": 0.20067072065840663,
+          "d_strict": 0.023353756612131793
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.03560439291098905,
+          "r2": 0.7808545922882114,
+          "helicality_shuffled": 0.013675151805588374,
+          "r2_shuffled": 0.19874253537974806,
+          "d_strict": 0.08233722766319296
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.04798754845172801,
+          "r2": 0.8340650453992451,
+          "helicality_shuffled": 0.016949016275112888,
+          "r2_shuffled": 0.15584481672228012,
+          "d_strict": 0.015015251798079943
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.4713239544132137,
+          "r2": 0.8656621435694813,
+          "helicality_shuffled": 0.1407659030116499,
+          "r2_shuffled": 0.1637528549295747,
+          "d_strict": -0.003240372486671639
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 3.3654030436927176,
+          "r2": 0.7833594308727613,
+          "helicality_shuffled": 1.478741051241558,
+          "r2_shuffled": 0.17178345208967172,
+          "d_strict": -0.0007732302230881727
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 0.5634671759776732,
+          "r2": 0.9367700644552555,
+          "helicality_shuffled": 0.10812706089251702,
+          "r2_shuffled": 0.16543521259807348,
+          "d_strict": 0.003059186308645323
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.08834099780696292,
+          "r2": 0.7797200447192033,
+          "helicality_shuffled": 0.06116333716103353,
+          "r2_shuffled": 0.20644833822601727,
+          "d_strict": -0.00435449617223016
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.041127045724620274,
+          "r2": 0.7392808051849562,
+          "helicality_shuffled": 0.028900378847486592,
+          "r2_shuffled": 0.2067017155743528,
+          "d_strict": 0.0031691803645390593
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.03663413889692669,
+          "r2": 0.8541378956955454,
+          "helicality_shuffled": 0.013948124687208978,
+          "r2_shuffled": 0.2229252521691184,
+          "d_strict": -0.01844953092413526
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 0.42962908055006194,
+          "r2": 0.7932827972342665,
+          "helicality_shuffled": 0.16787597559704498,
+          "r2_shuffled": 0.2676628730524985,
+          "d_strict": -0.001707642801195508
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 1.5873517943782591,
+          "r2": 0.8860577769197304,
+          "helicality_shuffled": 1.0042848904726809,
+          "r2_shuffled": 0.13870443218321094,
+          "d_strict": -0.0005731787958322965
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.044150362733847044,
+          "r2": 0.8849910479899661,
+          "helicality_shuffled": 0.012143130051882636,
+          "r2_shuffled": 0.17258874167542426,
+          "d_strict": 0.05408671155533806
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.025103633978118607,
+          "r2": 0.7856300168620266,
+          "helicality_shuffled": 0.010916162068231114,
+          "r2_shuffled": 0.1723715789485173,
+          "d_strict": 0.06870229841081499
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.038216318558331706,
+          "r2": 0.7482868395294849,
+          "helicality_shuffled": 0.023968865201337678,
+          "r2_shuffled": 0.23153192238448372,
+          "d_strict": -0.002329647308036642
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.01815069068694057,
+          "r2": 0.5889243462246172,
+          "helicality_shuffled": 0.0086288334987283,
+          "r2_shuffled": 0.20236586327592754,
+          "d_strict": -0.062135403036768455
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.030670953828624996,
+          "r2": 0.7483816063882827,
+          "helicality_shuffled": 0.013691102662758336,
+          "r2_shuffled": 0.16881516728731494,
+          "d_strict": 0.0642059510425338
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.05233980750928481,
+          "r2": 0.8686940877309747,
+          "helicality_shuffled": 0.02556922151002574,
+          "r2_shuffled": 0.17826277844781235,
+          "d_strict": 0.01446726542987442
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.04174151209405106,
+          "r2": 0.8205533905585021,
+          "helicality_shuffled": 0.01857574909382665,
+          "r2_shuffled": 0.17839071274099538,
+          "d_strict": -0.016512623335258936
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.041285662905499995,
+          "r2": 0.832902725438782,
+          "helicality_shuffled": 0.016371512583259775,
+          "r2_shuffled": 0.17580229370319778,
+          "d_strict": 0.003683534176698866
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.06574851234533616,
+          "r2": 0.7571319499401987,
+          "helicality_shuffled": 0.03528551508623441,
+          "r2_shuffled": 0.20325596640183397,
+          "d_strict": 0.008115258794907043
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.03925563801568239,
+          "r2": 0.7743352599605018,
+          "helicality_shuffled": 0.016832819025119437,
+          "r2_shuffled": 0.20175918766637846,
+          "d_strict": 0.04364628751803812
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.051279011020642265,
+          "r2": 0.7186102431614938,
+          "helicality_shuffled": 0.029898519376854473,
+          "r2_shuffled": 0.16858434055621574,
+          "d_strict": -0.0019382821022949637
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.02692983343518118,
+          "r2": 0.7829185849224816,
+          "helicality_shuffled": 0.01343840871651879,
+          "r2_shuffled": 0.20318678458791628,
+          "d_strict": 0.047941783976965135
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.07521822196470823,
+          "r2": 0.8785374355557062,
+          "helicality_shuffled": 0.034482803157749944,
+          "r2_shuffled": 0.16689222381424718,
+          "d_strict": -0.0094400759268779
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.056419068461062746,
+          "r2": 0.8598296346626514,
+          "helicality_shuffled": 0.021721682122404915,
+          "r2_shuffled": 0.1905647390046964,
+          "d_strict": -0.010810896149115568
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.04785778477307152,
+          "r2": 0.8524190917109563,
+          "helicality_shuffled": 0.02157571637542253,
+          "r2_shuffled": 0.2743160533362681,
+          "d_strict": -0.021564392110722808
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.036728704208037914,
+          "r2": 0.8487094540159998,
+          "helicality_shuffled": 0.018009432557090106,
+          "r2_shuffled": 0.23915738924140773,
+          "d_strict": 0.00045228411117059775
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.021249917654435672,
+          "r2": 0.7116053187350271,
+          "helicality_shuffled": 0.011359313677902052,
+          "r2_shuffled": 0.14398203013952737,
+          "d_strict": 0.028835009947667856
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.12877004410811616,
+          "r2": 0.652957341333137,
+          "helicality_shuffled": 0.0766466559638124,
+          "r2_shuffled": 0.1896809764218388,
+          "d_strict": 0.015336303911539617
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.026769883114569723,
+          "r2": 0.8040247159933404,
+          "helicality_shuffled": 0.0100001606427163,
+          "r2_shuffled": 0.1584600191597232,
+          "d_strict": 0.023488418192540883
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.04255657444243321,
+          "r2": 0.8035550710958326,
+          "helicality_shuffled": 0.02388436612879598,
+          "r2_shuffled": 0.17153020559724663,
+          "d_strict": 0.013140138123385547
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.22896530182688105,
+          "r2": 0.7089568447107195,
+          "helicality_shuffled": 0.13009079413145538,
+          "r2_shuffled": 0.17283374930973527,
+          "d_strict": -0.003953011250750316
+        }
+      ]
+    },
+    "pupujepa": {
+      "n_inst": 66,
+      "helicality_mean": 0.43287705790063574,
+      "helicality_median": 0.3045059912557193,
+      "r2_mean": 0.5975466051896585,
+      "r2_shuffled_mean": 0.17804056314025557,
+      "d_strict_mean": -0.009433511722406578,
+      "frac_inst_positive": 0.15151515151515152,
+      "rho_helicality_dstrict": 0.038513725080889266,
+      "rho_r2_dstrict": -0.2628326896983614,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.34365620411806336,
+          "r2": 0.7225385589655531,
+          "helicality_shuffled": 0.27426785704550427,
+          "r2_shuffled": 0.1470787563218936,
+          "d_strict": 0.0014622002340127782
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.28663351032309836,
+          "r2": 0.38612610468138464,
+          "helicality_shuffled": 0.22941080962365934,
+          "r2_shuffled": 0.14311530155910934,
+          "d_strict": -0.007809298678687626
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.1817396253934968,
+          "r2": 0.5076498407301104,
+          "helicality_shuffled": 0.163032645907083,
+          "r2_shuffled": 0.16783775478502394,
+          "d_strict": -0.007563874841103879
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.2145663438923579,
+          "r2": 0.3727785636212192,
+          "helicality_shuffled": 0.17975960216132944,
+          "r2_shuffled": 0.14342154953261765,
+          "d_strict": -0.003349436940783823
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.19598784834569877,
+          "r2": 0.49694892535720403,
+          "helicality_shuffled": 0.12325057811981192,
+          "r2_shuffled": 0.2000694906972449,
+          "d_strict": 0.03289839385508919
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.3128123743336854,
+          "r2": 0.7423133003078299,
+          "helicality_shuffled": 0.24993328094122402,
+          "r2_shuffled": 0.11075039898440098,
+          "d_strict": -0.014565878455477965
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.33717206701532426,
+          "r2": 0.844201481297885,
+          "helicality_shuffled": 0.22860911364887757,
+          "r2_shuffled": 0.14844076983824206,
+          "d_strict": -0.01877826635798685
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.24049865936900308,
+          "r2": 0.49898351871803426,
+          "helicality_shuffled": 0.17828440409996296,
+          "r2_shuffled": 0.2241324293510214,
+          "d_strict": -0.0038942454814206995
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.3190081362901788,
+          "r2": 0.5068973949837188,
+          "helicality_shuffled": 0.2611652633916111,
+          "r2_shuffled": 0.21327620006850656,
+          "d_strict": 0.003561642697765932
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.2838768857645128,
+          "r2": 0.39891864215550277,
+          "helicality_shuffled": 0.23035668096601825,
+          "r2_shuffled": 0.17744055016023708,
+          "d_strict": 4.2676321971413245e-05
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.17822828095788343,
+          "r2": 0.8343964923269395,
+          "helicality_shuffled": 0.11931252465669101,
+          "r2_shuffled": 0.19131925372120784,
+          "d_strict": -0.007043400231987462
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.19933299654744138,
+          "r2": 0.645251641473852,
+          "helicality_shuffled": 0.15197272063812753,
+          "r2_shuffled": 0.11959773802645968,
+          "d_strict": -0.017042664788875506
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.3459371736808151,
+          "r2": 0.5626753904947133,
+          "helicality_shuffled": 0.2679920121705207,
+          "r2_shuffled": 0.16048826496417012,
+          "d_strict": -0.002824553742280078
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.687747570458734,
+          "r2": 0.7878484455260666,
+          "helicality_shuffled": 0.5553804100689881,
+          "r2_shuffled": 0.22099292686402117,
+          "d_strict": -0.01765038425520027
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.8666974003454969,
+          "r2": 0.8325416941112205,
+          "helicality_shuffled": 0.6516510590949771,
+          "r2_shuffled": 0.11832381321875696,
+          "d_strict": -0.009350544034229191
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 1.1241769736025742,
+          "r2": 0.7911223488199903,
+          "helicality_shuffled": 0.9424671811669849,
+          "r2_shuffled": 0.1797975970584761,
+          "d_strict": -0.007745913246442027
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.29496676689274265,
+          "r2": 0.6813072647208147,
+          "helicality_shuffled": 0.1850800351862297,
+          "r2_shuffled": 0.17365183931441186,
+          "d_strict": -0.022692506642763344
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.36008557474081865,
+          "r2": 0.5328701796637769,
+          "helicality_shuffled": 0.35051786307122,
+          "r2_shuffled": 0.19304137830463053,
+          "d_strict": -0.009232224740349793
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.6752208458384084,
+          "r2": 0.6085832466982866,
+          "helicality_shuffled": 0.6276573151415865,
+          "r2_shuffled": 0.17081720425372016,
+          "d_strict": -0.0065210018360774
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.14628498914867968,
+          "r2": 0.41287061647553347,
+          "helicality_shuffled": 0.11724147569111205,
+          "r2_shuffled": 0.16707786905519284,
+          "d_strict": -0.013225963149314013
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.14108816903413235,
+          "r2": 0.28047509489507594,
+          "helicality_shuffled": 0.13323981466973342,
+          "r2_shuffled": 0.14393149188920573,
+          "d_strict": -0.010083170535939323
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.08180005767713813,
+          "r2": 0.7188475006288291,
+          "helicality_shuffled": 0.05397020603349681,
+          "r2_shuffled": 0.1669116925086126,
+          "d_strict": -0.0030079074252924443
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.5074742488900186,
+          "r2": 0.8312201764272986,
+          "helicality_shuffled": 0.39512885107357465,
+          "r2_shuffled": 0.14247116382343294,
+          "d_strict": -0.005616891821915049
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.18397991761288277,
+          "r2": 0.8103437007760684,
+          "helicality_shuffled": 0.17728518168142463,
+          "r2_shuffled": 0.1957733183774969,
+          "d_strict": -0.03259073332548823
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.2775219261038429,
+          "r2": 0.48342282031998085,
+          "helicality_shuffled": 0.17968618896148159,
+          "r2_shuffled": 0.19582512355941362,
+          "d_strict": -0.008688604778789522
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.2210346274777876,
+          "r2": 0.6031939278621603,
+          "helicality_shuffled": 0.14886905188482266,
+          "r2_shuffled": 0.1962120855530235,
+          "d_strict": -0.0018258790580869544
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.340614015795687,
+          "r2": 0.7053736004014569,
+          "helicality_shuffled": 0.2437844106432279,
+          "r2_shuffled": 0.16820769177926043,
+          "d_strict": -0.002599608694594191
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.23298945555068398,
+          "r2": 0.6772853381891148,
+          "helicality_shuffled": 0.15538278810302764,
+          "r2_shuffled": 0.1728262252940499,
+          "d_strict": -0.05478369902529612
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.7658230045642107,
+          "r2": 0.4439883449337291,
+          "helicality_shuffled": 0.4875600335565659,
+          "r2_shuffled": 0.20156200192682427,
+          "d_strict": 0.001247824023817068
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.2910074791455857,
+          "r2": 0.4595562459203928,
+          "helicality_shuffled": 0.2499653949759562,
+          "r2_shuffled": 0.16797557795809437,
+          "d_strict": -0.005359594659791411
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.30620539681565423,
+          "r2": 0.5655207841205374,
+          "helicality_shuffled": 0.23735125681746844,
+          "r2_shuffled": 0.16730964685992689,
+          "d_strict": -0.0011968946146713177
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.07223103869672964,
+          "r2": 0.5786586435505587,
+          "helicality_shuffled": 0.06027479005301003,
+          "r2_shuffled": 0.21778014008155566,
+          "d_strict": 0.027426468502309342
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.2759269811632608,
+          "r2": 0.7475768239281781,
+          "helicality_shuffled": 0.16881618148418992,
+          "r2_shuffled": 0.20606784001825063,
+          "d_strict": -0.024375851476773902
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.06796869463753254,
+          "r2": 0.4423939932675156,
+          "helicality_shuffled": 0.06232947792391098,
+          "r2_shuffled": 0.1703152669262764,
+          "d_strict": -0.00360810043989912
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.2767948334330084,
+          "r2": 0.3435981675196006,
+          "helicality_shuffled": 0.26964119889512694,
+          "r2_shuffled": 0.25158599461622844,
+          "d_strict": -0.03381849032608453
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.1517475191175092,
+          "r2": 0.539011584022197,
+          "helicality_shuffled": 0.15445302911211495,
+          "r2_shuffled": 0.200098283848824,
+          "d_strict": -0.008937706239376508
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.5080079490340937,
+          "r2": 0.6151838091148771,
+          "helicality_shuffled": 0.41025665511817877,
+          "r2_shuffled": 0.1688154237168722,
+          "d_strict": -0.00048795675833179786
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.5565749827253383,
+          "r2": 0.8429296123035512,
+          "helicality_shuffled": 0.4944345181639745,
+          "r2_shuffled": 0.1849450004931813,
+          "d_strict": -0.023708168846471978
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 0.1351050826600347,
+          "r2": 0.770743530683337,
+          "helicality_shuffled": 0.12649930795294548,
+          "r2_shuffled": 0.1360068074128613,
+          "d_strict": -0.03749096274283037
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 1.3606119466728166,
+          "r2": 0.8383530490835487,
+          "helicality_shuffled": 1.0382139173305058,
+          "r2_shuffled": 0.19375895759584327,
+          "d_strict": -0.007599076063432575
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.4127189941854153,
+          "r2": 0.5984082530112279,
+          "helicality_shuffled": 0.4174483839428445,
+          "r2_shuffled": 0.2096964088497575,
+          "d_strict": -0.013764210144309064
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.123952664459297,
+          "r2": 0.5775144554592144,
+          "helicality_shuffled": 0.1408951913801132,
+          "r2_shuffled": 0.2091442897197826,
+          "d_strict": -0.018262403096495072
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.5785210995417297,
+          "r2": 0.5006975760391364,
+          "helicality_shuffled": 0.4767460316903636,
+          "r2_shuffled": 0.1733088981894575,
+          "d_strict": -0.008498082191657708
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 3.342760995255768,
+          "r2": 0.49001297115077447,
+          "helicality_shuffled": 2.82812302222153,
+          "r2_shuffled": 0.2232151196956016,
+          "d_strict": -0.004397146823362674
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 0.8931427551294334,
+          "r2": 0.845150610776553,
+          "helicality_shuffled": 0.9036001016204118,
+          "r2_shuffled": 0.19387162321642104,
+          "d_strict": -0.007589410083396864
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.06567773773875511,
+          "r2": 0.6232442105199174,
+          "helicality_shuffled": 0.056557764269787064,
+          "r2_shuffled": 0.12655612401926797,
+          "d_strict": 0.007352424436743332
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.17699525612686992,
+          "r2": 0.5134022461295948,
+          "helicality_shuffled": 0.13616634416318174,
+          "r2_shuffled": 0.17878896262523825,
+          "d_strict": 0.024267537323314436
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.3947314382788583,
+          "r2": 0.532942330325325,
+          "helicality_shuffled": 0.3457571402304441,
+          "r2_shuffled": 0.19719628886427587,
+          "d_strict": -0.05251202762153284
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.2754003156817343,
+          "r2": 0.46657085258969566,
+          "helicality_shuffled": 0.18666015554696638,
+          "r2_shuffled": 0.20528038725203912,
+          "d_strict": -0.018933684292000152
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.3496523394484699,
+          "r2": 0.6245576047653629,
+          "helicality_shuffled": 0.2023512316733045,
+          "r2_shuffled": 0.17177634926350693,
+          "d_strict": -0.0030497458129226107
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.4995036013321458,
+          "r2": 0.8475410208568246,
+          "helicality_shuffled": 0.32001994698942016,
+          "r2_shuffled": 0.13823144701667112,
+          "d_strict": -0.01335239660765497
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.5856842684798629,
+          "r2": 0.4768987107373035,
+          "helicality_shuffled": 0.4933716739445121,
+          "r2_shuffled": 0.1732950127261349,
+          "d_strict": -0.006609477561635102
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.1783333957926151,
+          "r2": 0.47374604773580886,
+          "helicality_shuffled": 0.15788190357222812,
+          "r2_shuffled": 0.22887665677506053,
+          "d_strict": -0.004530040149454573
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.5192426942520478,
+          "r2": 0.4697373125018932,
+          "helicality_shuffled": 0.4612870527618409,
+          "r2_shuffled": 0.1566618325532806,
+          "d_strict": 0.0020362639973349195
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.28269271847085703,
+          "r2": 0.401182766475669,
+          "helicality_shuffled": 0.23355410688032754,
+          "r2_shuffled": 0.11806230510126448,
+          "d_strict": -0.0033897059281615682
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.5668006024910796,
+          "r2": 0.6657241795473291,
+          "helicality_shuffled": 0.4538449221303421,
+          "r2_shuffled": 0.16062521659825935,
+          "d_strict": -0.0038344191787360593
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.2541793940036639,
+          "r2": 0.4754750172387848,
+          "helicality_shuffled": 0.16423399690695378,
+          "r2_shuffled": 0.15570738113645788,
+          "d_strict": -0.01620757480974644
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.2593065880337789,
+          "r2": 0.7575311997743082,
+          "helicality_shuffled": 0.1478807677880776,
+          "r2_shuffled": 0.1408839134097446,
+          "d_strict": -0.01816789130765173
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.6313062418225422,
+          "r2": 0.5630659220212,
+          "helicality_shuffled": 0.41164939334592077,
+          "r2_shuffled": 0.2350869729496009,
+          "d_strict": -0.004279066714066193
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.30280658569578445,
+          "r2": 0.6798522176650963,
+          "helicality_shuffled": 0.24298287129272148,
+          "r2_shuffled": 0.22802597732924068,
+          "d_strict": -0.0024749531295649163
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.31149489148208354,
+          "r2": 0.6513516476094787,
+          "helicality_shuffled": 0.28608143561688937,
+          "r2_shuffled": 0.21417597803440602,
+          "d_strict": -0.012492729946723236
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.2902008920822413,
+          "r2": 0.540931294423046,
+          "helicality_shuffled": 0.225574478273184,
+          "r2_shuffled": 0.19155282156055597,
+          "d_strict": -0.026386679099912436
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.6143366430753724,
+          "r2": 0.48526274672434,
+          "helicality_shuffled": 0.4362711814946778,
+          "r2_shuffled": 0.16583940611836945,
+          "d_strict": 0.0006727148788970849
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.3302085699674457,
+          "r2": 0.6109694837414594,
+          "helicality_shuffled": 0.2373243812050056,
+          "r2_shuffled": 0.13820607968520104,
+          "d_strict": -0.03999286611146746
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 1.0209445088799576,
+          "r2": 0.6696411553683628,
+          "helicality_shuffled": 0.7364558127801148,
+          "r2_shuffled": 0.20002813922745044,
+          "d_strict": -0.00493618601679513
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.9601530758671863,
+          "r2": 0.43216371025211686,
+          "helicality_shuffled": 0.6839101667292204,
+          "r2_shuffled": 0.19753275502124157,
+          "d_strict": -0.004849769066797571
+        }
+      ]
+    },
+    "encodec_32k": {
+      "n_inst": 66,
+      "helicality_mean": 5.714931057673866,
+      "helicality_median": 0.08233092877609652,
+      "r2_mean": 0.7109917747916824,
+      "r2_shuffled_mean": 0.1771257952569617,
+      "d_strict_mean": -0.012229305264304663,
+      "frac_inst_positive": 0.3333333333333333,
+      "rho_helicality_dstrict": 0.11792088508506421,
+      "rho_r2_dstrict": -0.13445360609539717,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.02470783633339186,
+          "r2": 0.8611124656654442,
+          "helicality_shuffled": 0.011497243126230539,
+          "r2_shuffled": 0.10690759922064308,
+          "d_strict": -0.09376480326079673
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.06701368494206045,
+          "r2": 0.850821615588929,
+          "helicality_shuffled": 0.02967529802220208,
+          "r2_shuffled": 0.12699761759629158,
+          "d_strict": -0.1254476938264364
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.11733941071548412,
+          "r2": 0.7231549959264978,
+          "helicality_shuffled": 0.09232774154443196,
+          "r2_shuffled": 0.16960903013842432,
+          "d_strict": -0.009842967788917023
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.5189680492934093,
+          "r2": 0.6904096643438891,
+          "helicality_shuffled": 0.5621166366025151,
+          "r2_shuffled": 0.19868306964995797,
+          "d_strict": -0.004620816330929145
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.010615843292406679,
+          "r2": 0.6978557302116103,
+          "helicality_shuffled": 0.007550495786465296,
+          "r2_shuffled": 0.183694146313503,
+          "d_strict": 0.16314618285737303
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.021006143979323707,
+          "r2": 0.8529829727438146,
+          "helicality_shuffled": 0.011958493062195931,
+          "r2_shuffled": 0.1379520062821098,
+          "d_strict": -0.023627933842853888
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.03736435634189458,
+          "r2": 0.7415822687716205,
+          "helicality_shuffled": 0.024034435756732954,
+          "r2_shuffled": 0.14430568182545866,
+          "d_strict": -0.07385282165730578
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.07960442663519811,
+          "r2": 0.8799617266716188,
+          "helicality_shuffled": 0.06451575159901574,
+          "r2_shuffled": 0.1959021097446163,
+          "d_strict": -0.040348546601024715
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.02971325973583492,
+          "r2": 0.6676827966062202,
+          "helicality_shuffled": 0.0206301332271463,
+          "r2_shuffled": 0.1773307802842784,
+          "d_strict": -0.008592860918447465
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.020855930404798228,
+          "r2": 0.6513098058894797,
+          "helicality_shuffled": 0.015722335597451877,
+          "r2_shuffled": 0.19300696918676707,
+          "d_strict": 0.12082265731934422
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.04094913425412108,
+          "r2": 0.6113355646378626,
+          "helicality_shuffled": 0.02554805868329858,
+          "r2_shuffled": 0.15176597453538132,
+          "d_strict": 0.03391245622696881
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 1.5732104709371042,
+          "r2": 0.8657005016927797,
+          "helicality_shuffled": 1.2906923605612635,
+          "r2_shuffled": 0.16077509435293091,
+          "d_strict": -0.005312145751420916
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.04431048207495354,
+          "r2": 0.8256604456761829,
+          "helicality_shuffled": 0.024894368892241992,
+          "r2_shuffled": 0.19921415124177944,
+          "d_strict": -0.006224500866241156
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 1.8509365695063797,
+          "r2": 0.8832967584498953,
+          "helicality_shuffled": 1.6285483200757522,
+          "r2_shuffled": 0.16230686026277585,
+          "d_strict": -0.007160477523217246
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.19625310907433205,
+          "r2": 0.8495860138108204,
+          "helicality_shuffled": 0.16137326600531918,
+          "r2_shuffled": 0.16274940462806897,
+          "d_strict": -0.07401112396926735
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.9131043763334612,
+          "r2": 0.8012745863340576,
+          "helicality_shuffled": 0.8246837406088772,
+          "r2_shuffled": 0.2584305201194227,
+          "d_strict": -0.0025163289662323285
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.13150501372005993,
+          "r2": 0.7557347808571049,
+          "helicality_shuffled": 0.12526754440581925,
+          "r2_shuffled": 0.17319581904951475,
+          "d_strict": -0.04924720251647985
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.09412655158176929,
+          "r2": 0.715155502200101,
+          "helicality_shuffled": 0.07476871562534865,
+          "r2_shuffled": 0.1532382769793159,
+          "d_strict": -0.02997205687070681
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.6462244928048526,
+          "r2": 0.7471628581947259,
+          "helicality_shuffled": 0.6747011836967084,
+          "r2_shuffled": 0.20441100913705668,
+          "d_strict": -0.004251127300005542
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.0437475007493714,
+          "r2": 0.8506977800562124,
+          "helicality_shuffled": 0.027194428235933,
+          "r2_shuffled": 0.17461407695405085,
+          "d_strict": -0.14019571884348125
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 2.8937615252966546,
+          "r2": 0.7605875934879772,
+          "helicality_shuffled": 2.303852135415258,
+          "r2_shuffled": 0.12871227473023195,
+          "d_strict": -0.0006644443667637168
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.1813011387903816,
+          "r2": 0.9036033089234382,
+          "helicality_shuffled": 0.04780574569124959,
+          "r2_shuffled": 0.22873137599836502,
+          "d_strict": 0.03202364416923209
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.0788621000411367,
+          "r2": 0.49784728811233847,
+          "helicality_shuffled": 0.07221961788695093,
+          "r2_shuffled": 0.13760579225358904,
+          "d_strict": -0.022595683596514315
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 2.9005936965272534,
+          "r2": 0.8649781677981279,
+          "helicality_shuffled": 2.627094003776222,
+          "r2_shuffled": 0.170594450257332,
+          "d_strict": -0.004577211537890036
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.03718636207980935,
+          "r2": 0.4301543166474838,
+          "helicality_shuffled": 0.02807984725907927,
+          "r2_shuffled": 0.1424256117728192,
+          "d_strict": 0.045447144843229204
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.010656326075622256,
+          "r2": 0.42307258284265614,
+          "helicality_shuffled": 0.00926007417032595,
+          "r2_shuffled": 0.25287401302676515,
+          "d_strict": 0.022841326572307308
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.10056233689148629,
+          "r2": 0.7608187569706413,
+          "helicality_shuffled": 0.06089400804973028,
+          "r2_shuffled": 0.17524069837725798,
+          "d_strict": 0.008137005353720417
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.06704507899683342,
+          "r2": 0.8466221024905896,
+          "helicality_shuffled": 0.029990339663246896,
+          "r2_shuffled": 0.1685149619305807,
+          "d_strict": -0.028298873278648662
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 1.9276929136197902,
+          "r2": 0.5224691818742002,
+          "helicality_shuffled": 1.427508893036553,
+          "r2_shuffled": 0.20773132054179655,
+          "d_strict": -0.0010189244449496648
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.09663009967355062,
+          "r2": 0.33495743076860907,
+          "helicality_shuffled": 0.09372974321591906,
+          "r2_shuffled": 0.2066591898763943,
+          "d_strict": 0.007597552494570614
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.2968063949314201,
+          "r2": 0.9374652140277451,
+          "helicality_shuffled": 0.057766563546309775,
+          "r2_shuffled": 0.21745437759284447,
+          "d_strict": -0.01209083756383289
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.01229783213583309,
+          "r2": 0.3573603850945516,
+          "helicality_shuffled": 0.009448556937777002,
+          "r2_shuffled": 0.17311670867548912,
+          "d_strict": 0.0060977828937972545
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.014761471997891297,
+          "r2": 0.8373727655510331,
+          "helicality_shuffled": 0.007951862001012392,
+          "r2_shuffled": 0.19160147221084356,
+          "d_strict": -0.059081858822909616
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.049896117538901226,
+          "r2": 0.8530455857181964,
+          "helicality_shuffled": 0.01788738609969226,
+          "r2_shuffled": 0.19584734164092377,
+          "d_strict": 0.005624057570030705
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.05439661322544152,
+          "r2": 0.575061620141549,
+          "helicality_shuffled": 0.04595666825803659,
+          "r2_shuffled": 0.17737188775120316,
+          "d_strict": -0.036914518849546774
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.09540004577987853,
+          "r2": 0.9006851526261546,
+          "helicality_shuffled": 0.028598951322553638,
+          "r2_shuffled": 0.16599368612120224,
+          "d_strict": 0.1281616135549144
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.08505743091699493,
+          "r2": 0.862240879745498,
+          "helicality_shuffled": 0.04819043457266964,
+          "r2_shuffled": 0.14213563376194926,
+          "d_strict": 0.013730406341900592
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 6.956856018326159,
+          "r2": 0.5812497250081741,
+          "helicality_shuffled": 7.231572619232946,
+          "r2_shuffled": 0.15520082346231612,
+          "d_strict": -0.00037774029502568585
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 270.564083535406,
+          "r2": 0.5375416212859321,
+          "helicality_shuffled": 222.76252378908833,
+          "r2_shuffled": 0.1646461751731182,
+          "d_strict": 1.4335257838560267e-06
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 1.3067658846827046,
+          "r2": 0.7568720691402764,
+          "helicality_shuffled": 0.8852484335036213,
+          "r2_shuffled": 0.14263061921340314,
+          "d_strict": 0.0005375445099629061
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.9464543977162501,
+          "r2": 0.8868367875960282,
+          "helicality_shuffled": 0.9595737620105678,
+          "r2_shuffled": 0.192599201464705,
+          "d_strict": -0.00232499807512887
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.15372199409628984,
+          "r2": 0.7102412990178932,
+          "helicality_shuffled": 0.17029713998264953,
+          "r2_shuffled": 0.2615797297985025,
+          "d_strict": 0.0015142803281408268
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.03522467997667671,
+          "r2": 0.6958831670856234,
+          "helicality_shuffled": 0.020097438214544735,
+          "r2_shuffled": 0.19454664333783755,
+          "d_strict": -0.09758952622861039
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 1.886780923589775,
+          "r2": 0.6548245146270433,
+          "helicality_shuffled": 1.7134484725055228,
+          "r2_shuffled": 0.2127020975264554,
+          "d_strict": -0.0026914538620690376
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 71.94728035621239,
+          "r2": 0.5381813153460353,
+          "helicality_shuffled": 52.33399990626947,
+          "r2_shuffled": 0.1470509508422454,
+          "d_strict": -9.042836138695165e-05
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.05412997405957867,
+          "r2": 0.7407076146291325,
+          "helicality_shuffled": 0.03260224440870953,
+          "r2_shuffled": 0.2407298129879697,
+          "d_strict": 0.11041309865819515
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.01134455561435631,
+          "r2": 0.6658773408091669,
+          "helicality_shuffled": 0.008722423962276042,
+          "r2_shuffled": 0.13765516152456525,
+          "d_strict": 0.09212527863926201
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.07734611628074292,
+          "r2": 0.4933866974070733,
+          "helicality_shuffled": 0.07979378387775357,
+          "r2_shuffled": 0.2025336821276531,
+          "d_strict": -0.07197396597884786
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.009686059306471357,
+          "r2": 0.5128081699125371,
+          "helicality_shuffled": 0.007068176669369928,
+          "r2_shuffled": 0.20351300719151377,
+          "d_strict": -0.1953879411100738
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.03931353086544125,
+          "r2": 0.7224849442541306,
+          "helicality_shuffled": 0.026985121819870426,
+          "r2_shuffled": 0.14241506082785527,
+          "d_strict": -0.01976316372320086
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.8741695297998382,
+          "r2": 0.8337568710833941,
+          "helicality_shuffled": 0.6923589282257829,
+          "r2_shuffled": 0.16452370374974756,
+          "d_strict": -0.029251488660193226
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.10875043758987368,
+          "r2": 0.7850358375743139,
+          "helicality_shuffled": 0.08381626725607114,
+          "r2_shuffled": 0.21874228301733212,
+          "d_strict": -0.010834639690826542
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.2914198780806896,
+          "r2": 0.7318670941809681,
+          "helicality_shuffled": 0.1457046209596627,
+          "r2_shuffled": 0.1569839296993969,
+          "d_strict": -0.008526174617315085
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.13821418634501675,
+          "r2": 0.7727221469873647,
+          "helicality_shuffled": 0.12245017851547205,
+          "r2_shuffled": 0.18057937160594884,
+          "d_strict": -0.024027300348854697
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.06976332440243106,
+          "r2": 0.7462345955413778,
+          "helicality_shuffled": 0.04875081033743015,
+          "r2_shuffled": 0.12679930359024616,
+          "d_strict": 0.003569078977516349
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.074380338627123,
+          "r2": 0.5986874042146786,
+          "helicality_shuffled": 0.06774554131379713,
+          "r2_shuffled": 0.10454712512334019,
+          "d_strict": -0.014277334254279128
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.037697458025743515,
+          "r2": 0.7049112668690471,
+          "helicality_shuffled": 0.01984626258822359,
+          "r2_shuffled": 0.19474173575423326,
+          "d_strict": 0.2848789790756511
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.053705162598203245,
+          "r2": 0.7244186518436107,
+          "helicality_shuffled": 0.04118960041541445,
+          "r2_shuffled": 0.1531136804621125,
+          "d_strict": -0.052774113987848925
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.1378384795619077,
+          "r2": 0.8280591726313877,
+          "helicality_shuffled": 0.09642488167350878,
+          "r2_shuffled": 0.15459410977410504,
+          "d_strict": 0.00036364167962554816
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.03001363739684435,
+          "r2": 0.7733146292227028,
+          "helicality_shuffled": 0.02685420850960259,
+          "r2_shuffled": 0.2696267735108284,
+          "d_strict": 0.015014671735691931
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.028007025919210685,
+          "r2": 0.8241517770744309,
+          "helicality_shuffled": 0.01719535079005463,
+          "r2_shuffled": 0.24390482612157727,
+          "d_strict": -0.14742118303965035
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.03696363340502091,
+          "r2": 0.5519834346530919,
+          "helicality_shuffled": 0.03049967667011452,
+          "r2_shuffled": 0.1508640980635173,
+          "d_strict": -0.18689290945286863
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 1.742923523889454,
+          "r2": 0.4551965120108692,
+          "helicality_shuffled": 1.1680179208018775,
+          "r2_shuffled": 0.15291182462818653,
+          "d_strict": 0.0007846103906700153
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.03674947705214361,
+          "r2": 0.5077002662103143,
+          "helicality_shuffled": 0.023796088406909506,
+          "r2_shuffled": 0.14337244719819064,
+          "d_strict": -0.14406127947916364
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.08675683844024668,
+          "r2": 0.8222806179348405,
+          "helicality_shuffled": 0.0496502975675622,
+          "r2_shuffled": 0.14793415497433893,
+          "d_strict": -0.030592139300776644
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 4.084644721979512,
+          "r2": 0.5774204249499431,
+          "helicality_shuffled": 3.9532835974179132,
+          "r2_shuffled": 0.21155916018629572,
+          "d_strict": -0.0007893354010565234
+        }
+      ]
+    },
+    "cqt": {
+      "n_inst": 66,
+      "helicality_mean": 0.0023737981647199494,
+      "helicality_median": 0.0011070759270731215,
+      "r2_mean": 0.8035557772176268,
+      "r2_shuffled_mean": 0.19072277062604295,
+      "d_strict_mean": 0.00336333134150826,
+      "frac_inst_positive": 0.8787878787878788,
+      "rho_helicality_dstrict": -0.15307379187976206,
+      "rho_r2_dstrict": 0.2840413318025259,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.0004860490550852588,
+          "r2": 0.8356835881784421,
+          "helicality_shuffled": 0.00011774018410045428,
+          "r2_shuffled": 0.15588657862036048,
+          "d_strict": 0.0013017358100109178
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.001472216821362056,
+          "r2": 0.9159825515070598,
+          "helicality_shuffled": 0.0005255612985706365,
+          "r2_shuffled": 0.16107897143994254,
+          "d_strict": 0.0022749931296804915
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.0014689835488542024,
+          "r2": 0.9315697295897947,
+          "helicality_shuffled": 0.0002929632498630752,
+          "r2_shuffled": 0.1676689820292493,
+          "d_strict": 0.005644554132122281
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.0008389617020148754,
+          "r2": 0.5212194353701864,
+          "helicality_shuffled": 0.0005355346259515809,
+          "r2_shuffled": 0.16160516453005824,
+          "d_strict": 0.003679623032707524
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.001210573982402349,
+          "r2": 0.8909390908710542,
+          "helicality_shuffled": 0.0002985139641956116,
+          "r2_shuffled": 0.2182322521462826,
+          "d_strict": 0.011892311774533537
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.0035431609338158524,
+          "r2": 0.942894551523915,
+          "helicality_shuffled": 0.0003683612236782511,
+          "r2_shuffled": 0.2692474933244512,
+          "d_strict": 0.002646060923625404
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.002039115713909946,
+          "r2": 0.9569682047347574,
+          "helicality_shuffled": 0.0002710385227358557,
+          "r2_shuffled": 0.16026143081085942,
+          "d_strict": 0.00406861298569039
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.0012258144932662117,
+          "r2": 0.876286512201957,
+          "helicality_shuffled": 0.0004764011007564216,
+          "r2_shuffled": 0.18067600399370365,
+          "d_strict": 0.003437463348037295
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.00046665372917735313,
+          "r2": 0.7927104450395825,
+          "helicality_shuffled": 0.00023592441278874127,
+          "r2_shuffled": 0.14960159316451715,
+          "d_strict": 0.008013746298378477
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.00046239795754602194,
+          "r2": 0.6347723142083631,
+          "helicality_shuffled": 0.00027326711768944163,
+          "r2_shuffled": 0.21416708622990266,
+          "d_strict": 0.012508361733263862
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.001213521538856239,
+          "r2": 0.9297212730696116,
+          "helicality_shuffled": 0.0001946867697528258,
+          "r2_shuffled": 0.1709303253576615,
+          "d_strict": 0.0032514438028756754
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.000614682818387993,
+          "r2": 0.7006431328431197,
+          "helicality_shuffled": 0.0002729296070092683,
+          "r2_shuffled": 0.16189760036053913,
+          "d_strict": 0.0034398436546324573
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.0008789005667289252,
+          "r2": 0.8829422761736765,
+          "helicality_shuffled": 0.00023704101391946571,
+          "r2_shuffled": 0.15316943767411761,
+          "d_strict": 0.008110301747402016
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.0026134963670476755,
+          "r2": 0.8863915524555095,
+          "helicality_shuffled": 0.0006881056565606822,
+          "r2_shuffled": 0.1510545120365966,
+          "d_strict": 0.00222407678711134
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.0005983171893360895,
+          "r2": 0.7315550893692675,
+          "helicality_shuffled": 0.0002835376179442715,
+          "r2_shuffled": 0.1687858239738118,
+          "d_strict": 0.001693996254768515
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.0013358041521640514,
+          "r2": 0.8612140346164088,
+          "helicality_shuffled": 0.0003417386350074884,
+          "r2_shuffled": 0.3032269957193783,
+          "d_strict": 0.0019727602345226414
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.0005432629514580763,
+          "r2": 0.8378177004434635,
+          "helicality_shuffled": 0.00019167845659712586,
+          "r2_shuffled": 0.16513120325347486,
+          "d_strict": 0.007859041779682996
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.0005899132419557258,
+          "r2": 0.6735102485450478,
+          "helicality_shuffled": 0.00027069548920384323,
+          "r2_shuffled": 0.19534961709898768,
+          "d_strict": 0.00031353905474051924
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.000712497768172383,
+          "r2": 0.8592350524542935,
+          "helicality_shuffled": 0.00023176477854295135,
+          "r2_shuffled": 0.1716632990345356,
+          "d_strict": 0.005525878900907721
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.0006061681486708733,
+          "r2": 0.6753099866045711,
+          "helicality_shuffled": 0.00028037516072738255,
+          "r2_shuffled": 0.20578946102092688,
+          "d_strict": 4.745028497776804e-05
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.006406559853894727,
+          "r2": 0.7105598351917921,
+          "helicality_shuffled": 0.0026810645666511053,
+          "r2_shuffled": 0.16744201712610696,
+          "d_strict": -0.0005390798560513943
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.0006394559443677756,
+          "r2": 0.8192491253586136,
+          "helicality_shuffled": 0.0002136924399775564,
+          "r2_shuffled": 0.14402859310190907,
+          "d_strict": 0.004930051596909402
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.0010456363957745227,
+          "r2": 0.9168656149118029,
+          "helicality_shuffled": 0.000345877755140808,
+          "r2_shuffled": 0.19800566053430313,
+          "d_strict": 0.0022449890395562777
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.002230373596124741,
+          "r2": 0.6315706412795246,
+          "helicality_shuffled": 0.001150309843198358,
+          "r2_shuffled": 0.14898037290534227,
+          "d_strict": 0.00026400667927817256
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.0011073976128831643,
+          "r2": 0.904147829218298,
+          "helicality_shuffled": 0.0003125781135860929,
+          "r2_shuffled": 0.20252224863729018,
+          "d_strict": 0.0063474787161837964
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.0007305384417256031,
+          "r2": 0.8172821638642428,
+          "helicality_shuffled": 0.00023871256898397577,
+          "r2_shuffled": 0.16519708406215505,
+          "d_strict": -0.0011211219912197201
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.0011960603774740397,
+          "r2": 0.9111194347950138,
+          "helicality_shuffled": 0.00025991797653438366,
+          "r2_shuffled": 0.22893581784347783,
+          "d_strict": 0.004710069721984844
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.0005702186394894135,
+          "r2": 0.816869316785528,
+          "helicality_shuffled": 0.0001914128868952172,
+          "r2_shuffled": 0.23280753002452792,
+          "d_strict": 0.0005562473655399414
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.0046465264816390435,
+          "r2": 0.4666778643691383,
+          "helicality_shuffled": 0.0027608009161914594,
+          "r2_shuffled": 0.18323672836447258,
+          "d_strict": -0.0011157332765602268
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.0014199042563003423,
+          "r2": 0.9207245755879174,
+          "helicality_shuffled": 0.000394168537268867,
+          "r2_shuffled": 0.19121381618317912,
+          "d_strict": 0.0031162387454366502
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.0003772969007286366,
+          "r2": 0.8459226299411812,
+          "helicality_shuffled": 0.00011982118024849838,
+          "r2_shuffled": 0.18369475122690782,
+          "d_strict": 0.0029568234969983287
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.0004905259019822649,
+          "r2": 0.6687163744549375,
+          "helicality_shuffled": 0.0002819304670884821,
+          "r2_shuffled": 0.16750147176838148,
+          "d_strict": 0.0025713203946979846
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.000643704245050285,
+          "r2": 0.9225663112493648,
+          "helicality_shuffled": 0.00015708095365069425,
+          "r2_shuffled": 0.17477101361102343,
+          "d_strict": -0.0017486766076522109
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.0004343518015481709,
+          "r2": 0.7905236705409906,
+          "helicality_shuffled": 0.00017280003842752898,
+          "r2_shuffled": 0.24482888931226676,
+          "d_strict": 0.002655681520030928
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.0008167693529321224,
+          "r2": 0.7734701227194234,
+          "helicality_shuffled": 0.0002787435658431904,
+          "r2_shuffled": 0.17130249013420007,
+          "d_strict": 0.005876103074211714
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.004746006630364869,
+          "r2": 0.9671967974104928,
+          "helicality_shuffled": 0.0002807002814048642,
+          "r2_shuffled": 0.15744885934874508,
+          "d_strict": 0.018449677270783726
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.0015454171037749722,
+          "r2": 0.91434916536913,
+          "helicality_shuffled": 0.00025545251573817627,
+          "r2_shuffled": 0.1675046241109981,
+          "d_strict": 0.002898246238298041
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.004317177777733103,
+          "r2": 0.6093240991967561,
+          "helicality_shuffled": 0.0019697431339182883,
+          "r2_shuffled": 0.21038355935236341,
+          "d_strict": 0.0002718363158978887
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 0.00920514879333321,
+          "r2": 0.840351756911045,
+          "helicality_shuffled": 0.005310854720572186,
+          "r2_shuffled": 0.14560167638141097,
+          "d_strict": -0.00013066610336592843
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 0.008421213414737876,
+          "r2": 0.9556800270125155,
+          "helicality_shuffled": 0.0009842920476242792,
+          "r2_shuffled": 0.14915140250884706,
+          "d_strict": 0.0008170389467989647
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.00101631866106632,
+          "r2": 0.7550731266837101,
+          "helicality_shuffled": 0.0004565383889793623,
+          "r2_shuffled": 0.1677344437138658,
+          "d_strict": 0.001813241083815753
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.00092423816550095,
+          "r2": 0.6407929958571585,
+          "helicality_shuffled": 0.0004870613331109127,
+          "r2_shuffled": 0.28583534040857195,
+          "d_strict": 0.003094901228182456
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.0023197307813368653,
+          "r2": 0.9345593055344552,
+          "helicality_shuffled": 0.0003565588552688885,
+          "r2_shuffled": 0.2447595351789994,
+          "d_strict": 0.0018996797236630059
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 0.010466141117855373,
+          "r2": 0.9179649752585507,
+          "helicality_shuffled": 0.0060377544651924265,
+          "r2_shuffled": 0.18344145680056068,
+          "d_strict": -0.002312418438807695
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 0.03384351408827404,
+          "r2": 0.6878953989465016,
+          "helicality_shuffled": 0.017027850530451534,
+          "r2_shuffled": 0.10833766351577034,
+          "d_strict": 0.00023504522308059883
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.0008525468442439914,
+          "r2": 0.7438010931498791,
+          "helicality_shuffled": 0.0003483942495236846,
+          "r2_shuffled": 0.2529022171209888,
+          "d_strict": 0.01743286315217696
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.0009026064960420115,
+          "r2": 0.8406832834637107,
+          "helicality_shuffled": 0.00038142972592763855,
+          "r2_shuffled": 0.2164389648386994,
+          "d_strict": 0.005411427824405957
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.001491982666727723,
+          "r2": 0.8553304767165067,
+          "helicality_shuffled": 0.00044950980420363224,
+          "r2_shuffled": 0.20125858735726476,
+          "d_strict": 0.0013814224410990672
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.0003641785461747139,
+          "r2": 0.4743702022619065,
+          "helicality_shuffled": 0.00022291560569763204,
+          "r2_shuffled": 0.2256196512197578,
+          "d_strict": -0.01578442830584803
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.0016043814558443486,
+          "r2": 0.943085490251329,
+          "helicality_shuffled": 0.0002153769575114802,
+          "r2_shuffled": 0.233873751542225,
+          "d_strict": 0.010754683673749321
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.0010614983064835988,
+          "r2": 0.8939239299637246,
+          "helicality_shuffled": 0.00027446785748660004,
+          "r2_shuffled": 0.18229163460574704,
+          "d_strict": 0.002305101801618248
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.0003998103956940978,
+          "r2": 0.6658779385148131,
+          "helicality_shuffled": 0.00021490995799392022,
+          "r2_shuffled": 0.17759284782373086,
+          "d_strict": 0.0010563291233244287
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.0011067542412630787,
+          "r2": 0.9001794898942516,
+          "helicality_shuffled": 0.0002279433872062119,
+          "r2_shuffled": 0.16159529019328123,
+          "d_strict": 0.0025567495950412633
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.0015377624288384147,
+          "r2": 0.8887943802085424,
+          "helicality_shuffled": 0.00037597046580840595,
+          "r2_shuffled": 0.26540998539479155,
+          "d_strict": 0.0031598774900769566
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.0034287004511288164,
+          "r2": 0.9633991568150377,
+          "helicality_shuffled": 0.00023499069818270303,
+          "r2_shuffled": 0.17010268045451737,
+          "d_strict": 0.01575723802056217
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.000890863508038956,
+          "r2": 0.8954553067747331,
+          "helicality_shuffled": 0.00022940950670618284,
+          "r2_shuffled": 0.24246949102927762,
+          "d_strict": 0.002518553638609311
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.0012501424615104044,
+          "r2": 0.6197921276812897,
+          "helicality_shuffled": 0.0006106672433269235,
+          "r2_shuffled": 0.18709526072221894,
+          "d_strict": 0.005051705626043401
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.0012444983309451273,
+          "r2": 0.9128387809979702,
+          "helicality_shuffled": 0.0002303261311126636,
+          "r2_shuffled": 0.18168785228391648,
+          "d_strict": 0.004711074752918765
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.0006202717638057125,
+          "r2": 0.763644847665504,
+          "helicality_shuffled": 0.0003050904700196807,
+          "r2_shuffled": 0.16856241060900123,
+          "d_strict": 0.0001564646311448259
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.0015399945035881471,
+          "r2": 0.946868741699852,
+          "helicality_shuffled": 0.00016934164689002838,
+          "r2_shuffled": 0.2550482192341308,
+          "d_strict": 0.0004909161815233043
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.0004448418525201998,
+          "r2": 0.7852597198229833,
+          "helicality_shuffled": 0.00018897010738206914,
+          "r2_shuffled": 0.22758651385192286,
+          "d_strict": 0.0023329859485790028
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.00046243093122266913,
+          "r2": 0.7993941945157688,
+          "helicality_shuffled": 0.00023560417989531627,
+          "r2_shuffled": 0.2025626149866394,
+          "d_strict": 0.00033589383311449783
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.00617025355473665,
+          "r2": 0.5861382400822418,
+          "helicality_shuffled": 0.003210967371959409,
+          "r2_shuffled": 0.1708739386008521,
+          "d_strict": 0.000899274535977157
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.00048177399873097174,
+          "r2": 0.6905466474346034,
+          "helicality_shuffled": 0.0002507954578549699,
+          "r2_shuffled": 0.1510392613175361,
+          "d_strict": 0.00970417667231116
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.0013699661727294876,
+          "r2": 0.8561053615994219,
+          "helicality_shuffled": 0.00034228584595690783,
+          "r2_shuffled": 0.2069190549275216,
+          "d_strict": 0.003920609631748118
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.006964700945142926,
+          "r2": 0.532371958601133,
+          "helicality_shuffled": 0.00490043745885461,
+          "r2_shuffled": 0.19668175522978104,
+          "d_strict": -0.0008198275059938531
+        }
+      ]
+    },
+    "pq_stft": {
+      "n_inst": 66,
+      "helicality_mean": 0.07093029449893505,
+      "helicality_median": 0.03415121359108775,
+      "r2_mean": 0.7196529803224918,
+      "r2_shuffled_mean": 0.18799997734632326,
+      "d_strict_mean": 0.19926701548114328,
+      "frac_inst_positive": 0.8787878787878788,
+      "rho_helicality_dstrict": -0.24584072643774144,
+      "rho_r2_dstrict": 0.07508610792192884,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 0.029585685410432157,
+          "r2": 0.7575107272974753,
+          "helicality_shuffled": 0.009843493696072977,
+          "r2_shuffled": 0.14991626287771587,
+          "d_strict": 0.13716308457171603
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 0.035873993310946005,
+          "r2": 0.8739678578458944,
+          "helicality_shuffled": 0.010016140271966019,
+          "r2_shuffled": 0.14300227040788427,
+          "d_strict": 0.07290618707489116
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 0.06406574416479464,
+          "r2": 0.8935941816804873,
+          "helicality_shuffled": 0.01034756639039946,
+          "r2_shuffled": 0.16360784287028773,
+          "d_strict": 0.20087144762436393
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 0.033997555544491666,
+          "r2": 0.5835045870826292,
+          "helicality_shuffled": 0.01748335213036822,
+          "r2_shuffled": 0.190096622827312,
+          "d_strict": 0.12939164161814354
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 0.02717764901787792,
+          "r2": 0.6645453595095531,
+          "helicality_shuffled": 0.012122533932137223,
+          "r2_shuffled": 0.16985493801470708,
+          "d_strict": 0.5085533706791878
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 0.022224902764508066,
+          "r2": 0.6394590949203965,
+          "helicality_shuffled": 0.011255608733195577,
+          "r2_shuffled": 0.20237677626505612,
+          "d_strict": 0.3530353265025765
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 0.08184617106516687,
+          "r2": 0.9082223851538616,
+          "helicality_shuffled": 0.012594093622351461,
+          "r2_shuffled": 0.17728236601289804,
+          "d_strict": 0.318360395289639
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 0.025273576841673293,
+          "r2": 0.6228003100305946,
+          "helicality_shuffled": 0.013734993765730513,
+          "r2_shuffled": 0.2433830357480642,
+          "d_strict": 0.33076155939274493
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 0.018441157114440658,
+          "r2": 0.7159153994686891,
+          "helicality_shuffled": 0.007079427024681537,
+          "r2_shuffled": 0.15979597288807845,
+          "d_strict": 0.1608266484833722
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 0.02671300555580607,
+          "r2": 0.678955217580339,
+          "helicality_shuffled": 0.009809581446424949,
+          "r2_shuffled": 0.16378401131428233,
+          "d_strict": 0.2809967908731568
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 0.05722496201747686,
+          "r2": 0.8845209346728776,
+          "helicality_shuffled": 0.0123367524499507,
+          "r2_shuffled": 0.17499735336330924,
+          "d_strict": 0.3200099208748986
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 0.030645081874675555,
+          "r2": 0.7137735195310196,
+          "helicality_shuffled": 0.0135475513891921,
+          "r2_shuffled": 0.15626918456598682,
+          "d_strict": 0.14910279985045757
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 0.024951354310514755,
+          "r2": 0.7694766271971107,
+          "helicality_shuffled": 0.008092307839749797,
+          "r2_shuffled": 0.18259714846986486,
+          "d_strict": 0.17920853524272728
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 0.09149796216302697,
+          "r2": 0.8374619329485105,
+          "helicality_shuffled": 0.026448285736839584,
+          "r2_shuffled": 0.1294280706310219,
+          "d_strict": 0.19431855344979077
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 0.017518887573181707,
+          "r2": 0.6072698905415761,
+          "helicality_shuffled": 0.009239833594696597,
+          "r2_shuffled": 0.17681208192433295,
+          "d_strict": 0.05973520498131657
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 0.030792723390193788,
+          "r2": 0.777385161540222,
+          "helicality_shuffled": 0.01153103358104382,
+          "r2_shuffled": 0.3050245132402306,
+          "d_strict": 0.08724721985507289
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 0.04740930108806411,
+          "r2": 0.8703875663109459,
+          "helicality_shuffled": 0.011364344622525684,
+          "r2_shuffled": 0.18753149902240118,
+          "d_strict": 0.20366077676530708
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 0.024149127653327867,
+          "r2": 0.5570294124169033,
+          "helicality_shuffled": 0.012649772747008894,
+          "r2_shuffled": 0.18868091128496278,
+          "d_strict": -0.06185572470636387
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 0.04316632216830942,
+          "r2": 0.8687827214899004,
+          "helicality_shuffled": 0.011690605914650204,
+          "r2_shuffled": 0.14805683632556677,
+          "d_strict": 0.09669702374893463
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 0.012756745067661297,
+          "r2": 0.5473880085976145,
+          "helicality_shuffled": 0.00980959525338741,
+          "r2_shuffled": 0.19081832026841206,
+          "d_strict": -0.060225675298899356
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 0.08714277803792662,
+          "r2": 0.6361117825669816,
+          "helicality_shuffled": 0.05404151305422568,
+          "r2_shuffled": 0.18980452935881764,
+          "d_strict": -0.04020494363741678
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 0.020044031923277233,
+          "r2": 0.633128895598364,
+          "helicality_shuffled": 0.00923597448970065,
+          "r2_shuffled": 0.16376094423634235,
+          "d_strict": 0.37079785866843085
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 0.02561347019827172,
+          "r2": 0.5844743024364442,
+          "helicality_shuffled": 0.014709502335429078,
+          "r2_shuffled": 0.21326367106671618,
+          "d_strict": 0.3887808704224258
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 0.0515103756692308,
+          "r2": 0.6921987026201409,
+          "helicality_shuffled": 0.02973776549721794,
+          "r2_shuffled": 0.15533394576050175,
+          "d_strict": -0.06099570753206342
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 0.022097347790376292,
+          "r2": 0.5886767376553383,
+          "helicality_shuffled": 0.010898375008911958,
+          "r2_shuffled": 0.22226519163914693,
+          "d_strict": 0.3612343656961374
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 0.017600447025080016,
+          "r2": 0.4538119264527406,
+          "helicality_shuffled": 0.012172906095108208,
+          "r2_shuffled": 0.15750149081868603,
+          "d_strict": 0.2570998129343004
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 0.024443466596395114,
+          "r2": 0.6435958179004391,
+          "helicality_shuffled": 0.011962322435874714,
+          "r2_shuffled": 0.20445440512259216,
+          "d_strict": 0.4025646675536932
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 0.03430487163768384,
+          "r2": 0.7940353182130765,
+          "helicality_shuffled": 0.009435196461499479,
+          "r2_shuffled": 0.21972548417595616,
+          "d_strict": 0.26090166566028117
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 0.10416303890383101,
+          "r2": 0.36451271350665504,
+          "helicality_shuffled": 0.07786314050455273,
+          "r2_shuffled": 0.24654215480059138,
+          "d_strict": -0.05357533563824582
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 0.03546146961678527,
+          "r2": 0.7796706214240953,
+          "helicality_shuffled": 0.01204630208584139,
+          "r2_shuffled": 0.2051622198333899,
+          "d_strict": 0.1784504555980898
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 0.10531577067270224,
+          "r2": 0.9306888582527071,
+          "helicality_shuffled": 0.01126180436821538,
+          "r2_shuffled": 0.16725805185097664,
+          "d_strict": 0.28058050921845334
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 0.02463901395242982,
+          "r2": 0.6600087743427148,
+          "helicality_shuffled": 0.010526266725746214,
+          "r2_shuffled": 0.15158329451252228,
+          "d_strict": 0.46444450732365794
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 0.1368216401712425,
+          "r2": 0.9477939470620839,
+          "helicality_shuffled": 0.009763755901708018,
+          "r2_shuffled": 0.15116872543454396,
+          "d_strict": 0.2851291205749632
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 0.035740166304875504,
+          "r2": 0.8530028911790908,
+          "helicality_shuffled": 0.009635050325783576,
+          "r2_shuffled": 0.22152535051407884,
+          "d_strict": 0.15240694720262982
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 0.01733892565496884,
+          "r2": 0.566124439106711,
+          "helicality_shuffled": 0.00992034458593161,
+          "r2_shuffled": 0.18788727664331106,
+          "d_strict": 0.14795320340346285
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 0.061714756464838635,
+          "r2": 0.925090307563763,
+          "helicality_shuffled": 0.007139122553133731,
+          "r2_shuffled": 0.1536721738304524,
+          "d_strict": 0.4524006243144175
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 0.06026105082618714,
+          "r2": 0.8540835271605195,
+          "helicality_shuffled": 0.014071125392813954,
+          "r2_shuffled": 0.20152042991184305,
+          "d_strict": 0.2304539680829173
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 0.0941954051900294,
+          "r2": 0.6105324554424596,
+          "helicality_shuffled": 0.056570379175041555,
+          "r2_shuffled": 0.1940296479414415,
+          "d_strict": -0.06141583346989296
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 0.4157620072998952,
+          "r2": 0.8193902052037574,
+          "helicality_shuffled": 0.09627050404594377,
+          "r2_shuffled": 0.1363585159715106,
+          "d_strict": 0.015264136907332373
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 0.2771938245230162,
+          "r2": 0.9346354056146347,
+          "helicality_shuffled": 0.031980358872478264,
+          "r2_shuffled": 0.15038759247235678,
+          "d_strict": 0.28207036936265856
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 0.0347345739691838,
+          "r2": 0.7282637169681294,
+          "helicality_shuffled": 0.017780815123084253,
+          "r2_shuffled": 0.18968139334997103,
+          "d_strict": 0.09139633323027122
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 0.0573258245009228,
+          "r2": 0.8182546417846801,
+          "helicality_shuffled": 0.016266454532913133,
+          "r2_shuffled": 0.21097369463855675,
+          "d_strict": 0.11727211127324122
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 0.057874853268777206,
+          "r2": 0.7798318190563903,
+          "helicality_shuffled": 0.01842220136317759,
+          "r2_shuffled": 0.2588286705872568,
+          "d_strict": 0.3433827999083512
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 0.5572813085415971,
+          "r2": 0.849034980274339,
+          "helicality_shuffled": 0.3198372198534692,
+          "r2_shuffled": 0.24561170090239592,
+          "d_strict": 0.011239776789975675
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 0.64885022073719,
+          "r2": 0.8562856857819454,
+          "helicality_shuffled": 0.17026800545503815,
+          "r2_shuffled": 0.13871732932751168,
+          "d_strict": 0.08352578849297765
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 0.015675157818147534,
+          "r2": 0.4984379614573159,
+          "helicality_shuffled": 0.009917894569288554,
+          "r2_shuffled": 0.17811236094831662,
+          "d_strict": 0.3500490542787474
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 0.02145460841550115,
+          "r2": 0.5879845111051042,
+          "helicality_shuffled": 0.01228118722970986,
+          "r2_shuffled": 0.2230856678960842,
+          "d_strict": 0.4595870949441546
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 0.018891129807735357,
+          "r2": 0.4556329592855112,
+          "helicality_shuffled": 0.01272334842791153,
+          "r2_shuffled": 0.1580392805732398,
+          "d_strict": 0.3870896815990993
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 0.020375979707077465,
+          "r2": 0.4696279719774247,
+          "helicality_shuffled": 0.01214805836801251,
+          "r2_shuffled": 0.20057077276933788,
+          "d_strict": -0.03732102030681566
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 0.07491696261551176,
+          "r2": 0.9044205129914961,
+          "helicality_shuffled": 0.008717745908130174,
+          "r2_shuffled": 0.22843973255450423,
+          "d_strict": 0.3068873363463907
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 0.024455163283276526,
+          "r2": 0.7396207414588623,
+          "helicality_shuffled": 0.012861509439822609,
+          "r2_shuffled": 0.18670885898793077,
+          "d_strict": 0.34803016286522853
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 0.02376046564355385,
+          "r2": 0.5733106304725041,
+          "helicality_shuffled": 0.012906452298272322,
+          "r2_shuffled": 0.1629752568286995,
+          "d_strict": 0.006017541543216404
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 0.021438062966798392,
+          "r2": 0.5694562578003939,
+          "helicality_shuffled": 0.011960982128218995,
+          "r2_shuffled": 0.1820135802297741,
+          "d_strict": 0.35426241377404843
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 0.030309320695956977,
+          "r2": 0.7573886297935165,
+          "helicality_shuffled": 0.013649969306216321,
+          "r2_shuffled": 0.24874951332617556,
+          "d_strict": 0.20251759107212006
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 0.02522141612483177,
+          "r2": 0.7171175080958867,
+          "helicality_shuffled": 0.010543919483096431,
+          "r2_shuffled": 0.17478403871344672,
+          "d_strict": 0.28704019813839926
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 0.06591826356914741,
+          "r2": 0.8748019644840115,
+          "helicality_shuffled": 0.011630923694280872,
+          "r2_shuffled": 0.21036248393264256,
+          "d_strict": 0.20563938290911843
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 0.025263669400615776,
+          "r2": 0.5657989467390081,
+          "helicality_shuffled": 0.014895516705434897,
+          "r2_shuffled": 0.19480622456303187,
+          "d_strict": 0.3938448529821215
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 0.06895474501744082,
+          "r2": 0.9261340389262542,
+          "helicality_shuffled": 0.011730461283130293,
+          "r2_shuffled": 0.1569621035677511,
+          "d_strict": 0.18348501404517392
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 0.03080556083814172,
+          "r2": 0.7643951883881475,
+          "helicality_shuffled": 0.01329334817069644,
+          "r2_shuffled": 0.1714150689059818,
+          "d_strict": 0.036261692628871356
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 0.05060661429081414,
+          "r2": 0.886584750978583,
+          "helicality_shuffled": 0.010888347729637144,
+          "r2_shuffled": 0.2770432588666998,
+          "d_strict": 0.16727053641818584
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 0.029640688491010474,
+          "r2": 0.7827253534969406,
+          "helicality_shuffled": 0.011287762654112455,
+          "r2_shuffled": 0.2228310334195237,
+          "d_strict": 0.12563836321542338
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 0.01692301522649294,
+          "r2": 0.6520784128069964,
+          "helicality_shuffled": 0.007318949645209392,
+          "r2_shuffled": 0.17284541765173522,
+          "d_strict": 0.18057565952314586
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 0.12743896269116825,
+          "r2": 0.49790573906479674,
+          "helicality_shuffled": 0.0948698695025893,
+          "r2_shuffled": 0.210866831292703,
+          "d_strict": 0.18597900812742785
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 0.03524224419061588,
+          "r2": 0.8603340614279149,
+          "helicality_shuffled": 0.007416439343059383,
+          "r2_shuffled": 0.15925484928437494,
+          "d_strict": 0.3069589351175869
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 0.04338885037460128,
+          "r2": 0.8290315194906305,
+          "helicality_shuffled": 0.013801878669018193,
+          "r2_shuffled": 0.1690575322438428,
+          "d_strict": 0.14171679887104166
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 0.15797600818799046,
+          "r2": 0.5091196720583653,
+          "helicality_shuffled": 0.08819691257271353,
+          "r2_shuffled": 0.1787407352776934,
+          "d_strict": -0.06183043555131257
+        }
+      ]
+    },
+    "chroma": {
+      "n_inst": 66,
+      "helicality_mean": 11.3728508774378,
+      "helicality_median": 9.343997921669068,
+      "r2_mean": 0.5782469818142516,
+      "r2_shuffled_mean": 0.17806355731394113,
+      "d_strict_mean": 0.6711963340497559,
+      "frac_inst_positive": 0.9696969696969697,
+      "rho_helicality_dstrict": -0.2291410082454859,
+      "rho_r2_dstrict": 0.15983717774762554,
+      "per_instrument": [
+        {
+          "inst": "organ_electronic_069",
+          "helicality": 9.347893041323609,
+          "r2": 0.6755212036792991,
+          "helicality_shuffled": 3.646329083787,
+          "r2_shuffled": 0.188553707697368,
+          "d_strict": 0.9139512417332876
+        },
+        {
+          "inst": "guitar_electronic_039",
+          "helicality": 13.71539781280976,
+          "r2": 0.742142967459019,
+          "helicality_shuffled": 4.763875873494992,
+          "r2_shuffled": 0.14816294486256698,
+          "d_strict": 0.7389313234210022
+        },
+        {
+          "inst": "brass_acoustic_026",
+          "helicality": 6.738259516991994,
+          "r2": 0.49457227335380294,
+          "helicality_shuffled": 4.194674346516775,
+          "r2_shuffled": 0.14166770038236998,
+          "d_strict": 0.8235647477051025
+        },
+        {
+          "inst": "bass_electronic_015",
+          "helicality": 5.614855417702359,
+          "r2": 0.34532839181199226,
+          "helicality_shuffled": 5.121230583628473,
+          "r2_shuffled": 0.18084364231769434,
+          "d_strict": 0.7732064069345971
+        },
+        {
+          "inst": "flute_acoustic_012",
+          "helicality": 6.824333427383825,
+          "r2": 0.502512885797957,
+          "helicality_shuffled": 4.597798852351245,
+          "r2_shuffled": 0.18028644170326158,
+          "d_strict": 0.8897513300104165
+        },
+        {
+          "inst": "bass_synthetic_092",
+          "helicality": 11.559353471914482,
+          "r2": 0.6623870288761199,
+          "helicality_shuffled": 4.691163110405393,
+          "r2_shuffled": 0.17227018689898377,
+          "d_strict": 0.8741008283053375
+        },
+        {
+          "inst": "vocal_synthetic_014",
+          "helicality": 5.172400722301696,
+          "r2": 0.45521335893304726,
+          "helicality_shuffled": 3.6060882806587595,
+          "r2_shuffled": 0.1762620353790646,
+          "d_strict": 0.7380325546764057
+        },
+        {
+          "inst": "bass_synthetic_028",
+          "helicality": 7.831037739311961,
+          "r2": 0.5168406121740303,
+          "helicality_shuffled": 5.108144311697681,
+          "r2_shuffled": 0.2651802099291267,
+          "d_strict": 0.6819855957069636
+        },
+        {
+          "inst": "organ_electronic_032",
+          "helicality": 9.089734714459704,
+          "r2": 0.667345474187757,
+          "helicality_shuffled": 3.761409594725474,
+          "r2_shuffled": 0.1632123861379997,
+          "d_strict": 0.6331585651531006
+        },
+        {
+          "inst": "mallet_synthetic_001",
+          "helicality": 8.174043269798823,
+          "r2": 0.6186127158172847,
+          "helicality_shuffled": 4.741774738361588,
+          "r2_shuffled": 0.15023632197468595,
+          "d_strict": 0.6319667452779139
+        },
+        {
+          "inst": "guitar_synthetic_009",
+          "helicality": 7.233865566743477,
+          "r2": 0.5933746564366011,
+          "helicality_shuffled": 3.7671027251883578,
+          "r2_shuffled": 0.18724880463339666,
+          "d_strict": 0.5886539294448527
+        },
+        {
+          "inst": "bass_synthetic_095",
+          "helicality": 6.833212094956032,
+          "r2": 0.4776054984573469,
+          "helicality_shuffled": 6.150987808269807,
+          "r2_shuffled": 0.1741921157723022,
+          "d_strict": 0.6542416114223142
+        },
+        {
+          "inst": "organ_electronic_004",
+          "helicality": 11.114603007951846,
+          "r2": 0.6983609567993426,
+          "helicality_shuffled": 4.509365104326725,
+          "r2_shuffled": 0.1296737617112107,
+          "d_strict": 0.827711672035219
+        },
+        {
+          "inst": "keyboard_electronic_038",
+          "helicality": 8.584182250436747,
+          "r2": 0.6338308943722133,
+          "helicality_shuffled": 6.23574713677688,
+          "r2_shuffled": 0.22493652461182345,
+          "d_strict": 0.7017922694066008
+        },
+        {
+          "inst": "keyboard_electronic_027",
+          "helicality": 10.733551450825114,
+          "r2": 0.6880530468482982,
+          "helicality_shuffled": 4.450638896078569,
+          "r2_shuffled": 0.19013655331651347,
+          "d_strict": 0.6582791974915491
+        },
+        {
+          "inst": "bass_synthetic_061",
+          "helicality": 11.057786762778418,
+          "r2": 0.6663393648228784,
+          "helicality_shuffled": 4.491935735244558,
+          "r2_shuffled": 0.14201868939107432,
+          "d_strict": 0.7490329199938438
+        },
+        {
+          "inst": "bass_electronic_031",
+          "helicality": 5.507882371272034,
+          "r2": 0.4375715975392942,
+          "helicality_shuffled": 3.730056170659233,
+          "r2_shuffled": 0.18292861426977958,
+          "d_strict": 0.8852613027969234
+        },
+        {
+          "inst": "keyboard_electronic_109",
+          "helicality": 11.707322784752265,
+          "r2": 0.6915895873347667,
+          "helicality_shuffled": 4.471201445780128,
+          "r2_shuffled": 0.16141273391870115,
+          "d_strict": 0.826035326637449
+        },
+        {
+          "inst": "bass_electronic_021",
+          "helicality": 9.104772457276763,
+          "r2": 0.6087369925150057,
+          "helicality_shuffled": 4.853135998738922,
+          "r2_shuffled": 0.2162592471289725,
+          "d_strict": 0.7451167704476582
+        },
+        {
+          "inst": "flute_synthetic_005",
+          "helicality": 12.452897033041705,
+          "r2": 0.7153229999572539,
+          "helicality_shuffled": 4.438789703762815,
+          "r2_shuffled": 0.19869898121747231,
+          "d_strict": 0.711335837480794
+        },
+        {
+          "inst": "mallet_acoustic_064",
+          "helicality": 29.63942557414529,
+          "r2": 0.5324525005384946,
+          "helicality_shuffled": 22.93273374535028,
+          "r2_shuffled": 0.16979666047285213,
+          "d_strict": 0.059325428969285166
+        },
+        {
+          "inst": "keyboard_electronic_060",
+          "helicality": 9.087195494278692,
+          "r2": 0.5879203714778342,
+          "helicality_shuffled": 4.754527499030658,
+          "r2_shuffled": 0.20729120342628604,
+          "d_strict": 0.8279815192727406
+        },
+        {
+          "inst": "keyboard_electronic_086",
+          "helicality": 8.110305435981019,
+          "r2": 0.5670558170683802,
+          "helicality_shuffled": 4.208338652980326,
+          "r2_shuffled": 0.21447298454359076,
+          "d_strict": 0.8674685523348129
+        },
+        {
+          "inst": "mallet_acoustic_039",
+          "helicality": 13.400388453025624,
+          "r2": 0.8044731721587334,
+          "helicality_shuffled": 8.540121580752672,
+          "r2_shuffled": 0.20116913779832646,
+          "d_strict": 0.432318947508635
+        },
+        {
+          "inst": "brass_acoustic_003",
+          "helicality": 5.394601869748435,
+          "r2": 0.37490195227560297,
+          "helicality_shuffled": 3.9691007310718662,
+          "r2_shuffled": 0.15039820717166041,
+          "d_strict": 0.8598372461562316
+        },
+        {
+          "inst": "reed_acoustic_060",
+          "helicality": 6.793225922319229,
+          "r2": 0.5190141815738698,
+          "helicality_shuffled": 4.028817488926914,
+          "r2_shuffled": 0.18898154632474007,
+          "d_strict": 0.724159764482099
+        },
+        {
+          "inst": "keyboard_electronic_064",
+          "helicality": 10.368236623896808,
+          "r2": 0.6590792171820512,
+          "helicality_shuffled": 4.335728259746763,
+          "r2_shuffled": 0.17345426607904602,
+          "d_strict": 0.8426259132982522
+        },
+        {
+          "inst": "vocal_synthetic_009",
+          "helicality": 7.6387142570961375,
+          "r2": 0.6832443572838193,
+          "helicality_shuffled": 3.326434256305652,
+          "r2_shuffled": 0.15292074256743782,
+          "d_strict": 0.4612517876078911
+        },
+        {
+          "inst": "reed_acoustic_015",
+          "helicality": 12.7744822275435,
+          "r2": 0.21040764805291878,
+          "helicality_shuffled": 12.852259160702891,
+          "r2_shuffled": 0.21246032960467687,
+          "d_strict": -0.007587648456377827
+        },
+        {
+          "inst": "brass_acoustic_045",
+          "helicality": 6.1031323112981015,
+          "r2": 0.4311473771063721,
+          "helicality_shuffled": 4.0086316796917805,
+          "r2_shuffled": 0.21482922942412364,
+          "d_strict": 0.631901714649018
+        },
+        {
+          "inst": "mallet_acoustic_051",
+          "helicality": 11.915465910739549,
+          "r2": 0.6763172844444345,
+          "helicality_shuffled": 5.0154900474764155,
+          "r2_shuffled": 0.22153562288920314,
+          "d_strict": 0.9417369464618992
+        },
+        {
+          "inst": "bass_synthetic_017",
+          "helicality": 5.850798978971394,
+          "r2": 0.5017365776777832,
+          "helicality_shuffled": 3.187263469542528,
+          "r2_shuffled": 0.13922850680011012,
+          "d_strict": 0.5742321109184273
+        },
+        {
+          "inst": "reed_synthetic_000",
+          "helicality": 6.731023804093884,
+          "r2": 0.6413631972438871,
+          "helicality_shuffled": 2.760553492425148,
+          "r2_shuffled": 0.14391420888214967,
+          "d_strict": 0.8469470958835833
+        },
+        {
+          "inst": "bass_synthetic_001",
+          "helicality": 8.408065780295045,
+          "r2": 0.6437001598600434,
+          "helicality_shuffled": 3.9479762694384335,
+          "r2_shuffled": 0.20015988902970372,
+          "d_strict": 0.4700548161759345
+        },
+        {
+          "inst": "organ_electronic_099",
+          "helicality": 9.410537903240934,
+          "r2": 0.729226107709696,
+          "helicality_shuffled": 3.436121562067195,
+          "r2_shuffled": 0.14947362973747602,
+          "d_strict": 0.7782286493071887
+        },
+        {
+          "inst": "synth_lead_synthetic_008",
+          "helicality": 11.810469385824888,
+          "r2": 0.6952974316335915,
+          "helicality_shuffled": 4.748678808499494,
+          "r2_shuffled": 0.20075178053780074,
+          "d_strict": 0.8137313883624596
+        },
+        {
+          "inst": "keyboard_electronic_083",
+          "helicality": 11.519741112246926,
+          "r2": 0.6622932009244267,
+          "helicality_shuffled": 4.800163813420189,
+          "r2_shuffled": 0.1846501571605128,
+          "d_strict": 0.9604912460268513
+        },
+        {
+          "inst": "keyboard_acoustic_011",
+          "helicality": 17.085282275388668,
+          "r2": 0.7226965043007584,
+          "helicality_shuffled": 9.235103029137967,
+          "r2_shuffled": 0.15783666430098808,
+          "d_strict": 0.37310993379061896
+        },
+        {
+          "inst": "guitar_electronic_005",
+          "helicality": 35.73109828157732,
+          "r2": 0.3532653372146738,
+          "helicality_shuffled": 31.811465160755116,
+          "r2_shuffled": 0.17520141480581364,
+          "d_strict": -0.0075509468168767635
+        },
+        {
+          "inst": "bass_synthetic_005",
+          "helicality": 14.20723778791202,
+          "r2": 0.4707168207572606,
+          "helicality_shuffled": 9.566131383197536,
+          "r2_shuffled": 0.19132518429071788,
+          "d_strict": 0.2894157638009628
+        },
+        {
+          "inst": "bass_synthetic_021",
+          "helicality": 6.671090398072019,
+          "r2": 0.43040233279971973,
+          "helicality_shuffled": 5.259403984307764,
+          "r2_shuffled": 0.1610860566473894,
+          "d_strict": 0.6389679358755189
+        },
+        {
+          "inst": "keyboard_electronic_107",
+          "helicality": 10.407816532400188,
+          "r2": 0.5772260097257599,
+          "helicality_shuffled": 5.593220333121602,
+          "r2_shuffled": 0.19499892023040677,
+          "d_strict": 0.6568779014343802
+        },
+        {
+          "inst": "bass_synthetic_030",
+          "helicality": 10.97770824739526,
+          "r2": 0.6527327660784454,
+          "helicality_shuffled": 4.7677002538724595,
+          "r2_shuffled": 0.18965151587341111,
+          "d_strict": 0.956616700873883
+        },
+        {
+          "inst": "bass_synthetic_138",
+          "helicality": 31.61916351702655,
+          "r2": 0.6575514767405707,
+          "helicality_shuffled": 30.47260814266742,
+          "r2_shuffled": 0.188692867024572,
+          "d_strict": 0.07600704581176831
+        },
+        {
+          "inst": "guitar_acoustic_002",
+          "helicality": 58.99335246643042,
+          "r2": 0.5765967134881225,
+          "helicality_shuffled": 54.413781520491774,
+          "r2_shuffled": 0.1491783312225975,
+          "d_strict": 0.03443827423793211
+        },
+        {
+          "inst": "bass_synthetic_011",
+          "helicality": 8.348936628972805,
+          "r2": 0.5433660865854705,
+          "helicality_shuffled": 4.666024186176211,
+          "r2_shuffled": 0.17305544778330995,
+          "d_strict": 0.7687946622549682
+        },
+        {
+          "inst": "flute_acoustic_019",
+          "helicality": 7.20098946386927,
+          "r2": 0.5151301207472321,
+          "helicality_shuffled": 4.61849657973224,
+          "r2_shuffled": 0.19429338335943025,
+          "d_strict": 0.9254383198020051
+        },
+        {
+          "inst": "keyboard_electronic_035",
+          "helicality": 5.718140283770239,
+          "r2": 0.38924738350460275,
+          "helicality_shuffled": 4.095817726933506,
+          "r2_shuffled": 0.14733287156780517,
+          "d_strict": 0.4546383272888298
+        },
+        {
+          "inst": "mallet_electronic_002",
+          "helicality": 9.45064707089906,
+          "r2": 0.6372201053694724,
+          "helicality_shuffled": 4.250082160392125,
+          "r2_shuffled": 0.2055898163730585,
+          "d_strict": 0.6219004216479336
+        },
+        {
+          "inst": "organ_electronic_020",
+          "helicality": 9.514709922455612,
+          "r2": 0.6300835314220423,
+          "helicality_shuffled": 4.6667936794042,
+          "r2_shuffled": 0.19601392507684923,
+          "d_strict": 0.8979466572949826
+        },
+        {
+          "inst": "bass_synthetic_031",
+          "helicality": 8.677091862776116,
+          "r2": 0.5516632803494734,
+          "helicality_shuffled": 4.6700469010162875,
+          "r2_shuffled": 0.16393101301057722,
+          "d_strict": 0.9093232622005427
+        },
+        {
+          "inst": "keyboard_acoustic_017",
+          "helicality": 11.116696522597655,
+          "r2": 0.6516128377741948,
+          "helicality_shuffled": 4.76009663940792,
+          "r2_shuffled": 0.18105017382284438,
+          "d_strict": 0.885715068414517
+        },
+        {
+          "inst": "keyboard_electronic_049",
+          "helicality": 10.542149401459536,
+          "r2": 0.6918961222337887,
+          "helicality_shuffled": 4.292140697334333,
+          "r2_shuffled": 0.1838542851496855,
+          "d_strict": 0.6742488787173706
+        },
+        {
+          "inst": "keyboard_electronic_105",
+          "helicality": 7.275517586591279,
+          "r2": 0.4776387505354496,
+          "helicality_shuffled": 4.769225775498764,
+          "r2_shuffled": 0.15978419022721924,
+          "d_strict": 0.9051220009002622
+        },
+        {
+          "inst": "organ_electronic_042",
+          "helicality": 6.2091059725811695,
+          "r2": 0.6081269889516596,
+          "helicality_shuffled": 3.1748412328939715,
+          "r2_shuffled": 0.16386543510820228,
+          "d_strict": 0.8799611508859945
+        },
+        {
+          "inst": "keyboard_electronic_093",
+          "helicality": 7.715497662909989,
+          "r2": 0.5363357225386187,
+          "helicality_shuffled": 4.556154853983447,
+          "r2_shuffled": 0.17577033603922665,
+          "d_strict": 0.9000744184545929
+        },
+        {
+          "inst": "string_acoustic_088",
+          "helicality": 6.83918825366029,
+          "r2": 0.5046698183858414,
+          "helicality_shuffled": 4.394831740979339,
+          "r2_shuffled": 0.20538389085724384,
+          "d_strict": 0.8100666741460579
+        },
+        {
+          "inst": "flute_acoustic_027",
+          "helicality": 11.775720938056308,
+          "r2": 0.6846545679334792,
+          "helicality_shuffled": 4.739115569803544,
+          "r2_shuffled": 0.15744528784155765,
+          "d_strict": 0.7427897229176659
+        },
+        {
+          "inst": "mallet_acoustic_018",
+          "helicality": 6.420441997579024,
+          "r2": 0.42218802454776316,
+          "helicality_shuffled": 5.136993318541177,
+          "r2_shuffled": 0.21751738114052033,
+          "d_strict": 0.7499412313924436
+        },
+        {
+          "inst": "organ_electronic_008",
+          "helicality": 11.724257254184348,
+          "r2": 0.6705217210491503,
+          "helicality_shuffled": 4.886033228046844,
+          "r2_shuffled": 0.1806173357992853,
+          "d_strict": 0.9432517794871601
+        },
+        {
+          "inst": "organ_electronic_051",
+          "helicality": 12.01673846787764,
+          "r2": 0.6754116416198191,
+          "helicality_shuffled": 4.633184533524667,
+          "r2_shuffled": 0.15813985301511368,
+          "d_strict": 0.9306314324360562
+        },
+        {
+          "inst": "organ_electronic_085",
+          "helicality": 9.340102802014528,
+          "r2": 0.7068915238180716,
+          "helicality_shuffled": 4.033488226253201,
+          "r2_shuffled": 0.12311099497774458,
+          "d_strict": 0.5953103402048373
+        },
+        {
+          "inst": "flute_acoustic_000",
+          "helicality": 12.920421320672558,
+          "r2": 0.31372016647170875,
+          "helicality_shuffled": 13.044628138982727,
+          "r2_shuffled": 0.17198855112800693,
+          "d_strict": 0.06893103537632472
+        },
+        {
+          "inst": "organ_electronic_016",
+          "helicality": 9.210832337147036,
+          "r2": 0.7295074871533571,
+          "helicality_shuffled": 3.644052344744161,
+          "r2_shuffled": 0.1741513029534968,
+          "d_strict": 0.6025557008590645
+        },
+        {
+          "inst": "keyboard_electronic_031",
+          "helicality": 11.130785472594688,
+          "r2": 0.6483369495165299,
+          "helicality_shuffled": 4.727232312069552,
+          "r2_shuffled": 0.145253321758662,
+          "d_strict": 0.8759987681862694
+        },
+        {
+          "inst": "reed_acoustic_033",
+          "helicality": 28.41424122324517,
+          "r2": 0.3239969467423225,
+          "helicality_shuffled": 21.892512891849712,
+          "r2_shuffled": 0.1664053256303123,
+          "d_strict": 0.007619930367555927
+        }
+      ]
+    }
+  },
+  "cross_arm_dstrict_rho": {
+    "mert_L12|muq_L6": 0.4968990042674253,
+    "mert_L12|matpac_L6": 0.6040682788051209,
+    "mert_L12|pupujepa": 0.33496443812233284,
+    "mert_L12|encodec_32k": 0.5522332859174964,
+    "mert_L12|cqt": 0.4286201991465149,
+    "mert_L12|pq_stft": 0.49314366998577525,
+    "mert_L12|chroma": -0.13561877667140823,
+    "muq_L6|matpac_L6": 0.7748221906116642,
+    "muq_L6|pupujepa": 0.3896728307254623,
+    "muq_L6|encodec_32k": 0.2214224751066856,
+    "muq_L6|cqt": 0.5508961593172119,
+    "muq_L6|pq_stft": 0.5277951635846373,
+    "muq_L6|chroma": 0.286827880512091,
+    "matpac_L6|pupujepa": 0.40790896159317214,
+    "matpac_L6|encodec_32k": 0.30312944523470836,
+    "matpac_L6|cqt": 0.4732859174964438,
+    "matpac_L6|pq_stft": 0.39809388335704127,
+    "matpac_L6|chroma": 0.18469416785206258,
+    "pupujepa|encodec_32k": 0.4402560455192034,
+    "pupujepa|cqt": 0.13957325746799432,
+    "pupujepa|pq_stft": 0.11140825035561876,
+    "pupujepa|chroma": 0.2438406827880512,
+    "encodec_32k|cqt": 0.1555334281650071,
+    "encodec_32k|pq_stft": 0.1605120910384068,
+    "encodec_32k|chroma": -0.1139687055476529,
+    "cqt|pq_stft": 0.6296728307254623,
+    "cqt|chroma": 0.4250355618776671,
+    "pq_stft|chroma": 0.3720341394025604
+  }
+}

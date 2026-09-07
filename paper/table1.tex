@@ -2,7 +2,7 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. F1 is track-grouped macro F1 over the 24 imbalanced keys; accuracy is reported in the repository. $\rho^{\text{cent}}_{5}$ is the circle-of-fifths correlation among the 24 key centroids and $\rho^{W}_{5}$ the same among the probe's class weight vectors, while $\rho_{\text{chr}}$ measures correlation with semitone distance and controls for proximity in chromatic pitch space. Orthogonal key codes reach a macro F1 of $.613$ with classes equidistant by construction and still show nothing, showing that fifths structure in $\rho^{W}_{5}$ is not a consequence of classifier accuracy alone. In each of the first three columns blue marks the highest value among the real representations and red the lowest.}
+\caption{Key information, ambient geometry and readout geometry come apart, on the same 7035 GiantSteps clips and 24 keys. \textcolor{hi}{Blue} marks the highest value in a column among the real representations and \textcolor{lo}{red} the lowest. $\rho_{\text{chr}}$ is the same correlation taken against semitone distance, a control on which a high value is a warning rather than a result.}
 \label{tab:decodable-vs-geometric}
 \begin{tabular}{l r r r r}
 \toprule
@@ -12,24 +12,26 @@ representation & F1 & $\rho^{\text{cent}}_{5}$ & $\rho^{W}_{5}$ & $\rho_{\text{c
 \quad analytic fifths & $0.181$ & $+0.977$ & $+0.986$ & $-0.085$ \\
 \quad random features & $0.039$ & $+0.009$ & $+0.033$ & $-0.001$ \\
 \quad orthogonal key codes & $0.613$ & $-0.008$ & $-0.005$ & $-0.001$ \\
-\multicolumn{5}{l}{\textit{Spectral front ends}} \\
-\quad log-CQT, 12 bin/oct & $0.392$ & \textcolor{lo}{$\mathbf{-0.035}$} & $+0.560$ & $+0.174$ \\
-\quad HCQT, 60 bin/oct & $0.389$ & $+0.554$ & $+0.134$ & $-0.038$ \\
+\multicolumn{5}{l}{\textit{Spectral representations}} \\
+\quad log-CQT~\cite{brown1991}, 12 bin/oct & $0.392$ & \textcolor{lo}{$\mathbf{-0.035}$} & $+0.560$ & \textcolor{hi}{$\mathbf{+0.174}$} \\
+\quad HCQT~\cite{hcqt}, 60 bin/oct & $0.389$ & $+0.554$ & $+0.134$ & $-0.038$ \\
 \quad PQ-STFT, 60 bin/oct & $0.391$ & $+0.550$ & $+0.172$ & $+0.112$ \\
-\quad chromagram & $0.346$ & $+0.475$ & \textcolor{hi}{$\mathbf{+0.692}$} & $+0.140$ \\
+\quad chromagram~\cite{librosa} & $0.346$ & $+0.475$ & \textcolor{hi}{$\mathbf{+0.692}$} & $+0.140$ \\
 \multicolumn{5}{l}{\textit{Neural codec}} \\
-\quad EnCodec 32\,kHz & $0.332$ & $+0.177$ & $+0.648$ & $+0.041$ \\
-\multicolumn{5}{l}{\textit{MERT-v1-330M}} \\
-\quad layer 4 & $0.379$ & $+0.445$ & $+0.412$ & $-0.025$ \\
-\quad layer 12 & $0.371$ & $+0.468$ & $+0.428$ & $+0.024$ \\
-\quad layer 24 & $0.340$ & $+0.294$ & $+0.484$ & $+0.049$ \\
-\multicolumn{5}{l}{\textit{MuQ-large}} \\
-\quad layer 2 & \textcolor{hi}{$\mathbf{0.418}$} & $+0.533$ & \textcolor{lo}{$\mathbf{+0.103}$} & $+0.021$ \\
-\quad layer 12 & $0.351$ & $+0.372$ & $+0.464$ & $+0.056$ \\
-\multicolumn{5}{l}{\textit{MATPAC++ music}} \\
-\quad layer 6 & $0.390$ & \textcolor{hi}{$\mathbf{+0.663}$} & $+0.366$ & $-0.061$ \\
-\quad layer 12 & $0.329$ & $+0.548$ & $+0.656$ & $-0.052$ \\
-\multicolumn{5}{l}{\textit{PupuJEPA}} \\
+\quad EnCodec 32\,kHz~\cite{encodec} & $0.332$ & $+0.177$ & $+0.648$ & $+0.041$ \\
+\multicolumn{5}{l}{\textit{MERT-v1-330M~\cite{mert}}} \\
+\quad default output, L24 & $0.340$ & $+0.294$ & $+0.484$ & $+0.049$ \\
+\quad best layer, L4 & $0.379$ & $+0.445$ & $+0.412$ & $-0.025$ \\
+\quad weighted sum, all layers & $0.390$ & $+0.514$ & $+0.524$ & $+0.149$ \\
+\multicolumn{5}{l}{\textit{MuQ-large~\cite{muq}}} \\
+\quad default output, L12 & $0.351$ & $+0.372$ & $+0.464$ & $+0.056$ \\
+\quad best layer, L2 & \textcolor{hi}{$\mathbf{0.418}$} & $+0.533$ & \textcolor{lo}{$\mathbf{+0.103}$} & $+0.021$ \\
+\quad weighted sum, all layers & $0.418$ & $+0.571$ & $+0.412$ & $-0.006$ \\
+\multicolumn{5}{l}{\textit{MATPAC++ music~\cite{matpac}}} \\
+\quad default output, L12 & $0.329$ & $+0.548$ & $+0.656$ & $-0.052$ \\
+\quad best layer, L6 & $0.390$ & \textcolor{hi}{$\mathbf{+0.663}$} & $+0.366$ & \textcolor{lo}{$\mathbf{-0.061}$} \\
+\quad weighted sum, all layers & $0.385$ & $+0.656$ & $+0.178$ & $-0.056$ \\
+\multicolumn{5}{l}{\textit{PupuJEPA~\cite{pupujepa}}} \\
 \quad teacher encoder & \textcolor{lo}{$\mathbf{0.198}$} & $+0.072$ & $+0.570$ & $-0.007$ \\
 \bottomrule
 \end{tabular}

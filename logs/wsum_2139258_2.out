@@ -1,0 +1,37 @@
+enc=matpac host=node42 start=2026-09-02T02:38:24+09:00
+[matpac] gs: 7035 clips
+8/7035  5s
+488/7035  27s
+968/7035  50s
+1448/7035  83s
+1928/7035  117s
+2408/7035  149s
+2888/7035  185s
+3368/7035  216s
+3848/7035  243s
+4328/7035  279s
+4808/7035  314s
+5288/7035  345s
+5768/7035  375s
+6248/7035  410s
+6728/7035  445s
+wrote runs/layers_matpac.npz  Z=(7035, 12, 7680) (512s)
+[matpac] 7035 clips, 12 layers, dim 3840
+  fold macro-F1 0.343
+  fold macro-F1 0.363
+  fold macro-F1 0.391
+  fold macro-F1 0.396
+  fold macro-F1 0.428
+[matpac] grouped macro-F1 0.385 (+- 0.029)
+  layer weights 0.039 0.042 0.048 0.075 0.103 0.127 0.140 0.118 0.094 0.082 0.074 0.058
+  argmax layer 6, top weight 0.140
+  [centroid] kk_key_distance    rho=+0.832 z=+14.6 p=0.000
+  [centroid] fifths             rho=+0.656 z=+11.7 p=0.000
+  [centroid] chromatic          rho=-0.056 z= -1.0 p=0.303
+  [centroid] mode_mismatch      rho=+0.050 z= +0.9 p=0.335
+  [probe-W ] kk_key_distance    rho=+0.353 z= +7.3 p=0.000
+  [probe-W ] fifths             rho=+0.178 z= +3.6 p=0.000
+  [probe-W ] chromatic          rho=+0.140 z= +2.8 p=0.009
+  [probe-W ] mode_mismatch      rho=+0.017 z= +0.4 p=0.728
+wrote runs/clipkey_matpac_wsum.json
+done=2026-09-02T02:49:01+09:00

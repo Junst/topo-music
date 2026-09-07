@@ -55,6 +55,8 @@ from pathlib import Path
 
 import numpy as np
 import soundfile as sf
+from concurrent.futures import ProcessPoolExecutor
+from importlib.machinery import SourceFileLoader
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -63,7 +65,40 @@ NSYNTH = Path("/lustre/dataset/musicdataset/marble/nsynth")
 WIN = (0.2, 2.5)
 SR_IN, MERT_SR, CQT_SR, MUQ_SR = 16000, 24000, 16000, 24000
 MATPAC_SR, PUPU_SR = 16000, 24000
+m9 = SourceFileLoader('m9', str(Path(__file__).with_name('09_clip_key_geometry.py'))).load_module()
+PQ_SR, HCQT_SR = m9.PQ_SR, m9.HCQT_SR
 MATPAC_CKPT = "/scratch2/solbon1212/ckpt/matpac_plus_music.pt"
+
+
+
+# The two hand-built front ends are pure DSP and cost more per note than any
+# learned encoder here, so they are spread over processes. Defined at module
+# level because a process pool has to pickle the callable.
+def _hcqt_one(w, sr):
+    import librosa, numpy as np
+    fmin = librosa.note_to_hz("C1")
+    return np.concatenate([
+        librosa.amplitude_to_db(np.abs(librosa.cqt(
+            w, sr=sr, hop_length=512, fmin=h * fmin,
+            n_bins=m9.HCQT_NB, bins_per_octave=m9.HCQT_BPO)),
+            ref=np.max).mean(1) for h in m9.HCQT_H]).astype(np.float32)
+
+
+def _pq_one(w, sr):
+    import numpy as np, torch
+    torch.set_num_threads(1)
+    f_k = m9.PQ_FLOW * (2.0 ** (np.arange(m9.PQ_K) * m9.PQ_CENTS / 1200.0))
+    yt, ch = torch.from_numpy(np.ascontiguousarray(w)), []
+    for n_fft in m9.PQ_NFFTS:
+        mag = torch.stft(yt, n_fft=n_fft, hop_length=m9.PQ_HOP, win_length=n_fft,
+                         window=torch.hann_window(n_fft), center=True,
+                         return_complex=True, pad_mode="reflect").abs()
+        idx = torch.from_numpy(
+            np.floor(f_k / (sr / n_fft) + 0.5).astype(np.int64)
+        ).clamp(0, mag.shape[0] - 1)
+        c = torch.log1p(mag[idx, :])
+        ch.append(((c - c.mean()) / (c.std() + 1e-6)).numpy().astype(np.float32))
+    return np.concatenate(ch, 0).mean(1)
 
 
 def main() -> None:
@@ -79,6 +114,8 @@ def main() -> None:
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--workers", type=int, default=8,
+                    help="processes for the hcqt / pq_stft front ends")
     ap.add_argument("--save-emb", action="store_true",
                     help="also cache the note embeddings and the anchor "
                          "structure, so the curve can be recomputed inside a "
@@ -144,6 +181,10 @@ def main() -> None:
         for i, lyr in enumerate(model.encoder.layers):
             lyr.register_forward_hook(tap(i + 1))
         native_sr = MERT_SR
+    elif a.arm == "pq_stft":
+        native_sr = PQ_SR
+    elif a.arm == "hcqt":
+        native_sr = HCQT_SR
     elif is_matpac:
         from matpac.model import get_matpac
         layer = int(a.arm.split("_L")[1])
@@ -159,7 +200,8 @@ def main() -> None:
     elif is_muq:
         from muq import MuQ
         layer = int(a.arm.split("_L")[1])
-        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        model = m9.patch_muq_hidden_states(
+            MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval())
         for p_ in model.parameters():
             p_.requires_grad_(False)
         native_sr = MUQ_SR
@@ -167,6 +209,9 @@ def main() -> None:
         native_sr = CQT_SR
 
     lo, hi = int(WIN[0] * SR_IN), int(WIN[1] * SR_IN)
+
+    POOL = (ProcessPoolExecutor(a.workers)
+            if a.arm in ("hcqt", "pq_stft") else None)
 
     def embed(names):
         ws = []
@@ -184,6 +229,9 @@ def main() -> None:
             return np.stack([librosa.amplitude_to_db(np.abs(librosa.cqt(
                 w, sr=native_sr, hop_length=512, fmin=librosa.note_to_hz("C1"),
                 n_bins=84, bins_per_octave=12)), ref=np.max).mean(1) for w in ws])
+        if a.arm in ("hcqt", "pq_stft"):
+            fn = _hcqt_one if a.arm == "hcqt" else _pq_one
+            return np.stack(list(POOL.map(fn, ws, [native_sr] * len(ws))))
         if is_codec:
             codes = codec.encode(torch.from_numpy(np.stack(ws)).unsqueeze(1))
             lat = sum(CB[l][codes[:, l]] for l in range(CB.shape[0]))

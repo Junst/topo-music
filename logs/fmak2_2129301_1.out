@@ -1,0 +1,51 @@
+arm=mert_L24 host=node58 start=2026-08-31T17:15:32+09:00
+  dropped 13 unreadable or short files, e.g. [('011438.mp3', 'shorter than the excerpt window'), ('021823.mp3', 'shorter than the excerpt window'), ('061480.mp3', "Error opening '/lustre/dataset/musicdataset/fma_large/061/061480.mp3'")]
+[mert_L24] fmak: 5476 clips
+4/5476  30s
+244/5476  48s
+484/5476  67s
+724/5476  85s
+964/5476  104s
+1204/5476  122s
+1444/5476  141s
+1684/5476  160s
+1924/5476  179s
+2164/5476  198s
+2404/5476  217s
+2644/5476  236s
+2884/5476  254s
+3124/5476  273s
+3364/5476  292s
+3604/5476  311s
+3844/5476  330s
+4084/5476  349s
+4324/5476  368s
+4564/5476  387s
+4804/5476  410s
+5044/5476  434s
+5284/5476  457s
+[mert_L24] embeddings (5476, 2048) (475s)
+
+[mert_L24] pooling = mean  dim=1024
+  24-way key 0.320 (chance .042) | 12-way tonic 0.364 (chance .083)
+  [centroid] kk_key_distance    rho=+0.231  z= +3.9  p=0.003  rho|spec=+0.195
+  [centroid] fifths             rho=+0.197  z= +3.3  p=0.010  rho|spec=+0.148
+  [centroid] chromatic          rho=-0.089  z= -1.5  p=0.079  rho|spec=-0.054
+  [centroid] mode_mismatch      rho=+0.717  z=+12.4  p=0.000  rho|spec=+0.727
+  [probe-W ] kk_key_distance    rho=+0.411  z= +6.9  p=0.000  rho|spec=+0.411
+  [probe-W ] fifths             rho=+0.169  z= +2.8  p=0.005  rho|spec=+0.167
+  [probe-W ] chromatic          rho=-0.058  z= -1.0  p=0.326  rho|spec=-0.056
+  [probe-W ] mode_mismatch      rho=-0.072  z= -1.2  p=0.229  rho|spec=-0.084
+
+[mert_L24] pooling = mean+std  dim=2048
+  24-way key 0.338 (chance .042) | 12-way tonic 0.392 (chance .083)
+  [centroid] kk_key_distance    rho=+0.213  z= +3.6  p=0.004  rho|spec=+0.171
+  [centroid] fifths             rho=+0.186  z= +3.1  p=0.013  rho|spec=+0.133
+  [centroid] chromatic          rho=-0.090  z= -1.5  p=0.075  rho|spec=-0.055
+  [centroid] mode_mismatch      rho=+0.734  z=+12.8  p=0.000  rho|spec=+0.749
+  [probe-W ] kk_key_distance    rho=+0.393  z= +7.2  p=0.000  rho|spec=+0.389
+  [probe-W ] fifths             rho=+0.146  z= +2.6  p=0.009  rho|spec=+0.139
+  [probe-W ] chromatic          rho=-0.017  z= -0.3  p=0.762  rho|spec=-0.012
+  [probe-W ] mode_mismatch      rho=+0.078  z= +1.4  p=0.177  rho|spec=+0.062
+wrote runs/clipkey_mert_L24_fmak.json in 1093s
+done=2026-08-31T17:35:57+09:00

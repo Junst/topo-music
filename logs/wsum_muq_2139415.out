@@ -1,0 +1,37 @@
+host=node42 start=2026-09-02T03:07:40+09:00
+[muq] gs: 7035 clips
+8/7035  5s
+488/7035  22s
+968/7035  39s
+1448/7035  57s
+1928/7035  74s
+2408/7035  91s
+2888/7035  108s
+3368/7035  126s
+3848/7035  143s
+4328/7035  160s
+4808/7035  178s
+5288/7035  195s
+5768/7035  212s
+6248/7035  229s
+6728/7035  247s
+wrote runs/layers_muq.npz  Z=(7035, 13, 2048) (269s)
+[muq] 7035 clips, 13 layers, dim 1024
+  fold macro-F1 0.384
+  fold macro-F1 0.425
+  fold macro-F1 0.429
+  fold macro-F1 0.406
+  fold macro-F1 0.444
+[muq] grouped macro-F1 0.418 (+- 0.021)
+  layer weights 0.041 0.119 0.142 0.174 0.167 0.074 0.037 0.038 0.039 0.039 0.044 0.044 0.042
+  argmax layer 3, top weight 0.174
+  [centroid] kk_key_distance    rho=+0.813 z=+14.1 p=0.000
+  [centroid] fifths             rho=+0.571 z=+10.0 p=0.000
+  [centroid] chromatic          rho=-0.006 z= -0.1 p=0.898
+  [centroid] mode_mismatch      rho=-0.004 z= -0.1 p=0.937
+  [probe-W ] kk_key_distance    rho=+0.666 z=+11.4 p=0.000
+  [probe-W ] fifths             rho=+0.412 z= +7.0 p=0.000
+  [probe-W ] chromatic          rho=-0.002 z= -0.0 p=0.972
+  [probe-W ] mode_mismatch      rho=+0.054 z= +0.9 p=0.352
+wrote runs/clipkey_muq_wsum.json
+done=2026-09-02T03:13:25+09:00

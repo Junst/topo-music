@@ -1,0 +1,3 @@
+fmak: one excerpt per track
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+wrote runs/probe_f1_muq_L6_fmak.json

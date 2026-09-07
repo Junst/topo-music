@@ -1,0 +1,51 @@
+arm=matpac_L6 host=node56 start=2026-08-31T08:20:49+09:00
+  dropped 13 unreadable or short files, e.g. [('011438.mp3', 'shorter than the excerpt window'), ('021823.mp3', 'shorter than the excerpt window'), ('061480.mp3', "Error opening '/lustre/dataset/musicdataset/fma_large/061/061480.mp3'")]
+[matpac_L6] fmak: 5476 clips
+4/5476  5s
+244/5476  17s
+484/5476  29s
+724/5476  40s
+964/5476  52s
+1204/5476  63s
+1444/5476  75s
+1684/5476  86s
+1924/5476  98s
+2164/5476  110s
+2404/5476  122s
+2644/5476  133s
+2884/5476  145s
+3124/5476  157s
+3364/5476  169s
+3604/5476  182s
+3844/5476  194s
+4084/5476  206s
+4324/5476  217s
+4564/5476  229s
+4804/5476  241s
+5044/5476  252s
+5284/5476  264s
+[matpac_L6] embeddings (5476, 7680) (274s)
+
+[matpac_L6] pooling = mean  dim=3840
+  24-way key 0.395 (chance .042) | 12-way tonic 0.423 (chance .083)
+  [centroid] kk_key_distance    rho=+0.850  z=+14.0  p=0.000  rho|spec=+0.845
+  [centroid] fifths             rho=+0.597  z=+10.0  p=0.000  rho|spec=+0.578
+  [centroid] chromatic          rho=-0.091  z= -1.5  p=0.111  rho|spec=-0.072
+  [centroid] mode_mismatch      rho=+0.177  z= +3.0  p=0.013  rho|spec=+0.103
+  [probe-W ] kk_key_distance    rho=-0.068  z= -1.2  p=0.238  rho|spec=-0.076
+  [probe-W ] fifths             rho=-0.064  z= -1.1  p=0.270  rho|spec=-0.072
+  [probe-W ] chromatic          rho=+0.011  z= +0.2  p=0.850  rho|spec=+0.014
+  [probe-W ] mode_mismatch      rho=+0.132  z= +2.4  p=0.014  rho|spec=+0.128
+
+[matpac_L6] pooling = mean+std  dim=7680
+  24-way key 0.433 (chance .042) | 12-way tonic 0.458 (chance .083)
+  [centroid] kk_key_distance    rho=+0.840  z=+13.8  p=0.000  rho|spec=+0.836
+  [centroid] fifths             rho=+0.590  z=+10.0  p=0.000  rho|spec=+0.571
+  [centroid] chromatic          rho=-0.089  z= -1.4  p=0.117  rho|spec=-0.069
+  [centroid] mode_mismatch      rho=+0.190  z= +3.2  p=0.008  rho|spec=+0.114
+  [probe-W ] kk_key_distance    rho=+0.202  z= +3.6  p=0.001  rho|spec=+0.191
+  [probe-W ] fifths             rho=+0.003  z= +0.1  p=0.948  rho|spec=-0.011
+  [probe-W ] chromatic          rho=+0.080  z= +1.5  p=0.145  rho|spec=+0.087
+  [probe-W ] mode_mismatch      rho=+0.101  z= +1.9  p=0.061  rho|spec=+0.083
+wrote runs/clipkey_matpac_L6_fmak.json in 609s
+done=2026-08-31T08:31:22+09:00

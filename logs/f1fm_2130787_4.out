@@ -1,0 +1,4 @@
+fmak: one excerpt per track
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+encodec_32k     0.397   0.344       nan      nan
+wrote runs/probe_f1_encodec_32k_fmak.json

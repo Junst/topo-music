@@ -1,0 +1,15 @@
+host=node41 arms=muq_L2 muq_L6 muq_L12 out=runs/_permnull_part1.json start=2026-09-05T06:40:47+09:00
+  [muq_L2] 50/200  1303s
+  [muq_L2] 100/200  2803s
+  [muq_L2] 150/200  3549s
+[muq_L2] observed +0.346 | permuted mean +0.028 [-0.005,+0.073] max +0.091 | p=0.0000  (3772s)
+  [muq_L6] 50/200  134s
+  [muq_L6] 100/200  312s
+  [muq_L6] 150/200  467s
+[muq_L6] observed +0.307 | permuted mean +0.019 [-0.010,+0.063] max +0.080 | p=0.0000  (649s)
+  [muq_L12] 50/200  178s
+  [muq_L12] 100/200  315s
+  [muq_L12] 150/200  501s
+[muq_L12] observed +0.176 | permuted mean +0.037 [-0.002,+0.084] max +0.100 | p=0.0000  (677s)
+wrote runs/_permnull_part1.json
+done=2026-09-05T08:06:12+09:00

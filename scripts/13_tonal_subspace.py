@@ -167,6 +167,8 @@ def var_fraction(W, X):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", default="mert_L12")
+    ap.add_argument("--key-data", default="gs", choices=["gs", "fmak"],
+                    help="corpus the key-supervised projection is fitted on")
     ap.add_argument("--n-random", type=int, default=10)
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
@@ -177,12 +179,18 @@ def main():
     Zn = nz["Z"].astype(np.float64)
     pitch, inst = nz["pitch"], nz["inst"]
     anchors, kmax = nz["anchors"], int(nz["kmax"])
-    gz = np.load(f"runs/clipkey_{a.arm}.npz")
+    tag = "" if a.key_data == "gs" else f"_{a.key_data}"
+    gz = np.load(f"runs/clipkey_{a.arm}{tag}.npz")
     Zg_full = gz["Z"].astype(np.float64)
     Zg = Zg_full[:, :Zg_full.shape[1] // 2]        # the mean half only
     Yg = gz["Y"]
-    lab, gsplit = gs_key_labels()
-    assert len(lab) == len(Yg) and (lab == Yg).all(), "GS row order drifted"
+    if a.key_data == "gs":
+        lab, gsplit = gs_key_labels()
+        assert len(lab) == len(Yg) and (lab == Yg).all(), "GS row order drifted"
+    else:
+        # FMAK has one excerpt per track, so a random split is already
+        # track-disjoint and no jsonl order has to be reconstructed
+        gsplit = rng.integers(0, 3, len(Yg))
     D = Zn.shape[1]
     assert Zg.shape[1] == D
 
@@ -278,7 +286,7 @@ def main():
               f"dstr={A[:,1].mean():+.3f} rho5={A[:,2].mean():+.3f}"
               f"  ({time.time()-t0:.0f}s)", flush=True)
 
-    p = Path(f"runs/subspace_{a.arm}.json")
+    p = Path(f"runs/subspace_{a.arm}{tag}.json")
     p.write_text(json.dumps(out, indent=2))
     print("wrote", p, f"in {time.time()-t0:.0f}s")
 

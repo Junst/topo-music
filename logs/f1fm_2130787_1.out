@@ -1,0 +1,4 @@
+fmak: one excerpt per track
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+cqt             0.429   0.383       nan      nan
+wrote runs/probe_f1_cqt_fmak.json

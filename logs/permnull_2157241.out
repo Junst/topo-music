@@ -1,0 +1,15 @@
+host=node42 arms=mert_L4 mert_L12 mert_L24 out=runs/_permnull_part0.json start=2026-09-05T06:40:48+09:00
+  [mert_L4] 50/200  143s
+  [mert_L4] 100/200  247s
+  [mert_L4] 150/200  422s
+[mert_L4] observed +0.303 | permuted mean +0.019 [-0.016,+0.057] max +0.105 | p=0.0000  (553s)
+  [mert_L12] 50/200  147s
+  [mert_L12] 100/200  268s
+  [mert_L12] 150/200  382s
+[mert_L12] observed +0.223 | permuted mean +0.013 [-0.022,+0.050] max +0.079 | p=0.0000  (498s)
+  [mert_L24] 50/200  107s
+  [mert_L24] 100/200  230s
+  [mert_L24] 150/200  323s
+[mert_L24] observed +0.154 | permuted mean +0.007 [-0.029,+0.041] max +0.063 | p=0.0000  (447s)
+wrote runs/_permnull_part0.json
+done=2026-09-05T07:06:24+09:00

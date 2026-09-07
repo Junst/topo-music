@@ -1,0 +1,18 @@
+[hcqt] 150 instruments, 8631 notes, kmax=25
+40/8631  10s
+1640/8631  205s
+3240/8631  305s
+4840/8631  396s
+6440/8631  497s
+8040/8631  595s
+cached runs/nsynth_emb_hcqt.npz
+[hcqt]  PRIMARY (model-free)
+    delta12        +0.0107  CI[0.0093, 0.0121]
+    delta24        +0.0052  CI[0.0044, 0.006]
+    delta_strict   +0.0105  CI[0.0091, 0.0119]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.00022  CI[-0.00029, -0.00015]
+    b2_chroma                  +0.00071  CI[0.00048, 0.00095]
+    b2_chroma_quadratic_trend  +0.00089  CI[0.00065, 0.00114]
+  S(11)=0.9741 S(12)=0.9846 S(13)=0.9738 | S(23)=0.9705 S(24)=0.9753 S(25)=0.9697
+wrote runs/transpose_hcqt.json in 651s

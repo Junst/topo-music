@@ -119,7 +119,8 @@ def main():
     elif is_muq:
         from muq import MuQ
         layer = int(a.arm.split("_L")[1])
-        model = MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval()
+        model = m9.patch_muq_hidden_states(
+            MuQ.from_pretrained("OpenMuQ/MuQ-large-msd-iter").to(a.device).eval())
         for p_ in model.parameters():
             p_.requires_grad_(False)
         native_sr = MUQ_SR

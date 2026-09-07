@@ -1,0 +1,6 @@
+/scratch2/solbon1212/topo-music/.venv/lib64/python3.11/site-packages/sklearn/utils/_param_validation.py:14: UserWarning: A NumPy version >=1.26.4 and <2.7.0 is required for this version of SciPy (detected version 1.26.3)
+  from scipy.sparse import csr_array, issparse
+fmak: one excerpt per track
+arm           acc_grp  F1_grp  acc_shuf  F1_shuf
+muq_L6          0.395   0.356       nan      nan
+wrote runs/probe_f1_muq_L6_fmak.json

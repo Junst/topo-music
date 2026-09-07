@@ -1,0 +1,37 @@
+enc=mert host=node43 start=2026-09-02T02:36:59+09:00
+[mert] gs: 7035 clips
+8/7035  7s
+488/7035  63s
+968/7035  114s
+1448/7035  161s
+1928/7035  208s
+2408/7035  255s
+2888/7035  301s
+3368/7035  348s
+3848/7035  395s
+4328/7035  442s
+4808/7035  489s
+5288/7035  536s
+5768/7035  583s
+6248/7035  630s
+6728/7035  677s
+wrote runs/layers_mert.npz  Z=(7035, 25, 2048) (733s)
+[mert] 7035 clips, 25 layers, dim 1024
+  fold macro-F1 0.376
+  fold macro-F1 0.399
+  fold macro-F1 0.395
+  fold macro-F1 0.378
+  fold macro-F1 0.403
+[mert] grouped macro-F1 0.390 (+- 0.011)
+  layer weights 0.015 0.015 0.019 0.034 0.038 0.044 0.044 0.045 0.038 0.041 0.050 0.054 0.049 0.047 0.044 0.048 0.049 0.055 0.048 0.036 0.033 0.042 0.042 0.035 0.034
+  argmax layer 17, top weight 0.055
+  [centroid] kk_key_distance    rho=+0.707 z=+12.9 p=0.000
+  [centroid] fifths             rho=+0.514 z= +9.5 p=0.000
+  [centroid] chromatic          rho=+0.149 z= +2.6 p=0.013
+  [centroid] mode_mismatch      rho=+0.082 z= +1.5 p=0.112
+  [probe-W ] kk_key_distance    rho=+0.798 z=+13.4 p=0.000
+  [probe-W ] fifths             rho=+0.524 z= +8.7 p=0.000
+  [probe-W ] chromatic          rho=-0.080 z= -1.2 p=0.186
+  [probe-W ] mode_mismatch      rho=-0.060 z= -1.0 p=0.306
+wrote runs/clipkey_mert_wsum.json
+done=2026-09-02T02:51:01+09:00

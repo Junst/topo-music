@@ -1,0 +1,18 @@
+[pq_stft] 150 instruments, 8631 notes, kmax=25
+40/8631  5s
+1640/8631  73s
+3240/8631  138s
+4840/8631  201s
+6440/8631  249s
+8040/8631  293s
+cached runs/nsynth_emb_pq_stft.npz
+[pq_stft]  PRIMARY (model-free)
+    delta12        +0.2307  CI[0.2057, 0.2558]
+    delta24        +0.1186  CI[0.1027, 0.1343]
+    delta_strict   +0.2274  CI[0.202, 0.2527]
+  SECONDARY (fitted)
+    b1_pitch_height            -0.01109  CI[-0.01247, -0.00981]
+    b2_chroma                  +0.06501  CI[0.05909, 0.07133]
+    b2_chroma_quadratic_trend  +0.05952  CI[0.05231, 0.06692]
+  S(11)=0.2269 S(12)=0.4544 S(13)=0.2203 | S(23)=0.0790 S(24)=0.1952 S(25)=0.0743
+wrote runs/transpose_pq_stft.json in 327s

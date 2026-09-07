@@ -15,45 +15,30 @@ Ruibin Yuan, Yinghao Ma, Yizhi Li, Ge~Zhang, Xingran Chen, Hanzhi Yin, et~al.,
 \newblock ``{MARBLE}: Music audio representation benchmark for universal evaluation,''
 \newblock in {\em Proc. NeurIPS Datasets and Benchmarks Track}, 2023.
 
-\bibitem{controltasks}
-John Hewitt and Percy Liang,
-\newblock ``Designing and interpreting probes with control tasks,''
-\newblock in {\em Proc. EMNLP}, 2019, pp. 2733--2743.
-
-\bibitem{krumhansl1982}
-Carol~L. Krumhansl and Edward~J. Kessler,
-\newblock ``Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys,''
-\newblock {\em Psychol. Rev.}, vol. 89, no. 4, pp. 334--368, 1982.
-
-\bibitem{krumhansl1990}
-Carol~L. Krumhansl,
-\newblock {\em Cognitive Foundations of Musical Pitch},
-\newblock Oxford University Press, New York, 1990.
-
-\bibitem{shepard1982}
-Roger~N. Shepard,
-\newblock ``Geometrical approximations to the structure of musical pitch,''
-\newblock {\em Psychol. Rev.}, vol. 89, no. 4, pp. 305--333, 1982.
+\bibitem{rsa}
+Nikolaus Kriegeskorte, Marieke Mur, and Peter Bandettini,
+\newblock ``Representational similarity analysis: Connecting the branches of systems neuroscience,''
+\newblock {\em Frontiers in Systems Neuroscience}, vol. 2, pp. 4, 2008.
 
 \bibitem{brown1991}
 Judith~C. Brown,
 \newblock ``Calculation of a constant {Q} spectral transform,''
 \newblock {\em J. Acoust. Soc. Amer.}, vol. 89, no. 1, pp. 425--434, 1991.
 
+\bibitem{hcqt}
+Rachel~M. Bittner, Brian McFee, Justin Salamon, Peter Li, and Juan~Pablo Bello,
+\newblock ``Deep salience representations for $f_0$ estimation in polyphonic music,''
+\newblock in {\em Proc. ISMIR}, 2017, pp. 63--70.
+
 \bibitem{librosa}
 Brian McFee, Colin Raffel, Dawen Liang, Daniel~P.W. Ellis, Matt McVicar, et~al.,
 \newblock ``librosa: Audio and music signal analysis in {P}ython,''
 \newblock in {\em Proc. 14th Python in Science Conf.}, 2015.
 
-\bibitem{stone}
-Yuexuan Kong, Vincent Lostanlen, Gabriel Meseguer-Brocal, Stella Wong, Mathieu Lagrange, and Romain Hennequin,
-\newblock ``{STONE}: Self-supervised tonality estimator,''
-\newblock in {\em Proc. ISMIR}, 2024.
-
-\bibitem{pilataki2025}
-Mary Pilataki, Matthias Mauch, and Simon Dixon,
-\newblock ``Self-supervised representation learning with a {JEPA} framework for multi-instrument music transcription,''
-\newblock in {\em Proc. IEEE WASPAA}, 2025.
+\bibitem{encodec}
+Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
+\newblock ``High fidelity neural audio compression,''
+\newblock {\em Trans. Mach. Learn. Res.}, 2023.
 
 \bibitem{muq}
 Haina Zhu, Yizhi Zhou, Hangting Chen, Jianwei Yu, Ziyang Ma, Rongzhi Gu, et~al.,
@@ -70,10 +55,65 @@ Yicheng Gu et~al.,
 \newblock ``Frequency-aware self-supervised music representation learning,''
 \newblock {\em arXiv:2606.25713}, 2026.
 
-\bibitem{encodec}
-Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
-\newblock ``High fidelity neural audio compression,''
-\newblock {\em Trans. Mach. Learn. Res.}, 2023.
+\bibitem{castellon2021}
+Rodrigo Castellon, Chris Donahue, and Percy Liang,
+\newblock ``Codified audio language modeling learns useful representations for music information retrieval,''
+\newblock in {\em Proc. ISMIR}, 2021.
+
+\bibitem{controltasks}
+John Hewitt and Percy Liang,
+\newblock ``Designing and interpreting probes with control tasks,''
+\newblock in {\em Proc. EMNLP}, 2019, pp. 2733--2743.
+
+\bibitem{voita2020}
+Elena Voita and Ivan Titov,
+\newblock ``Information-theoretic probing with minimum description length,''
+\newblock in {\em Proc. EMNLP}, 2020.
+
+\bibitem{belinkov2022}
+Yonatan Belinkov,
+\newblock ``Probing classifiers: Promises, shortcomings, and advances,''
+\newblock {\em Computational Linguistics}, vol. 48, no. 1, pp. 207--219, 2022.
+
+\bibitem{cka}
+Simon Kornblith, Mohammad Norouzi, Honglak Lee, and Geoffrey Hinton,
+\newblock ``Similarity of neural network representations revisited,''
+\newblock in {\em Proc. ICML}, 2019.
+
+\bibitem{krumhansl1982}
+Carol~L. Krumhansl and Edward~J. Kessler,
+\newblock ``Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys,''
+\newblock {\em Psychol. Rev.}, vol. 89, no. 4, pp. 334--368, 1982.
+
+\bibitem{krumhansl1990}
+Carol~L. Krumhansl,
+\newblock {\em Cognitive Foundations of Musical Pitch},
+\newblock Oxford University Press, New York, 1990.
+
+\bibitem{shepard1982}
+Roger~N. Shepard,
+\newblock ``Geometrical approximations to the structure of musical pitch,''
+\newblock {\em Psychol. Rev.}, vol. 89, no. 4, pp. 305--333, 1982.
+
+\bibitem{stone}
+Yuexuan Kong, Vincent Lostanlen, Gabriel Meseguer-Brocal, Stella Wong, Mathieu Lagrange, and Romain Hennequin,
+\newblock ``{STONE}: Self-supervised tonality estimator,''
+\newblock in {\em Proc. ISMIR}, 2024.
+
+\bibitem{pilataki2025}
+Mary Pilataki, Matthias Mauch, and Simon Dixon,
+\newblock ``Self-supervised representation learning with a {JEPA} framework for multi-instrument music transcription,''
+\newblock in {\em Proc. IEEE WASPAA}, 2025.
+
+\bibitem{yagi2026}
+Hayato Yagi, Shinnosuke Takamichi, Rin Sato, Keitaro Tanaka, and Shigeo Morishima,
+\newblock ``Do music foundation models embed pitch in helical structure?,''
+\newblock in {\em Proc. ISMIR}, 2026.
+
+\bibitem{jukebox}
+Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong~Wook Kim, Alec Radford, and Ilya Sutskever,
+\newblock ``Jukebox: A generative model for music,''
+\newblock {\em arXiv preprint arXiv:2005.00341}, 2020.
 
 \bibitem{musicgen}
 Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre D{\'e}fossez,
@@ -85,9 +125,34 @@ Peter Knees, {\'A}ngel Faraldo, Perfecto Herrera, Richard Vogl, Sebastian B{\"o}
 \newblock ``Two data sets for tempo estimation and key detection in electronic dance music annotated from user corrections,''
 \newblock in {\em Proc. ISMIR}, 2015.
 
+\bibitem{fmak}
+Stella Wong and Gandalf Hernandez,
+\newblock ``{FMAK}: A dataset of key and mode annotations for the free music archive,''
+\newblock in {\em Proc. ISMIR, Late-Breaking Demo}, 2023.
+
 \bibitem{nsynth}
 Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, et~al.,
 \newblock ``Neural audio synthesis of musical notes with {WaveNet} autoencoders,''
 \newblock in {\em Proc. ICML}, 2017.
+
+\bibitem{isomap}
+Joshua~B. Tenenbaum, Vin de~Silva, and John~C. Langford,
+\newblock ``A global geometric framework for nonlinear dimensionality reduction,''
+\newblock {\em Science}, vol. 290, no. 5500, pp. 2319--2323, 2000.
+
+\bibitem{ledoit2004}
+Olivier Ledoit and Michael Wolf,
+\newblock ``A well-conditioned estimator for large-dimensional covariance matrices,''
+\newblock {\em Journal of Multivariate Analysis}, vol. 88, no. 2, pp. 365--411, 2004.
+
+\bibitem{inlp}
+Shauli Ravfogel, Yanai Elazar, Hila Gonen, Michael Twiton, and Yoav Goldberg,
+\newblock ``Null it out: Guarding protected attributes by iterative nullspace projection,''
+\newblock in {\em Proc. ACL}, 2020, pp. 7237--7256.
+
+\bibitem{amnesic}
+Yanai Elazar, Shauli Ravfogel, Alon Jacovi, and Yoav Goldberg,
+\newblock ``Amnesic probing: Behavioral explanation with amnesic counterfactuals,''
+\newblock {\em Trans. Assoc. Comput. Linguist.}, vol. 9, pp. 160--175, 2021.
 
 \end{thebibliography}
