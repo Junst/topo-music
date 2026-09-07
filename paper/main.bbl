@@ -6,12 +6,12 @@ Guillaume Alain and Yoshua Bengio,
 \newblock in {\em Proc. ICLR Workshop Track}, 2017.
 
 \bibitem{mert}
-Yizhi Li, Ruibin Yuan, Ge~Zhang, Yinghao Ma, Xingran Chen, Hanzhi Yin, et~al.,
+Yizhi Li et~al.,
 \newblock ``{MERT}: Acoustic music understanding model with large-scale self-supervised training,''
 \newblock in {\em Proc. ICLR}, 2024.
 
 \bibitem{marble}
-Ruibin Yuan, Yinghao Ma, Yizhi Li, Ge~Zhang, Xingran Chen, Hanzhi Yin, et~al.,
+Ruibin Yuan et~al.,
 \newblock ``{MARBLE}: Music audio representation benchmark for universal evaluation,''
 \newblock in {\em Proc. NeurIPS Datasets and Benchmarks Track}, 2023.
 
@@ -41,7 +41,7 @@ Alexandre D{\'e}fossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi,
 \newblock {\em Trans. Mach. Learn. Res.}, 2023.
 
 \bibitem{muq}
-Haina Zhu, Yizhi Zhou, Hangting Chen, Jianwei Yu, Ziyang Ma, Rongzhi Gu, et~al.,
+Haina Zhu et~al.,
 \newblock ``{MuQ}: Self-supervised music representation learning with mel residual vector quantization,''
 \newblock {\em IEEE Trans. Audio, Speech, Language Process.}, vol. 33, pp. 3653--3665, 2025.
 
@@ -116,7 +116,7 @@ Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong~Wook Kim, Alec Radford, and
 \newblock {\em arXiv preprint arXiv:2005.00341}, 2020.
 
 \bibitem{musicgen}
-Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre D{\'e}fossez,
+Jade Copet et~al.,
 \newblock ``Simple and controllable music generation,''
 \newblock in {\em Proc. NeurIPS}, 2023.
 

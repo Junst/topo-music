@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  7 SEP 2026 05:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.20)  8 SEP 2026 05:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -364,54 +364,77 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 32.
  (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) (./table_measures.tex) (./table1.tex)
-<figs/fig1_averaging.pdf, id=58, 439.99634pt x 180.24553pt>
+)
+LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 32.
+ (/home/solbon1212/.TinyTeX/texmf-dist/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+ (./table_measures.tex) (./table1.tex)
+<figs/fig1_averaging.pdf, id=53, 439.99634pt x 180.24553pt>
 File: figs/fig1_averaging.pdf Graphic file (type pdf)
 <use figs/fig1_averaging.pdf>
-Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 62.
+Package pdftex.def Info: figs/fig1_averaging.pdf  used on input line 59.
 (pdftex.def)             Requested size: 244.6937pt x 100.24097pt.
- [1{/home/solbon1212/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/solbon1212/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
-
-
-
- <./figs/fig1_averaging.pdf>]
-<figs/fig2_curve.pdf, id=217, 202.06981pt x 97.77168pt>
+<figs/fig2_curve.pdf, id=54, 202.06981pt x 97.77168pt>
 File: figs/fig2_curve.pdf Graphic file (type pdf)
 <use figs/fig2_curve.pdf>
-Package pdftex.def Info: figs/fig2_curve.pdf  used on input line 92.
+Package pdftex.def Info: figs/fig2_curve.pdf  used on input line 66.
 (pdftex.def)             Requested size: 244.6937pt x 118.39806pt.
- [2 <./figs/fig2_curve.pdf>] (./table2_fmak.tex) [3]
-<figs/fig4_helix.pdf, id=325, 232.90321pt x 161.0087pt>
+
+
+LaTeX Warning: Citation `koh2026steering' on page 1 undefined on input line 77.
+
+[1{/home/solbon1212/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/home/solbon1212/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+
+ <./figs/fig1_averaging.pdf>] [2 <./figs/fig2_curve.pdf>] (./table2_fmak.tex) [3]
+<figs/fig4_helix.pdf, id=319, 232.90321pt x 161.0087pt>
 File: figs/fig4_helix.pdf Graphic file (type pdf)
 <use figs/fig4_helix.pdf>
-Package pdftex.def Info: figs/fig4_helix.pdf  used on input line 214.
+Package pdftex.def Info: figs/fig4_helix.pdf  used on input line 192.
 (pdftex.def)             Requested size: 244.6937pt x 169.16728pt.
-<figs/fig5_radar.pdf, id=328, 233.55261pt x 208.40662pt>
+<figs/fig5_radar.pdf, id=322, 233.55261pt x 208.40662pt>
 File: figs/fig5_radar.pdf Graphic file (type pdf)
 <use figs/fig5_radar.pdf>
-Package pdftex.def Info: figs/fig5_radar.pdf  used on input line 224.
+Package pdftex.def Info: figs/fig5_radar.pdf  used on input line 202.
 (pdftex.def)             Requested size: 244.6937pt x 218.35002pt.
- (./main.bbl [4 <./figs/fig4_helix.pdf> <./figs/fig5_radar.pdf>]) [5] (./main.aux)
+ [4 <./figs/fig4_helix.pdf> <./figs/fig5_radar.pdf>] (./main.bbl) [5] (./main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 751F5BFF57180901133E71EC22B82174;1441.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 284F94B92C61B8B65C5C1E7959F38DB5;1286
+(rerunfilecheck)             After:  7BDF7FC12874E8BC28048AFD71B0A536;1388.
  ) 
 Here is how much of TeX's memory you used:
- 12825 strings out of 469115
- 197679 string characters out of 5458670
- 678766 words of memory out of 5000000
- 41328 multiletter control sequences out of 15000+600000
- 666898 words of font info for 270 fonts, out of 8000000 for 9000
+ 12844 strings out of 469115
+ 198066 string characters out of 5458670
+ 679661 words of memory out of 5000000
+ 41347 multiletter control sequences out of 15000+600000
+ 667074 words of font info for 269 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 74i,13n,79p,1194b,612s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,13n,79p,1194b,484s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/solbon1212/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 276789 bytes).
+Output written on main.pdf (5 pages, 277171 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 255 compressed objects within 3 object streams
+ 522 PDF objects out of 1000 (max. 8388607)
+ 250 compressed objects within 3 object streams
  55 named destinations out of 1000 (max. 500000)
- 54373 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 54877 words of extra memory for PDF output out of 61914 (max. 10000000)
 

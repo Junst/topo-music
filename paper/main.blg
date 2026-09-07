@@ -3,17 +3,18 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: IEEEbib.bst
 Database file #1: refs.bib
+Warning--I didn't find a database entry for "koh2026steering"
 You've used 31 entries,
             1838 wiz_defined-function locations,
-            608 strings with 8636 characters,
-and the built_in function-call counts, 7260 in all, are:
+            609 strings with 8294 characters,
+and the built_in function-call counts, 6986 in all, are:
 = -- 549
-> -- 418
+> -- 355
 < -- 3
-+ -- 151
-- -- 120
-* -- 549
-:= -- 1160
++ -- 130
+- -- 99
+* -- 502
+:= -- 1097
 add.period$ -- 31
 call.type$ -- 31
 change.case$ -- 30
@@ -21,8 +22,8 @@ chr.to.int$ -- 0
 cite$ -- 31
 duplicate$ -- 348
 empty$ -- 759
-format.name$ -- 120
-if$ -- 1623
+format.name$ -- 99
+if$ -- 1581
 int.to.chr$ -- 0
 int.to.str$ -- 31
 missing$ -- 32
@@ -32,7 +33,7 @@ pop$ -- 144
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 125
+skip$ -- 129
 stack$ -- 0
 substring$ -- 319
 swap$ -- 78
@@ -44,3 +45,4 @@ warning$ -- 0
 while$ -- 57
 width$ -- 33
 write$ -- 325
+(There was 1 warning)
